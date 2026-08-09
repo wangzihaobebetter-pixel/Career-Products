@@ -82,6 +82,49 @@ function buildInitialState(): AppState {
     };
   });
 
+  /* Real submissions, from the application log — these are the only roles that
+     have actually been sent. Everything else stays in Wishlist on purpose. */
+  const SUBMITTED: { match: (j: JobApplication) => boolean; appliedDate: string; salaryMin: number; salaryMax: number }[] = [
+    { match: j => j.id === 'job_1', appliedDate: '2026-08-09T18:06:00-04:00', salaryMin: 80000, salaryMax: 120000 },
+  ];
+  for (const sub of SUBMITTED) {
+    const j = jobs.find(sub.match);
+    if (!j) continue;
+    j.status = 'applied';
+    j.appliedDate = sub.appliedDate;
+    j.salaryMin = sub.salaryMin;
+    j.salaryMax = sub.salaryMax;
+    j.priority = 'high';
+    j.lastTouchedAt = sub.appliedDate;
+    j.expectedResponseDate = new Date(new Date(sub.appliedDate).getTime() + 14 * 864e5).toISOString();
+    j.stageHistory = [
+      { from: 'wishlist', to: 'researching', at: sub.appliedDate, source: 'manual' },
+      { from: 'researching', to: 'applied', at: sub.appliedDate, note: 'Submitted via Ashby — confirmation page verified', source: 'manual' },
+    ];
+  }
+
+  // Notion role isn't in the screening roster (it was found separately) — add it as applied.
+  const notionCo = companies.find(c => c.name === 'Notion');
+  if (notionCo) {
+    const at = '2026-08-09T18:09:00-04:00';
+    jobs.unshift({
+      id: 'job_notion_pa', title: 'People Analytics & Operations (Rotational Program)',
+      companyId: notionCo.id,
+      sourceUrl: 'https://jobs.ashbyhq.com/notion/e4229ca4-8210-4282-98ed-2071478f72aa',
+      source: 'company_site', description:
+        'Rotational program across People Analytics and People Operations. Applied with the canonical resume plus the GitHub portfolio link; Anchor Days answered Yes, sponsorship-now answered No (F-1 OPT).',
+      location: 'San Francisco, CA', remoteType: 'hybrid', jobType: 'full_time',
+      salaryMin: 85000, salaryMax: 124000, tags: ['Rotational', 'People Analytics', 'SF hybrid'],
+      priority: 'high', fitScore: 8.6, status: 'applied', appliedDate: at,
+      expectedResponseDate: new Date(new Date(at).getTime() + 14 * 864e5).toISOString(),
+      stageHistory: [
+        { from: 'wishlist', to: 'researching', at, source: 'manual' },
+        { from: 'researching', to: 'applied', at, note: 'Submitted via Ashby — confirmation page verified', source: 'manual' },
+      ],
+      lastTouchedAt: at, createdAt: at, updatedAt: at,
+    });
+  }
+
   // Bullets
   const bullets = (s.bullets || []).map(b => ({
     id: b.id || uid('bl'), text: b.text, competency: (b.competency || 'execution') as never,
@@ -256,10 +299,11 @@ export const useStore = create<JTPState>()(
     }),
     {
       name: 'job-tracker-pro-v2',
-      version: 3,
+      version: 4,
       // Bumping this version discards an older cached store so the
-      // playbook seed (templates / questions / STAR / resumes) lands.
-      migrate: (persisted, from) => (from < 3 ? buildInitialState() : (persisted as AppState)),
+      // playbook seed (templates / questions / STAR / resumes) and the
+      // real submitted-application state land.
+      migrate: (persisted, from) => (from < 4 ? buildInitialState() : (persisted as AppState)),
     }
   )
 );
