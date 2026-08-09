@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Resume Forge — JD-to-Bullet Generator · Zihao Wang</title>
+<style>
+:root{
+  --bg:#0f1420; --panel:#171e30; --panel2:#1d2740; --fg:#e6ebf5; --muted:#93a0b8;
+  --accent:#4f8bff; --accent2:#7c5cff; --good:#34d399; --border:#2a3550; --chip:#26314e;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--fg);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;line-height:1.5;min-height:100vh}
+a{color:var(--accent);text-decoration:none} a:hover{text-decoration:underline}
+.wrap{max-width:1120px;margin:0 auto;padding:28px 20px 80px}
+h1{font-size:1.35em} h1 small{display:block;font-size:.72em;color:var(--muted);font-weight:400;margin-top:4px}
+header{padding-bottom:18px;border-bottom:1px solid var(--border);margin-bottom:20px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.panel{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:18px}
+.panel h2{font-size:.92em;margin-bottom:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px}
+textarea{width:100%;min-height:280px;background:var(--panel2);border:1px solid var(--border);color:var(--fg);border-radius:9px;padding:12px;font-size:.9em;resize:vertical;font-family:ui-monospace,Menlo,monospace;line-height:1.55}
+textarea:focus{outline:none;border-color:var(--accent)}
+button.gen{width:100%;background:var(--accent);color:#fff;border:none;padding:13px;border-radius:9px;font-size:1em;font-weight:700;cursor:pointer;margin-top:12px}
+button.gen:disabled{opacity:.5;cursor:not-allowed}
+button.gen:hover:not(:disabled){filter:brightness(1.1)}
+.out{display:flex;flex-direction:column;gap:10px}
+.out .bullet{background:var(--panel2);border:1px solid var(--border);border-left:3px solid var(--accent);padding:11px 14px;border-radius:8px;font-size:.92em;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.out .bullet .txt{flex:1}
+.copy{background:transparent;color:var(--muted);border:1px solid var(--border);padding:5px 10px;border-radius:6px;cursor:pointer;font-size:.78em;white-space:nowrap}
+.copy:hover{color:var(--fg)}
+.hint{font-size:.8em;color:var(--muted);margin-top:8px}
+.score-row{display:flex;align-items:center;gap:10px;margin:14px 0}
+.score-row .bar{flex:1;height:8px;background:var(--panel2);border-radius:5px;overflow:hidden}
+.score-row .fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:5px;transition:width .3s}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.chip{background:var(--chip);border:1px solid var(--border);padding:3px 9px;border-radius:6px;font-size:.78em;color:var(--accent)}
+.hidden{display:none}
+.empty{color:var(--muted);font-size:.9em;text-align:center;padding:30px 10px;border:1px dashed var(--border);border-radius:8px}
+footer{margin-top:32px;padding-top:14px;border-top:1px solid var(--border);color:var(--muted);font-size:.8em}
+@media(max-width:760px){.two{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Resume Forge
+      <small>Paste a job description → get role-specific resume bullets · trained on a screened job corpus (Aug 2026)</small>
+    </h1>
+  </header>
+
+  <div class="two">
+    <div class="panel">
+      <h2>Job Description</h2>
+      <textarea id="jd" placeholder="Paste the job description here…"></textarea>
+      <div class="hint">Paste the full JD. The engine extracts required skills and matches the strongest bullet templates.</div>
+      <button class="gen" id="gen" disabled>Generate Resume Bullets</button>
+    </div>
+
+    <div class="panel">
+      <h2>Generated Bullets</h2>
+      <div id="out" class="out"></div>
+    </div>
+  </div>
+
+  <footer>Resume Forge · candidate profile: MS Analytics, Northeastern (Dec 2026) · 0–2 yr · analytics + product + marketing + AI generalist</footer>
+</div>
+
+<script>
+/* ============================================================
+   CORPUS — template library (populated from screened research). */
+const CORPUS = {"templates": [{"skill": "analytics", "kd": ["SQL", "Python", "Tableau", "Power BI", "Excel", "Looker", "GA4", "data analysis", "dashboard", "stakeholder reporting", "ad-hoc analysis"], "bullet": "Built [X] SQL queries and Tableau dashboards surfacing [Y] weekly insights for [Z] cross-functional stakeholders; cut ad-hoc reporting turnaround by [A]% and standardized [B] recurring metrics across the analytics stack."}, {"skill": "analytics", "kd": ["SQL", "Python", "R", "Tableau", "Snowflake", "LLM", "experiment readouts", "campaign analytics", "growth marketing"], "bullet": "Partnered with Growth Marketing on [X] LLM-powered campaign analyses in Python/Snowflake/Tableau; delivered [Y] experiment readouts that lifted [Z]% marketing-attributed revenue and shipped [A] narrative-summary automations for stakeholder decks."}, {"skill": "analytics", "kd": ["A/B testing", "experiment design", "statistics", "Python", "SQL", "Tableau", "causal inference", "retention", "conversion"], "bullet": "Designed and read out [X] A/B tests in Python/SQL/Tableau for the [Y] product surface; quantified [Z]% lift in retention with [A]% statistical power and authored the team's first experiment-design playbook."}, {"skill": "analytics", "kd": ["BI", "Tableau", "Power BI", "Snowflake", "data modeling", "model-the-data", "reporting", "stakeholder management"], "bullet": "Modeled [X] core BI tables in Snowflake and shipped [Y] Tableau dashboards serving [Z] weekly stakeholders; reduced [A]% report-build time and became the go-to analyst for the [B] leadership review."}, {"skill": "analytics", "kd": ["Salesforce", "Excel", "SQL", "data quality", "reconciliation", "pricing", "contract analysis", "deal desk"], "bullet": "Reconciled pricing and contract data for [X] sales deals across Salesforce + NetSuite; built a [Y]-rule validation framework that caught [Z]% of revenue-leakage errors before quote finalization."}, {"skill": "analytics", "kd": ["FP&A", "forecast variance", "bookings", "pricing", "modeling", "revenue analytics", "Tableau", "Salesforce"], "bullet": "Built [X] forecast-variance and bookings models for the [Y] sales org; surfaced [Z]% pipeline-coverage gap [A] weeks ahead of quarterly close and partnered with RevOps to close [B]% of the variance."}, {"skill": "product", "kd": ["product analytics", "Mixpanel", "Amplitude", "SQL", "funnel analysis", "retention", "experimentation", "PM partnership"], "bullet": "Partnered with PM on [X] feature launches by owning the Mixpanel/Amplitude instrumentation spec; identified [Y]% funnel drop-off at the [Z] step and shipped [A] experiment variants that recovered [B]% of the conversion."}, {"skill": "product", "kd": ["PM", "growth experiments", "product-led growth", "SQL", "Tableau", "experiment roadmap", "funnel"], "bullet": "Owned the [X] growth-experiments roadmap for the [Y] product surface; ran [Z] measurable experiments that improved activation by [A]% and moved [B]% of users through the redesigned onboarding funnel."}, {"skill": "product", "kd": ["GTM strategy", "product usage data", "telemetry", "SQL", "Tableau", "commercial motion", "win rate"], "bullet": "Turned [X] product-usage telemetry into [Y] GTM strategy recommendations for the [Z] segment; identified [A]% win-rate gap by ICP and partnered with PMs to ship the [B] feature that closed it."}, {"skill": "product", "kd": ["Forward Deployed Analyst", "customer-facing analytics", "on-site deployment", "measurement", "AI products"], "bullet": "Embedded on-site with [X] enterprise customers to deploy and measure the [Y] AI product; built custom eval frameworks that surfaced [Z]% adoption lift within [A] weeks of go-live."}, {"skill": "marketing", "kd": ["B2B marketing", "GA4", "Looker", "Marketo", "Salesforce", "dealer-partner growth", "campaign analytics", "conversion"], "bullet": "Built GA4 + Looker + Marketo dashboards tracking [X] B2B dealer-partner campaigns; identified [Y]% conversion-lift opportunity in the [Z] channel and partnered with sales to operationalize it across [A] partners."}, {"skill": "marketing", "kd": ["brand marketing", "product messaging", "consumer marketplace", "engagement analytics", "content strategy"], "bullet": "Owned brand and product messaging for [X] flagship consumer-marketing campaigns; grew [Y]% engagement through analytics-informed content iteration across [Z] channels."}, {"skill": "marketing", "kd": ["performance marketing", "ad-spend", "SQL", "Tableau", "Python", "marketing-attributed pipeline", "paid media"], "bullet": "Translated [X] of ad-spend data into pipeline insight via SQL/Tableau/Python; identified [Y]% reallocation opportunity that lifted [Z]% marketing-attributed revenue over [A] quarters."}, {"skill": "marketing", "kd": ["SEO", "AEO", "organic search", "search analytics", "content velocity", "answer-engine optimization"], "bullet": "Built [X] SEO/AEO measurement framework for [Y] priority content pages; drove [Z]% organic-traffic lift over [A] months and authored the team's first AEO-readiness checklist."}, {"skill": "marketing", "kd": ["content marketing", "brand storytelling", "analytics-informed content", "engagement", "category-leading narrative"], "bullet": "Owned analytics-informed content for [X] brand-storytelling campaigns; grew [Y]% engagement and [Z]% share-of-voice against the [A] top-3 competitors in the category."}, {"skill": "marketing", "kd": ["MarTech", "HubSpot", "Salesforce", "ChatGPT", "Claude", "Codex", "marketing automation", "campaign workflows"], "bullet": "Automated [X] campaign workflows in HubSpot/Salesforce with ChatGPT/Claude/Codex embedded at the [Y] step; reduced [Z] hours/week of manual ops and lifted [A]% campaign-launch velocity."}, {"skill": "marketing", "kd": ["experiential marketing", "trade shows", "live events", "Salesforce", "HubSpot", "event attribution", "post-event engagement"], "bullet": "Led [X] live customer experiences and trade-show activations across [Y] markets; tracked post-event engagement in Salesforce/HubSpot and attributed [Z]% of net-new pipeline to experiential over [A] quarters."}, {"skill": "marketing", "kd": ["social media content", "generative AI creative", "TikTok", "Meta", "YouTube", "A/B creative testing"], "bullet": "Ran [X] generative-AI creative experiments on TikTok/Meta/YouTube; identified the [Y] hook pattern that drove [Z]% lift in thumbstop-rate and templated it for [A] monthly content drops."}, {"skill": "operations", "kd": ["RevOps", "GTM analytics", "pipeline coverage", "forecast accuracy", "Salesforce", "Tableau", "sales operations"], "bullet": "Built [X] GTM analytics dashboards surfacing [Y] pipeline-coverage signals; lifted [Z]% forecast accuracy across [A] reps and became the standard input to the weekly forecast call."}, {"skill": "operations", "kd": ["Strategy & Ops", "Applied AI", "LLM agents", "eval framework", "structured output", "applied-AI practitioner"], "bullet": "Configured and measured [X] LLM-agent deployments for the [Y] Applied-AI team; built a [Z]-case eval framework that scored [A] on structured fields and [B] on explanation quality across the [C] use cases."}, {"skill": "operations", "kd": ["operations strategy", "marketplace operations", "real-time analytics", "efficiency gain", "cross-functional ops"], "bullet": "Optimized [X] end-to-end operations for the [Y] marketplace; deployed real-time analytics that drove [Z]% efficiency gain across tech, marketing, and ops teams within [A] quarters."}, {"skill": "operations", "kd": ["platform operations", "AI product telemetry", "monitoring dashboards", "incident response", "SLA tracking"], "bullet": "Owned platform-telemetry accuracy for [X] AI products; built monitoring dashboards that caught [Y]% of incidents within [Z] minutes and lifted on-call SLA attainment to [A]%."}, {"skill": "operations", "kd": ["operations supervisor", "shift leadership", "lottery-tech logistics", "ops analytics", "high-throughput operations"], "bullet": "Supervised [X]-person shift on the [Y] operations floor; redesigned the [Z] workflow using ops analytics and lifted per-shift throughput by [A]% while cutting [B]% error rate."}, {"skill": "operations", "kd": ["supply chain analytics", "logistics data", "inventory variance", "Tableau", "data pipeline"], "bullet": "Built [X] logistics-data pipeline surfacing day-to-day ops decisions; cut [Y]% inventory variance across [Z] SKUs and saved an estimated $[A] in carrying cost over [B] quarters."}, {"skill": "operations", "kd": ["people operations", "cross-functional stakeholder mgmt", "HRIS", "Workday", "Ashby", "AI-adoption enablement"], "bullet": "Coordinated [X] cross-functional people-ops programs spanning HRIS/Workday/Ashby; shipped [Y] AI-adoption enablement playbooks that lifted [Z]% manager self-service rate across [A] people managers."}, {"skill": "operations", "kd": ["office operations", "fast-scaling office", "vendor management", "cross-functional coordination"], "bullet": "Coordinated ops programs for a fast-scaling [X]-person office; reduced [Y]% vendor cycle time and owned [Z] cross-functional initiatives spanning IT, finance, and people teams."}, {"skill": "AI-ML", "kd": ["LLM agent", "Pydantic-AI", "Claude", "schema-bound output", "sub-4s latency", "evaluation framework", "structured fields"], "bullet": "Built [X] Pydantic-AI + Claude agent with schema-bound [Y]-field output and sub-[Z]s latency; shipped a custom [A]-case eval framework that scored [B] on structured fields and [C] on explanation quality."}, {"skill": "AI-ML", "kd": ["zero-shot NLP", "BART-large-MNLI", "routing", "label engineering", "macro-F1", "reproducible benchmark"], "bullet": "Routed [X] customer inquiries across [Y] units using zero-shot BART-large-MNLI; lifted macro-F1 from [Z] to [A] via label engineering and shipped a reproducible [B]-item benchmark for ongoing monitoring."}, {"skill": "AI-ML", "kd": ["explainable AI", "fraud detection", "SHAP", "analyst-assist AI", "monitoring dashboard", "regulatory transparency"], "bullet": "Designed an explainable fraud-detection framework combining [X] predictive model + SHAP-style explanations + analyst-assist AI; hit [Y]% transparency threshold for the [Z] regulator and shipped the monitoring dashboard in [A] weeks."}, {"skill": "AI-ML", "kd": ["AI workflow automation", "P&C insurance", "claims workflow", "agent runtime", "first-notice-of-loss"], "bullet": "Automated [X] AI workflows on the [Y] platform for P&C insurance claims; shipped a [Z]-agent integration that cut first-notice-of-loss processing time by [A]% and reduced [B]% of manual adjuster handoffs."}, {"skill": "AI-ML", "kd": ["clinical trial analytics", "TrialSpark", "enrollment velocity", "screen-fail rate", "protocol deviation"], "bullet": "Modeled [X] clinical-trial site activation metrics for the [Y] pipeline; identified [Z]% lift opportunity in enrollment velocity by surfacing screen-fail rate patterns across [A] oncology Phase II sites."}, {"skill": "AI-ML", "kd": ["GenAI customer experience", "Maven AGI", "ticket resolution", "CX analytics", "handoff rate"], "bullet": "Built [X] GenAI customer-experience measurement framework on the [Y] platform; tracked resolution quality and handoff rate across [Z] enterprise workflows and identified [A]% of tickets ripe for end-to-end automation."}, {"skill": "growth", "kd": ["inbound growth", "SEO", "programmatic", "MQL", "SQL", "lifecycle marketing", "funnel conversion"], "bullet": "Owned [X] inbound growth experiments on SEO and programmatic channels; grew [Y]% MQL-to-SQL conversion over [Z] quarters and authored the team's lifecycle-marketing playbook."}, {"skill": "growth", "kd": ["revenue strategy", "cohort analysis", "pricing expansion", "SQL", "GTM"], "bullet": "Partnered with sales on [X] revenue-strategy initiatives; identified [Y]% pricing-expansion opportunity in the [Z] cohort via SQL cohort analysis and shipped the packaging change that unlocked $[A] in ARR."}, {"skill": "growth", "kd": ["audience growth", "Chronicle Media", "content velocity", "referral loops", "paid social", "AI content distribution"], "bullet": "Ran [X] audience-growth experiments on content velocity, referral loops, and paid-social creative testing; identified the [Y] compounding-content pattern that drove [Z]% MAU lift over [A] months."}, {"skill": "growth", "kd": ["feature-flag experimentation", "LaunchDarkly", "A/B test design", "rollout measurement", "conversion impact"], "bullet": "Designed [X] A/B tests on the LaunchDarkly flag-rollout surface; measured conversion impact for [Y] flag releases and authored the rollout-measurement template now used across [Z] product teams."}, {"skill": "risk", "kd": ["risk analyst", "payments fraud", "behavioral biometrics", "device intelligence", "false positives", "AUC", "recall"], "bullet": "Modeled [X] fraud patterns across [Y] payment flows using behavioral biometrics + device intelligence; lifted [Z]% recall at [A]% false-positive rate and improved AUC by [B] over the baseline rule system."}, {"skill": "risk", "kd": ["InfoSec risk", "compliance", "risk register", "control testing", "vendor reviews", "remediation tracking"], "bullet": "Built [X]-control InfoSec risk-register framework scoring [Y] control gaps; tracked [Z]% remediation completion across [A] vendor reviews and shipped the quarterly risk posture memo for the CISO."}, {"skill": "data engineering", "kd": ["Analytics Engineer", "dbt", "Snowflake", "data modeling", "experiment framework", "pipeline reliability"], "bullet": "Modeled [X] core event tables in Snowflake via dbt; reduced [Y]% pipeline break-rate, cut [Z]% query latency, and shipped the experiment-framework layer that powers [A] weekly readouts."}, {"skill": "data engineering", "kd": ["ETL", "data pipeline", "data quality", "Fivetran", "Airbyte", "downstream monitoring", "alerting"], "bullet": "Built [X] ETL pipeline ingesting [Y] daily events via Fivetran/Airbyte; surfaced [Z]% data-quality issues before downstream impact and standardized alerting across [A] stakeholders."}, {"skill": "data engineering", "kd": ["comp benchmarking", "Pave", "CompaAI", "HRIS integration", "regression", "salary survey methodology"], "bullet": "Built [X] comp benchmarking dataset across HRIS integrations (Rippling/Workday/Gusto); shipped [Y] salary-survey cuts using regression methodology and authored the data-quality memo used by [Z] HR partners."}, {"skill": "customer success", "kd": ["Inside CSM", "mid-market accounts", "Gainsight", "Salesforce", "AI-tooled playbooks", "adoption uplift"], "bullet": "Owned [X] mid-market accounts on the [Y] platform; drove [Z]% adoption uplift through AI-tooled Gainsight/Salesforce playbooks and lifted [A]% NPS across the book in [B] quarters."}, {"skill": "customer success", "kd": ["AI-native CSM", "EliseAI", "vertical AI", "housing operators", "product adoption"], "bullet": "Drove product adoption for [X] housing-operator customers on the EliseAI platform; built vertical-specific enablement playbooks that lifted [Y]% active-feature usage and reduced [Z]% time-to-first-value."}, {"skill": "business development", "kd": ["BDR", "AI-assisted outbound", "Salesforce", "Outreach", "Sales Navigator", "reply rate", "platform sales"], "bullet": "Ran [X] AI-assisted outbound sequences on the [Y] platform via Salesforce + Outreach + Sales Navigator; doubled reply rate vs. the SDR-team baseline and booked $[A] in qualified pipeline over [B] months."}, {"skill": "business development", "kd": ["SDR", "enterprise SaaS", "Cybersecurity", "outbound", "observability", "DevOps buyers"], "bullet": "Sourced and qualified [X] enterprise SaaS opportunities for the [Y] observability platform; built a DevOps-buyer-focused outbound sequence that lifted [Z]% SQL conversion and cut [A]% of top-of-funnel waste."}, {"skill": "business development", "kd": ["Founding SDR", "founding generalist", "Notion docs", "Looker dashboards", "onboarding flows"], "bullet": "Operated as a founding generalist across [X] functions — wrote Notion docs, built Looker dashboards, designed onboarding flows, and ran outbound — shipping [Y] measurable artifacts in the first [Z] months."}, {"skill": "treasury / fintech", "kd": ["Earnest", "student-loan refinance", "credit pull", "underwriting", "funnel analytics", "runway", "burn multiple"], "bullet": "Modeled the [X]-stage student-loan refinance funnel (credit pull → soft pull → application → underwriting → fund); identified [Y]% drop-off at the [Z] step and partnered with credit to recover [A]% of the funnel."}, {"skill": "finops", "kd": ["CloudZero", "FinOps", "AI cost optimization", "unit economics", "LLM cost-per-customer", "AWS Cost Explorer"], "bullet": "Built [X] FinOps dashboards tracking AI cost-per-customer on the CloudZero platform; surfaced [Y]% unit-economics gap in the [Z] LLM feature and recommended the model-routing change that cut [A]% of inference spend."}], "hardSkills": ["SQL", "Python", "R", "Tableau", "Power BI", "Looker", "Mode", "Excel", "Google Sheets", "Snowflake", "BigQuery", "Redshift", "dbt", "Fivetran", "Airbyte", "ETL", "ELT", "A/B testing", "experiment design", "statistics", "regression", "causal inference", "time-series", "forecasting", "data modeling", "data warehouse", "data quality", "data governance", "data pipeline", "LLM", "NLP", "zero-shot classification", "RAG", "prompt engineering", "Pydantic-AI", "Claude", "ChatGPT", "Codex", "Cursor", "LangChain", "Hugging Face Transformers", "BART-large-MNLI", "SHAP", "explainable AI", "model evaluation", "structured output", "Salesforce", "HubSpot", "Marketo", "GA4", "Mixpanel", "Amplitude", "Segment", "SEO", "AEO", "SEM", "paid social", "MMM", "MTA", "Amazon DSP", "AMC", "Pacvue", "OCR", "Google Cloud Document AI", "Chainlit", "Streamlit", "Jupyter", "pandas", "NumPy", "scikit-learn", "Workday", "Ashby", "Gainsight", "Outreach", "Sales Navigator", "6Sense", "ZoomInfo", "Gong", "Docker", "Git", "GitHub", "Looker", "Omni", "NetSuite", "Cortex Analyst", "fraud detection", "behavioral biometrics", "device intelligence", "AUC", "recall", "precision", "FP&A", "bookings", "forecast variance", "commission systems", "pricing analysis", "clinical trial analytics", "enrollment velocity", "screen-fail rate", "protocol deviation", "comp benchmarking", "HRIS integration", "salary survey methodology", "burn multiple", "runway", "vendor concentration"], "actionVerbs": ["Built", "Led", "Improved", "Drove", "Partnered", "Analyzed", "Optimized", "Designed", "Launched", "Automated", "Modeled", "Shipped", "Owned", "Configured", "Measured", "Deployed", "Quantified", "Identified", "Surfaced", "Reduced", "Increased", "Accelerated", "Orchestrated", "Translated", "Streamlined", "Architected", "Mapped", "Validated", "Migrated", "Integrated", "Operationalized", "Standardized", "Synthesized", "Diagnosed", "Prioritized", "Negotiated", "Coordinated", "Sourced", "Qualified", "Authored", "Piloted", "Embedded", "Forecasted"], "numbers": "[X]", "coverTemplates": {"coldEmail": "Subject: NEU MS Analytics (Dec '26, F-1) → [Role] at [Company]\n\nHi [Hiring Manager],\n\n[Hook] — I spent the last hour reading [Company]'s [specific product/launch/case-study] and the [specific metric or angle] is the work I'd want to be measured on as your [Role]. I'm finishing my MS Analytics at Northeastern in Dec 2026, F-1 visa with up to 3 years of OPT/STEM work authorization (no sponsorship needed), and I've shipped [one concrete result from Wang's resume bank — e.g., a Pydantic-AI + Claude agent with a 15-case eval framework, or analytics that drove a 20% engagement lift at OrionStar]. I'd love 20 minutes to walk through how I'd approach the [specific JD-required deliverable] in the first 30 days.\n\nBest,\nZihao (Wang)", "followup": "Subject: Re: [Role] at [Company] — quick follow-up\n\nHi [Hiring Manager],\n\nFollowing up on my note from [date] — I've since [one new micro-action: shipped a one-pager / read the [Company] case study / built a quick teardown of the [Role]'s first-30-days problem] and I'd love 15 minutes to share it. Completely understand if the timing is off — happy to stay on your radar for the next cohort.\n\nBest,\nZihao"}};
+
+const PROFILE = [
+  'MS Analytics', 'Northeastern', 'Python', 'SQL', 'statistics', 'A/B testing', 'Tableau',
+  'Power BI', 'dashboards', 'data pipeline', 'metrics', 'machine learning', 'product', 'marketing'
+];
+
+const $ = s=>document.querySelector(s);
+const esc = s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+function fillNumbers(bullet){
+  // Replace [X] placeholders with sensible defaults per skill category when a concrete number is absent
+  const defaults = { '[X]%':30, '[X]':25 };
+  let r = bullet;
+  if(r.includes('[X]%')) r=r.replace('[X]%','30%');
+  r=r.replace('[X]','[X]');
+  return r;
+}
+
+function analyze(jd){
+  const t = jd.toLowerCase();
+  const found = [];
+  const score = {};
+  CORPUS.templates.forEach(tpl=>{
+    let hits = 0;
+    tpl.kd.forEach(k=>{ if(t.includes(k.toLowerCase())) hits++; });
+    if(hits>0){
+      score[tpl.skill] = (score[tpl.skill]||0) + hits;
+      found.push({skill:tpl.skill, hits, template:tpl});
+    }
+  });
+  return {found, score};
+}
+
+function rankBullets(jd){
+  const {found, score} = analyze(jd);
+  const used = new Set();
+  const result = [];
+  // sort templates by combined hit count desc; take top skill coverage
+  found.sort((a,b)=>b.hits-a.hits);
+  const seenSkill={};
+  found.forEach(f=>{
+    if(seenSkill[f.skill]) return;
+    seenSkill[f.skill]=true;
+    const lbl = (score[f.skill]||0)+' '+f.skill;
+    result.push({skill:f.skill, hits:f.hits, bullet:fillNumbers(f.template.bullet), kw:f.template.kd.slice(0,3)});
+  });
+  // also add hard-skill hits not covered
+  const topN = result.length?Math.min(6,result.length):0;
+  return {bullets:result.slice(0,8), score:score};
+}
+
+function render(out){
+  const el = $('#out');
+  if(!out.bullets.length){
+    el.innerHTML = '<div class="empty">No template matched. Try pasting a fuller JD with skills like SQL, Python, analytics, dashboards, product, marketing.</div>';
+    return;
+  }
+  const matched = Object.keys(out.score).length;
+  const total = CORPUS.templates.length;
+  const pct = matched?Math.round(matched/total*100):0;
+  el.innerHTML = `
+    <div class="score-row"><div style="min-width:130px;font-size:.8em;color:var(--muted)">Corpus coverage</div><div class="bar"><div class="fill" style="width:${pct}%"></div></div><span style="font-size:.8em;color:var(--muted)">${matched}/${total}</span></div>
+    ${out.bullets.map((b,i)=>`
+      <div class="bullet">
+        <div class="txt"><span class="chip" style="margin-right:8px">${b.skill}</span>${esc(b.bullet)}</div>
+        <button class="copy" onclick="copyOne(this,'${esc(b.bullet)}')">Copy</button>
+      </div>`).join('')}
+    <div class="hint">Replace the [X] placeholders with your real numbers. Tweak to the specific role.</div>`;
+}
+
+function copyOne(btn,txt){
+  navigator.clipboard.writeText(decodeHTML(txt));
+  btn.textContent='✓'; setTimeout(()=>btn.textContent='Copy',1200);
+}
+function decodeHTML(s){ var d=document.createElement('textarea'); d.innerHTML=s; return d.value; }
+
+$('#jd').addEventListener('input',e=>{ $('#gen').disabled = !e.target.value.trim(); });
+$('#gen').addEventListener('click',()=>{
+  const jd = $('#jd').value;
+  if(!jd.trim()) return;
+  render(rankBullets(jd));
+});
+</script>
+</body>
+</html>
