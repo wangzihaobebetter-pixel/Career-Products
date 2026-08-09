@@ -1,0 +1,30 @@
+import { JSDOM, VirtualConsole } from 'jsdom';
+import fs from 'fs'; import path from 'path';
+const dist = process.argv[2];
+const html = fs.readFileSync(path.join(dist,'index.html'),'utf8');
+const errors=[]; const vc=new VirtualConsole();
+vc.on('jsdomError',e=>{ if(!/Could not load link/.test(e.message)) errors.push('jsdomError: '+e.message);});
+vc.on('error',(...a)=>errors.push('console.error: '+a.join(' ')));
+const dom=new JSDOM(html,{runScripts:'dangerously',resources:'usable',url:'http://localhost/',virtualConsole:vc,pretendToBeVisual:true});
+const assetDir=path.join(dist,'assets');
+const js=fs.readdirSync(assetDir).find(f=>f.endsWith('.js'));
+dom.window.matchMedia=dom.window.matchMedia||(q=>({matches:false,media:q,addEventListener(){},removeEventListener(){},addListener(){},removeListener(){}}));
+dom.window.scrollTo=()=>{};
+if(!dom.window.crypto.randomUUID) dom.window.crypto.randomUUID=()=>'x'+Math.random().toString(36).slice(2);
+dom.window.eval(fs.readFileSync(path.join(assetDir,js),'utf8'));
+await new Promise(r=>setTimeout(r,1200));
+const doc=dom.window.document;
+const navBtns=[...doc.querySelectorAll('.nav-item')];
+console.log('nav buttons found:', navBtns.length);
+const out=[];
+for(const b of navBtns){
+  const label=b.textContent.trim();
+  const before=errors.length;
+  b.dispatchEvent(new dom.window.MouseEvent('click',{bubbles:true}));
+  await new Promise(res=>setTimeout(res,350));
+  const el=doc.querySelector('.content');
+  const t=(el?.textContent||'').replace(/\s+/g,' ').trim();
+  out.push({nav:label, contentChars:t.length, nodes:el?.querySelectorAll('*').length??0, newErrors:errors.slice(before), sample:t.slice(0,140)});
+}
+console.log(JSON.stringify(out,null,1));
+console.log('TOTAL ERRORS:',errors.length, JSON.stringify(errors.slice(0,5)));

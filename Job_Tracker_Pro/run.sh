@@ -1,35 +1,52 @@
 #!/bin/bash
-# ============================================================
-# Job Tracker Pro — one-click local launcher
-# Usage:  ./run.sh        (starts dev server + opens browser)
-#         ./run.sh --build (build production bundle instead)
-# ============================================================
-set -e
+# Job Tracker Pro — one-click local launch.
+#
+# Usage:  double-click this file in Finder, or run  ./run.sh
+#         ./run.sh dev     -> dev server with hot reload (for editing the code)
+#
+# All data stays in your browser's localStorage on this machine. Nothing is uploaded.
+
+set -euo pipefail
 cd "$(dirname "$0")"
 
-echo "🗂 Job Tracker Pro — local launcher"
-echo "=================================="
+PORT=4173
+MODE="${1:-serve}"
 
-# 1. Install deps if missing
-if [ ! -d "node_modules" ]; then
-  echo "📦 Installing dependencies (first run)…"
-  npm install
+say() { printf "\033[1;36m%s\033[0m\n" "$1"; }
+warn() { printf "\033[1;33m%s\033[0m\n" "$1"; }
+die() { printf "\033[1;31m%s\033[0m\n" "$1"; exit 1; }
+
+command -v node >/dev/null 2>&1 || die "Node.js is not installed. Get it from https://nodejs.org (LTS), then run this again."
+
+say "Job Tracker Pro"
+echo "Node $(node -v)"
+
+if [ ! -d node_modules ]; then
+  say "First run — installing dependencies (this takes a minute)…"
+  npm install --no-audit --no-fund
 fi
 
-# 2. Build mode
-if [ "$1" = "--build" ] || [ "$1" = "build" ]; then
-  echo "🏗  Building production bundle…"
-  npm run build
-  echo "✅ Build complete → dist/"
-  echo "   Deploy dist/ to any static host, or run: npm run preview"
-  exit 0
+if [ "$MODE" = "dev" ]; then
+  say "Starting dev server (hot reload) on http://localhost:5173"
+  exec npx vite --port 5173 --open
 fi
 
-# 3. Dev mode: start server + open browser
-echo "🚀 Starting dev server at http://localhost:5173"
-echo "   Press Ctrl+C to stop."
+say "Building…"
+npx vite build
 
-# Open browser after a short delay (works on macOS)
-( sleep 2 && open "http://localhost:5173" ) &
+# Free the port if a previous run is still holding it.
+if lsof -ti tcp:$PORT >/dev/null 2>&1; then
+  warn "Port $PORT is busy — stopping the old instance."
+  lsof -ti tcp:$PORT | xargs kill -9 2>/dev/null || true
+  sleep 1
+fi
 
-npm run dev
+URL="http://localhost:$PORT/"
+say "Opening $URL"
+( sleep 2; open "$URL" >/dev/null 2>&1 || true ) &
+
+echo
+echo "  Your data is stored locally in this browser profile."
+echo "  Press Ctrl+C in this window to stop the server."
+echo
+exec npx vite preview --port $PORT --host

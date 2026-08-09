@@ -29,6 +29,7 @@ export const uid = (p = 'id') => `${p}_${Date.now().toString(36)}_${++counter}`;
    Seed from screening research (22 companies / 50 roles / 31 bullets)
    ============================================================ */
 import seedData from './seed';
+import playbook from './seed2';
 
 export interface JTPState extends AppState {
   hydrate: () => void;
@@ -88,11 +89,16 @@ function buildInitialState(): AppState {
   }));
 
   return {
-    version: 2, companies, jobs, interviews: [], contacts: [], tasks: [], notes: [],
-    resumes: [], bullets, offers: [], templates: [], outreach: [], savedSearches: [],
-    goals: [], questions: [], starStories: [], stages: DEFAULT_STAGES,
+    version: 2, companies, jobs, interviews: [],
+    contacts: playbook.contacts, tasks: playbook.tasks, notes: [],
+    resumes: playbook.resumes, bullets, offers: [],
+    templates: playbook.templates, outreach: [], savedSearches: playbook.savedSearches,
+    goals: playbook.goals, questions: playbook.questions,
+    starStories: playbook.starStories, stages: DEFAULT_STAGES,
     settings: {
-      name: 'Zihao Wang', email: 'wang.z10@northeastern.edu',
+      // Left blank on purpose: this repo is public. Fill it in Settings —
+      // it is stored only in this browser's localStorage, never in the repo.
+      name: 'Zihao Wang', email: '',
       targetRole: 'Analytics / Product / AI', targetComp: '$100k+', relocate: true,
       theme: 'dark', defaultCurrency: 'USD', timezone: 'America/New_York',
       weekStart: 'mon', dateFormat: 'yyyy-MM-dd', accentColor: '#4f8bff',
@@ -248,6 +254,12 @@ export const useStore = create<JTPState>()(
         get().addActivity('system', 'Backup restored');
       },
     }),
-    { name: 'job-tracker-pro-v2' }
+    {
+      name: 'job-tracker-pro-v2',
+      version: 3,
+      // Bumping this version discards an older cached store so the
+      // playbook seed (templates / questions / STAR / resumes) lands.
+      migrate: (persisted, from) => (from < 3 ? buildInitialState() : (persisted as AppState)),
+    }
   )
 );

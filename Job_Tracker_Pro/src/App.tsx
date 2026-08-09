@@ -13,7 +13,7 @@ import Settings from './views/Settings';
 import JobDetail from './views/JobDetail';
 import CompanyDetail from './views/CompanyDetail';
 import { QuickSwitcher, type QSResult } from './components/QuickSwitcher';
-import { Modal, useModal } from './components/Modal';
+import { ModalHost, useModal } from './components/Modal';
 import { toast, ToastHost } from './components/Toast';
 
 type View = 'dashboard'|'pipeline'|'companies'|'contacts'|'interviews'|'resume'|'templates'|'questions'|'stats'|'settings';
@@ -162,6 +162,7 @@ export default function App(){
 
       {qsOpen && <QuickSwitcher query={qsQuery} setQuery={setQsQuery} results={qsResults} sel={qsSel} setSel={setQsSel}
         onPick={handleQsPick} onClose={()=>setQsOpen(false)} />}
+      <ModalHost />
       <ToastHost />
     </div>
   );
