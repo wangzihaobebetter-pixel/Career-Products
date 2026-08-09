@@ -67,6 +67,15 @@ export default function Interviews(){
               );
             })}
           </div>
+          {list.length===0 && (
+            <div className="panel mt12">
+              <div className="muted text-sm">
+                No interviews on the calendar. Nothing is hidden here — this app only shows what
+                you record. Use <b>＋ Schedule Interview</b> the moment a recruiter proposes a time,
+                and the prep checklist and scorecard become available on that entry.
+              </div>
+            </div>
+          )}
         </div>
       )}
 

@@ -4,7 +4,7 @@ const fs = require('fs');
 const path = require('path');
 const { JSDOM, VirtualConsole } = require('jsdom');
 
-const DIST = process.argv[2];
+const DIST = process.argv[2] || path.join(__dirname, 'dist');
 const html = fs.readFileSync(path.join(DIST, 'index.html'), 'utf8');
 
 const errors = [];

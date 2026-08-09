@@ -24,6 +24,27 @@ export default function Settings(){
     toast('Backup exported');
   };
 
+  const exportCsv=()=>{
+    const cols = ['Company','Title','Status','Priority','Fit','Location','Remote','Salary min','Salary max','Source','Applied date','URL'];
+    const esc = (v: unknown) => {
+      const s = v==null? '' : String(v);
+      return /[",\n]/.test(s) ? '"'+s.replace(/"/g,'""')+'"' : s;
+    };
+    const rows = state.jobs.map(j=>{
+      const co = state.companies.find(c=>c.id===j.companyId);
+      return [co?.name||'', j.title, j.status, j.priority, j.fitScore??'', j.location||'',
+              j.remoteType, j.salaryMin??'', j.salaryMax??'', j.source, j.appliedDate||'', j.sourceUrl||''];
+    });
+    const csv = [cols, ...rows].map(r=>r.map(esc).join(',')).join('\n');
+    // BOM so Excel opens UTF-8 correctly
+    const blob = new Blob(['﻿'+csv],{type:'text/csv;charset=utf-8'});
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = `job-pipeline-${new Date().toISOString().slice(0,10)}.csv`;
+    a.click();
+    toast(`Exported ${rows.length} rows to CSV`);
+  };
+
   const importData=()=>{
     const input = document.createElement('input');
     input.type='file'; input.accept='application/json';
@@ -82,6 +103,7 @@ export default function Settings(){
           <div className="panel-head"><h3>Data</h3></div>
           <div className="flex" style={{flexWrap:'wrap',gap:8}}>
             <button className="btn" onClick={exportData}>⬇ Export JSON</button>
+            <button className="btn" onClick={exportCsv}>⬇ Export pipeline CSV</button>
             <button className="btn" onClick={importData}>⬆ Import JSON</button>
             <button className="btn danger" onClick={reset}>Reset all</button>
           </div>

@@ -214,3 +214,11 @@ select.filter:focus{outline:none;border-color:var(--accent)}
 
 /* ---------- Drag ghost ---------- */
 .drag-ghost{position:fixed;z-index:999;pointer-events:none;opacity:.9;background:var(--panel3);border:1px solid var(--accent);border-radius:9px;padding:8px 12px;font-size:12.5px;box-shadow:var(--shadow)}
+
+/* ---- Action Board ---- */
+.kpi-inline{ font-size:12.5px; color:var(--muted); margin-right:auto; }
+.kpi-inline b{ color:var(--fg); font-size:14px; }
+.task-row{ padding:8px 4px; border-bottom:1px solid var(--border); }
+.task-row:last-child{ border-bottom:none; }
+.task-row:hover{ background:var(--panel2); }
+.task-row input[type="checkbox"]{ width:15px; height:15px; cursor:pointer; accent-color:var(--accent); }

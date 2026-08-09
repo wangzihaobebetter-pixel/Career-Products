@@ -43,13 +43,16 @@ Seeded from the 2026-08-09 screening research, so the app is useful on first ope
 | Interview questions | 42, including company-specific sets for Klaviyo, Glean, Harvey, Cursor, Notion, Datadog, Mercury, Replit and others |
 | STAR stories | Scaffolds linked to the questions they answer |
 | Contacts | 18 role slots (recruiter / hiring manager / alum) per target company — names are yours to fill in |
+| Tasks | 10 concrete next actions with due dates and priorities |
+| Goals | 5 (weekly applications, networking, follow-ups; monthly interviews; quarterly offers) |
+| Saved searches | 5 stored criteria sets |
 
 Only roles that were actually submitted appear outside Wishlist. The tracker is
 not decorated with applications that were never sent.
 
 ---
 
-## The 10 views
+## The 11 views
 
 - **Dashboard** — KPIs, today's tasks, upcoming interviews, pipeline snapshot, top targets, activity log
 - **Pipeline** — kanban (drag between stages), list, and table modes; search, stage filter, stuck-only filter
@@ -59,8 +62,9 @@ not decorated with applications that were never sent.
 - **Resume & Bullets** — bullet library with one-click copy, plus resume versions
 - **Email Templates** — merge-field templates by category
 - **Interview Prep** — question bank with coaching notes and linked STAR stories
+- **Action Board** — tasks bucketed by overdue / today / next 7 days, weekly and monthly goals whose progress is computed from real records, saved search criteria, and the activity log
 - **Stats** — funnel conversion and response-rate analysis
-- **Settings** — theme, profile, data export/import, reset
+- **Settings** — theme, profile, JSON backup export/import, pipeline CSV export, reset
 
 Keyboard: `⌘K` quick switcher, `⌘N` new job.
 
@@ -69,14 +73,18 @@ Keyboard: `⌘K` quick switcher, `⌘N` new job.
 ## Verifying a build
 
 ```bash
-npx tsc --noEmit        # type check
-npx vite build          # production build
-node verify-render.mjs  # headless render check — walks all 10 views
+npx tsc --noEmit          # type check
+npx vite build            # production build
+node verify-render.cjs    # walks all 11 views, asserts seeded data renders
+node verify-interact.cjs  # opens modals, submits forms, moves stages, checks persistence
+node verify-actions.cjs   # Action Board task toggle + CSV export contents
 ```
 
-`verify-render.mjs` loads the built bundle in jsdom, clicks through every
-navigation item, and asserts that seeded data actually renders. It exits
-non-zero on failure, so a broken view cannot ship quietly.
+These load the built bundle in jsdom and drive the real UI — they open modals,
+submit forms, tick task checkboxes, and read back what landed in
+`localStorage`. `verify-actions.cjs` intercepts the CSV download and inspects
+the actual blob, so a broken export cannot pass. All three exit non-zero on
+failure.
 
 ---
 

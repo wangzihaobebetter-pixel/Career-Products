@@ -8,6 +8,7 @@ import Interviews from './views/Interviews';
 import Resume from './views/Resume';
 import Templates from './views/Templates';
 import Questions from './views/Questions';
+import Actions from './views/Actions';
 import Stats from './views/Stats';
 import Settings from './views/Settings';
 import JobDetail from './views/JobDetail';
@@ -16,7 +17,7 @@ import { QuickSwitcher, type QSResult } from './components/QuickSwitcher';
 import { ModalHost, useModal } from './components/Modal';
 import { toast, ToastHost } from './components/Toast';
 
-type View = 'dashboard'|'pipeline'|'companies'|'contacts'|'interviews'|'resume'|'templates'|'questions'|'stats'|'settings';
+type View = 'dashboard'|'pipeline'|'companies'|'contacts'|'interviews'|'resume'|'templates'|'questions'|'actions'|'stats'|'settings';
 
 const NAV: { view: View; label: string; ico: string; sec?: string }[] = [
   { view:'dashboard', label:'Dashboard', ico:'📊' },
@@ -27,7 +28,8 @@ const NAV: { view: View; label: string; ico: string; sec?: string }[] = [
   { view:'resume', label:'Resume & Bullets', ico:'📄', sec:'Materials' },
   { view:'templates', label:'Email Templates', ico:'✉️' },
   { view:'questions', label:'Interview Prep', ico:'❓' },
-  { view:'stats', label:'Stats', ico:'📈', sec:'Insights' },
+  { view:'actions', label:'Action Board', ico:'✅', sec:'Insights' },
+  { view:'stats', label:'Stats', ico:'📈' },
   { view:'settings', label:'Settings', ico:'⚙️' },
 ];
 
@@ -80,6 +82,7 @@ export default function App(){
     pipeline: state.jobs.filter(j=>!['rejected','ghosted','withdrawn','accepted'].includes(j.status)).length,
     companies: state.companies.length,
     contacts: state.contacts.length,
+    actions: state.tasks.filter(t=>t.status!=='done').length,
   };
 
   // Quick switcher results
@@ -122,6 +125,7 @@ export default function App(){
       case 'resume': return <Resume />;
       case 'templates': return <Templates />;
       case 'questions': return <Questions />;
+      case 'actions': return <Actions />;
       case 'stats': return <Stats />;
       case 'settings': return <Settings />;
     }

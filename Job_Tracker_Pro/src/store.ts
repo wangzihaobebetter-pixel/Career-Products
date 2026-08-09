@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-import type { AppState, JobApplication, Company, StageDef, Contact, InterviewEvent, Task, Note, EmailTemplate, Question, StarStory, SalaryOffer, Outreach } from './types';
+import type { AppState, JobApplication, Company, StageDef, Contact, InterviewEvent, Task, Note, EmailTemplate, Question, StarStory, SalaryOffer, Outreach, Goal, SavedSearch } from './types';
 
 /* ============================================================
    Default stages (spec §1.2) — customizable in Settings
@@ -43,6 +43,14 @@ export interface JTPState extends AppState {
   addContact: (c: Partial<Contact>) => string;
   addInterview: (i: Partial<InterviewEvent>) => string;
   addTask: (t: Partial<Task>) => string;
+  updateTask: (id: string, patch: Partial<Task>) => void;
+  toggleTask: (id: string) => void;
+  removeTask: (id: string) => void;
+  addGoal: (g: Partial<Goal>) => string;
+  updateGoal: (id: string, patch: Partial<Goal>) => void;
+  removeGoal: (id: string) => void;
+  addSavedSearch: (x: Partial<SavedSearch>) => string;
+  removeSavedSearch: (id: string) => void;
   addNote: (n: Partial<Note>) => string;
   addTemplate: (t: Partial<EmailTemplate>) => string;
   addQuestion: (x: Partial<Question>) => string;
@@ -236,6 +244,54 @@ export const useStore = create<JTPState>()(
         set(s => ({ tasks: [task, ...s.tasks] }));
         get().addActivity('task', `Added task: ${task.title}`, id);
         return id;
+      },
+
+      updateTask: (id, patch) => {
+        set(s => ({ tasks: s.tasks.map(t => t.id === id ? { ...t, ...patch, updatedAt: now() } : t) }));
+      },
+
+      toggleTask: (id) => {
+        const t = get().tasks.find(x => x.id === id);
+        if (!t) return;
+        const done = t.status === 'done';
+        get().updateTask(id, done
+          ? { status: 'todo', completedAt: undefined }
+          : { status: 'done', completedAt: now() });
+        if (!done) get().addActivity('task', `Completed: ${t.title}`, id);
+      },
+
+      removeTask: (id) => {
+        set(s => ({ tasks: s.tasks.filter(t => t.id !== id) }));
+      },
+
+      addGoal: (g) => {
+        const n = now(); const id = g.id || uid('goal');
+        const goal: Goal = {
+          id, period: g.period || 'week', metric: g.metric || 'applications_sent',
+          target: g.target ?? 5, startDate: g.startDate || n, endDate: g.endDate || n,
+          createdAt: n, updatedAt: n, ...g,
+        };
+        set(s => ({ goals: [...s.goals, goal] }));
+        return id;
+      },
+
+      updateGoal: (id, patch) => {
+        set(s => ({ goals: s.goals.map(g => g.id === id ? { ...g, ...patch, updatedAt: now() } : g) }));
+      },
+
+      removeGoal: (id) => {
+        set(s => ({ goals: s.goals.filter(g => g.id !== id) }));
+      },
+
+      addSavedSearch: (x) => {
+        const n = now(); const id = x.id || uid('ss');
+        const ss: SavedSearch = { id, name: x.name || 'Saved search', createdAt: n, updatedAt: n, ...x };
+        set(s => ({ savedSearches: [...s.savedSearches, ss] }));
+        return id;
+      },
+
+      removeSavedSearch: (id) => {
+        set(s => ({ savedSearches: s.savedSearches.filter(x => x.id !== id) }));
       },
 
       addNote: (n) => {

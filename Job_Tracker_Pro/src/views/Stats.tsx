@@ -57,7 +57,7 @@ export default function Stats(){
             {funnel.map(st=>(
               <div className="funnel-row" key={st.id}>
                 <span className="f-label">{st.label}</span>
-                <div className="f-bar"><div className="f-fill" style={{width: st.count? Math.max(5, st.count/Math.max(1,jobs.length)*100):0+'%', background:st.color}}/></div>
+                <div className="f-bar"><div className="f-fill" style={{width: (st.count? Math.max(5, st.count/Math.max(1,jobs.length)*100) : 0)+'%', background:st.color}}/></div>
                 <span className="f-num">{st.count}</span>
               </div>
             ))}
