@@ -2,6 +2,7 @@ import React, { useMemo, useState } from 'react';
 import { useStore } from '../store';
 import { useModal } from '../components/Modal';
 import { toast } from '../components/Toast';
+import { buildICS, downloadICS, countEvents } from '../lib/ics';
 import type { InterviewEvent } from '../types';
 
 export default function Interviews(){
@@ -34,6 +35,15 @@ export default function Interviews(){
           ))}
         </div>
         <button className="btn" onClick={add}>＋ Schedule Interview</button>
+        <button className="btn" data-testid="export-ics" disabled={list.length===0} onClick={()=>{
+          // Export everything, not just upcoming: past rounds are the record
+          // of what happened, and a calendar is where people look for it.
+          const ics = buildICS(list, { jobs: state.jobs, companies: state.companies });
+          const n = countEvents(ics);
+          if(!n){ toast('No interviews with a valid date to export'); return; }
+          downloadICS('job-tracker-interviews.ics', ics);
+          toast(`Exported ${n} event${n===1?'':'s'} to .ics`);
+        }}>📅 Export .ics</button>
         <span className="muted text-sm">{upcoming.length} upcoming</span>
       </div>
 

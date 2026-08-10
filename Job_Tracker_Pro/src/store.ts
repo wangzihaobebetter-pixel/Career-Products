@@ -43,6 +43,29 @@ let counter = 0;
 export const uid = (p = 'id') => `${p}_${Date.now().toString(36)}_${++counter}`;
 
 /* ============================================================
+   Undo stack (spec P0 #17).
+
+   Deliberately in memory only and deliberately shallow: it holds the
+   previous value of just the arrays a mutation touched. Persisting it
+   would mean a reload could "undo" work from a previous session, which
+   is worse than losing the undo — so it dies with the tab. Depth is
+   capped because each entry pins a whole array in memory.
+   ============================================================ */
+type UndoPatch = Partial<Pick<AppState, 'jobs' | 'companies' | 'contacts' | 'interviews' | 'tasks' | 'offers' | 'stages'>>;
+interface UndoEntry { label: string; patch: UndoPatch }
+
+const UNDO_DEPTH = 25;
+const undoStack: UndoEntry[] = [];
+
+function pushUndo(label: string, patch: UndoPatch): void {
+  undoStack.push({ label, patch });
+  if (undoStack.length > UNDO_DEPTH) undoStack.shift();
+}
+
+/** Test hook: lets the verifier assert the stack is actually empty/filled. */
+export const _undoDepth = () => undoStack.length;
+
+/* ============================================================
    Seed from screening research (22 companies / 50 roles / 31 bullets)
    ============================================================ */
 import seedData from './seed';
@@ -54,6 +77,13 @@ export interface JTPState extends AppState {
   updateJob: (id: string, patch: Partial<JobApplication>) => void;
   moveJob: (id: string, to: string, note?: string) => void;
   removeJob: (id: string) => void;
+  bulkMove: (ids: string[], to: string) => number;
+  bulkTag: (ids: string[], tag: string) => number;
+  bulkArchive: (ids: string[], archived: boolean) => number;
+  bulkRemove: (ids: string[]) => number;
+  setStages: (stages: StageDef[]) => void;
+  undoLast: () => string | null;
+  undoLabel: () => string | null;
   addCompany: (c: Partial<Company>) => string;
   updateCompany: (id: string, patch: Partial<Company>) => void;
   removeCompany: (id: string) => void;
@@ -418,14 +448,108 @@ export const useStore = create<JTPState>()(
       moveJob: (id, to, note) => {
         const t = now(); const s = get();
         const job = s.jobs.find(j => j.id === id); if (!job) return;
+        pushUndo(`Moved "${job.title}"`, { jobs: s.jobs });
         const history = [...job.stageHistory, { from: job.status, to: to as never, at: t, note, source: 'manual' as const }];
         set(state => ({ jobs: state.jobs.map(j => j.id === id ? { ...j, status: to as never, stageHistory: history, updatedAt: t, lastTouchedAt: t } : j) }));
         get().addActivity('stage', `Moved "${job.title}" → ${to}`, id);
       },
 
       removeJob: (id) => {
-        set(s => ({ jobs: s.jobs.filter(j => j.id !== id) }));
+        const s = get();
+        const job = s.jobs.find(j => j.id === id);
+        pushUndo(`Deleted "${job?.title || 'job'}"`, { jobs: s.jobs });
+        set(st => ({ jobs: st.jobs.filter(j => j.id !== id) }));
         get().addActivity('job', `Removed job ${id.slice(0, 8)}`, id);
+      },
+
+      /* ---- Bulk actions (spec P1 #30) --------------------------------
+         One undo entry per bulk operation, not one per row — undoing a
+         50-row move should be a single click, which is exactly why the
+         snapshot is taken over the whole array rather than per job. */
+      bulkMove: (ids, to) => {
+        const t = now(); const s = get();
+        const set_ = new Set(ids);
+        const affected = s.jobs.filter(j => set_.has(j.id) && j.status !== to);
+        if (!affected.length) return 0;
+        pushUndo(`Moved ${affected.length} job${affected.length === 1 ? '' : 's'}`, { jobs: s.jobs });
+        set(state => ({
+          jobs: state.jobs.map(j => set_.has(j.id) && j.status !== to
+            ? {
+              ...j, status: to as never, updatedAt: t, lastTouchedAt: t,
+              stageHistory: [...j.stageHistory, { from: j.status, to: to as never, at: t, source: 'bulk' as const }],
+            }
+            : j),
+        }));
+        get().addActivity('stage', `Bulk-moved ${affected.length} job(s) → ${to}`);
+        return affected.length;
+      },
+
+      bulkTag: (ids, tag) => {
+        const clean = tag.trim();
+        if (!clean) return 0;
+        const t = now(); const s = get();
+        const set_ = new Set(ids);
+        const affected = s.jobs.filter(j => set_.has(j.id) && !(j.tags || []).includes(clean));
+        if (!affected.length) return 0;
+        pushUndo(`Tagged ${affected.length} job${affected.length === 1 ? '' : 's'} "${clean}"`, { jobs: s.jobs });
+        set(state => ({
+          jobs: state.jobs.map(j => set_.has(j.id) && !(j.tags || []).includes(clean)
+            ? { ...j, tags: [...(j.tags || []), clean], updatedAt: t }
+            : j),
+        }));
+        get().addActivity('job', `Bulk-tagged ${affected.length} job(s) with "${clean}"`);
+        return affected.length;
+      },
+
+      bulkArchive: (ids, archived) => {
+        const t = now(); const s = get();
+        const set_ = new Set(ids);
+        const affected = s.jobs.filter(j => set_.has(j.id) && !!j.archived !== archived);
+        if (!affected.length) return 0;
+        pushUndo(`${archived ? 'Archived' : 'Unarchived'} ${affected.length} job${affected.length === 1 ? '' : 's'}`, { jobs: s.jobs });
+        set(state => ({
+          jobs: state.jobs.map(j => set_.has(j.id) ? { ...j, archived, updatedAt: t } : j),
+        }));
+        get().addActivity('job', `${archived ? 'Archived' : 'Unarchived'} ${affected.length} job(s)`);
+        return affected.length;
+      },
+
+      bulkRemove: (ids) => {
+        const s = get();
+        const set_ = new Set(ids);
+        const affected = s.jobs.filter(j => set_.has(j.id));
+        if (!affected.length) return 0;
+        pushUndo(`Deleted ${affected.length} job${affected.length === 1 ? '' : 's'}`, { jobs: s.jobs });
+        set(state => ({ jobs: state.jobs.filter(j => !set_.has(j.id)) }));
+        get().addActivity('job', `Bulk-deleted ${affected.length} job(s)`);
+        return affected.length;
+      },
+
+      /* ---- Stage customization (spec P0 #16) -------------------------
+         Renaming or reordering stages must never orphan a job, so ids
+         are treated as immutable here: only label, colour and order can
+         change, and any stage that still holds jobs cannot be dropped.
+         The UI enforces that too, but the store is the last line. */
+      setStages: (stages) => {
+        const s = get();
+        const kept = stages.filter(st => st && st.id);
+        if (!kept.length) return;
+        const keptIds = new Set(kept.map(st => st.id));
+        const orphaned = s.jobs.filter(j => !keptIds.has(j.status as never));
+        if (orphaned.length) return; // refuse rather than silently strand jobs
+        pushUndo('Stage layout changed', { stages: s.stages });
+        set({ stages: kept, savedAt: now() });
+        get().addActivity('settings', `Stage layout updated (${kept.length} stages)`);
+      },
+
+      undoLabel: () => (undoStack.length ? undoStack[undoStack.length - 1].label : null),
+
+      undoLast: () => {
+        const entry = undoStack.pop();
+        if (!entry) return null;
+        set({ ...entry.patch, savedAt: now() } as never);
+        get().addActivity('undo', `Undid: ${entry.label}`);
+        return entry.label;
       },
 
       addCompany: (c) => {

@@ -55,6 +55,53 @@ const STAGE_RULES: Partial<Record<StageId, { nudgeAfter: number; deadAfter: numb
 const urgencyFor = (idle: number, threshold: number): Suggestion['urgency'] =>
   idle >= threshold * 2 ? 'overdue' : idle >= threshold ? 'today' : 'soon';
 
+/* ------------------------------------------------------------------
+   Per-job health, derived from the same patience table as the
+   suggestions above. The pipeline board uses this to colour cards, so
+   "stuck" means one thing everywhere in the app rather than each view
+   inventing its own 14-day rule.
+   ------------------------------------------------------------------ */
+export type HealthLevel = 'ok' | 'stale' | 'ghosting' | 'closed';
+
+export interface JobHealth {
+  level: HealthLevel;
+  daysIdle: number;
+  reason: string;
+}
+
+export function jobHealth(job: JobApplication, now: number = Date.now()): JobHealth {
+  const idle = daysBetween(now, new Date(job.lastTouchedAt).getTime());
+
+  if (['accepted', 'rejected', 'withdrawn', 'ghosted'].includes(job.status)) {
+    return { level: 'closed', daysIdle: idle, reason: 'Application is closed.' };
+  }
+
+  const rule = STAGE_RULES[job.status];
+  if (!rule) return { level: 'ok', daysIdle: idle, reason: 'No cadence rule for this stage.' };
+
+  if (idle >= rule.deadAfter) {
+    return {
+      level: 'ghosting',
+      daysIdle: idle,
+      reason: `${idle}d silent at "${job.status}" — past the ${rule.deadAfter}-day cutoff. Treat as ghosted.`,
+    };
+  }
+  if (idle >= rule.nudgeAfter) {
+    return {
+      level: 'stale',
+      daysIdle: idle,
+      reason: `${idle}d with no movement — nudge threshold for "${job.status}" is ${rule.nudgeAfter}d.`,
+    };
+  }
+  return { level: 'ok', daysIdle: idle, reason: `Last touched ${idle}d ago; within the ${rule.nudgeAfter}-day window.` };
+}
+
+/** Convenience for filter bars and KPI tiles. */
+export function needsAttention(job: JobApplication, now: number = Date.now()): boolean {
+  const h = jobHealth(job, now);
+  return h.level === 'stale' || h.level === 'ghosting';
+}
+
 export interface FollowUpInput {
   jobs: JobApplication[];
   contacts: Contact[];

@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import { useStore } from './store';
 import Dashboard from './views/Dashboard';
 import Pipeline from './views/Pipeline';
@@ -16,8 +16,11 @@ import Settings from './views/Settings';
 import JobDetail from './views/JobDetail';
 import CompanyDetail from './views/CompanyDetail';
 import { QuickSwitcher, type QSResult } from './components/QuickSwitcher';
+import { CommandPalette, type Command } from './components/CommandPalette';
 import { ModalHost, useModal } from './components/Modal';
 import { toast, ToastHost } from './components/Toast';
+import { buildICS, downloadICS, countEvents } from './lib/ics';
+import { needsAttention } from './lib/followups';
 
 type View = 'dashboard'|'pipeline'|'companies'|'contacts'|'interviews'|'offers'|'resume'|'tailor'|'templates'|'questions'|'actions'|'stats'|'settings';
 
@@ -46,6 +49,7 @@ export default function App(){
   const [qsQuery, setQsQuery] = useState('');
   const [qsSel, setQsSel] = useState(0);
   const [saving, setSaving] = useState(false);
+  const [paletteOpen, setPaletteOpen] = useState(false);
 
   // Apply theme
   useEffect(()=>{
@@ -64,18 +68,27 @@ export default function App(){
   // Keyboard shortcuts
   useEffect(()=>{
     const h = (e: KeyboardEvent)=>{
-      if((e.metaKey||e.ctrlKey) && e.key.toLowerCase()==='k'){ e.preventDefault(); setQsOpen(o=>!o); setQsQuery(''); setQsSel(0); }
-      if((e.metaKey||e.ctrlKey) && e.key.toLowerCase()==='n'){ e.preventDefault(); openQuickAdd(); }
-      if(e.key==='Escape'){ setQsOpen(false); }
-      if(!qsOpen && !e.metaKey && !e.ctrlKey && e.key==='g'){
-        // g + key nav
-        const k = e.key;
-        if(k==='g') return;
+      const mod = e.metaKey||e.ctrlKey;
+      // ⌘⇧P before ⌘K: on some layouts shift changes e.key, so test it first.
+      if(mod && e.shiftKey && e.key.toLowerCase()==='p'){ e.preventDefault(); setPaletteOpen(o=>!o); return; }
+      if(mod && e.key.toLowerCase()==='k'){ e.preventDefault(); setQsOpen(o=>!o); setQsQuery(''); setQsSel(0); return; }
+      if(mod && e.key.toLowerCase()==='n'){ e.preventDefault(); openQuickAdd(); return; }
+      if(mod && !e.shiftKey && e.key.toLowerCase()==='z'){
+        // Only intercept undo when the user isn't typing — otherwise we'd
+        // break native text undo inside every form in the app.
+        const el = document.activeElement as HTMLElement|null;
+        const typing = !!el && (el.tagName==='INPUT' || el.tagName==='TEXTAREA' || el.isContentEditable);
+        if(typing) return;
+        e.preventDefault();
+        const label = state.undoLast();
+        toast(label ? `Reverted: ${label}` : 'Nothing to undo');
+        return;
       }
+      if(e.key==='Escape'){ setQsOpen(false); setPaletteOpen(false); }
     };
     window.addEventListener('keydown', h);
     return ()=>window.removeEventListener('keydown', h);
-  },[qsOpen]);
+  },[qsOpen, state]);
 
   const openQuickAdd = ()=>{
     const modal = useModal();
@@ -109,6 +122,46 @@ export default function App(){
     });
     return out.slice(0,12);
   })();
+
+  /* ---- Command palette actions (⌘⇧P) ----
+     Everything here is reachable by mouse too; the palette is a faster
+     path, never the only path. */
+  const commands: Command[] = useMemo(()=>{
+    const go: Command[] = NAV.map(n=>({
+      id:'go:'+n.view, group:'Go to', label:n.label, hint:'⌘K also jumps to records',
+      run:()=>{ setView(n.view); setDetailJob(null); setDetailCompany(null); },
+    }));
+
+    const actions: Command[] = [
+      { id:'act:new', group:'Create', label:'New job…', hint:'⌘N', run:openQuickAdd },
+      { id:'act:undo', group:'Edit', label:'Undo last change', hint:'⌘Z', run:()=>{
+        const l = state.undoLast(); toast(l? `Reverted: ${l}` : 'Nothing to undo');
+      }},
+      { id:'act:theme', group:'View', label:`Switch to ${state.settings.theme==='dark'?'light':'dark'} theme`, run:()=>{
+        const next = state.settings.theme==='dark'?'light':'dark';
+        state.setSettings({ theme: next }); toast(`${next} theme`);
+      }},
+      { id:'act:ics', group:'Export', label:'Export interviews to .ics', run:()=>{
+        const ics = buildICS(state.interviews, { jobs:state.jobs, companies:state.companies });
+        const n = countEvents(ics);
+        if(!n){ toast('No interviews to export'); return; }
+        downloadICS('job-tracker-interviews.ics', ics);
+        toast(`Exported ${n} event${n===1?'':'s'}`);
+      }},
+      { id:'act:json', group:'Export', label:'Export full backup (JSON)', run:()=>{
+        const blob = new Blob([JSON.stringify(state,null,2)],{type:'application/json'});
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = `job-tracker-backup-${new Date().toISOString().slice(0,10)}.json`;
+        a.click(); toast('Backup exported');
+      }},
+      { id:'act:attention', group:'Go to', label:'Show jobs that need attention',
+        hint:`${state.jobs.filter(j=>!j.archived && needsAttention(j)).length} flagged`,
+        run:()=>{ setView('actions'); setDetailJob(null); setDetailCompany(null); }},
+    ];
+
+    return [...actions, ...go];
+  },[state]);
 
   const handleQsPick = (r: QSResult)=>{
     setQsOpen(false); setView(r.view as View);
@@ -162,6 +215,7 @@ export default function App(){
       <main className="main">
         <div className="topbar">
           <button className="tb-btn" onClick={()=>setQsOpen(true)}>🔍 <span className="kbd">⌘K</span></button>
+          <button className="tb-btn" data-testid="open-palette" onClick={()=>setPaletteOpen(true)}>⌘ <span className="kbd">⇧P</span></button>
           <div className="title">
             {detailJob? 'Job Detail' : detailCompany? 'Company Detail' : NAV.find(n=>n.view===view)?.label}
           </div>
@@ -173,6 +227,7 @@ export default function App(){
 
       {qsOpen && <QuickSwitcher query={qsQuery} setQuery={setQsQuery} results={qsResults} sel={qsSel} setSel={setQsSel}
         onPick={handleQsPick} onClose={()=>setQsOpen(false)} />}
+      {paletteOpen && <CommandPalette commands={commands} onClose={()=>setPaletteOpen(false)} />}
       <ModalHost />
       <ToastHost />
     </div>

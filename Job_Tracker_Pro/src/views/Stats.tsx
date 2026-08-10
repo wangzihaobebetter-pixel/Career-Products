@@ -92,7 +92,95 @@ export default function Stats(){
           ))}
           {Object.keys(bySource).length===0 && <div className="muted text-sm">No data yet</div>}
         </div>
+
+        <GoalPanel />
       </div>
+    </div>
+  );
+}
+
+/* ================================================================
+   Goal tracking (spec P1 #28)
+
+   Progress is *derived*, never stored: a goal is a target plus a
+   window, and the count comes from the same events the rest of the app
+   already records. A manually incremented counter would drift the
+   moment you edit an application, and a job search where the numbers
+   quietly lie is worse than one with no numbers at all.
+   ================================================================ */
+const GOAL_LABEL: Record<string, string> = {
+  applications_sent: 'Applications sent',
+  interviews_completed: 'Interviews completed',
+  offers_received: 'Offers received',
+  networking_conversations: 'Networking conversations',
+  follow_ups_sent: 'Follow-ups sent',
+};
+
+export function GoalPanel(){
+  const state = useStore();
+
+  const rows = useMemo(()=>state.goals.map(g=>{
+    const from = new Date(g.startDate).getTime();
+    const to = new Date(g.endDate).getTime();
+    const inWindow = (iso?: string)=>{
+      if(!iso) return false;
+      const t = new Date(iso).getTime();
+      return !Number.isNaN(t) && t>=from && t<=to;
+    };
+
+    let actual = 0; let basis = '';
+    switch(g.metric){
+      case 'applications_sent':
+        // The stage-history entry is the evidence an application was sent.
+        actual = state.jobs.filter(j=>j.stageHistory.some(h=>h.to==='applied' && inWindow(h.at))).length;
+        basis = 'jobs whose history records an "applied" transition in this window';
+        break;
+      case 'interviews_completed':
+        actual = state.interviews.filter(i=>inWindow(i.scheduledAt) && new Date(i.scheduledAt).getTime()<=Date.now()).length;
+        basis = 'interviews scheduled in this window whose date has passed';
+        break;
+      case 'offers_received':
+        actual = state.offers.filter(o=>inWindow(o.createdAt)).length;
+        basis = 'offer records created in this window';
+        break;
+      case 'networking_conversations':
+        actual = state.contacts.filter(c=>inWindow(c.lastContactedAt)).length
+               + state.contacts.reduce((n,c)=>n + (c.interactionLog||[]).filter(l=>inWindow(l.date)).length, 0);
+        basis = 'contacts touched plus logged interactions in this window';
+        break;
+      case 'follow_ups_sent':
+        actual = state.tasks.filter(t=>t.type==='follow_up' && t.status==='done' && inWindow(t.completedAt)).length
+               + state.interviews.filter(i=>inWindow(i.followUpSentAt)).length;
+        basis = 'completed follow-up tasks plus logged thank-you notes';
+        break;
+    }
+
+    const pct = g.target>0? Math.min(100, Math.round(actual/g.target*100)) : 0;
+    const daysLeft = Math.ceil((to - Date.now())/86_400_000);
+    return { g, actual, pct, daysLeft, basis };
+  }),[state.goals, state.jobs, state.interviews, state.offers, state.contacts, state.tasks]);
+
+  return (
+    <div className="panel" data-testid="goal-panel">
+      <div className="panel-head"><h3>Goals</h3></div>
+      {rows.length===0 && <div className="muted text-sm">No goals set. Goals turn "I should apply more" into a number you can miss.</div>}
+      {rows.map(({g, actual, pct, daysLeft, basis})=>(
+        <div className="goal-row" key={g.id}>
+          <div className="goal-top">
+            <span className="g-name">{GOAL_LABEL[g.metric] || g.metric}</span>
+            <span className="muted2" style={{fontSize:11}}>per {g.period}</span>
+            <span className="g-num">{actual}/{g.target} · {pct}%</span>
+          </div>
+          <div className="goal-bar">
+            <span style={{width: pct+'%', background: pct>=100? 'var(--good)' : pct>=50? 'var(--accent)' : 'var(--warn)'}}/>
+          </div>
+          <div className="goal-why">
+            {daysLeft>=0
+              ? `${daysLeft} day${daysLeft===1?'':'s'} left in the window · counted from ${basis}.`
+              : `Window closed ${Math.abs(daysLeft)} day${Math.abs(daysLeft)===1?'':'s'} ago · counted from ${basis}.`}
+          </div>
+        </div>
+      ))}
     </div>
   );
 }

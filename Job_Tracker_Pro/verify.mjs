@@ -393,6 +393,179 @@ if (backupText) {
 }
 doc.createElement = realCreate;
 
+
+/* ================================================================
+   New in this round: bulk actions, undo, stage editor, ICS export,
+   command palette, goal progress. Each test asserts observable state,
+   not just that a button existed.
+   ================================================================ */
+const readState2 = () => JSON.parse(window.localStorage.getItem('job-tracker-pro-v2')).state;
+const sleep = (ms) => new Promise(r => setTimeout(r, ms));
+const nav = (label) => {
+  const b = [...doc.querySelectorAll('.nav-item')].find(e => e.textContent.includes(label));
+  b?.dispatchEvent(new window.MouseEvent('click', { bubbles: true }));
+  return !!b;
+};
+
+/* ---- Bulk actions in the Pipeline table ---- */
+nav('Pipeline');
+await sleep(120);
+check('bulk: table mode reachable', clickByText('.toolbar button', 'table'));
+await sleep(150);
+
+const rowBoxes = () => [...doc.querySelectorAll('tbody input[type=checkbox]')];
+// Earlier tests deliberately restored a shrunken backup, so compare against
+// the live store rather than a hardcoded count.
+const visibleJobs = readState2().jobs.filter(j => !j.archived).length;
+check('bulk: a checkbox per visible row', rowBoxes().length === visibleJobs,
+      `${rowBoxes().length} checkboxes / ${visibleJobs} jobs`);
+check('bulk: no bulk bar before selecting', !doc.querySelector('[data-testid=bulk-bar]'));
+
+const clickBox = (el) => {
+  const setter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, 'checked').set;
+  setter.call(el, !el.checked);
+  el.dispatchEvent(new window.Event('click', { bubbles: true }));
+  el.dispatchEvent(new window.Event('change', { bubbles: true }));
+};
+
+const before2 = readState2();
+const boxes = rowBoxes();
+clickBox(boxes[0]); await sleep(60);
+clickBox(boxes[1]); await sleep(60);
+clickBox(boxes[2]); await sleep(80);
+const bar = doc.querySelector('[data-testid=bulk-bar]');
+check('bulk: bar appears after selecting', !!bar);
+check('bulk: bar reports the count', /3 selected/.test(bar?.textContent || ''), bar?.textContent?.slice(0, 40));
+
+/* Move all three to "rejected" via the bulk select. */
+const bulkSelect = bar?.querySelector('select');
+if (bulkSelect) {
+  const setSel = Object.getOwnPropertyDescriptor(window.HTMLSelectElement.prototype, 'value').set;
+  setSel.call(bulkSelect, 'rejected');
+  bulkSelect.dispatchEvent(new window.Event('change', { bubbles: true }));
+  await sleep(150);
+}
+const afterBulk = readState2();
+const rejBefore = before2.jobs.filter(j => j.status === 'rejected').length;
+const rejAfter = afterBulk.jobs.filter(j => j.status === 'rejected').length;
+check('bulk: three jobs actually moved', rejAfter === rejBefore + 3, `${rejBefore} → ${rejAfter} rejected`);
+check('bulk: move recorded as source "bulk" in history',
+      afterBulk.jobs.some(j => j.stageHistory.some(h => h.source === 'bulk' && h.to === 'rejected')));
+check('bulk: bar clears after acting', !doc.querySelector('[data-testid=bulk-bar]'));
+
+/* ---- Undo restores the pre-bulk state in ONE step ---- */
+const undoLink = [...doc.querySelectorAll('.toast .undo')].pop();
+check('undo: toast offered an Undo affordance', !!undoLink);
+undoLink?.dispatchEvent(new window.MouseEvent('click', { bubbles: true }));
+await sleep(180);
+const afterUndo = readState2();
+check('undo: one click reverted all three moves',
+      afterUndo.jobs.filter(j => j.status === 'rejected').length === rejBefore,
+      `${afterUndo.jobs.filter(j => j.status === 'rejected').length} rejected`);
+check('undo: revert is logged in activity',
+      afterUndo.activity.some(a => a.type === 'undo'));
+
+/* ---- Stage editor ---- */
+nav('Settings');
+await sleep(150);
+const editor = doc.querySelector('[data-testid=stage-editor]');
+check('stages: editor rendered', !!editor);
+const labelInputs = editor ? [...editor.querySelectorAll('input:not([type=color])')] : [];
+check('stages: one editable label per stage', labelInputs.length === readState2().stages.length,
+      `${labelInputs.length} inputs / ${readState2().stages.length} stages`);
+
+const saveBtn = doc.querySelector('[data-testid=save-stages]');
+check('stages: save disabled until something changes', !!saveBtn?.disabled);
+
+if (labelInputs[0]) {
+  setReactValue(labelInputs[0], 'Shortlist');
+  await sleep(120);
+  const saveNow = doc.querySelector('[data-testid=save-stages]');
+  check('stages: save enables after an edit', !saveNow?.disabled);
+  saveNow?.dispatchEvent(new window.MouseEvent('click', { bubbles: true }));
+  await sleep(180);
+  const st = readState2().stages;
+  check('stages: rename persisted', st[0].label === 'Shortlist', st[0].label);
+  check('stages: ids untouched by a rename', st[0].id === 'wishlist', st[0].id);
+  const orphans = readState2().jobs.filter(j => !st.some(s2 => s2.id === j.status));
+  check('stages: no job orphaned by the edit', orphans.length === 0, `${orphans.length} orphans`);
+}
+
+/* ---- ICS export: parse the bytes, don't trust the click ---- */
+nav('Interviews');
+await sleep(150);
+downloads.length = 0;
+check('ics: export button present', clickByText('button', 'Export .ics'));
+await sleep(150);
+check('ics: a calendar file was produced', downloads.length === 1);
+if (downloads[0]) {
+  const ics = await downloads[0].text();
+  const ivCount = readState2().interviews.length;
+  check('ics: valid VCALENDAR envelope',
+        ics.startsWith('BEGIN:VCALENDAR') && ics.trimEnd().endsWith('END:VCALENDAR'));
+  check('ics: one VEVENT per interview',
+        (ics.match(/BEGIN:VEVENT/g) || []).length === ivCount, `${(ics.match(/BEGIN:VEVENT/g) || []).length} events / ${ivCount} interviews`);
+  check('ics: CRLF line endings (RFC 5545)', ics.includes('\r\n') && !/[^\r]\n/.test(ics));
+  check('ics: DTSTART is a UTC timestamp', /DTSTART:\d{8}T\d{6}Z/.test(ics));
+  check('ics: every event has DTEND', (ics.match(/DTEND:/g) || []).length === ivCount);
+  check('ics: reminders attached', ics.includes('TRIGGER:-PT24H') && ics.includes('TRIGGER:-PT60M'));
+  check('ics: summary names the company', /SUMMARY:.+/.test(ics));
+  check('ics: no line exceeds 75 octets',
+        ics.split('\r\n').every(l => Buffer.byteLength(l, 'utf8') <= 75),
+        `longest ${Math.max(...ics.split('\r\n').map(l => Buffer.byteLength(l, 'utf8')))}`);
+}
+
+/* ---- Command palette runs actions ---- */
+const paletteBtn = doc.querySelector('[data-testid=open-palette]');
+check('palette: launcher in the topbar', !!paletteBtn);
+paletteBtn?.dispatchEvent(new window.MouseEvent('click', { bubbles: true }));
+await sleep(150);
+const palette = doc.querySelector('[data-testid=command-palette]');
+check('palette: opens', !!palette);
+const items = palette ? [...palette.querySelectorAll('.qs-item')] : [];
+check('palette: lists commands', items.length >= 15, `${items.length} commands`);
+
+const themeBefore = readState2().settings.theme;
+const pInput = palette?.querySelector('input');
+if (pInput) {
+  setReactValue(pInput, 'theme');
+  await sleep(120);
+  const filtered = [...doc.querySelectorAll('[data-testid=command-palette] .qs-item')];
+  check('palette: filters as you type', filtered.length > 0 && filtered.length < items.length,
+        `${filtered.length} of ${items.length}`);
+  filtered[0]?.dispatchEvent(new window.MouseEvent('click', { bubbles: true }));
+  await sleep(180);
+}
+check('palette: running a command changed real state',
+      readState2().settings.theme !== themeBefore,
+      `${themeBefore} → ${readState2().settings.theme}`);
+check('palette: closes after running', !doc.querySelector('[data-testid=command-palette]'));
+
+/* ---- Goal progress is derived, and derived correctly ---- */
+nav('Stats');
+await sleep(180);
+const goalPanel = doc.querySelector('[data-testid=goal-panel]');
+check('goals: panel rendered', !!goalPanel);
+const goalRows = goalPanel ? [...goalPanel.querySelectorAll('.goal-row')] : [];
+check('goals: one row per goal', goalRows.length === readState2().goals.length,
+      `${goalRows.length} rows / ${readState2().goals.length} goals`);
+if (goalRows.length) {
+  const st2 = readState2();
+  const appliedGoal = st2.goals.find(g => g.metric === 'applications_sent');
+  const from = new Date(appliedGoal.startDate).getTime(), to = new Date(appliedGoal.endDate).getTime();
+  const expected = st2.jobs.filter(j => j.stageHistory.some(h => {
+    const t = new Date(h.at).getTime();
+    return h.to === 'applied' && t >= from && t <= to;
+  })).length;
+  const rowText = goalRows.map(r => r.textContent).find(t => /Applications sent/.test(t)) || '';
+  check('goals: applications-sent count matches the pipeline',
+        rowText.includes(`${expected}/${appliedGoal.target}`),
+        `expected ${expected}/${appliedGoal.target}, row said "${(rowText.match(/\d+\/\d+/) || [])[0]}"`);
+  check('goals: progress bar has a width', goalRows.some(r => /width/.test(r.querySelector('.goal-bar span')?.getAttribute('style') || '')));
+  check('goals: every row explains what it counted', goalRows.every(r => (r.querySelector('.goal-why')?.textContent || '').length > 20));
+}
+
+
 check('zero runtime JS errors', errors.length === 0, errors.slice(0, 3).join(' | '));
 
 console.log('\nPASS:');

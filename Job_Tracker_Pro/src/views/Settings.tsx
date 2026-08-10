@@ -120,18 +120,18 @@ export default function Settings(){
       </div>
 
       <div>
-        <div className="panel">
-          <div className="panel-head"><h3>Pipeline Stages</h3></div>
-          <div className="muted text-sm mb12">Stages are customizable. Current default set:</div>
-          <div style={{display:'flex',flexDirection:'column',gap:5}}>
-            {DEFAULT_STAGES.map(st=>(
-              <div key={st.id} className="flex" style={{gap:8,fontSize:12.5}}>
-                <span className="kan-dot" style={{background:st.color}}/>
-                <span>{st.label}</span>
-                <span className="muted2" style={{marginLeft:'auto',fontFamily:'var(--mono)',fontSize:11}}>{st.id}</span>
-              </div>
-            ))}
+        <StageEditor />
+
+        <div className="panel mt12">
+          <div className="panel-head"><h3>Undo history</h3></div>
+          <div className="muted text-sm mb12">
+            The last {25} destructive changes can be reverted with ⌘Z while the app is open.
+            Undo is intentionally not persisted — reopening the app starts a clean slate.
           </div>
+          <button className="btn" data-testid="undo-btn" onClick={()=>{
+            const l = state.undoLast();
+            toast(l ? `Reverted: ${l}` : 'Nothing to undo');
+          }}>↶ Undo last change</button>
         </div>
 
         <div className="panel mt12">
@@ -236,4 +236,83 @@ function ResearchReview({ preview, fileName, onConfirm, onCancel }:{
       </button>
     </div>
   </div>;
+}
+
+/* ================================================================
+   Stage editor (spec P0 #16)
+
+   Ids are immutable on purpose: every job stores `status` as a stage
+   id, so letting the id change would silently orphan applications.
+   Label, colour and order are free. A stage that still holds jobs
+   cannot be removed — the count is shown next to it so the reason is
+   obvious rather than a mystery disabled button.
+   ================================================================ */
+function StageEditor(){
+  const state = useStore();
+  const [draft, setDraft] = useState(()=>state.stages.map(s=>({...s})));
+  const [dirty, setDirty] = useState(false);
+
+  const jobCount = (id:string)=> state.jobs.filter(j=>j.status===id).length;
+
+  const patch = (i:number, p:Partial<typeof draft[number]>)=>{
+    setDraft(d=>d.map((s,idx)=> idx===i? {...s, ...p} : s));
+    setDirty(true);
+  };
+  const move = (i:number, dir:-1|1)=>{
+    const j = i+dir;
+    if(j<0 || j>=draft.length) return;
+    setDraft(d=>{ const c=[...d]; [c[i],c[j]]=[c[j],c[i]]; return c; });
+    setDirty(true);
+  };
+  const drop = (i:number)=>{
+    if(jobCount(draft[i].id)>0){ toast('That stage still holds jobs — move them first'); return; }
+    setDraft(d=>d.filter((_,idx)=>idx!==i));
+    setDirty(true);
+  };
+
+  const save = ()=>{
+    const before = state.stages.length;
+    state.setStages(draft as never);
+    // setStages refuses rather than orphaning jobs; detect that outcome
+    // instead of claiming success we did not verify.
+    const after = useStore.getState().stages;
+    const applied = JSON.stringify(after) === JSON.stringify(draft);
+    if(applied){ setDirty(false); toast(`Stages saved (${after.length} stage${after.length===1?'':'s'}, was ${before})`); }
+    else toast('Rejected: that layout would strand existing jobs');
+  };
+
+  const reset = ()=>{ setDraft(DEFAULT_STAGES.map(s=>({...s}))); setDirty(true); };
+
+  return (
+    <div className="panel" data-testid="stage-editor">
+      <div className="panel-head"><h3>Pipeline Stages</h3></div>
+      <div className="muted text-sm mb12">
+        Rename, recolour and reorder the board. Stage ids are fixed because your jobs are stored against them.
+      </div>
+      <div style={{display:'flex',flexDirection:'column',gap:6}}>
+        {draft.map((st,i)=>{
+          const n = jobCount(st.id);
+          return (
+            <div key={st.id} className="flex" style={{gap:6,alignItems:'center'}}>
+              <input type="color" value={st.color} aria-label={`Colour for ${st.label}`}
+                onChange={e=>patch(i,{color:e.target.value})}
+                style={{width:28,height:24,padding:0,border:'1px solid var(--border)',borderRadius:6,background:'none'}} />
+              <input value={st.label} aria-label={`Label for ${st.id}`}
+                onChange={e=>patch(i,{label:e.target.value})} style={{flex:1,fontSize:12.5}} />
+              <span className="muted2" style={{fontFamily:'var(--mono)',fontSize:11,minWidth:74}}>{st.id}</span>
+              <span className="muted2" style={{fontSize:11,minWidth:34}}>{n? `${n} job${n===1?'':'s'}` : '—'}</span>
+              <button className="btn sm ghost" title="Move up" onClick={()=>move(i,-1)} disabled={i===0}>↑</button>
+              <button className="btn sm ghost" title="Move down" onClick={()=>move(i,1)} disabled={i===draft.length-1}>↓</button>
+              <button className="btn sm danger" title="Remove stage" onClick={()=>drop(i)} disabled={n>0}>✕</button>
+            </div>
+          );
+        })}
+      </div>
+      <div className="flex mt12" style={{gap:8}}>
+        <button className="btn primary" data-testid="save-stages" onClick={save} disabled={!dirty}>Save stages</button>
+        <button className="btn ghost" onClick={reset}>Restore defaults</button>
+        {dirty && <span className="muted text-sm">unsaved changes</span>}
+      </div>
+    </div>
+  );
 }

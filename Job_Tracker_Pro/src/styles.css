@@ -222,3 +222,25 @@ select.filter:focus{outline:none;border-color:var(--accent)}
 .task-row:last-child{ border-bottom:none; }
 .task-row:hover{ background:var(--panel2); }
 .task-row input[type="checkbox"]{ width:15px; height:15px; cursor:pointer; accent-color:var(--accent); }
+
+/* ---- Command palette extras (⌘⇧P) ---- */
+.qs-label{flex:1}
+.qs-sub{font-size:11px;color:var(--muted2)}
+.qs-empty{padding:14px 16px;font-size:13px;color:var(--muted2)}
+.qs-foot{padding:8px 16px;border-top:1px solid var(--border);font-size:11px;color:var(--muted2)}
+
+/* ---- Bulk action bar (Pipeline table) ---- */
+.bulk-bar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:10px;padding:9px 12px;
+  border:1px solid var(--accent);border-radius:9px;background:var(--panel2);font-size:12.5px}
+.bulk-bar strong{font-size:12.5px}
+tr.row-selected td{background:var(--panel2)}
+
+/* ---- Goal progress bars ---- */
+.goal-row{display:flex;flex-direction:column;gap:5px;padding:9px 0;border-bottom:1px solid var(--border)}
+.goal-row:last-child{border-bottom:none}
+.goal-top{display:flex;align-items:baseline;gap:8px;font-size:12.5px}
+.goal-top .g-name{flex:1;font-weight:600}
+.goal-top .g-num{font-family:var(--mono);font-size:11.5px;color:var(--muted)}
+.goal-bar{height:6px;border-radius:99px;background:var(--border);overflow:hidden}
+.goal-bar span{display:block;height:100%;border-radius:99px;transition:width .25s}
+.goal-why{font-size:11px;color:var(--muted2)}

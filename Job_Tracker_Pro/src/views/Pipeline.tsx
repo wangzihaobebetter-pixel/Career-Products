@@ -2,6 +2,7 @@ import React, { useMemo, useState } from 'react';
 import { useStore } from '../store';
 import { toast } from '../components/Toast';
 import { useModal } from '../components/Modal';
+import { jobHealth, needsAttention } from '../lib/followups';
 import type { JobApplication, StageId } from '../types';
 
 function daysInStage(j: JobApplication): number {
@@ -18,6 +19,8 @@ export default function Pipeline({ onOpenJob }:{ onOpenJob:(id:string)=>void }){
   const [onlyStuck, setOnlyStuck] = useState(false);
   const [dragId, setDragId] = useState<string|null>(null);
   const [overCol, setOverCol] = useState<string|null>(null);
+  const [selected, setSelected] = useState<string[]>([]);
+  const [lastClicked, setLastClicked] = useState<string|null>(null);
 
   const jobs = useMemo(()=>{
     let list = state.jobs.filter(j=>!j.archived);
@@ -27,18 +30,45 @@ export default function Pipeline({ onOpenJob }:{ onOpenJob:(id:string)=>void }){
       return (j.title+' '+(co?.name||'')+' '+(j.description||'')).toLowerCase().includes(t);
     });
     if(statusFilter) list = list.filter(j=>j.status===statusFilter);
-    if(onlyStuck) list = list.filter(j=>daysInStage(j)>14);
+    // "Stuck" now means the shared cadence rule, not a hardcoded 14 days,
+    // so this filter agrees with the Action Board and the card badges.
+    if(onlyStuck) list = list.filter(j=>needsAttention(j));
     return list;
   },[state.jobs, state.companies, q, statusFilter, onlyStuck]);
 
   const activeStages = state.stages.filter(st=>!['rejected','ghosted','withdrawn','accepted'].includes(st.id as never));
 
+  const undoToast = (msg:string)=> toast(msg, ()=>{ const l = state.undoLast(); if(l) toast(`Reverted: ${l}`); });
+
   const handleDrop = (to: StageId)=>{
     if(dragId){
       state.moveJob(dragId, to as string);
-      toast(`Moved to ${state.stages.find(s=>s.id===to)?.label||to}`);
+      undoToast(`Moved to ${state.stages.find(s=>s.id===to)?.label||to}`);
       setDragId(null); setOverCol(null);
     }
+  };
+
+  /* Shift-click extends the selection over the rows as currently sorted,
+     which is what every mature table does — the visual order is the one
+     the user is reasoning about. */
+  const sortedJobs = useMemo(
+    ()=>[...jobs].sort((a,b)=>b.lastTouchedAt.localeCompare(a.lastTouchedAt)),
+    [jobs]
+  );
+
+  const toggleRow = (id:string, shift:boolean)=>{
+    setSelected(prev=>{
+      if(shift && lastClicked){
+        const ids = sortedJobs.map(j=>j.id);
+        const a = ids.indexOf(lastClicked), b = ids.indexOf(id);
+        if(a>=0 && b>=0){
+          const range = ids.slice(Math.min(a,b), Math.max(a,b)+1);
+          return Array.from(new Set([...prev, ...range]));
+        }
+      }
+      return prev.includes(id) ? prev.filter(x=>x!==id) : [...prev, id];
+    });
+    setLastClicked(id);
   };
 
   const quickAdd = (stage?: StageId)=>{
@@ -103,7 +133,11 @@ export default function Pipeline({ onOpenJob }:{ onOpenJob:(id:string)=>void }){
                         </div>
                         <div className="jc-foot">
                           <span className={"jc-days"+(d>30?' bad':d>14?' warn':'')}>{d>0? d+'d in stage':''}</span>
-                          <span>{j.lastTouchedAt.slice(5,10)}</span>
+                          {(()=>{ const h = jobHealth(j);
+                            if(h.level==='ghosting') return <span className="jc-days bad" title={h.reason}>👻 ghosting</span>;
+                            if(h.level==='stale') return <span className="jc-days warn" title={h.reason}>⚠ nudge</span>;
+                            return <span>{j.lastTouchedAt.slice(5,10)}</span>;
+                          })()}
                         </div>
                       </div>
                     );
@@ -149,11 +183,26 @@ export default function Pipeline({ onOpenJob }:{ onOpenJob:(id:string)=>void }){
     );
   }
 
-  /* ================= Table ================= */
+  /* ================= Table (with bulk actions) ================= */
+  const allSelected = sortedJobs.length>0 && selected.length===sortedJobs.length;
+  const th = {padding:'10px 12px',borderBottom:'1px solid var(--border)'} as const;
+
+  const runBulk = (fn:()=>number, verb:string)=>{
+    const n = fn();
+    if(!n){ toast('Nothing changed'); return; }
+    undoToast(`${verb} ${n} job${n===1?'':'s'}`);
+    setSelected([]);
+  };
+
   return (
     <div>
       <div className="toolbar">
         <input className="search" placeholder="Search…" value={q} onChange={e=>setQ(e.target.value)} />
+        <select className="filter" value={statusFilter} onChange={e=>setStatusFilter(e.target.value)}>
+          <option value="">All stages</option>
+          {state.stages.map(s=><option key={s.id} value={s.id}>{s.label}</option>)}
+        </select>
+        <label className="flex text-sm" style={{gap:5}}><input type="checkbox" checked={onlyStuck} onChange={e=>setOnlyStuck(e.target.checked)}/> Needs attention</label>
         <div className="flex" style={{gap:4}}>
           {(['kanban','list','table'] as const).map(m=>(
             <button key={m} className={"btn sm"+(mode===m?' primary':'')} onClick={()=>setMode(m)}>{m}</button>
@@ -161,25 +210,64 @@ export default function Pipeline({ onOpenJob }:{ onOpenJob:(id:string)=>void }){
         </div>
         <span className="muted text-sm">{jobs.length} jobs</span>
       </div>
+
+      {selected.length>0 && (
+        <div className="bulk-bar" data-testid="bulk-bar">
+          <strong>{selected.length} selected</strong>
+          <select className="filter" defaultValue="" onChange={e=>{
+            const to = e.target.value; if(!to) return;
+            runBulk(()=>state.bulkMove(selected, to), 'Moved');
+            e.target.value='';
+          }}>
+            <option value="">Move to stage…</option>
+            {state.stages.map(s=><option key={s.id} value={s.id}>{s.label}</option>)}
+          </select>
+          <button className="btn sm" onClick={()=>{
+            const tag = window.prompt('Tag to add to the selected jobs:');
+            if(tag) runBulk(()=>state.bulkTag(selected, tag), 'Tagged');
+          }}>Add tag</button>
+          <button className="btn sm" onClick={()=>runBulk(()=>state.bulkArchive(selected, true), 'Archived')}>Archive</button>
+          <button className="btn sm danger" onClick={()=>runBulk(()=>state.bulkRemove(selected), 'Deleted')}>Delete</button>
+          <button className="btn sm ghost" onClick={()=>setSelected([])}>Clear</button>
+        </div>
+      )}
+
       <div className="panel" style={{padding:0,overflow:'auto'}}>
         <table style={{width:'100%',borderCollapse:'collapse',fontSize:'12.5px'}}>
           <thead><tr style={{color:'var(--muted)',textAlign:'left'}}>
-            <th style={{padding:'10px 12px',borderBottom:'1px solid var(--border)'}}>Role</th>
-            <th style={{padding:'10px 12px',borderBottom:'1px solid var(--border)'}}>Company</th>
-            <th style={{padding:'10px 12px',borderBottom:'1px solid var(--border)'}}>Stage</th>
-            <th style={{padding:'10px 12px',borderBottom:'1px solid var(--border)'}}>Fit</th>
-            <th style={{padding:'10px 12px',borderBottom:'1px solid var(--border)'}}>Remote</th>
-            <th style={{padding:'10px 12px',borderBottom:'1px solid var(--border)'}}>Days</th>
+            <th style={{...th,width:32}}>
+              <input type="checkbox" aria-label="Select all rows" checked={allSelected}
+                onChange={e=>setSelected(e.target.checked? sortedJobs.map(j=>j.id) : [])} />
+            </th>
+            <th style={th}>Role</th>
+            <th style={th}>Company</th>
+            <th style={th}>Stage</th>
+            <th style={th}>Health</th>
+            <th style={th}>Fit</th>
+            <th style={th}>Remote</th>
+            <th style={th}>Days</th>
           </tr></thead>
           <tbody>
-            {jobs.sort((a,b)=>b.lastTouchedAt.localeCompare(a.lastTouchedAt)).map(j=>{
+            {sortedJobs.map(j=>{
               const co = state.companies.find(c=>c.id===j.companyId);
               const st = state.stages.find(s=>s.id===j.status);
+              const h = jobHealth(j);
+              const isSel = selected.includes(j.id);
               return (
-                <tr key={j.id} style={{borderBottom:'1px solid var(--border)',cursor:'pointer'}} onClick={()=>onOpenJob(j.id)}>
+                <tr key={j.id} className={isSel?'row-selected':''}
+                  style={{borderBottom:'1px solid var(--border)',cursor:'pointer',
+                    background:isSel?'var(--accent-soft, rgba(99,102,241,.10))':undefined}}
+                  onClick={()=>onOpenJob(j.id)}>
+                  <td style={{padding:'8px 12px'}} onClick={e=>e.stopPropagation()}>
+                    <input type="checkbox" aria-label={`Select ${j.title}`} checked={isSel}
+                      onChange={e=>toggleRow(j.id, (e.nativeEvent as MouseEvent).shiftKey)} />
+                  </td>
                   <td style={{padding:'8px 12px'}}>{j.title}</td>
                   <td style={{padding:'8px 12px'}}>{co?.name||''}</td>
                   <td style={{padding:'8px 12px'}}><span className="pill" style={{background:(st?.color||'#666')+'22', color:st?.color||'#666'}}>{st?.label||j.status}</span></td>
+                  <td style={{padding:'8px 12px'}} title={h.reason}>
+                    {h.level==='ghosting'? '👻 ghosting' : h.level==='stale'? '⚠ nudge' : h.level==='closed'? '—' : '✓ ok'}
+                  </td>
                   <td style={{padding:'8px 12px'}}>{j.fitScore||'—'}</td>
                   <td style={{padding:'8px 12px'}}>{j.remoteType}</td>
                   <td style={{padding:'8px 12px'}}>{daysInStage(j)}</td>
@@ -188,6 +276,7 @@ export default function Pipeline({ onOpenJob }:{ onOpenJob:(id:string)=>void }){
             })}
           </tbody>
         </table>
+        {sortedJobs.length===0 && <div className="empty"><div className="e-ico">🔍</div><strong>No jobs match</strong><p>Adjust filters or add a job.</p></div>}
       </div>
     </div>
   );
