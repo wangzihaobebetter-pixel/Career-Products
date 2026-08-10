@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-08-10T05:23:44.463Z",
-  "sourceChunk": "M3 Research Burn · 155 reports",
+  "generatedAt": "2026-08-10T05:33:59.711Z",
+  "sourceChunk": "M3 Research Burn · 158 reports",
   "companies": [
     {
       "name": "Decagon",
@@ -65,6 +65,7 @@
     {
       "name": "Perplexity",
       "sourceEvidence": "ATS_Board_Sweep_Part2_2026-08-09",
+      "hqLocation": "NYC, SF, Palo Alto, Seattle, London",
       "remotePolicy": "hybrid",
       "sponsorshipSignal": "⚠️ 未公开",
       "whyRelevant": "Cloudflare 拦截,信息不足"
@@ -4551,6 +4552,18 @@
       "sourceEvidence": "BurnR01_Analytics_LiveMarket_2026-08-09"
     },
     {
+      "name": "Weave / WandB (Weights & Biases)",
+      "sourceEvidence": "BurnR02_AI_Hiring_Intel_2026-08-10"
+    },
+    {
+      "name": "Contextual AI",
+      "sourceEvidence": "BurnR02_AI_Hiring_Intel_2026-08-10"
+    },
+    {
+      "name": "Galileo",
+      "sourceEvidence": "BurnR02_AI_Hiring_Intel_2026-08-10"
+    },
+    {
       "name": "coursera",
       "sourceEvidence": "BurnR05_JobBoard_Sweep_2026-08-09"
     },
@@ -4669,6 +4682,10 @@
     {
       "name": "Visa APM",
       "sourceEvidence": "BurnR15_PM_Path_2026-08-09"
+    },
+    {
+      "name": "Datadog（NY）",
+      "sourceEvidence": "BurnS01_EightDirection_DeepScan_2026-08-10"
     },
     {
       "name": "Intact Financial / Intact Specialty",
@@ -10109,6 +10126,104 @@
       "sourceEvidence": "BurnR01_Analytics_LiveMarket_2026-08-09"
     },
     {
+      "company": "Writer",
+      "title": "AI Deployment Engineer",
+      "location": "Chicago, NYC, SF, Seattle, London",
+      "applyUrl": "https://jobs.ashbyhq.com/writer/15611b2e-7825-47f2-8f10-8a4e04706b17",
+      "salaryMin": 131800,
+      "salaryMax": 185000,
+      "fitReasoning": "$131.8K-$185K，writer 招得多",
+      "sourceEvidence": "BurnR02_AI_Hiring_Intel_2026-08-10"
+    },
+    {
+      "company": "LangChain",
+      "title": "Deployed Engineer (Early Career",
+      "location": "SF / NYC On-site",
+      "applyUrl": "https://jobs.ashbyhq.com/langchain/0f35c8e1-9318-411d-929b-04c60e6d8522",
+      "salaryMin": 130000,
+      "salaryMax": 180000,
+      "sourceEvidence": "BurnR02_AI_Hiring_Intel_2026-08-10"
+    },
+    {
+      "company": "LangChain",
+      "title": "AI Engineer",
+      "location": "SF, Seattle Remote",
+      "applyUrl": "https://jobs.ashbyhq.com/langchain/b8dead31-212a-4b92-82a7-c42df16ae877",
+      "sourceEvidence": "BurnR02_AI_Hiring_Intel_2026-08-10"
+    },
+    {
+      "company": "Decagon",
+      "title": "Agent Deployment Engineer",
+      "location": "NYC, SF, Toronto, London, Remote",
+      "applyUrl": "https://jobs.ashbyhq.com/decagon/230ad153-85be-4f7b-a368-5bad59e513e2",
+      "salaryMin": 175000,
+      "salaryMax": 230000,
+      "sourceEvidence": "BurnR02_AI_Hiring_Intel_2026-08-10"
+    },
+    {
+      "company": "Cursor / Anysphere",
+      "title": "Forward Deployed Engineer",
+      "location": "SF, NYC, Remote",
+      "applyUrl": "https://cursor.com/careers/forward-deployed-engineer-new-york-remote-san-francisco",
+      "salaryMin": 150000,
+      "salaryMax": 200000,
+      "sourceEvidence": "BurnR02_AI_Hiring_Intel_2026-08-10"
+    },
+    {
+      "company": "Harvey",
+      "title": "Legal Engineer (In-House",
+      "location": "SF, NYC, Chicago, Dallas",
+      "applyUrl": "https://jobs.ashbyhq.com/harvey/c73e8b85-a167-4a3b-b055-fc45110b2f64",
+      "salaryMin": 220000,
+      "salaryMax": 320000,
+      "sourceEvidence": "BurnR02_AI_Hiring_Intel_2026-08-10"
+    },
+    {
+      "company": "Harvey",
+      "title": "Custom Solutions",
+      "location": "SF, NYC, Chicago, Dallas",
+      "applyUrl": "https://jobs.ashbyhq.com/harvey/c73e8b85-a167-4a3b-b055-fc45110b2f64",
+      "salaryMin": 220000,
+      "salaryMax": 320000,
+      "sourceEvidence": "BurnR02_AI_Hiring_Intel_2026-08-10"
+    },
+    {
+      "company": "Harvey",
+      "title": "Product Specialist)",
+      "location": "SF, NYC, Chicago, Dallas",
+      "applyUrl": "https://jobs.ashbyhq.com/harvey/c73e8b85-a167-4a3b-b055-fc45110b2f64",
+      "salaryMin": 220000,
+      "salaryMax": 320000,
+      "sourceEvidence": "BurnR02_AI_Hiring_Intel_2026-08-10"
+    },
+    {
+      "company": "Perplexity",
+      "title": "Member of Technical Staff (Forward Deployed Engineer",
+      "location": "NYC, SF, Palo Alto, Seattle, London",
+      "applyUrl": "https://jobs.ashbyhq.com/perplexity/aa511ea8-96e3-42ba-b28f-5e222170bcee",
+      "salaryMin": 205000,
+      "salaryMax": 335000,
+      "sourceEvidence": "BurnR02_AI_Hiring_Intel_2026-08-10"
+    },
+    {
+      "company": "Glean",
+      "title": "Founding Forward Deployed Engineer",
+      "location": "NYC, Mountain View, Remote-US",
+      "applyUrl": "https://job-boards.greenhouse.io/gleanwork/jobs/4659412005",
+      "salaryMin": 170000,
+      "salaryMax": 220000,
+      "sourceEvidence": "BurnR02_AI_Hiring_Intel_2026-08-10"
+    },
+    {
+      "company": "Scale AI",
+      "title": "Frontier Agents Engineer",
+      "location": "SF, NYC",
+      "applyUrl": "https://job-boards.greenhouse.io/scaleai/jobs/4720573005",
+      "salaryMin": 180000,
+      "salaryMax": 300000,
+      "sourceEvidence": "BurnR02_AI_Hiring_Intel_2026-08-10"
+    },
+    {
       "company": "Cohere",
       "title": "Forward Deployed Engineer",
       "fitReasoning": "US Remote、明确招 Applied AI engineer、无年限硬性要求、Zihao 的 schema-bound agent 经验直接命中",
@@ -10124,12 +10239,6 @@
       "company": "Decagon",
       "title": "Agent Deployment Engineer SF/NYC",
       "fitReasoning": "$175K-$230K，门槛较低（无 strict 年限）",
-      "sourceEvidence": "BurnR12_AI_Hiring_2026-08-09"
-    },
-    {
-      "company": "Writer",
-      "title": "AI Deployment Engineer",
-      "fitReasoning": "$131.8K-$185K，writer 招得多",
       "sourceEvidence": "BurnR12_AI_Hiring_2026-08-09"
     },
     {
