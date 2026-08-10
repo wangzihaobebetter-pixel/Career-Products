@@ -44,7 +44,7 @@ const root = doc.getElementById('root');
 check('React mounted', !!root && root.children.length > 0);
 
 const navBtns = [...doc.querySelectorAll('.nav-item')];
-check('nav rendered (16 items)', navBtns.length === 16, `found ${navBtns.length}`);
+check('nav rendered (17 items)', navBtns.length === 17, `found ${navBtns.length}`);
 
 // Walk every view.
 for (const btn of navBtns) {
@@ -770,6 +770,99 @@ if (goalRows.length) {
   gradeSel.value = '';
   gradeSel.dispatchEvent(new window.Event('change', { bubbles: true }));
   await sleep(120);
+}
+
+// --- Live Openings: mined postings must be real, graded, and importable. ---
+{
+  const oBtn = navBtns.find(b => b.textContent.includes('Live Openings'));
+  check('openings: nav entry exists', !!oBtn);
+  oBtn?.dispatchEvent(new window.MouseEvent('click', { bubbles: true }));
+  await sleep(200);
+
+  const text = () => doc.querySelector('.content')?.textContent || '';
+  const cards = () => [...doc.querySelectorAll('.card.opening')];
+  check('openings: cards render', cards().length > 20, `${cards().length} cards on first page`);
+
+  // Provenance panel must state the check date and refuse to claim "open".
+  check('openings: provenance panel names the check date', /Link status was checked on/.test(text()));
+  check('openings: does not claim roles are open',
+        /not a promise the role is open/.test(text()));
+  check('openings: every card names its source report',
+        cards().every(c => /\.md/.test(c.querySelector('.src')?.textContent || '')));
+  check('openings: every card carries a link-status badge',
+        cards().every(c => /answered 200|blocked the check/i.test(c.querySelector('.badge')?.textContent || '')));
+  check('openings: every card links out to the real posting',
+        cards().every(c => /^https?:\/\//.test(c.querySelector('.foot a')?.getAttribute('href') || '')));
+
+  const counts = text().match(/(\d+)\s+match/);
+  const totalMatch = counts ? Number(counts[1]) : 0;
+  check('openings: corpus is substantial', totalMatch >= 300, `${totalMatch} postings`);
+
+  // Filters must narrow, not just re-render. Card count saturates at the 60
+  // page size, so read the "N match" readout instead.
+  const readMatch = () => Number((text().match(/(\d+)\s+match/) || [])[1] ?? NaN);
+  const selects = [...doc.querySelectorAll('.openings .toolbar select')];
+  check('openings: three dropdown filters present', selects.length === 3, `${selects.length} selects`);
+  const before = readMatch();
+  selects[0].value = 'reachable';
+  selects[0].dispatchEvent(new window.Event('change', { bubbles: true }));
+  await sleep(150);
+  const afterVerify = readMatch();
+  check('openings: link-status filter narrows the list',
+        afterVerify > 0 && afterVerify < before, `${before} → ${afterVerify}`);
+  check('openings: reachable filter shows only reachable cards',
+        cards().every(c => /answered 200/.test(c.querySelector('.badge')?.textContent || '')));
+  selects[0].value = 'all';
+  selects[0].dispatchEvent(new window.Event('change', { bubbles: true }));
+  await sleep(150);
+
+  const searchBox = doc.querySelector('.openings .toolbar input.grow');
+  check('openings: search box present', !!searchBox);
+  if (searchBox) {
+    setReactValue(searchBox, 'analyst');
+    await sleep(200);
+    const afterSearch = readMatch();
+    check('openings: search narrows the list', afterSearch > 0 && afterSearch < before,
+          `${before} → ${afterSearch}`);
+    setReactValue(searchBox, '');
+    await sleep(180);
+  }
+
+  // The whole point of the view: one click turns a mined row into a real job.
+  const jobsBefore = (readState2().jobs || []).length;
+  const target = cards().find(c => c.querySelector('.foot button'));
+  check('openings: at least one card offers an import', !!target);
+  const targetUrl = target?.querySelector('.foot a')?.getAttribute('href');
+  const targetTitle = target?.querySelector('.t')?.textContent?.trim();
+  target?.querySelector('.foot button')
+        ?.dispatchEvent(new window.MouseEvent('click', { bubbles: true }));
+  await sleep(220);
+  const st = readState2();
+  const jobsAfter = (st.jobs || []).length;
+  check('openings: import adds exactly one job', jobsAfter === jobsBefore + 1,
+        `${jobsBefore} → ${jobsAfter}`);
+  const added = (st.jobs || []).find(j => j.sourceUrl === targetUrl);
+  check('openings: imported job keeps the posting URL', !!added, targetUrl);
+  check('openings: imported job keeps the title', added?.title === targetTitle,
+        `${added?.title} vs ${targetTitle}`);
+  check('openings: imported job lands in wishlist, not applied',
+        added?.status === 'wishlist', added?.status);
+  check('openings: imported job is attached to a real company',
+        !!added && (st.companies || []).some(c => c.id === added.companyId));
+  // A parsed salary that is wrong is worse than none — it skews the Stats median.
+  check('openings: imported salary is either absent or plausible',
+        !added?.salaryMin || (added.salaryMin >= 20000 && added.salaryMin <= 900000),
+        String(added?.salaryMin));
+  check('openings: imported job records where it came from',
+        !!added?.source && added.source !== 'other', added?.source);
+
+  // Re-render must now show it as already in the pipeline, not offer a re-import.
+  await sleep(120);
+  const same = cards().find(c => c.querySelector('.foot a')?.getAttribute('href') === targetUrl);
+  check('openings: imported card flips to "In pipeline"',
+        /In pipeline/.test(same?.textContent || ''));
+  check('openings: imported card no longer offers a second import',
+        !same?.querySelector('.foot button'));
 }
 
 check('zero runtime JS errors', errors.length === 0, errors.slice(0, 3).join(' | '));

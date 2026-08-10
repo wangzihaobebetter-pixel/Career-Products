@@ -11,6 +11,7 @@ import Tailor from './views/Tailor';
 import Templates from './views/Templates';
 import Questions from './views/Questions';
 import Intel from './views/Intel';
+import Openings from './views/Openings';
 import Sequences from './views/Sequences';
 import Actions from './views/Actions';
 import Playbook from './views/Playbook';
@@ -25,10 +26,11 @@ import { toast, ToastHost } from './components/Toast';
 import { buildICS, downloadICS, countEvents } from './lib/ics';
 import { needsAttention } from './lib/followups';
 
-type View = 'dashboard'|'pipeline'|'companies'|'contacts'|'interviews'|'offers'|'resume'|'tailor'|'templates'|'questions'|'sequences'|'intel'|'actions'|'playbook'|'stats'|'settings';
+type View = 'dashboard'|'openings'|'pipeline'|'companies'|'contacts'|'interviews'|'offers'|'resume'|'tailor'|'templates'|'questions'|'sequences'|'intel'|'actions'|'playbook'|'stats'|'settings';
 
 const NAV: { view: View; label: string; ico: string; sec?: string }[] = [
   { view:'dashboard', label:'Dashboard', ico:'📊' },
+  { view:'openings', label:'Live Openings', ico:'🛰' },
   { view:'pipeline', label:'Pipeline', ico:'🗂' },
   { view:'companies', label:'Companies', ico:'🏢' },
   { view:'contacts', label:'Contacts', ico:'👥', sec:'Network' },
@@ -197,6 +199,7 @@ export default function App(){
       case 'questions': return <Questions />;
       case 'sequences': return <Sequences />;
       case 'intel': return <Intel />;
+      case 'openings': return <Openings />;
       case 'actions': return <Actions />;
       case 'playbook': return <Playbook />;
       case 'stats': return <Stats />;
