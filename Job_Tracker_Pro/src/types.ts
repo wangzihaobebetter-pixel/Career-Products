@@ -10,7 +10,7 @@ export type StageId =
 export interface StageDef { id: StageId; label: string; color: string; }
 
 export interface StageChange {
-  from: StageId; to: StageId; at: string; note?: string; source: 'manual'|'auto'|'bulk';
+  from: StageId; to: StageId; at: string; note?: string; source: 'manual'|'auto'|'bulk'|'import';
 }
 
 export type Source = 'linkedin'|'indeed'|'wellfound'|'builtin'|'glassdoor'|'company_site'|'referral'|'cold'|'other';

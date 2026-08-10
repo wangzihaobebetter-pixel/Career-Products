@@ -86,7 +86,193 @@ export interface JTPState extends AppState {
   setSettings: (patch: Partial<AppState['settings']>) => void;
   resetAll: () => void;
   loadBackup: (state: AppState) => boolean;
+  previewResearch: (raw: unknown) => ResearchPreview;
+  importResearch: (raw: unknown, selectedKeys?: string[]) => ResearchImportResult;
 }
+
+/* Research files are machine-written and vary in quality: some rows are real
+   postings, some are role *categories*. Nothing gets into the pipeline until
+   the user has seen it, so the import is preview → select → commit. */
+export interface ResearchPreviewJob {
+  key: string; company: string; title: string;
+  location?: string; salaryMin?: number; salaryMax?: number; fitScore?: number;
+  duplicate: boolean; newCompany: boolean;
+}
+export interface ResearchPreview {
+  ok: boolean; error?: string; source: string;
+  jobs: ResearchPreviewJob[];
+  newCompanies: string[];
+  enrichCompanies: number;
+  insights: number;
+}
+
+/* ============================================================
+   Research import (schema produced by the corpus-analysis runs)
+   ============================================================ */
+export interface ResearchImportResult {
+  ok: boolean;
+  error?: string;
+  companiesAdded: number;
+  companiesEnriched: number;
+  jobsAdded: number;
+  jobsSkipped: number;
+  insightsAdded: number;
+}
+
+export interface ResearchPayload {
+  generatedAt?: string;
+  sourceChunk?: string;
+  companies?: {
+    name?: string; domain?: string; tier?: number | string; industry?: string;
+    stage?: string; hqLocation?: string; remotePolicy?: string;
+    sponsorshipSignal?: string; whyRelevant?: string; sourceEvidence?: string;
+  }[];
+  jobs?: {
+    company?: string; title?: string; location?: string; remoteType?: string;
+    salaryMin?: number | null; salaryMax?: number | null; level?: string;
+    applyUrl?: string; requirements?: string[]; fitScore?: number;
+    fitReasoning?: string; sourceEvidence?: string;
+  }[];
+  insights?: { topic?: string; finding?: string; evidence?: string; actionable?: string }[];
+}
+
+/* Company names arrive from prose, so "Klaviyo, Inc." and "klaviyo" must
+   collapse to one record. Strip legal suffixes and non-alphanumerics. */
+const normName = (s: string) =>
+  s.toLowerCase()
+    .replace(/\b(inc|llc|ltd|corp|corporation|co|company|technologies|labs|ai)\b/g, '')
+    .replace(/[^a-z0-9]/g, '');
+
+/* Research prose writes "Clipboard Health" where the tracker holds
+   "Clipboard". Treat one as the other when the shorter name is a prefix of
+   the longer and is distinctive enough that the collision is not accidental —
+   8 characters keeps "Meta"/"Metabase" and "Notion"/"Notional" apart. */
+const sameCompany = (a: string, b: string) => {
+  const x = normName(a), y = normName(b);
+  if (!x || !y) return false;
+  if (x === y) return true;
+  const [short, long] = x.length <= y.length ? [x, y] : [y, x];
+  return short.length >= 8 && long.startsWith(short);
+};
+
+const normTier = (t: unknown): string | undefined => {
+  if (t == null) return undefined;
+  const s = String(t).trim().toUpperCase();
+  if (/^[123]$/.test(s)) return 'T' + s;
+  if (/^T[123]$/.test(s)) return s;
+  return undefined;
+};
+
+const REMOTE_TYPES = ['onsite', 'hybrid', 'remote'] as const;
+const normRemote = (r: unknown): JobApplication['remoteType'] => {
+  const s = String(r ?? '').toLowerCase();
+  return (REMOTE_TYPES as readonly string[]).includes(s) ? (s as JobApplication['remoteType']) : 'remote';
+};
+
+/* Each research run emits its own ad-hoc shape, so an import that only
+   understood one schema would reject almost every real file. When the
+   canonical `companies`/`jobs` arrays are absent, walk the whole tree and
+   harvest any object that *looks* like a role or a company. Recognition is
+   deliberately strict — a wrong guess puts a fake role in the pipeline. */
+const firstStr = (o: Record<string, unknown>, keys: string[]): string | undefined => {
+  for (const k of keys) {
+    const v = o[k];
+    if (typeof v === 'string' && v.trim() && v.trim().length < 200) return v.trim();
+  }
+  return undefined;
+};
+
+const TITLE_KEYS = ['title', 'role', 'position', 'job_title', 'jobTitle', 'role_title'];
+const COMPANY_KEYS = ['company', 'company_name', 'companyName', 'employer', 'org', 'organization'];
+const NAME_KEYS = ['name', ...COMPANY_KEYS];
+
+function harvest(raw: unknown): ResearchPayload {
+  const jobs: NonNullable<ResearchPayload['jobs']> = [];
+  const companies: NonNullable<ResearchPayload['companies']> = [];
+  const seenJob = new Set<string>();
+  const seenCo = new Set<string>();
+
+  const walk = (node: unknown, depth: number) => {
+    if (depth > 12 || node == null) return;
+    if (Array.isArray(node)) { node.forEach(n => walk(n, depth + 1)); return; }
+    if (typeof node !== 'object') return;
+    const o = node as Record<string, unknown>;
+
+    const title = firstStr(o, TITLE_KEYS);
+    const company = firstStr(o, COMPANY_KEYS);
+
+    if (title && company) {
+      const key = normName(company) + '|' + normName(title);
+      if (!seenJob.has(key)) {
+        seenJob.add(key);
+        jobs.push({
+          company, title,
+          location: firstStr(o, ['location', 'city', 'office', 'hq', 'hqLocation']),
+          remoteType: firstStr(o, ['remoteType', 'remote_type', 'remote', 'work_model']),
+          applyUrl: firstStr(o, ['apply_url', 'applyUrl', 'url', 'link', 'job_url', 'posting_url']),
+          level: firstStr(o, ['level', 'seniority', 'grade']),
+          salaryMin: typeof o.salaryMin === 'number' ? o.salaryMin
+                   : typeof o.salary_min === 'number' ? o.salary_min : null,
+          salaryMax: typeof o.salaryMax === 'number' ? o.salaryMax
+                   : typeof o.salary_max === 'number' ? o.salary_max : null,
+          fitScore: typeof o.fitScore === 'number' ? o.fitScore
+                  : typeof o.fit_score === 'number' ? o.fit_score : undefined,
+          fitReasoning: firstStr(o, ['fitReasoning', 'fit_reasoning', 'verdict', 'why', 'rationale', 'notes']),
+          requirements: Array.isArray(o.requirements) ? o.requirements.filter(x => typeof x === 'string') as string[]
+                      : Array.isArray(o.verified_facts) ? o.verified_facts.filter(x => typeof x === 'string') as string[]
+                      : undefined,
+          sourceEvidence: firstStr(o, ['sourceEvidence', 'source_evidence', 'evidence', 'source']),
+        });
+      }
+    } else if (!title) {
+      /* A company record needs a name plus at least one company-ish signal,
+         otherwise every {"name": ...} in the file becomes a company. */
+      const name = firstStr(o, NAME_KEYS);
+      const hasSignal = ['tier', 'score', 'industry', 'domain', 'website', 'hq', 'hqLocation',
+                         'funding_stage', 'fundingStage', 'headcount'].some(k => o[k] != null);
+      if (name && hasSignal && !seenCo.has(normName(name))) {
+        seenCo.add(normName(name));
+        companies.push({
+          name,
+          domain: firstStr(o, ['domain', 'website']),
+          tier: (o.tier as number | string | undefined),
+          industry: firstStr(o, ['industry', 'sector', 'category']),
+          hqLocation: firstStr(o, ['hqLocation', 'hq', 'headquarters', 'location']),
+          whyRelevant: firstStr(o, ['whyRelevant', 'why_relevant', 'angle', 'rationale', 'notes']),
+        });
+      }
+    }
+
+    Object.values(o).forEach(v => walk(v, depth + 1));
+  };
+
+  walk(raw, 0);
+  return { companies, jobs };
+}
+
+/* One entry point for both the dry run and the commit, so the preview can
+   never disagree with what the import actually does. */
+function parseResearch(raw: unknown): { p: ResearchPayload; source: string } | null {
+  if (!raw || typeof raw !== 'object' || Array.isArray(raw)) return null;
+  const top = raw as ResearchPayload;
+  const canonical = Array.isArray(top.companies) || Array.isArray(top.jobs);
+  const p: ResearchPayload = canonical ? top : harvest(raw);
+  if (!p.companies?.length && !p.jobs?.length) return null;
+  const source = top.sourceChunk || (raw as Record<string, string>).source_file || 'research import';
+  return { p, source };
+}
+
+/* Only accept a number that is a plausible annual USD salary. Corpus text
+   yields "85" (meaning 85k) and stray years like 2026; the first is rescued,
+   the second must not become a $2,026 salary. The 1000–9999 band is where
+   years live, so it is dropped rather than guessed at. */
+const normSalary = (v: unknown): number | undefined => {
+  const n = typeof v === 'number' ? v : Number(v);
+  if (!Number.isFinite(n) || n <= 0) return undefined;
+  if (n >= 10_000 && n <= 2_000_000) return n;   // already a full figure
+  if (n >= 20 && n <= 999) return n * 1000;      // "85" → $85,000
+  return undefined;                              // ambiguous → no claim
+};
 
 function buildInitialState(): AppState {
   const t = now();
@@ -102,10 +288,22 @@ function buildInitialState(): AppState {
     notes: c.notes, createdAt: c.createdAt || t, updatedAt: c.updatedAt || t,
   }));
 
-  // Roles -> JobApplications (wishlist stage, matched to companies by name prefix)
-  const jobs: JobApplication[] = (s.jobs || []).map((r, i) => {
-    const co = companies.find(c => r.company && c.name.toLowerCase().startsWith(r.company.toLowerCase().split(' ')[0]));    return {
-      id: r.id || uid('job'), title: r.title || '', companyId: co?.id || companies[0]?.id || '',
+  /* Roles -> JobApplications. The screening pass produced roles at companies
+     that never got a scored company record (Clipboard Health, CarGurus, …).
+     Falling back to companies[0] silently filed those under Klaviyo, so a
+     missing company is created here instead of guessed at. */
+  const jobs: JobApplication[] = (s.jobs || []).map((r) => {
+    let co = companies.find(c => r.company && sameCompany(c.name, r.company));
+    if (!co && r.company) {
+      co = {
+        id: uid('co'), name: r.company, followStatus: 'on_watchlist',
+        notes: 'Added automatically: roles were found for this company during screening.',
+        createdAt: t, updatedAt: t,
+      };
+      companies.push(co);
+    }
+    return {
+      id: r.id || uid('job'), title: r.title || '', companyId: co?.id || '',
       sourceUrl: r.sourceUrl, source: r.source || 'wellfound', description: r.description,
       location: r.location, remoteType: r.remoteType || 'remote', jobType: 'full_time',
       salaryMin: r.salaryMin, salaryMax: r.salaryMax, equity: r.equity,
@@ -457,14 +655,179 @@ export const useStore = create<JTPState>()(
         get().addActivity('system', `Backup restored — ${(patch.jobs as unknown[] | undefined)?.length ?? 0} jobs`);
         return true;
       },
+
+      /* Dry run: report exactly what an import would do, changing nothing.
+         The UI shows this and takes the user's selection before committing. */
+      previewResearch: (raw) => {
+        const empty = (error: string): ResearchPreview =>
+          ({ ok: false, error, source: '', jobs: [], newCompanies: [], enrichCompanies: 0, insights: 0 });
+        const parsed = parseResearch(raw);
+        if (!parsed) return empty('No roles or companies found in this file — this is not a research export');
+        const { p, source } = parsed;
+
+        const existing = get().companies;
+        const jobsNow = get().jobs;
+        const pendingNew: string[] = [];
+        const jobs: ResearchPreviewJob[] = [];
+        const seen = new Set<string>();
+
+        for (const rj of p.jobs || []) {
+          const title = (rj.title || '').trim();
+          const coName = (rj.company || '').trim();
+          if (!title || !coName) continue;
+          const key = normName(coName) + '|' + normName(title);
+          if (seen.has(key)) continue;
+          seen.add(key);
+          const co = existing.find(c => sameCompany(c.name, coName));
+          const isNewCo = !co && !pendingNew.some(n => sameCompany(n, coName));
+          if (isNewCo) pendingNew.push(coName);
+          jobs.push({
+            key, company: co?.name || coName, title,
+            location: rj.location || undefined,
+            salaryMin: normSalary(rj.salaryMin), salaryMax: normSalary(rj.salaryMax),
+            fitScore: typeof rj.fitScore === 'number' ? rj.fitScore : undefined,
+            duplicate: !!co && jobsNow.some(j => j.companyId === co.id && normName(j.title) === normName(title)),
+            newCompany: isNewCo,
+          });
+        }
+
+        for (const rc of p.companies || []) {
+          const name = (rc.name || '').trim();
+          if (!name) continue;
+          if (!existing.some(c => sameCompany(c.name, name)) && !pendingNew.some(n => sameCompany(n, name))) {
+            pendingNew.push(name);
+          }
+        }
+
+        return {
+          ok: true, source, jobs, newCompanies: pendingNew,
+          enrichCompanies: (p.companies || []).filter(rc =>
+            rc.name && existing.some(c => sameCompany(c.name, rc.name!))).length,
+          insights: (p.insights || []).filter(i => i.finding).length,
+        };
+      },
+
+      /* Merge a research payload into the live pipeline.
+         Additive only: an existing company or job is never overwritten, and
+         nothing already in the pipeline changes stage. New roles land in
+         Wishlist, because research is a lead, not an application.
+         `selectedKeys`, when given, restricts the import to those roles. */
+      importResearch: (raw, selectedKeys) => {
+        const fail = (error: string): ResearchImportResult =>
+          ({ ok: false, error, companiesAdded: 0, companiesEnriched: 0, jobsAdded: 0, jobsSkipped: 0, insightsAdded: 0 });
+
+        const parsed = parseResearch(raw);
+        if (!parsed) return fail('No roles or companies found in this file — this is not a research export');
+        const { p, source } = parsed;
+        const pick = selectedKeys ? new Set(selectedKeys) : null;
+
+        const t = now();
+        const companies = [...get().companies];
+        const jobs = [...get().jobs];
+        const notes: Note[] = [];
+        let companiesAdded = 0, companiesEnriched = 0, jobsAdded = 0, jobsSkipped = 0;
+
+        const findCo = (name: string, domain?: string) =>
+          companies.find(c =>
+            sameCompany(c.name, name) || (!!domain && !!c.domain && c.domain.toLowerCase() === domain.toLowerCase()));
+
+        /* With a selection, a company only enters the tracker if one of the
+           chosen roles needs it — a standalone company row is not a lead. */
+        const wanted = pick
+          ? new Set([...pick].map(k => k.split('|')[0]))
+          : null;
+
+        for (const rc of p.companies || []) {
+          const name = (rc.name || '').trim();
+          if (!name) continue;
+          const existing = findCo(name, rc.domain);
+          if (!existing && wanted && !wanted.has(normName(name))) continue;
+          if (existing) {
+            /* Fill only blanks — a field the user already curated wins. */
+            const patch: Partial<Company> = {};
+            if (!existing.domain && rc.domain) patch.domain = rc.domain;
+            if (!existing.industry && rc.industry) patch.industry = rc.industry;
+            if (!existing.hqLocation && rc.hqLocation) patch.hqLocation = rc.hqLocation;
+            if (!existing.tier && normTier(rc.tier)) patch.tier = normTier(rc.tier);
+            if (!existing.angle && rc.whyRelevant) patch.angle = rc.whyRelevant;
+            if (Object.keys(patch).length) {
+              const i = companies.findIndex(c => c.id === existing.id);
+              companies[i] = { ...existing, ...patch, updatedAt: t };
+              companiesEnriched++;
+            }
+          } else {
+            companies.push({
+              id: uid('co'), name, domain: rc.domain, industry: rc.industry,
+              hqLocation: rc.hqLocation, followStatus: 'on_watchlist',
+              tier: normTier(rc.tier), angle: rc.whyRelevant,
+              notes: [rc.stage && `Stage: ${rc.stage}`, rc.remotePolicy && `Remote: ${rc.remotePolicy}`,
+                      rc.sponsorshipSignal && `Sponsorship signal: ${rc.sponsorshipSignal}`,
+                      rc.sourceEvidence && `Evidence: ${rc.sourceEvidence}`]
+                .filter(Boolean).join('\n') || undefined,
+              createdAt: t, updatedAt: t,
+            });
+            companiesAdded++;
+          }
+        }
+
+        for (const rj of p.jobs || []) {
+          const title = (rj.title || '').trim();
+          const coName = (rj.company || '').trim();
+          if (!title || !coName) { jobsSkipped++; continue; }
+          if (pick && !pick.has(normName(coName) + '|' + normName(title))) { jobsSkipped++; continue; }
+
+          let co = findCo(coName);
+          if (!co) {
+            co = { id: uid('co'), name: coName, followStatus: 'on_watchlist', createdAt: t, updatedAt: t };
+            companies.push(co);
+            companiesAdded++;
+          }
+          /* Same role at the same company is a duplicate, whatever the run. */
+          const dupe = jobs.some(j => j.companyId === co!.id && normName(j.title) === normName(title));
+          if (dupe) { jobsSkipped++; continue; }
+
+          jobs.push({
+            id: uid('job'), title, companyId: co.id,
+            sourceUrl: rj.applyUrl || undefined, source: 'other',
+            description: [rj.fitReasoning, rj.requirements?.length && `Requirements:\n- ${rj.requirements.join('\n- ')}`,
+                          rj.sourceEvidence && `\nEvidence (${source}): ${rj.sourceEvidence}`]
+              .filter(Boolean).join('\n\n') || undefined,
+            location: rj.location || undefined, remoteType: normRemote(rj.remoteType), jobType: 'full_time',
+            salaryMin: normSalary(rj.salaryMin), salaryMax: normSalary(rj.salaryMax),
+            tags: rj.level ? [rj.level] : undefined,
+            priority: (rj.fitScore ?? 0) >= 80 ? 'high' : 'medium',
+            fitScore: typeof rj.fitScore === 'number' ? rj.fitScore : undefined,
+            status: 'wishlist',
+            stageHistory: [{ from: 'wishlist', to: 'wishlist', at: t, note: `Imported from ${source}`, source: 'import' }],
+            lastTouchedAt: t, createdAt: t, updatedAt: t,
+          });
+          jobsAdded++;
+        }
+
+        for (const ins of p.insights || []) {
+          const body = [ins.finding, ins.evidence && `Evidence: ${ins.evidence}`,
+                        ins.actionable && `Action: ${ins.actionable}`].filter(Boolean).join('\n\n');
+          if (!body) continue;
+          notes.push({
+            id: uid('note'), parentType: 'general', parentId: 'research',
+            title: ins.topic || 'Research insight', body, tags: [source],
+            createdAt: t, updatedAt: t,
+          });
+        }
+
+        set(s => ({ companies, jobs, notes: [...notes, ...s.notes], savedAt: t }));
+        get().addActivity('system',
+          `Research imported from ${source} — +${jobsAdded} roles, +${companiesAdded} companies`);
+        return { ok: true, companiesAdded, companiesEnriched, jobsAdded, jobsSkipped, insightsAdded: notes.length };
+      },
     }),
     {
       name: 'job-tracker-pro-v2',
-      version: 4,
-      // Bumping this version discards an older cached store so the
-      // playbook seed (templates / questions / STAR / resumes) and the
-      // real submitted-application state land.
-      migrate: (persisted, from) => (from < 4 ? buildInitialState() : (persisted as AppState)),
+      version: 5,
+      // Bumping this version discards an older cached store so the playbook
+      // seed (templates / questions / STAR / resumes), the real submitted
+      // -application state, and the v5 company-attribution fix all land.
+      migrate: (persisted, from) => (from < 5 ? buildInitialState() : (persisted as AppState)),
     }
   )
 );

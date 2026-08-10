@@ -240,9 +240,9 @@ doc.createElement = (tag) => {
   if (tag === 'input') { captured = el; el.click = () => {}; }
   return el;
 };
-const feed = async (name, content) => {
+const feedTo = async (buttonLabel, name, content) => {
   captured = null;
-  clickByText('button', 'Import JSON');
+  clickByText('button', buttonLabel);
   await new Promise(r => setTimeout(r, 60));
   if (!captured) return false;
   const file = new window.File([content], name, { type: 'application/json' });
@@ -251,6 +251,7 @@ const feed = async (name, content) => {
   await new Promise(r => setTimeout(r, 150));
   return true;
 };
+const feed = (name, content) => feedTo('Import JSON', name, content);
 
 const jobsBefore = JSON.parse(window.localStorage.getItem('job-tracker-pro-v2')).state.jobs.length;
 const fed = await feed('junk.json', JSON.stringify({ hello: 'world' }));
@@ -271,6 +272,124 @@ if (backupText) {
   check('restore keeps companies intact', st.companies.length >= 20, `${st.companies.length} companies`);
   check('restore is logged in activity',
         st.activity?.some(a => /Backup restored/.test(a.summary || '')));
+}
+
+/* ---- Seed attribution: every role must sit under its own employer ------
+   Regression guard: roles for companies with no scored record used to fall
+   back to companies[0], filing the real Clipboard Health application under
+   Klaviyo. ------------------------------------------------------------- */
+{
+  // A second JSDOM gets its own localStorage, so this sees the pristine seed
+  // rather than the shrunken pipeline the backup-restore test left behind.
+  const fresh = new JSDOM(html, { url: 'http://localhost/', runScripts: 'outside-only', pretendToBeVisual: true });
+  const w = fresh.window;
+  w.matchMedia = () => ({ matches: false, addListener() {}, removeListener() {}, addEventListener() {}, removeEventListener() {} });
+  w.scrollTo = () => {}; w.confirm = () => true;
+  w.URL.createObjectURL = () => 'blob:x'; w.URL.revokeObjectURL = () => {};
+  w.eval(js);
+  await new Promise(r => setTimeout(r, 400));
+  // Force the persist middleware to flush by touching state.
+  const settingsBtn = [...w.document.querySelectorAll('.nav-item')].find(b => b.textContent.includes('Settings'));
+  settingsBtn?.dispatchEvent(new w.MouseEvent('click', { bubbles: true }));
+  await new Promise(r => setTimeout(r, 120));
+  [...w.document.querySelectorAll('button')].find(b => b.textContent.trim() === 'Save Settings')
+    ?.dispatchEvent(new w.MouseEvent('click', { bubbles: true }));
+  await new Promise(r => setTimeout(r, 150));
+
+  const st = JSON.parse(w.localStorage.getItem('job-tracker-pro-v2')).state;
+  const byId = Object.fromEntries(st.companies.map(c => [c.id, c.name]));
+  const orphans = st.jobs.filter(j => !byId[j.companyId]);
+  check('seed: every role has a real company record', orphans.length === 0, `${orphans.length} orphans`);
+
+  const clip = st.jobs.find(j => /Strategy & Ops Associate, Applied AI/.test(j.title));
+  check('seed: Clipboard application filed under Clipboard Health',
+        !!clip && /clipboard/i.test(byId[clip.companyId] || ''), byId[clip?.companyId] || 'missing');
+  const klaviyoId = st.companies.find(c => /klaviyo/i.test(c.name))?.id;
+  const klaviyoJobs = st.jobs.filter(j => j.companyId === klaviyoId);
+  check('seed: Klaviyo is no longer a dumping ground', klaviyoJobs.length <= 8,
+        `${klaviyoJobs.length} roles at Klaviyo`);
+  fresh.window.close();
+}
+
+/* ---- Research import: additive merge, must not clobber curated data ---- */
+{
+  const readState = () => JSON.parse(window.localStorage.getItem('job-tracker-pro-v2')).state;
+  const before = readState();
+  const anchorJob = before.jobs[0];
+  const anchorCo = before.companies.find(c => c.id === anchorJob.companyId) || before.companies[0];
+  const appliedBefore = before.jobs.filter(j => j.status === 'applied').length;
+
+  // Garbage must be refused outright.
+  await feedTo('Import research JSON', 'junk.json', JSON.stringify({ nope: 1 }));
+  check('research import rejects a non-research JSON',
+        readState().jobs.length === before.jobs.length && /not a research export/i.test(doc.body.textContent),
+        `${before.jobs.length} → ${readState().jobs.length} jobs`);
+
+  const payload = {
+    generatedAt: '2026-08-09', sourceChunk: 'verify_fixture.md',
+    companies: [
+      // Same company, messier spelling — must merge, not duplicate.
+      { name: anchorCo.name.toUpperCase() + ', Inc.', industry: 'SHOULD_NOT_OVERWRITE', tier: 3 },
+      { name: 'Zzz Fixture Labs', domain: 'zzzfixture.test', tier: 1,
+        industry: 'AI infra', hqLocation: 'Boston, MA', whyRelevant: 'fixture' },
+    ],
+    jobs: [
+      // Exact duplicate of a tracked role — must be skipped.
+      { company: anchorCo.name, title: anchorJob.title, fitScore: 99 },
+      { company: 'Zzz Fixture Labs', title: 'Fixture Analyst', location: 'Boston, MA',
+        remoteType: 'hybrid', salaryMin: 85, salaryMax: 110000, fitScore: 88,
+        requirements: ['SQL', 'Python'], fitReasoning: 'fixture reason' },
+      { company: 'Zzz Fixture Labs', title: 'Fixture Strategy Associate', salaryMin: 2026, fitScore: 40 },
+      { company: '', title: 'Nameless' },   // unusable -> skipped
+    ],
+    insights: [{ topic: 'Fixture insight', finding: 'a finding', actionable: 'do a thing' }],
+  };
+  await feedTo('Import research JSON', 'research.json', JSON.stringify(payload));
+
+  // The review modal must appear and must not have written anything yet.
+  const modal = doc.querySelector('.modal');
+  check('research: review modal opens before committing', !!modal &&
+        /Review research import/.test(modal.textContent || ''));
+  check('research: nothing written until confirmed',
+        readState().jobs.length === before.jobs.length,
+        `${readState().jobs.length} jobs while reviewing`);
+  const boxes = [...doc.querySelectorAll('.modal input[type=checkbox]')];
+  check('research: one row per detected role', boxes.length === 3, `${boxes.length} rows`);
+  check('research: duplicate row starts unchecked',
+        boxes.filter(b => b.checked).length === 2, `${boxes.filter(b => b.checked).length} checked`);
+
+  clickByText('.modal button', 'Import');
+  await new Promise(r => setTimeout(r, 200));
+  const after = readState();
+
+  check('research: new roles added', after.jobs.length === before.jobs.length + 2,
+        `${before.jobs.length} → ${after.jobs.length} jobs`);
+  check('research: duplicate role skipped',
+        after.jobs.filter(j => j.title === anchorJob.title).length === 1);
+  check('research: new company added',
+        after.companies.length === before.companies.length + 1,
+        `${before.companies.length} → ${after.companies.length} companies`);
+  check('research: name variant merged, not duplicated',
+        after.companies.filter(c => /^zzz fixture/i.test(c.name)).length === 1);
+  check('research: curated company field not overwritten',
+        after.companies.find(c => c.id === anchorCo.id)?.industry !== 'SHOULD_NOT_OVERWRITE',
+        String(after.companies.find(c => c.id === anchorCo.id)?.industry));
+  check('research: applied jobs untouched',
+        after.jobs.filter(j => j.status === 'applied').length === appliedBefore);
+  const imported = after.jobs.find(j => j.title === 'Fixture Analyst');
+  check('research: imported role lands in Wishlist', imported?.status === 'wishlist');
+  check('research: thousands-shorthand salary normalized', imported?.salaryMin === 85000,
+        String(imported?.salaryMin));
+  check('research: implausible salary dropped',
+        after.jobs.find(j => j.title === 'Fixture Strategy Associate')?.salaryMin === undefined);
+  check('research: high fit score raises priority', imported?.priority === 'high');
+  check('research: evidence kept in description', /verify_fixture\.md|fixture reason/.test(imported?.description || ''));
+  check('research: insights stored as notes',
+        after.notes?.some(n => n.title === 'Fixture insight'));
+  check('research: import summary shown to user',
+        /\+2 roles/.test(doc.body.textContent), doc.querySelector('.content')?.textContent.slice(0, 0) || '');
+  check('research: import logged in activity',
+        after.activity?.some(a => /Research imported/.test(a.summary || '')));
 }
 doc.createElement = realCreate;
 

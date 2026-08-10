@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { useStore } from '../store';
 import { toast } from '../components/Toast';
+import { useModal } from '../components/Modal';
 import { DEFAULT_STAGES } from '../store';
+import type { ResearchPreview } from '../store';
 
 export default function Settings(){
   const state = useStore();
@@ -9,6 +11,7 @@ export default function Settings(){
   const [name,setName]=useState(s.name); const [email,setEmail]=useState(s.email);
   const [targetRole,setTargetRole]=useState(s.targetRole); const [targetComp,setTargetComp]=useState(s.targetComp);
   const [theme,setTheme]=useState(s.theme); const [relocate,setRelocate]=useState(s.relocate);
+  const [importLog,setImportLog]=useState('');
 
   const save=()=>{
     state.setSettings({ name, email, targetRole, targetComp, theme: theme as never, relocate });
@@ -58,6 +61,36 @@ export default function Settings(){
           ? 'Backup restored'
           : 'Not a Job Tracker backup — nothing was changed');
       }catch{ toast('Invalid backup file — nothing was changed'); }
+    };
+    input.click();
+  };
+
+  /* Research JSON is additive market intel, not a snapshot. It is also
+     machine-written and uneven, so nothing lands until it has been reviewed. */
+  const importResearch=()=>{
+    const input = document.createElement('input');
+    input.type='file'; input.accept='application/json';
+    input.onchange = async ()=>{
+      const f = input.files?.[0]; if(!f) return;
+      try{
+        const raw = JSON.parse(await f.text());
+        const pv = state.previewResearch(raw);
+        if(!pv.ok){ setImportLog(`✗ ${pv.error}`); toast('Import rejected — nothing changed'); return; }
+        const modal = useModal();
+        modal.open(<ResearchReview
+          preview={pv} fileName={f.name}
+          onCancel={()=>{ modal.close(); setImportLog('Import canceled — nothing was changed'); }}
+          onConfirm={(keys)=>{
+            const r = state.importResearch(raw, keys);
+            modal.close();
+            setImportLog(r.ok
+              ? `✓ ${f.name}: +${r.jobsAdded} roles, +${r.companiesAdded} companies, `+
+                `${r.companiesEnriched} enriched, ${r.jobsSkipped} not imported, `+
+                `${r.insightsAdded} insights saved as notes.`
+              : `✗ ${r.error}`);
+            toast(r.ok ? `Imported ${r.jobsAdded} roles` : 'Import failed');
+          }} />);
+      }catch{ setImportLog('✗ Invalid JSON — nothing was changed'); toast('Invalid file'); }
     };
     input.click();
   };
@@ -113,6 +146,18 @@ export default function Settings(){
         </div>
 
         <div className="panel mt12">
+          <div className="panel-head"><h3>Import Research</h3></div>
+          <div className="muted text-sm mb12">
+            Load a market-research JSON (<code>companies</code> / <code>jobs</code> / <code>insights</code>)
+            from <code>~/Desktop/Open claw/M3 Research Burn/</code>. This <b>merges</b> — it never
+            overwrites a company you have edited, never re-adds a role you already track, and never
+            moves anything you have already applied to. New roles arrive in Wishlist.
+          </div>
+          <button className="btn" onClick={importResearch}>⬆ Import research JSON</button>
+          {importLog && <div className="muted2 text-sm mt12" style={{fontFamily:'var(--mono)',fontSize:11.5,lineHeight:1.6}}>{importLog}</div>}
+        </div>
+
+        <div className="panel mt12">
           <div className="panel-head"><h3>Storage</h3></div>
           <div className="muted text-sm">localStorage usage estimate: <b>{Math.round(JSON.stringify(state).length/1024)} KB</b> (5 MB limit)</div>
         </div>
@@ -124,4 +169,71 @@ export default function Settings(){
       </div>
     </div>
   );
+}
+
+/* ============================================================
+   Research import review — nothing is committed until confirmed.
+   Duplicates start unchecked; everything else starts checked.
+   ============================================================ */
+function ResearchReview({ preview, fileName, onConfirm, onCancel }:{
+  preview: ResearchPreview; fileName: string;
+  onConfirm:(keys:string[])=>void; onCancel:()=>void;
+}){
+  const importable = useMemo(()=>preview.jobs.filter(j=>!j.duplicate), [preview.jobs]);
+  const [sel, setSel] = useState<Set<string>>(()=>new Set(importable.map(j=>j.key)));
+  const [q, setQ] = useState('');
+
+  const shown = preview.jobs.filter(j=>{
+    const s=q.trim().toLowerCase();
+    return !s || (j.company+' '+j.title).toLowerCase().includes(s);
+  });
+
+  const toggle=(k:string)=>setSel(prev=>{
+    const n=new Set(prev); n.has(k)?n.delete(k):n.add(k); return n;
+  });
+  const dupes = preview.jobs.length - importable.length;
+
+  return <div style={{width:'min(880px,86vw)'}}>
+    <h3>Review research import</h3>
+    <div className="muted text-sm mb12">
+      <b>{fileName}</b> — found <b>{preview.jobs.length}</b> roles
+      {dupes>0 && <> (<b>{dupes}</b> already in your pipeline, unchecked)</>},
+      {' '}<b>{preview.newCompanies.length}</b> new companies,
+      {' '}{preview.enrichCompanies} known companies to enrich,
+      {' '}{preview.insights} insights.
+      <br/>These files are machine-generated: some rows are real postings, some are
+      role categories. Uncheck anything that is not a real opening — nothing is
+      saved until you press Import.
+    </div>
+
+    <div className="toolbar" style={{marginBottom:8}}>
+      <input placeholder="Filter…" value={q} onChange={e=>setQ(e.target.value)} style={{flex:1}} />
+      <button className="btn sm" onClick={()=>setSel(new Set(shown.filter(j=>!j.duplicate).map(j=>j.key)))}>Select shown</button>
+      <button className="btn sm" onClick={()=>setSel(new Set())}>Select none</button>
+      <span className="muted text-sm"><b>{sel.size}</b> selected</span>
+    </div>
+
+    <div style={{maxHeight:'46vh',overflow:'auto',border:'1px solid var(--border)',borderRadius:8}}>
+      {shown.map(j=>(
+        <label key={j.key} className="row" style={{cursor:'pointer',opacity:j.duplicate?0.55:1}}>
+          <input type="checkbox" checked={sel.has(j.key)} onChange={()=>toggle(j.key)} />
+          <span className="r-name">{j.title}
+            <span className="r-sub"> · {j.company}{j.newCompany?' (new)':''}</span>
+          </span>
+          {j.location && <span className="r-sub">{j.location}</span>}
+          {j.salaryMin ? <span className="r-sub">${(j.salaryMin/1000).toFixed(0)}k{j.salaryMax?`–$${(j.salaryMax/1000).toFixed(0)}k`:''}</span> : null}
+          {typeof j.fitScore==='number' && <span className="chip">fit {j.fitScore}</span>}
+          {j.duplicate && <span className="chip">already tracked</span>}
+        </label>
+      ))}
+      {shown.length===0 && <div className="empty"><strong>Nothing matches that filter</strong></div>}
+    </div>
+
+    <div className="modal-actions">
+      <button className="btn ghost" onClick={onCancel}>Cancel</button>
+      <button className="btn primary" disabled={sel.size===0} onClick={()=>onConfirm([...sel])}>
+        Import {sel.size} role{sel.size===1?'':'s'}
+      </button>
+    </div>
+  </div>;
 }
