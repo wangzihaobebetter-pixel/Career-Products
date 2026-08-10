@@ -61,6 +61,12 @@ setTimeout(async () => {
   ok('form controls are 16px on small screens (stops iOS zoom)',
     /\.toolbarselect,\.toolbarinput\{font-size:16px\}/.test(flat));
   ok('layout uses dvh so iOS chrome does not clip the last row', /100dvh/.test(css));
+  // Without min-width:0 the flex/grid children keep their desktop min-content
+  // width and the media queries have no visible effect. This was a real bug:
+  // every dashboard panel measured 1296px wide inside a 390px viewport.
+  ok('the main column may shrink below its content', /\.main\{[^}]*min-width:0/.test(flat));
+  ok('grid and panel children may shrink too', /\.grid>\*,\.kpi-row>\*,\.panel\{min-width:0\}/.test(flat));
+  ok('nothing scrolls the page sideways on small screens', /\.content\{overflow-x:hidden\}/.test(flat));
   ok('reduced-motion is respected', /prefers-reduced-motion/.test(css));
   ok('keyboard focus is visible', /:focus-visible/.test(css));
 
