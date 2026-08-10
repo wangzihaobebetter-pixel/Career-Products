@@ -1,0 +1,3666 @@
+{
+ "generatedAt": "2026-08-10T06:06:39.115653",
+ "sourceChunk": "Live ATS API sweep (Greenhouse/Lever/Ashby public boards)",
+ "companies": [
+  {
+   "name": "Affirm",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10",
+   "whyRelevant": "live board: 200 open postings"
+  },
+  {
+   "name": "Airtable",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10",
+   "whyRelevant": "live board: 38 open postings"
+  },
+  {
+   "name": "Anthropic",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10",
+   "whyRelevant": "live board: 390 open postings"
+  },
+  {
+   "name": "Asana",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10",
+   "whyRelevant": "live board: 147 open postings"
+  },
+  {
+   "name": "Benchling",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "whyRelevant": "live board: 52 open postings"
+  },
+  {
+   "name": "Brex",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10",
+   "whyRelevant": "live board: 303 open postings"
+  },
+  {
+   "name": "CarGurus",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10",
+   "whyRelevant": "live board: 50 open postings"
+  },
+  {
+   "name": "Cohere",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "whyRelevant": "live board: 140 open postings"
+  },
+  {
+   "name": "Cursor",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "whyRelevant": "live board: 119 open postings"
+  },
+  {
+   "name": "Databricks",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10",
+   "whyRelevant": "live board: 822 open postings"
+  },
+  {
+   "name": "Datadog",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10",
+   "whyRelevant": "live board: 440 open postings"
+  },
+  {
+   "name": "Decagon",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "whyRelevant": "live board: 126 open postings"
+  },
+  {
+   "name": "Elastic",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10",
+   "whyRelevant": "live board: 244 open postings"
+  },
+  {
+   "name": "ElevenLabs",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "whyRelevant": "live board: 232 open postings"
+  },
+  {
+   "name": "Figma",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10",
+   "whyRelevant": "live board: 165 open postings"
+  },
+  {
+   "name": "Fivetran",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10",
+   "whyRelevant": "live board: 199 open postings"
+  },
+  {
+   "name": "Formlabs",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10",
+   "whyRelevant": "live board: 202 open postings"
+  },
+  {
+   "name": "GitLab",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10",
+   "whyRelevant": "live board: 186 open postings"
+  },
+  {
+   "name": "Gusto",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10",
+   "whyRelevant": "live board: 91 open postings"
+  },
+  {
+   "name": "Harvey",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "whyRelevant": "live board: 373 open postings"
+  },
+  {
+   "name": "Hex",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "whyRelevant": "live board: 30 open postings"
+  },
+  {
+   "name": "Hightouch",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10",
+   "whyRelevant": "live board: 68 open postings"
+  },
+  {
+   "name": "Klaviyo",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10",
+   "whyRelevant": "live board: 148 open postings"
+  },
+  {
+   "name": "LangChain",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "whyRelevant": "live board: 101 open postings"
+  },
+  {
+   "name": "Mercury",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10",
+   "whyRelevant": "live board: 55 open postings"
+  },
+  {
+   "name": "MongoDB",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10",
+   "whyRelevant": "live board: 405 open postings"
+  },
+  {
+   "name": "Notion",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "whyRelevant": "live board: 127 open postings"
+  },
+  {
+   "name": "OpenAI",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "whyRelevant": "live board: 751 open postings"
+  },
+  {
+   "name": "Plaid",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "whyRelevant": "live board: 106 open postings"
+  },
+  {
+   "name": "Ramp",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "whyRelevant": "live board: 122 open postings"
+  },
+  {
+   "name": "Scale AI",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10",
+   "whyRelevant": "live board: 210 open postings"
+  },
+  {
+   "name": "Sierra",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "whyRelevant": "live board: 190 open postings"
+  },
+  {
+   "name": "Sigma Computing",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10",
+   "whyRelevant": "live board: 70 open postings"
+  },
+  {
+   "name": "Smartsheet",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10",
+   "whyRelevant": "live board: 100 open postings"
+  },
+  {
+   "name": "Snowflake",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "whyRelevant": "live board: 393 open postings"
+  },
+  {
+   "name": "Stripe",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10",
+   "whyRelevant": "live board: 549 open postings"
+  },
+  {
+   "name": "Substack",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "whyRelevant": "live board: 12 open postings"
+  },
+  {
+   "name": "Toast",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10",
+   "whyRelevant": "live board: 320 open postings"
+  },
+  {
+   "name": "Tripadvisor",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10",
+   "whyRelevant": "live board: 91 open postings"
+  },
+  {
+   "name": "Vanta",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "whyRelevant": "live board: 88 open postings"
+  },
+  {
+   "name": "WHOOP",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "whyRelevant": "live board: 178 open postings"
+  },
+  {
+   "name": "Wayve",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "whyRelevant": "live board: 105 open postings"
+  },
+  {
+   "name": "Writer",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "whyRelevant": "live board: 55 open postings"
+  },
+  {
+   "name": "ZoomInfo",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10",
+   "whyRelevant": "live board: 101 open postings"
+  }
+ ],
+ "jobs": [
+  {
+   "company": "Affirm",
+   "title": "AI Solutions Engineer",
+   "location": "Remote US",
+   "applyUrl": "https://job-boards.greenhouse.io/affirm/jobs/7778204003",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Affirm",
+   "title": "Analyst",
+   "location": "Remote US",
+   "applyUrl": "https://job-boards.greenhouse.io/affirm/jobs/7808667003",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10",
+   "notes": "entry-level signal in title"
+  },
+  {
+   "company": "Affirm",
+   "title": "Quantitative Analytics Manager, Affirm Bank Model Governance",
+   "location": "Remote US",
+   "applyUrl": "https://job-boards.greenhouse.io/affirm/jobs/7819441003",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Affirm",
+   "title": "Strategic Finance Analyst II (Revenue)",
+   "location": "Remote US",
+   "applyUrl": "https://job-boards.greenhouse.io/affirm/jobs/7724227003",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10",
+   "notes": "entry-level signal in title"
+  },
+  {
+   "company": "Airtable",
+   "title": "Product Manager, Funnel & Activation",
+   "location": "San Francisco, CA",
+   "applyUrl": "https://job-boards.greenhouse.io/airtable/jobs/8475571002",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Anthropic",
+   "title": "Applied AI Architect, Commercial",
+   "location": "San Francisco, CA | New York City, NY",
+   "applyUrl": "https://job-boards.greenhouse.io/anthropic/jobs/5192805008",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Anthropic",
+   "title": "Applied AI Architect, Enterprise Tech",
+   "location": "San Francisco, CA | New York City, NY",
+   "applyUrl": "https://job-boards.greenhouse.io/anthropic/jobs/5383335008",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Anthropic",
+   "title": "Applied AI Architect, Government Technology",
+   "location": "Washington, DC",
+   "applyUrl": "https://job-boards.greenhouse.io/anthropic/jobs/5140405008",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Anthropic",
+   "title": "Applied AI Architect, Industries",
+   "location": "New York City, NY; San Francisco, CA | New York City, NY | Seattle, WA",
+   "applyUrl": "https://job-boards.greenhouse.io/anthropic/jobs/4461444008",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Anthropic",
+   "title": "Applied AI Architect, National Security",
+   "location": "Washington, DC",
+   "applyUrl": "https://job-boards.greenhouse.io/anthropic/jobs/5079511008",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Anthropic",
+   "title": "Applied AI Architect, Partnerships",
+   "location": "San Francisco, CA | New York City, NY",
+   "applyUrl": "https://job-boards.greenhouse.io/anthropic/jobs/5300430008",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Anthropic",
+   "title": "Applied AI Architect, State and Local Government",
+   "location": "New York City, NY; San Francisco, CA; Seattle, WA; Washington, DC",
+   "applyUrl": "https://job-boards.greenhouse.io/anthropic/jobs/5140403008",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Anthropic",
+   "title": "Applied AI Engineer, Enterprise Tech",
+   "location": "San Francisco, CA | New York City, NY | Seattle, WA",
+   "applyUrl": "https://job-boards.greenhouse.io/anthropic/jobs/5057647008",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Anthropic",
+   "title": "Applied AI Security Architect",
+   "location": "London, UK",
+   "applyUrl": "https://job-boards.greenhouse.io/anthropic/jobs/5227641008",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Anthropic",
+   "title": "Applied AI Technical Evangelist, Startup Ecosystem",
+   "location": "San Francisco, CA",
+   "applyUrl": "https://job-boards.greenhouse.io/anthropic/jobs/5116927008",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Anthropic",
+   "title": "Business Systems Analyst",
+   "location": "San Francisco, CA",
+   "applyUrl": "https://job-boards.greenhouse.io/anthropic/jobs/5366149008",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10",
+   "notes": "entry-level signal in title"
+  },
+  {
+   "company": "Anthropic",
+   "title": "Data Engineer",
+   "location": "San Francisco, CA | New York City, NY | Seattle, WA",
+   "applyUrl": "https://job-boards.greenhouse.io/anthropic/jobs/4956672008",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Anthropic",
+   "title": "Data Engineer, Safeguards",
+   "location": "San Francisco, CA | New York City, NY",
+   "applyUrl": "https://job-boards.greenhouse.io/anthropic/jobs/5240422008",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Anthropic",
+   "title": "Manager of Applied AI Architecture, Enterprise Tech",
+   "location": "San Francisco, CA | New York City, NY",
+   "applyUrl": "https://job-boards.greenhouse.io/anthropic/jobs/5222289008",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Anthropic",
+   "title": "Manager of Applied AI Architecture, Enterprise Tech (Cyber)",
+   "location": "New York City, NY; San Francisco, CA | New York City, NY; Seattle, WA",
+   "applyUrl": "https://job-boards.greenhouse.io/anthropic/jobs/5197538008",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Anthropic",
+   "title": "Manager of Applied AI Architecture, Partnerships",
+   "location": "San Francisco, CA | New York City, NY | Seattle, WA",
+   "applyUrl": "https://job-boards.greenhouse.io/anthropic/jobs/5173031008",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Anthropic",
+   "title": "Manager of Applied AI Architecture, Startups",
+   "location": "San Francisco, CA",
+   "applyUrl": "https://job-boards.greenhouse.io/anthropic/jobs/5230755008",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Anthropic",
+   "title": "Manager, Applied AI Engineering,  Beneficial Deployments (Life Sciences)",
+   "location": "San Francisco, CA | New York City, NY",
+   "applyUrl": "https://job-boards.greenhouse.io/anthropic/jobs/5277834008",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Anthropic",
+   "title": "Product Manager, Claude Code Model Performance",
+   "location": "San Francisco, CA | Seattle, WA",
+   "applyUrl": "https://job-boards.greenhouse.io/anthropic/jobs/5247640008",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Anthropic",
+   "title": "Product Manager, Claude Tag",
+   "location": "San Francisco, CA | New York City, NY",
+   "applyUrl": "https://job-boards.greenhouse.io/anthropic/jobs/5251866008",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Anthropic",
+   "title": "Product Manager, Enterprise",
+   "location": "San Francisco, CA | New York City, NY",
+   "applyUrl": "https://job-boards.greenhouse.io/anthropic/jobs/5253339008",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Anthropic",
+   "title": "Product Manager, Multi-Cloud Growth - Google",
+   "location": "San Francisco, CA",
+   "applyUrl": "https://job-boards.greenhouse.io/anthropic/jobs/5153924008",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Anthropic",
+   "title": "Product Manager, Research (Code)",
+   "location": "San Francisco, CA | New York City, NY",
+   "applyUrl": "https://job-boards.greenhouse.io/anthropic/jobs/5324349008",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Anthropic",
+   "title": "Product Manager, Safeguards (Child Safety)",
+   "location": "San Francisco, CA",
+   "applyUrl": "https://job-boards.greenhouse.io/anthropic/jobs/5164820008",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Anthropic",
+   "title": "Product Manager, Safeguards (Verticals)",
+   "location": "San Francisco, CA",
+   "applyUrl": "https://job-boards.greenhouse.io/anthropic/jobs/5097490008",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Anthropic",
+   "title": "Product Manager, Safeguards Rare Harms",
+   "location": "San Francisco, CA",
+   "applyUrl": "https://job-boards.greenhouse.io/anthropic/jobs/5139628008",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Anthropic",
+   "title": "Recruiting Solutions Engineer",
+   "location": "San Francisco, CA",
+   "applyUrl": "https://job-boards.greenhouse.io/anthropic/jobs/5290838008",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Anthropic",
+   "title": "Research Product Manager, Labs",
+   "location": "San Francisco, CA | New York City, NY",
+   "applyUrl": "https://job-boards.greenhouse.io/anthropic/jobs/5096878008",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Anthropic",
+   "title": "Research Product Manager, Model Behaviors",
+   "location": "San Francisco, CA | New York City, NY",
+   "applyUrl": "https://job-boards.greenhouse.io/anthropic/jobs/5247407008",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Anthropic",
+   "title": "Safeguards Enforcement Analyst, Access Controls & Identity",
+   "location": "Remote-Friendly, United States; San Francisco, CA | New York City, NY | Washington, DC",
+   "applyUrl": "https://job-boards.greenhouse.io/anthropic/jobs/5319626008",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10",
+   "notes": "entry-level signal in title"
+  },
+  {
+   "company": "Anthropic",
+   "title": "Safeguards Enforcement Analyst, Account Takeover & Credential Abuse",
+   "location": "Remote-Friendly, United States; San Francisco, CA | New York City, NY | Washington, DC",
+   "applyUrl": "https://job-boards.greenhouse.io/anthropic/jobs/5319624008",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10",
+   "notes": "entry-level signal in title"
+  },
+  {
+   "company": "Anthropic",
+   "title": "Safeguards Enforcement Analyst, Age-Appropriate Design",
+   "location": "Remote-Friendly, United States; San Francisco, CA | New York City, NY | Washington, DC",
+   "applyUrl": "https://job-boards.greenhouse.io/anthropic/jobs/5311234008",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10",
+   "notes": "entry-level signal in title"
+  },
+  {
+   "company": "Anthropic",
+   "title": "Safeguards Enforcement Analyst, Ban Evasion & Recidivism",
+   "location": "Remote-Friendly, United States; San Francisco, CA | New York City, NY | Washington, DC",
+   "applyUrl": "https://job-boards.greenhouse.io/anthropic/jobs/5319592008",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10",
+   "notes": "entry-level signal in title"
+  },
+  {
+   "company": "Anthropic",
+   "title": "Safeguards Enforcement Analyst, Bio Harms",
+   "location": "Remote-Friendly, United States; San Francisco, CA | New York City, NY | Washington, DC",
+   "applyUrl": "https://job-boards.greenhouse.io/anthropic/jobs/5319696008",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10",
+   "notes": "entry-level signal in title"
+  },
+  {
+   "company": "Anthropic",
+   "title": "Safeguards Enforcement Analyst, Chem & Explosives Harms",
+   "location": "Remote-Friendly, United States; San Francisco, CA | New York City, NY | Washington, DC",
+   "applyUrl": "https://job-boards.greenhouse.io/anthropic/jobs/5319700008",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10",
+   "notes": "entry-level signal in title"
+  },
+  {
+   "company": "Anthropic",
+   "title": "Safeguards Enforcement Analyst, Child Safety",
+   "location": "Remote-Friendly, United States; San Francisco, CA | New York City, NY | Washington, DC",
+   "applyUrl": "https://job-boards.greenhouse.io/anthropic/jobs/5311237008",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10",
+   "notes": "entry-level signal in title"
+  },
+  {
+   "company": "Anthropic",
+   "title": "Safeguards Enforcement Analyst, Cyber Harm",
+   "location": "Remote-Friendly, United States; San Francisco, CA | New York City, NY | Washington, DC",
+   "applyUrl": "https://job-boards.greenhouse.io/anthropic/jobs/5311159008",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10",
+   "notes": "entry-level signal in title"
+  },
+  {
+   "company": "Anthropic",
+   "title": "Safeguards Enforcement Analyst, Fraud & Scams",
+   "location": "Remote-Friendly, United States; San Francisco, CA | New York City, NY | Washington, DC",
+   "applyUrl": "https://job-boards.greenhouse.io/anthropic/jobs/5319554008",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10",
+   "notes": "entry-level signal in title"
+  },
+  {
+   "company": "Anthropic",
+   "title": "Safeguards Enforcement Analyst, Integrity & Authenticity",
+   "location": "Remote-Friendly, United States; San Francisco, CA | New York City, NY | Washington, DC",
+   "applyUrl": "https://job-boards.greenhouse.io/anthropic/jobs/5311149008",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10",
+   "notes": "entry-level signal in title"
+  },
+  {
+   "company": "Anthropic",
+   "title": "Safeguards Enforcement Analyst, Radiological & Nuclear Harms",
+   "location": "Remote-Friendly, United States; San Francisco, CA | New York City, NY | Washington, DC",
+   "applyUrl": "https://job-boards.greenhouse.io/anthropic/jobs/5319702008",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10",
+   "notes": "entry-level signal in title"
+  },
+  {
+   "company": "Anthropic",
+   "title": "Safeguards Enforcement Analyst, Safety Evaluations",
+   "location": "Remote-Friendly (Travel-Required) | San Francisco, CA | Washington, DC; San Francisco, CA | New York City, NY",
+   "applyUrl": "https://job-boards.greenhouse.io/anthropic/jobs/5137183008",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10",
+   "notes": "entry-level signal in title"
+  },
+  {
+   "company": "Anthropic",
+   "title": "Safeguards Enforcement Analyst, User Well-being",
+   "location": "Remote-Friendly, United States; San Francisco, CA | New York City, NY | Washington, DC",
+   "applyUrl": "https://job-boards.greenhouse.io/anthropic/jobs/5374778008",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10",
+   "notes": "entry-level signal in title"
+  },
+  {
+   "company": "Anthropic",
+   "title": "Safeguards Enforcement Analyst, Violence & Extremism",
+   "location": "Remote-Friendly, United States; San Francisco, CA | New York City, NY | Washington, DC",
+   "applyUrl": "https://job-boards.greenhouse.io/anthropic/jobs/5343907008",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10",
+   "notes": "entry-level signal in title"
+  },
+  {
+   "company": "Anthropic",
+   "title": "Strategy & Operations, Applied AI - AMER",
+   "location": "San Francisco, CA | New York City, NY",
+   "applyUrl": "https://job-boards.greenhouse.io/anthropic/jobs/5284500008",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Anthropic",
+   "title": "Strategy & Operations, Product Partnerships",
+   "location": "San Francisco, CA | New York City, NY",
+   "applyUrl": "https://job-boards.greenhouse.io/anthropic/jobs/5378146008",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Anthropic",
+   "title": "Third Party Risk Analyst, Security GRC",
+   "location": "Remote-Friendly (Travel Required) | San Francisco, CA",
+   "applyUrl": "https://job-boards.greenhouse.io/anthropic/jobs/5368041008",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10",
+   "notes": "entry-level signal in title"
+  },
+  {
+   "company": "Anthropic",
+   "title": "Workday Business Systems Analyst, People Systems",
+   "location": "San Francisco, CA",
+   "applyUrl": "https://job-boards.greenhouse.io/anthropic/jobs/5194810008",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10",
+   "notes": "entry-level signal in title"
+  },
+  {
+   "company": "Asana",
+   "title": "Enterprise Solutions Engineer, Service Management",
+   "location": "New York City",
+   "applyUrl": "https://www.asana.com/jobs/apply/8027416?gh_jid=8027416",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Asana",
+   "title": "Forward Deployed Engineer, Command by Asana",
+   "location": "San Francisco",
+   "applyUrl": "https://www.asana.com/jobs/apply/8031595?gh_jid=8031595",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Asana",
+   "title": "SMB Solutions Engineer, Client Management",
+   "location": "Chicago",
+   "applyUrl": "https://www.asana.com/jobs/apply/8029540?gh_jid=8029540",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Asana",
+   "title": "Technical Solutions Engineer, Command",
+   "location": "New York City",
+   "applyUrl": "https://www.asana.com/jobs/apply/8027447?gh_jid=8027447",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Benchling",
+   "title": "Agentic AI Engineer",
+   "location": "Remote, US",
+   "applyUrl": "https://jobs.ashbyhq.com/benchling/d5896e95-fed2-4cd4-b104-1ea4df92f7d7",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 176000
+  },
+  {
+   "company": "Benchling",
+   "title": "Enterprise Solutions Architect",
+   "location": "Boston, MA",
+   "applyUrl": "https://jobs.ashbyhq.com/benchling/8f47c31f-4fd1-4108-92c0-98fc85feb7b0",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 154000
+  },
+  {
+   "company": "Benchling",
+   "title": "Marketing Data Analyst - Contractor",
+   "location": "San Francisco, CA",
+   "applyUrl": "https://jobs.ashbyhq.com/benchling/66b9e6ec-70ae-49f5-aeb8-93e6a0a53319",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "notes": "entry-level signal in title"
+  },
+  {
+   "company": "Benchling",
+   "title": "Product Manager, Developer Platform",
+   "location": "San Francisco, CA",
+   "applyUrl": "https://jobs.ashbyhq.com/benchling/61b20c5a-5c3d-4388-a19d-13a89886e73f",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 163000
+  },
+  {
+   "company": "Benchling",
+   "title": "Product Manager, Growth, Scientific AI Models",
+   "location": "San Francisco, CA",
+   "applyUrl": "https://jobs.ashbyhq.com/benchling/dc25d641-aff0-4804-8276-8c3406119c4b",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 163000
+  },
+  {
+   "company": "Benchling",
+   "title": "Product Manager, Schemas",
+   "location": "San Francisco, CA",
+   "applyUrl": "https://jobs.ashbyhq.com/benchling/0796012f-3e8c-40b7-a869-b98ab5290380",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 227000
+  },
+  {
+   "company": "Benchling",
+   "title": "Product Manager, Scientific Development Solutions",
+   "location": "San Francisco, CA",
+   "applyUrl": "https://jobs.ashbyhq.com/benchling/3b50ebb7-4e9e-4ede-aaf7-d5ce91ca7eb3",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 163000
+  },
+  {
+   "company": "Benchling",
+   "title": "Product Support Analyst",
+   "location": "San Francisco, CA",
+   "applyUrl": "https://jobs.ashbyhq.com/benchling/128a2d50-3311-49f5-b762-4654e680a06d",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 73000,
+   "notes": "entry-level signal in title"
+  },
+  {
+   "company": "Brex",
+   "title": "AI Engineer, Ecosystem",
+   "location": "Seattle, Washington, United States",
+   "applyUrl": "https://www.brex.com/careers/8606885002?gh_jid=8606885002",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Brex",
+   "title": "AI Engineer, Product",
+   "location": "San Francisco, California, United States",
+   "applyUrl": "https://www.brex.com/careers/8606845002?gh_jid=8606845002",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Brex",
+   "title": "Data Analyst II",
+   "location": "New York, New York, United States",
+   "applyUrl": "https://www.brex.com/careers/8463702002?gh_jid=8463702002",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10",
+   "notes": "entry-level signal in title"
+  },
+  {
+   "company": "Brex",
+   "title": "Data Engineer",
+   "location": "San Francisco, California, United States",
+   "applyUrl": "https://www.brex.com/careers/8366850002?gh_jid=8366850002",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Brex",
+   "title": "Software Engineer, Forward Deployed Agent Builder",
+   "location": "Seattle, Washington, United States",
+   "applyUrl": "https://www.brex.com/careers/8523205002?gh_jid=8523205002",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Brex",
+   "title": "Systems Analyst II",
+   "location": "Salt Lake City, Utah, United States",
+   "applyUrl": "https://www.brex.com/careers/8641845002?gh_jid=8641845002",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10",
+   "notes": "entry-level signal in title"
+  },
+  {
+   "company": "CarGurus",
+   "title": "IT Service Desk Analyst",
+   "location": "Boston, Massachusetts, United States",
+   "applyUrl": "https://careers.cargurus.com/us/en/job/7996811?gh_jid=7996811",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10",
+   "notes": "entry-level signal in title"
+  },
+  {
+   "company": "CarGurus",
+   "title": "Information Security Risk and Compliance Analyst",
+   "location": "Boston, Massachusetts, United States",
+   "applyUrl": "https://careers.cargurus.com/us/en/job/8094905?gh_jid=8094905",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10",
+   "notes": "entry-level signal in title"
+  },
+  {
+   "company": "CarGurus",
+   "title": "Performance Marketing Analyst",
+   "location": "Boston, Massachusetts, United States",
+   "applyUrl": "https://careers.cargurus.com/us/en/job/7972453?gh_jid=7972453",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10",
+   "notes": "entry-level signal in title"
+  },
+  {
+   "company": "CarGurus",
+   "title": "Procurement Analyst",
+   "location": "Boston, Massachusetts, United States",
+   "applyUrl": "https://careers.cargurus.com/us/en/job/8053547?gh_jid=8053547",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10",
+   "notes": "entry-level signal in title"
+  },
+  {
+   "company": "Cohere",
+   "title": "Data Scientist, North Insights",
+   "location": "United States",
+   "applyUrl": "https://jobs.ashbyhq.com/cohere/e4603bb7-5bbe-4f73-9556-02c93f78b2af",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 150000
+  },
+  {
+   "company": "Cohere",
+   "title": "Forward Deployed Engineer, Agentic Platform",
+   "location": "United States",
+   "applyUrl": "https://jobs.ashbyhq.com/cohere/b0bcef37-1d20-414f-aade-c54942d63df9",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Cohere",
+   "title": "Forward Deployed Engineer, Agentic Platform (West Coast)",
+   "location": "San Francisco",
+   "applyUrl": "https://jobs.ashbyhq.com/cohere/1fa01a03-9253-4f62-8f10-0fe368b38cb9",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Cohere",
+   "title": "Product Manager, Safety & Security",
+   "location": "United States",
+   "applyUrl": "https://jobs.ashbyhq.com/cohere/a8122632-cc3b-4a1a-bd78-4b4b9466cb38",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Cohere",
+   "title": "Revenue Operations Analyst (Analytics)",
+   "location": "New York",
+   "applyUrl": "https://jobs.ashbyhq.com/cohere/cd3eacfe-1169-4df0-8164-93a857d5ddf0",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "notes": "entry-level signal in title"
+  },
+  {
+   "company": "Cohere",
+   "title": "Solutions Architect - Public Sector",
+   "location": "Washington, DC",
+   "applyUrl": "https://jobs.ashbyhq.com/cohere/6d0f0753-ff22-46fd-90e9-08998914a8e7",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Cursor",
+   "title": "Data Analyst, User Operations",
+   "location": "Remote",
+   "applyUrl": "https://jobs.ashbyhq.com/cursor/c43bdded-80a1-4705-a0ec-8217d771528c",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "notes": "entry-level signal in title"
+  },
+  {
+   "company": "Cursor",
+   "title": "Forward Deployed Engineer",
+   "location": "San Francisco",
+   "applyUrl": "https://jobs.ashbyhq.com/cursor/34cecd0c-c392-4454-8ef5-261310541011",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Cursor",
+   "title": "Forward Deployed Strategist",
+   "location": "Remote",
+   "applyUrl": "https://jobs.ashbyhq.com/cursor/6960dfef-6dc1-4dbb-887b-0fc9e6e4292e",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Cursor",
+   "title": "Full Stack Analyst, GTM",
+   "location": "San Francisco",
+   "applyUrl": "https://jobs.ashbyhq.com/cursor/7bc441a4-9bb6-45cb-a9e0-5ae1b9c7ac5b",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "notes": "entry-level signal in title"
+  },
+  {
+   "company": "Cursor",
+   "title": "Solutions Architect",
+   "location": "Remote",
+   "applyUrl": "https://jobs.ashbyhq.com/cursor/cda9256f-e820-4f0a-9e77-e44c61295e1d",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Databricks",
+   "title": "AI Engineer - FDE (Forward Deployed Engineer)",
+   "location": "United States",
+   "applyUrl": "https://databricks.com/company/careers/open-positions/job?gh_jid=8546367002",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Databricks",
+   "title": "AI Engineer — GTM Analytics",
+   "location": "United States",
+   "applyUrl": "https://databricks.com/company/careers/open-positions/job?gh_jid=8638847002",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Databricks",
+   "title": "Associate Product Manager, New Grad (2027 Start)",
+   "location": "Bellevue, Washington; Mountain View, California; San Francisco, California",
+   "applyUrl": "https://databricks.com/company/careers/open-positions/job?gh_jid=7586263002",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10",
+   "notes": "entry-level signal in title"
+  },
+  {
+   "company": "Databricks",
+   "title": "Delivery Solutions Architect - Communications, Media, Entertainment & Games",
+   "location": "United States",
+   "applyUrl": "https://databricks.com/company/careers/open-positions/job?gh_jid=8598012002",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Databricks",
+   "title": "Delivery Solutions Architect - Digital Native Business",
+   "location": "Remote - California; Remote - Oregon; Remote - Washington",
+   "applyUrl": "https://databricks.com/company/careers/open-positions/job?gh_jid=8548986002",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Databricks",
+   "title": "Delivery Solutions Architect - Financial Services",
+   "location": "Georgia; Illinois; Massachusetts; New York; North Carolina; Washington, D.C.",
+   "applyUrl": "https://databricks.com/company/careers/open-positions/job?gh_jid=8442976002",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Databricks",
+   "title": "Delivery Solutions Architect - Healthcare & Life Sciences",
+   "location": "United States",
+   "applyUrl": "https://databricks.com/company/careers/open-positions/job?gh_jid=8476399002",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Databricks",
+   "title": "Delivery Solutions Architect - High-Tech & Manufacturing",
+   "location": "United States",
+   "applyUrl": "https://databricks.com/company/careers/open-positions/job?gh_jid=8549046002",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Databricks",
+   "title": "Delivery Solutions Architect - Oil & Gas",
+   "location": "Remote - Texas",
+   "applyUrl": "https://databricks.com/company/careers/open-positions/job?gh_jid=8687483002",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Databricks",
+   "title": "Delivery Solutions Architect - Public Sector",
+   "location": "Charlotte, North Carolina; Delaware; Maryland; New Jersey; New York City, New York; Philadelphia, Pennsylvania; Remote - Virginia; Remote - Washington D.C.; West Coast - United States; West Virginia",
+   "applyUrl": "https://databricks.com/company/careers/open-positions/job?gh_jid=8559315002",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Databricks",
+   "title": "Delivery Solutions Architect - Retail, Travel & Hospitality",
+   "location": "Central - United States; Southeast - United States; West Coast - United States",
+   "applyUrl": "https://databricks.com/company/careers/open-positions/job?gh_jid=8609617002",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Databricks",
+   "title": "Delivery Solutions Architect - Startups & Emerging Enterprise",
+   "location": "Remote - California; Remote - Colorado; Remote - Illinois; Remote - Massachusetts; Remote - New York; Remote - Oregon; Remote - Texas; Remote - Washington",
+   "applyUrl": "https://databricks.com/company/careers/open-positions/job?gh_jid=8549248002",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Databricks",
+   "title": "Deployment Strategist",
+   "location": "United States",
+   "applyUrl": "https://databricks.com/company/careers/open-positions/job?gh_jid=8463063002",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Databricks",
+   "title": "Financial Analyst",
+   "location": "Bellevue, Washington; Mountain View, California; San Francisco, California; Seattle, Washington",
+   "applyUrl": "https://databricks.com/company/careers/open-positions/job?gh_jid=8414474002",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10",
+   "notes": "entry-level signal in title"
+  },
+  {
+   "company": "Databricks",
+   "title": "Forward Deployed Engineer (FDE) - Public Sector",
+   "location": "United States",
+   "applyUrl": "https://databricks.com/company/careers/open-positions/job?gh_jid=8611108002",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Databricks",
+   "title": "Manager, Forward Deployed Engineering - CMEG",
+   "location": "Remote - Washington D.C.",
+   "applyUrl": "https://databricks.com/company/careers/open-positions/job?gh_jid=8585019002",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Databricks",
+   "title": "Manager, Forward Deployed Engineering - Manufacturing",
+   "location": "Remote - California",
+   "applyUrl": "https://databricks.com/company/careers/open-positions/job?gh_jid=8585023002",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Databricks",
+   "title": "P2P Data & Automation Analyst",
+   "location": "San Francisco, California",
+   "applyUrl": "https://databricks.com/company/careers/open-positions/job?gh_jid=8633071002",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10",
+   "notes": "entry-level signal in title"
+  },
+  {
+   "company": "Databricks",
+   "title": "Program Analyst, Legal Ops",
+   "location": "Bellevue, Washington; Denver, Colorado; Seattle, Washington; Washington, D.C.",
+   "applyUrl": "https://databricks.com/company/careers/open-positions/job?gh_jid=8199399002",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10",
+   "notes": "entry-level signal in title"
+  },
+  {
+   "company": "Databricks",
+   "title": "Solutions Architect",
+   "location": "Colorado; Denver, Colorado; Remote - Colorado",
+   "applyUrl": "https://databricks.com/company/careers/open-positions/job?gh_jid=8569633002",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Databricks",
+   "title": "Solutions Architect - AI Natives Business, Strategic",
+   "location": "Remote - California; Remote - Colorado; Remote - Oregon; Remote - Washington",
+   "applyUrl": "https://databricks.com/company/careers/open-positions/job?gh_jid=8563181002",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Databricks",
+   "title": "Solutions Architect - Agencies",
+   "location": "New York City, New York; Northeast - United States; Remote - New York",
+   "applyUrl": "https://databricks.com/company/careers/open-positions/job?gh_jid=8625636002",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Databricks",
+   "title": "Solutions Architect - Digital Native Business",
+   "location": "United States",
+   "applyUrl": "https://databricks.com/company/careers/open-positions/job?gh_jid=6117719002",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Databricks",
+   "title": "Solutions Architect - Digital Native Business, Named Accounts",
+   "location": "Nevada; Remote - California; Remote - Colorado; Remote - Oregon; Remote - Washington",
+   "applyUrl": "https://databricks.com/company/careers/open-positions/job?gh_jid=8569640002",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Databricks",
+   "title": "Solutions Architect - Emerging Enterprise",
+   "location": "United States",
+   "applyUrl": "https://databricks.com/company/careers/open-positions/job?gh_jid=6328361002",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Databricks",
+   "title": "Solutions Architect - Emerging Enterprise (Startups)",
+   "location": "United States",
+   "applyUrl": "https://databricks.com/company/careers/open-positions/job?gh_jid=6328388002",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Databricks",
+   "title": "Solutions Architect - Financial Services",
+   "location": "Georgia; Illinois; Massachusetts; New York; Washington, D.C.",
+   "applyUrl": "https://databricks.com/company/careers/open-positions/job?gh_jid=8604468002",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Databricks",
+   "title": "Solutions Architect - Financial Services (Asset and Wealth Management)",
+   "location": "Central - United States; Chicago, Illinois; Massachusetts; New York; North Carolina; Northeast - United States; Washington, D.C.",
+   "applyUrl": "https://databricks.com/company/careers/open-positions/job?gh_jid=8605158002",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Databricks",
+   "title": "Solutions Architect - Financial Services (Banking and Payments)",
+   "location": "Chicago, Illinois; Dallas, Texas; Denver, Colorado; Los Angeles, California; Portland, Oregon; San Francisco, California; Seattle, Washington",
+   "applyUrl": "https://databricks.com/company/careers/open-positions/job?gh_jid=8637768002",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Databricks",
+   "title": "Solutions Architect - Financial Services (Hunter)",
+   "location": "Georgia; Illinois; Massachusetts; New Jersey; New York; Washington, D.C.",
+   "applyUrl": "https://databricks.com/company/careers/open-positions/job?gh_jid=8604470002",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Databricks",
+   "title": "Solutions Architect - Financial Services (Professional Services)",
+   "location": "Illinois; Massachusetts; New Jersey; New York; Washington, D.C.",
+   "applyUrl": "https://databricks.com/company/careers/open-positions/job?gh_jid=8502991002",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Databricks",
+   "title": "Solutions Architect - Healthcare/Life Sciences Team (HLS)",
+   "location": "Remote - California",
+   "applyUrl": "https://databricks.com/company/careers/open-positions/job?gh_jid=8231231002",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Databricks",
+   "title": "Solutions Architect - MFG",
+   "location": "Remote - Texas",
+   "applyUrl": "https://databricks.com/company/careers/open-positions/job?gh_jid=8434341002",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Databricks",
+   "title": "Solutions Architect - Manufacturing",
+   "location": "Chicago, Illinois",
+   "applyUrl": "https://databricks.com/company/careers/open-positions/job?gh_jid=6545547002",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Databricks",
+   "title": "Solutions Architect - Public Sector (SLED)",
+   "location": "Remote - Texas",
+   "applyUrl": "https://databricks.com/company/careers/open-positions/job?gh_jid=8633741002",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Databricks",
+   "title": "Solutions Architect - Real Money Gaming",
+   "location": "United States",
+   "applyUrl": "https://databricks.com/company/careers/open-positions/job?gh_jid=8625638002",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Databricks",
+   "title": "Solutions Architect - Retail, Travel & Hospitality",
+   "location": "Atlanta, Georgia; Central - United States; Remote - North Carolina; West Coast - United States",
+   "applyUrl": "https://databricks.com/company/careers/open-positions/job?gh_jid=6049142002",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Databricks",
+   "title": "Solutions Architect - Strat Media",
+   "location": "Remote - California; San Francisco, California; West Coast - United States",
+   "applyUrl": "https://databricks.com/company/careers/open-positions/job?gh_jid=8629113002",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Databricks",
+   "title": "Solutions Architect - Strategic AI Natives",
+   "location": "Remote - California; Remote - Colorado; Remote - Oregon; Remote - Washington",
+   "applyUrl": "https://databricks.com/company/careers/open-positions/job?gh_jid=8487768002",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Databricks",
+   "title": "Specialist Solutions Architect - Cloud Platform & Infrastructure (Azure)",
+   "location": "United States",
+   "applyUrl": "https://databricks.com/company/careers/open-positions/job?gh_jid=8672336002",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Databricks",
+   "title": "Specialist Solutions Architect - Data Engineering & Warehousing",
+   "location": "United States",
+   "applyUrl": "https://databricks.com/company/careers/open-positions/job?gh_jid=8570023002",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Databricks",
+   "title": "Specialist Solutions Architect - Data Warehousing (Healthcare & Life Sciences)",
+   "location": "Northeast - United States",
+   "applyUrl": "https://databricks.com/company/careers/open-positions/job?gh_jid=8337429002",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Datadog",
+   "title": "Deal Desk Analyst - Boston",
+   "location": "Boston, Massachusetts, USA",
+   "applyUrl": "https://careers.datadoghq.com/detail/8029969/?gh_jid=8029969",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10",
+   "notes": "entry-level signal in title"
+  },
+  {
+   "company": "Datadog",
+   "title": "Deal Desk Analyst - NYC",
+   "location": "New York, New York, USA",
+   "applyUrl": "https://careers.datadoghq.com/detail/7993638/?gh_jid=7993638",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10",
+   "notes": "entry-level signal in title"
+  },
+  {
+   "company": "Datadog",
+   "title": "Deal Desk Analyst - US West",
+   "location": "Denver, Colorado, USA; San Francisco, California, USA",
+   "applyUrl": "https://careers.datadoghq.com/detail/8003080/?gh_jid=8003080",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10",
+   "notes": "entry-level signal in title"
+  },
+  {
+   "company": "Datadog",
+   "title": "FP&A Analyst - Data Insights",
+   "location": "New York, New York, USA",
+   "applyUrl": "https://careers.datadoghq.com/detail/7964916/?gh_jid=7964916",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10",
+   "notes": "entry-level signal in title"
+  },
+  {
+   "company": "Datadog",
+   "title": "GTM Strategy and Operations Associate",
+   "location": "New York, New York, USA",
+   "applyUrl": "https://careers.datadoghq.com/detail/7843331/?gh_jid=7843331",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10",
+   "notes": "entry-level signal in title"
+  },
+  {
+   "company": "Datadog",
+   "title": "Group Product Manager - Bring Your Own Cloud",
+   "location": "New York, New York, USA",
+   "applyUrl": "https://careers.datadoghq.com/detail/8024863/?gh_jid=8024863",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Datadog",
+   "title": "Group Product Manager - Code Security",
+   "location": "New York, New York, USA",
+   "applyUrl": "https://careers.datadoghq.com/detail/8023763/?gh_jid=8023763",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Datadog",
+   "title": "Group Product Manager, Cloud Security",
+   "location": "New York, New York, USA",
+   "applyUrl": "https://careers.datadoghq.com/detail/8029539/?gh_jid=8029539",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Datadog",
+   "title": "Manager I, Engineering - APM Serverless",
+   "location": "New York, New York, USA",
+   "applyUrl": "https://careers.datadoghq.com/detail/8060821/?gh_jid=8060821",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10",
+   "notes": "entry-level signal in title"
+  },
+  {
+   "company": "Datadog",
+   "title": "Manager I, Engineering - Applied AI - Natural Language & Conversational Interfaces",
+   "location": "New York, New York, USA",
+   "applyUrl": "https://careers.datadoghq.com/detail/7560494/?gh_jid=7560494",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10",
+   "notes": "entry-level signal in title"
+  },
+  {
+   "company": "Datadog",
+   "title": "Manager I, Engineering - Core Analytics",
+   "location": "New York, New York, USA",
+   "applyUrl": "https://careers.datadoghq.com/detail/7696093/?gh_jid=7696093",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10",
+   "notes": "entry-level signal in title"
+  },
+  {
+   "company": "Datadog",
+   "title": "Manager I, Technical Account Management - Chicago/Denver",
+   "location": "Chicago, Illinois, USA; Denver, Colorado, USA",
+   "applyUrl": "https://careers.datadoghq.com/detail/7787715/?gh_jid=7787715",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10",
+   "notes": "entry-level signal in title"
+  },
+  {
+   "company": "Datadog",
+   "title": "Partner Solutions Architect (GSI) - AMER East",
+   "location": "Boston, Massachusetts, USA; New York, New York, USA",
+   "applyUrl": "https://careers.datadoghq.com/detail/8003977/?gh_jid=8003977",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Datadog",
+   "title": "Partner Solutions Architect (GSI) - AMER West",
+   "location": "California, USA, Remote; Illinois, USA, Remote; Texas, USA, Remote; Washington, USA, Remote",
+   "applyUrl": "https://careers.datadoghq.com/detail/8015631/?gh_jid=8015631",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Datadog",
+   "title": "Partner Technology Solutions Engineer",
+   "location": "New York, New York, USA",
+   "applyUrl": "https://careers.datadoghq.com/detail/7961297/?gh_jid=7961297",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Datadog",
+   "title": "Product Manager II - Alerting",
+   "location": "New York, New York, USA",
+   "applyUrl": "https://careers.datadoghq.com/detail/8076871/?gh_jid=8076871",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10",
+   "notes": "entry-level signal in title"
+  },
+  {
+   "company": "Datadog",
+   "title": "Product Manager II - Application Performance Monitoring",
+   "location": "New York, New York, USA",
+   "applyUrl": "https://careers.datadoghq.com/detail/8021327/?gh_jid=8021327",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10",
+   "notes": "entry-level signal in title"
+  },
+  {
+   "company": "Datadog",
+   "title": "Product Manager II - Developer Engagement",
+   "location": "New York, New York, USA",
+   "applyUrl": "https://careers.datadoghq.com/detail/8064898/?gh_jid=8064898",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10",
+   "notes": "entry-level signal in title"
+  },
+  {
+   "company": "Datadog",
+   "title": "Product Manager II - Model Lab",
+   "location": "New York, New York, USA",
+   "applyUrl": "https://careers.datadoghq.com/detail/7144556/?gh_jid=7144556",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10",
+   "notes": "entry-level signal in title"
+  },
+  {
+   "company": "Datadog",
+   "title": "Product Manager II, AI & Data Security",
+   "location": "Boston, Massachusetts, USA; New York, New York, USA",
+   "applyUrl": "https://careers.datadoghq.com/detail/7982288/?gh_jid=7982288",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10",
+   "notes": "entry-level signal in title"
+  },
+  {
+   "company": "Datadog",
+   "title": "Sales Revenue Analyst - Boston",
+   "location": "Boston, Massachusetts, USA",
+   "applyUrl": "https://careers.datadoghq.com/detail/7587086/?gh_jid=7587086",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10",
+   "notes": "entry-level signal in title"
+  },
+  {
+   "company": "Datadog",
+   "title": "Technical Account Manager 2 - Boston",
+   "location": "Boston, Massachusetts, USA",
+   "applyUrl": "https://careers.datadoghq.com/detail/8026835/?gh_jid=8026835",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Datadog",
+   "title": "Technical Account Manager 2 - San Francisco",
+   "location": "San Francisco, California, USA",
+   "applyUrl": "https://careers.datadoghq.com/detail/7989146/?gh_jid=7989146",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Datadog",
+   "title": "Technical Account Manager 2 - West",
+   "location": "Chicago, Illinois, USA; Denver, Colorado, USA",
+   "applyUrl": "https://careers.datadoghq.com/detail/8026831/?gh_jid=8026831",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Datadog",
+   "title": "Technical Account Manager 3 - East",
+   "location": "Boston, Massachusetts, USA; New York, New York, USA",
+   "applyUrl": "https://careers.datadoghq.com/detail/8046392/?gh_jid=8046392",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Decagon",
+   "title": "Agent Deployment Engineer",
+   "location": "San Francisco",
+   "applyUrl": "https://jobs.ashbyhq.com/decagon/8c40fb7a-5f25-4112-a1df-f1c22b81042c",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 175000
+  },
+  {
+   "company": "Decagon",
+   "title": "Agent Deployment Engineer - Spanish Speaking",
+   "location": "San Francisco",
+   "applyUrl": "https://jobs.ashbyhq.com/decagon/78680ef6-798f-4511-98de-d60c8c6d909b",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 175000
+  },
+  {
+   "company": "Decagon",
+   "title": "BizOps & Strategy, Pricing",
+   "location": "San Francisco",
+   "applyUrl": "https://jobs.ashbyhq.com/decagon/80e62efe-c1e1-4f00-a9cb-2a75d8cbb577",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 160000
+  },
+  {
+   "company": "Decagon",
+   "title": "GTM Analytics Engineer",
+   "location": "San Francisco",
+   "applyUrl": "https://jobs.ashbyhq.com/decagon/52bba096-667f-4e35-aa47-f8cc2219c390",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 190000
+  },
+  {
+   "company": "Decagon",
+   "title": "Product Manager, Duet",
+   "location": "San Francisco",
+   "applyUrl": "https://jobs.ashbyhq.com/decagon/9109be1c-b6e3-430f-a964-887253ef891a",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 232000
+  },
+  {
+   "company": "Decagon",
+   "title": "Product Manager, Enterprise Agent Platform",
+   "location": "San Francisco",
+   "applyUrl": "https://jobs.ashbyhq.com/decagon/e27fcbdf-891c-4b2f-9c47-d2bdc26eb2d4",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 232000
+  },
+  {
+   "company": "Decagon",
+   "title": "Revenue Operations Associate",
+   "location": "San Francisco",
+   "applyUrl": "https://jobs.ashbyhq.com/decagon/a37149ba-06c8-4b3a-8965-4c4eff89bee7",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 150000,
+   "notes": "entry-level signal in title"
+  },
+  {
+   "company": "Decagon",
+   "title": "Solutions Architect - Infrastructure",
+   "location": "San Francisco",
+   "applyUrl": "https://jobs.ashbyhq.com/decagon/a81a1a50-d497-4dff-8105-c7a890310396",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 220000
+  },
+  {
+   "company": "Decagon",
+   "title": "Solutions Architect - Salesforce",
+   "location": "San Francisco",
+   "applyUrl": "https://jobs.ashbyhq.com/decagon/83267854-2ea8-4322-8ba3-88c2dcb086a5",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 300000
+  },
+  {
+   "company": "Decagon",
+   "title": "Strategic Solutions Engineer, East",
+   "location": "Remote",
+   "applyUrl": "https://jobs.ashbyhq.com/decagon/6431a6f9-2ebe-4b68-beb6-200b42aeeca8",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 240000
+  },
+  {
+   "company": "Decagon",
+   "title": "Strategic Solutions Engineer, West",
+   "location": "Remote",
+   "applyUrl": "https://jobs.ashbyhq.com/decagon/78745829-74ee-41cb-836c-480ca7bf9edc",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 240000
+  },
+  {
+   "company": "Elastic",
+   "title": "Agentic AI Engineer",
+   "location": "United States",
+   "applyUrl": "https://jobs.elastic.co/jobs?gh_jid=8079636&gh_jid=8079636",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Elastic",
+   "title": "Partner Solutions Architect",
+   "location": "Colorado, United States",
+   "applyUrl": "https://jobs.elastic.co/jobs?gh_jid=8080876&gh_jid=8080876",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Elastic",
+   "title": "RFP Proposal Analyst, AMER",
+   "location": "United States",
+   "applyUrl": "https://jobs.elastic.co/jobs?gh_jid=8092122&gh_jid=8092122",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10",
+   "notes": "entry-level signal in title"
+  },
+  {
+   "company": "Elastic",
+   "title": "Solutions Architect -  General Business, East (Presales)",
+   "location": "Georgia, United States",
+   "applyUrl": "https://jobs.elastic.co/jobs?gh_jid=7939709&gh_jid=7939709",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Elastic",
+   "title": "Solutions Architect - General Business, East (Presales)",
+   "location": "Texas, United States",
+   "applyUrl": "https://jobs.elastic.co/jobs?gh_jid=7944199&gh_jid=7944199",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "ElevenLabs",
+   "title": "Analyst Relations",
+   "location": "United States",
+   "applyUrl": "https://jobs.ashbyhq.com/elevenlabs/1941b5f6-a89f-4f35-bc07-a123e17d011f",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "notes": "entry-level signal in title"
+  },
+  {
+   "company": "ElevenLabs",
+   "title": "Deployment Strategist - North America",
+   "location": "United States",
+   "applyUrl": "https://jobs.ashbyhq.com/elevenlabs/8c068ebf-c79f-4f12-97ef-b4c9a4f7ae5f",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "ElevenLabs",
+   "title": "Enterprise Solutions Engineer - North America",
+   "location": "United States",
+   "applyUrl": "https://jobs.ashbyhq.com/elevenlabs/275f43d0-b62d-401d-830c-7c1ac0e688aa",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "ElevenLabs",
+   "title": "Forward Deployed Creative",
+   "location": "United States",
+   "applyUrl": "https://jobs.ashbyhq.com/elevenlabs/1f668ed5-49e9-4726-881f-7818733103b1",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "ElevenLabs",
+   "title": "Forward Deployed Engineer - Software Engineer",
+   "location": "San Francisco",
+   "applyUrl": "https://jobs.ashbyhq.com/elevenlabs/6c4c57c1-ec72-42ba-af3a-eb7aebbde2e6",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "ElevenLabs",
+   "title": "Revenue Strategy & Operations",
+   "location": "United States",
+   "applyUrl": "https://jobs.ashbyhq.com/elevenlabs/0bbf2519-4f28-4de3-836a-aabc302050d7",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Figma",
+   "title": "Associate Solutions Consultant",
+   "location": "San Francisco, CA • New York, NY",
+   "applyUrl": "https://boards.greenhouse.io/figma/jobs/5633324004?gh_jid=5633324004",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10",
+   "notes": "entry-level signal in title"
+  },
+  {
+   "company": "Figma",
+   "title": "Business Operations",
+   "location": "San Francisco, CA • New York, NY • United States",
+   "applyUrl": "https://boards.greenhouse.io/figma/jobs/6119180004?gh_jid=6119180004",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Figma",
+   "title": "Forward Deployed Engineer",
+   "location": "San Francisco, CA • New York, NY • United States",
+   "applyUrl": "https://boards.greenhouse.io/figma/jobs/6110219004?gh_jid=6110219004",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Figma",
+   "title": "Product Manager, AI Growth",
+   "location": "San Francisco, CA • New York, NY • United States",
+   "applyUrl": "https://boards.greenhouse.io/figma/jobs/5989185004?gh_jid=5989185004",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Figma",
+   "title": "Product Manager, Acquisition",
+   "location": "San Francisco, CA • New York, NY • United States",
+   "applyUrl": "https://boards.greenhouse.io/figma/jobs/6119781004?gh_jid=6119781004",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Figma",
+   "title": "Product Manager, CMS",
+   "location": "San Francisco, CA • New York, NY • United States",
+   "applyUrl": "https://boards.greenhouse.io/figma/jobs/6092802004?gh_jid=6092802004",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Figma",
+   "title": "Product Manager, Design Tools",
+   "location": "San Francisco, CA • New York, NY • United States",
+   "applyUrl": "https://boards.greenhouse.io/figma/jobs/5505263004?gh_jid=5505263004",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Figma",
+   "title": "Product Manager, Developer Platform",
+   "location": "San Francisco, CA • New York, NY • United States",
+   "applyUrl": "https://boards.greenhouse.io/figma/jobs/6100482004?gh_jid=6100482004",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Figma",
+   "title": "Solutions Consultant",
+   "location": "San Francisco, CA • New York, NY • United States",
+   "applyUrl": "https://boards.greenhouse.io/figma/jobs/5783377004?gh_jid=5783377004",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Figma",
+   "title": "Solutions Consultant, Federal",
+   "location": "New York, NY; Washington, DC",
+   "applyUrl": "https://boards.greenhouse.io/figma/jobs/5981822004?gh_jid=5981822004",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Figma",
+   "title": "Solutions Consultant, Payload",
+   "location": "San Francisco, CA • New York, NY • United States",
+   "applyUrl": "https://boards.greenhouse.io/figma/jobs/6111166004?gh_jid=6111166004",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Figma",
+   "title": "Workforce Management Analyst",
+   "location": "San Francisco, CA • New York, NY • United States",
+   "applyUrl": "https://boards.greenhouse.io/figma/jobs/6099183004?gh_jid=6099183004",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10",
+   "notes": "entry-level signal in title"
+  },
+  {
+   "company": "Fivetran",
+   "title": "Commercial Solutions Architect - Texas",
+   "location": "USA - Austin (dbt)",
+   "applyUrl": "https://www.fivetran.com/careers/job?gh_jid=7792166003",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Fivetran",
+   "title": "Customer Solutions Architect",
+   "location": "USA - Austin (dbt)",
+   "applyUrl": "https://www.fivetran.com/careers/job?gh_jid=7796439003",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Fivetran",
+   "title": "Customer Solutions Architect 3",
+   "location": "USA - Austin (dbt)",
+   "applyUrl": "https://www.fivetran.com/careers/job?gh_jid=7786036003",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Fivetran",
+   "title": "Product Manager - Fusion",
+   "location": "Remote, Colorado, United States, AMER",
+   "applyUrl": "https://www.fivetran.com/careers/job?gh_jid=7787885003",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Fivetran",
+   "title": "Product Manager - Integrations",
+   "location": "Denver, Colorado, United States, AMER",
+   "applyUrl": "https://www.fivetran.com/careers/job?gh_jid=7786318003",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Formlabs",
+   "title": "Business Systems Analyst",
+   "location": "Somerville, MA",
+   "applyUrl": "https://careers.formlabs.com/job/7954978/apply/?gh_jid=7954978",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10",
+   "notes": "entry-level signal in title"
+  },
+  {
+   "company": "Formlabs",
+   "title": "Product Manager, Hardware",
+   "location": "Somerville, MA",
+   "applyUrl": "https://careers.formlabs.com/job/8041515/apply/?gh_jid=8041515",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Formlabs",
+   "title": "Solutions Architect - Digital Systems",
+   "location": "Somerville, MA",
+   "applyUrl": "https://careers.formlabs.com/job/7590366/apply/?gh_jid=7590366",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "GitLab",
+   "title": "AI Engineer",
+   "location": "Remote, Bangalore",
+   "applyUrl": "https://job-boards.greenhouse.io/gitlab/jobs/8556658002",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "GitLab",
+   "title": "Forward Deployed Engineer - META",
+   "location": "Remote, United Arab Emirates",
+   "applyUrl": "https://job-boards.greenhouse.io/gitlab/jobs/8524783002",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "GitLab",
+   "title": "Revenue Technology Analyst",
+   "location": "Remote, Canada; Remote, US",
+   "applyUrl": "https://job-boards.greenhouse.io/gitlab/jobs/8618795002",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10",
+   "notes": "entry-level signal in title"
+  },
+  {
+   "company": "GitLab",
+   "title": "Solutions Architect",
+   "location": "Remote, United Kingdom",
+   "applyUrl": "https://job-boards.greenhouse.io/gitlab/jobs/8611767002",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Gusto",
+   "title": "ERP Applications Analyst - Order to Cash",
+   "location": "San Francisco, CA",
+   "applyUrl": "https://job-boards.greenhouse.io/gusto/jobs/8039570",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10",
+   "notes": "entry-level signal in title"
+  },
+  {
+   "company": "Gusto",
+   "title": "Health Insurance Sales Operations Analyst",
+   "location": "Scottsdale, AZ;Denver, CO;San Francisco, CA;New York, NY",
+   "applyUrl": "https://job-boards.greenhouse.io/gusto/jobs/8075901",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10",
+   "notes": "entry-level signal in title"
+  },
+  {
+   "company": "Gusto",
+   "title": "Platform Operations Analyst",
+   "location": "New York, NY",
+   "applyUrl": "https://job-boards.greenhouse.io/gusto/jobs/8075990",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10",
+   "notes": "entry-level signal in title"
+  },
+  {
+   "company": "Gusto",
+   "title": "Product Manager, Unified Service Platform",
+   "location": "Denver, CO;San Francisco, CA;New York, NY",
+   "applyUrl": "https://job-boards.greenhouse.io/gusto/jobs/7868243",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Gusto",
+   "title": "Resource Management & Analytics, WFM",
+   "location": "Denver, CO, Phoenix, Las Vegas",
+   "applyUrl": "https://job-boards.greenhouse.io/gusto/jobs/8104224",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Gusto",
+   "title": "Sales Operations Analyst",
+   "location": "Scottsdale, AZ;Denver, CO;San Francisco, CA; New York, NY",
+   "applyUrl": "https://job-boards.greenhouse.io/gusto/jobs/8105993",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10",
+   "notes": "entry-level signal in title"
+  },
+  {
+   "company": "Harvey",
+   "title": "Analyst, Customer Trust",
+   "location": "San Francisco",
+   "applyUrl": "https://jobs.ashbyhq.com/harvey/284a0861-026b-45ff-a4ad-c2d187d7184d",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 94500,
+   "notes": "entry-level signal in title"
+  },
+  {
+   "company": "Harvey",
+   "title": "Business Operations Associate",
+   "location": "New York",
+   "applyUrl": "https://jobs.ashbyhq.com/harvey/7ce37744-f88b-4e4b-8ce1-1d08402dab46",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 132200,
+   "notes": "entry-level signal in title"
+  },
+  {
+   "company": "Harvey",
+   "title": "Compliance Analyst",
+   "location": "San Francisco",
+   "applyUrl": "https://jobs.ashbyhq.com/harvey/2f35e50f-2978-44c3-a495-7cbfc1f512d4",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 99200,
+   "notes": "entry-level signal in title"
+  },
+  {
+   "company": "Harvey",
+   "title": "Deal Operations Analyst",
+   "location": "New York",
+   "applyUrl": "https://jobs.ashbyhq.com/harvey/ed12b54a-71f6-40f0-9975-900754c5ae08",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 108300,
+   "notes": "entry-level signal in title"
+  },
+  {
+   "company": "Harvey",
+   "title": "GTM Strategy & Operations",
+   "location": "New York",
+   "applyUrl": "https://jobs.ashbyhq.com/harvey/091614d9-028d-4d57-acc0-d2203dc4e54e",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 105400
+  },
+  {
+   "company": "Harvey",
+   "title": "IT Operations Analyst",
+   "location": "San Francisco",
+   "applyUrl": "https://jobs.ashbyhq.com/harvey/c78db388-c1e6-4587-9f6e-17c3921d5564",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 109100,
+   "notes": "entry-level signal in title"
+  },
+  {
+   "company": "Harvey",
+   "title": "Support Operations Data Analyst",
+   "location": "San Francisco",
+   "applyUrl": "https://jobs.ashbyhq.com/harvey/ecfc45be-fc15-4c16-a419-509c998b6c80",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 112000,
+   "notes": "entry-level signal in title"
+  },
+  {
+   "company": "Harvey",
+   "title": "Technical Account Manager (Weekend Coverage)",
+   "location": "Remote",
+   "applyUrl": "https://jobs.ashbyhq.com/harvey/dc749b29-acff-4db6-b658-2fec9585405e",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 92000
+  },
+  {
+   "company": "Harvey",
+   "title": "Technology Enablement Analyst",
+   "location": "New York",
+   "applyUrl": "https://jobs.ashbyhq.com/harvey/5960be42-443f-42f2-a771-266810e3d263",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 99200,
+   "notes": "entry-level signal in title"
+  },
+  {
+   "company": "Hex",
+   "title": "Customer Engineer",
+   "location": "San Francisco",
+   "applyUrl": "https://jobs.ashbyhq.com/hex/977eca81-fdff-40f5-93df-8a0a1ffd56a8",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Hightouch",
+   "title": "Forward Deployed Analytics Engineer",
+   "location": "Remote (North America)",
+   "applyUrl": "https://job-boards.greenhouse.io/hightouch/jobs/6122160004",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Hightouch",
+   "title": "Forward Deployed Creative Designer, Ads",
+   "location": "Remote, United States",
+   "applyUrl": "https://job-boards.greenhouse.io/hightouch/jobs/5982446004",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Hightouch",
+   "title": "Forward Deployed Creative Strategist",
+   "location": "New York, New York,  San Francisco, California, Remote",
+   "applyUrl": "https://job-boards.greenhouse.io/hightouch/jobs/6008745004",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Hightouch",
+   "title": "Forward Deployed Marketing Data Scientist",
+   "location": "Remote (North America)",
+   "applyUrl": "https://job-boards.greenhouse.io/hightouch/jobs/5718912004",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Hightouch",
+   "title": "Partner Solutions Architect",
+   "location": "Remote (North America)",
+   "applyUrl": "https://job-boards.greenhouse.io/hightouch/jobs/6011820004",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Hightouch",
+   "title": "Solutions Engineer, Mid-Market (Pre-Sales)",
+   "location": "Remote (North America)",
+   "applyUrl": "https://job-boards.greenhouse.io/hightouch/jobs/5535187004",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Hightouch",
+   "title": "Technical Account Manager, Enterprise (East)",
+   "location": "Remote (North America)",
+   "applyUrl": "https://job-boards.greenhouse.io/hightouch/jobs/6000330004",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Hightouch",
+   "title": "Technical Account Manager, Enterprise (West)",
+   "location": "Remote (North America)",
+   "applyUrl": "https://job-boards.greenhouse.io/hightouch/jobs/5379537004",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Hightouch",
+   "title": "Technical Account Manager, Mid-Market",
+   "location": "Remote (North America)",
+   "applyUrl": "https://job-boards.greenhouse.io/hightouch/jobs/6015438004",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Klaviyo",
+   "title": "Analytics Engineer",
+   "location": "Boston, MA",
+   "applyUrl": "https://www.klaviyo.com/careers/jobs/7737707003?gh_jid=7737707003",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Klaviyo",
+   "title": "Product Manager, Checkout Experience",
+   "location": "Boston, MA",
+   "applyUrl": "https://www.klaviyo.com/careers/jobs/7798763003?gh_jid=7798763003",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "LangChain",
+   "title": "AI Engineer, Enablement",
+   "location": "San Francisco, CA",
+   "applyUrl": "https://jobs.ashbyhq.com/langchain/b8dead31-212a-4b92-82a7-c42df16ae877",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "LangChain",
+   "title": "Fullstack Software Engineer, Applied AI",
+   "location": "San Francisco, CA",
+   "applyUrl": "https://jobs.ashbyhq.com/langchain/c75915ba-a32b-4e17-873d-19b47564170d",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "LangChain",
+   "title": "Product Manager, Fleet",
+   "location": "San Francisco, CA",
+   "applyUrl": "https://jobs.ashbyhq.com/langchain/5ac59bcb-0245-4a82-bab0-0ebdeae07ccd",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "LangChain",
+   "title": "Product Manager, LangSmith",
+   "location": "New York, NY",
+   "applyUrl": "https://jobs.ashbyhq.com/langchain/27af5f96-b287-4bcc-8679-f96686dc7c8d",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "LangChain",
+   "title": "Security Compliance Analyst, Privacy",
+   "location": "San Francisco, CA",
+   "applyUrl": "https://jobs.ashbyhq.com/langchain/f910bef0-83c0-4bce-b617-a04117874729",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "notes": "entry-level signal in title"
+  },
+  {
+   "company": "LangChain",
+   "title": "Solutions Architect (Austin)",
+   "location": "Austin, TX",
+   "applyUrl": "https://jobs.ashbyhq.com/langchain/da7cbabd-ceed-4d7d-ae25-f226cac0c1c1",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "LangChain",
+   "title": "Solutions Architect (Dallas)",
+   "location": "Dallas, TX",
+   "applyUrl": "https://jobs.ashbyhq.com/langchain/933a41a3-43ca-44de-a0ae-f541149151b7",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "LangChain",
+   "title": "Solutions Architect (Remote)",
+   "location": "Los Angeles, CA",
+   "applyUrl": "https://jobs.ashbyhq.com/langchain/0a5dd30c-6da1-4095-bd96-b16f27eeb333",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "LangChain",
+   "title": "Solutions Architect (San Francisco)",
+   "location": "San Francisco, CA",
+   "applyUrl": "https://jobs.ashbyhq.com/langchain/e12d7176-8b9f-438a-8f3b-0cbbffab9c5c",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Mercury",
+   "title": "Customer Support Systems & Analytics Architect",
+   "location": "San Francisco, CA, New York, NY, Portland, OR, or Remote within Canada or United States",
+   "applyUrl": "https://job-boards.greenhouse.io/mercury/jobs/6110905004",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "MongoDB",
+   "title": "Payroll Tax Analyst",
+   "location": "Austin",
+   "applyUrl": "https://www.mongodb.com/careers/job/?gh_jid=7980606",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10",
+   "notes": "entry-level signal in title"
+  },
+  {
+   "company": "MongoDB",
+   "title": "Product Manager, Internal Financial Data",
+   "location": "Austin; New York City; Palo Alto; San Francisco; United States",
+   "applyUrl": "https://www.mongodb.com/careers/job/?gh_jid=7908293",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Notion",
+   "title": "Business Systems Analyst",
+   "location": "San Francisco, California",
+   "applyUrl": "https://jobs.ashbyhq.com/notion/7793e862-50fa-4357-a4bc-2328440f8d68",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "notes": "entry-level signal in title"
+  },
+  {
+   "company": "Notion",
+   "title": "Commercial Solutions Consultant, New York",
+   "location": "New York, New York",
+   "applyUrl": "https://jobs.ashbyhq.com/notion/a1e9f265-7a8d-4acd-9503-3c36b6f7008b",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Notion",
+   "title": "Commercial Solutions Consultant, San Francisco",
+   "location": "San Francisco, California",
+   "applyUrl": "https://jobs.ashbyhq.com/notion/e12b83e9-18bd-4f5b-8bf8-16c78726559a",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Notion",
+   "title": "Enterprise Solutions Consultant, New York",
+   "location": "New York, New York",
+   "applyUrl": "https://jobs.ashbyhq.com/notion/43b37ac5-1ce9-4106-8df1-1ae8515087ee",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Notion",
+   "title": "Enterprise Solutions Consultant, San Francisco",
+   "location": "San Francisco, California",
+   "applyUrl": "https://jobs.ashbyhq.com/notion/9ecff4f6-409e-4600-a53d-9016139592ce",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Notion",
+   "title": "Forward Deployed Engineer, GTM, AMER",
+   "location": "San Francisco, California",
+   "applyUrl": "https://jobs.ashbyhq.com/notion/10437426-14c8-4c45-8075-67959ce80393",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Notion",
+   "title": "International Payroll Analyst",
+   "location": "San Francisco, California",
+   "applyUrl": "https://jobs.ashbyhq.com/notion/d2760449-5e2d-4403-be84-fa286a9bafa1",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "notes": "entry-level signal in title"
+  },
+  {
+   "company": "Notion",
+   "title": "Mid-Market Solutions Consultant, New York",
+   "location": "New York, New York",
+   "applyUrl": "https://jobs.ashbyhq.com/notion/00f42dd8-c3b3-45cf-829e-550b675b3dd8",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Notion",
+   "title": "Mid-Market Solutions Consultant, San Francisco",
+   "location": "San Francisco, California",
+   "applyUrl": "https://jobs.ashbyhq.com/notion/8c7e45c0-85ad-485e-aa6d-4b440d2e0723",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Notion",
+   "title": "People Analytics & Operations (Rotational Program)",
+   "location": "San Francisco, California",
+   "applyUrl": "https://jobs.ashbyhq.com/notion/e4229ca4-8210-4282-98ed-2071478f72aa",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Notion",
+   "title": "Revenue Transformation Analyst",
+   "location": "San Francisco, California",
+   "applyUrl": "https://jobs.ashbyhq.com/notion/892ed5b8-a654-49ac-a55b-fabea1b236c1",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "notes": "entry-level signal in title"
+  },
+  {
+   "company": "Notion",
+   "title": "Software Engineer, Product Analytics Platform",
+   "location": "San Francisco, California",
+   "applyUrl": "https://jobs.ashbyhq.com/notion/53fb4637-d1d6-4411-8a87-52865db5a11c",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "OpenAI",
+   "title": "AI Deployment Engineer - Startups",
+   "location": "London, UK",
+   "applyUrl": "https://jobs.ashbyhq.com/openai/980bc2ea-2c35-4546-bb48-5496a4e6847f",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "OpenAI",
+   "title": "AI Deployment Engineer, Agent Enablement",
+   "location": "San Francisco",
+   "applyUrl": "https://jobs.ashbyhq.com/openai/c1a28411-266b-487b-8ef3-03efb254fc36",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 197000
+  },
+  {
+   "company": "OpenAI",
+   "title": "AI Deployment Engineer, Cyber",
+   "location": "San Francisco",
+   "applyUrl": "https://jobs.ashbyhq.com/openai/b46ffd99-f9f2-440c-ac13-448eb7911ad6",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 266000
+  },
+  {
+   "company": "OpenAI",
+   "title": "AI Deployment Engineer, Digital Natives",
+   "location": "New York City",
+   "applyUrl": "https://jobs.ashbyhq.com/openai/3254f6a7-6353-4a77-beec-f37b832c99ae",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 197000
+  },
+  {
+   "company": "OpenAI",
+   "title": "AI Deployment Engineer, Enterprise",
+   "location": "San Francisco",
+   "applyUrl": "https://jobs.ashbyhq.com/openai/01091aed-427d-4e10-8cdb-fb500cf55bb9",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 197000
+  },
+  {
+   "company": "OpenAI",
+   "title": "AI Deployment Engineer, Global Affairs",
+   "location": "New York City",
+   "applyUrl": "https://jobs.ashbyhq.com/openai/8859d8fa-48d8-4e1a-a53f-39e7a58e4522",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 198000
+  },
+  {
+   "company": "OpenAI",
+   "title": "AI Deployment Engineer, Gov",
+   "location": "Washington, DC",
+   "applyUrl": "https://jobs.ashbyhq.com/openai/be7b1bf5-37ab-40f7-9ec1-e9732244f12a",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 197000
+  },
+  {
+   "company": "OpenAI",
+   "title": "AI Deployment Engineer, Messenger Integrations",
+   "location": "San Francisco",
+   "applyUrl": "https://jobs.ashbyhq.com/openai/3cb8b1c4-b24c-4a5b-be9c-3f47a4161e3c",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 197000
+  },
+  {
+   "company": "OpenAI",
+   "title": "AI Deployment Engineer, Plugins",
+   "location": "San Francisco",
+   "applyUrl": "https://jobs.ashbyhq.com/openai/ca9e0aeb-6df1-4b73-8ec0-2e9e124712f1",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 197000
+  },
+  {
+   "company": "OpenAI",
+   "title": "AI Deployment Engineer, Startups",
+   "location": "New York City",
+   "applyUrl": "https://jobs.ashbyhq.com/openai/f92d5695-306d-4af2-8d8b-a09259dd626a",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 198000
+  },
+  {
+   "company": "OpenAI",
+   "title": "AI Deployment Engineer- Codex",
+   "location": "San Francisco",
+   "applyUrl": "https://jobs.ashbyhq.com/openai/ca7e4019-bf93-42fd-8f15-fac59c6e237c",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 197000
+  },
+  {
+   "company": "OpenAI",
+   "title": "Agentic Risk Analyst",
+   "location": "San Francisco",
+   "applyUrl": "https://jobs.ashbyhq.com/openai/e4d0e517-4380-43f3-b5ee-1ce30a88539f",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 288000,
+   "notes": "entry-level signal in title"
+  },
+  {
+   "company": "OpenAI",
+   "title": "Analytics Engineer, GTM",
+   "location": "San Francisco",
+   "applyUrl": "https://jobs.ashbyhq.com/openai/baa1b143-ff74-47f7-9f12-1f62a9361bd4",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 220000
+  },
+  {
+   "company": "OpenAI",
+   "title": "Analytics Engineer, Safety Systems",
+   "location": "San Francisco",
+   "applyUrl": "https://jobs.ashbyhq.com/openai/23662a5c-43c3-4754-a6e0-30f8cbf6d681",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 210000
+  },
+  {
+   "company": "OpenAI",
+   "title": "Applied AI Engineer, Codex Core Agent",
+   "location": "San Francisco",
+   "applyUrl": "https://jobs.ashbyhq.com/openai/577e6673-0a4a-491b-9a0d-facbdd3bdf3c",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 230000
+  },
+  {
+   "company": "OpenAI",
+   "title": "Applied AI Software Engineer, GTM Growth Engineering",
+   "location": "San Francisco",
+   "applyUrl": "https://jobs.ashbyhq.com/openai/38e3c4bf-a632-405e-9619-b87382ca2472",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 230000
+  },
+  {
+   "company": "OpenAI",
+   "title": "Applied Data Science & Insights Leader - GTM Intelligence Solutions and Technical Success",
+   "location": "San Francisco",
+   "applyUrl": "https://jobs.ashbyhq.com/openai/93f558c1-c944-4ddc-b102-addc9446de3d",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "OpenAI",
+   "title": "Business Operations Partner, Transportation Program",
+   "location": "San Francisco",
+   "applyUrl": "https://jobs.ashbyhq.com/openai/a4787fb2-94d7-4b8e-b82c-093663e4ee85",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 158000
+  },
+  {
+   "company": "OpenAI",
+   "title": "Data Engineer",
+   "location": "San Francisco",
+   "applyUrl": "https://jobs.ashbyhq.com/openai/fc5bbc77-a30c-4e7a-9acc-8a2e748545b4",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 230000
+  },
+  {
+   "company": "OpenAI",
+   "title": "Data Engineer, CPU & Storage",
+   "location": "San Francisco",
+   "applyUrl": "https://jobs.ashbyhq.com/openai/0c0fe7aa-24fb-4bad-aa30-3f68f1418e37",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 293000
+  },
+  {
+   "company": "OpenAI",
+   "title": "Data Engineer, Core Experimentation",
+   "location": "Seattle",
+   "applyUrl": "https://jobs.ashbyhq.com/openai/2796d32a-9f7c-4008-a2c5-50dd53b0f2fe",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 293000
+  },
+  {
+   "company": "OpenAI",
+   "title": "Data Engineer, People Innovation Labs",
+   "location": "San Francisco",
+   "applyUrl": "https://jobs.ashbyhq.com/openai/579595e5-0b16-485e-b7c5-102fc7467def",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 293000
+  },
+  {
+   "company": "OpenAI",
+   "title": "Data Engineer, Scaling Analytics",
+   "location": "San Francisco",
+   "applyUrl": "https://jobs.ashbyhq.com/openai/c59e2e83-59a6-45bc-82cd-665c6a8a5761",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 293000
+  },
+  {
+   "company": "OpenAI",
+   "title": "Early Access Deployment Engineer",
+   "location": "San Francisco",
+   "applyUrl": "https://jobs.ashbyhq.com/openai/ee6b7ece-ffcb-4546-8b4c-ef755ec21c14",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 250000
+  },
+  {
+   "company": "OpenAI",
+   "title": "Field Security Specialist (Cyber Security Solutions Engineer)",
+   "location": "San Francisco",
+   "applyUrl": "https://jobs.ashbyhq.com/openai/c9135e66-e49e-4bdc-be89-5d45aad23865",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 335000
+  },
+  {
+   "company": "OpenAI",
+   "title": "Forward Deployed Engineer (FDE) - NYC",
+   "location": "New York City",
+   "applyUrl": "https://jobs.ashbyhq.com/openai/cf31f5f6-4e67-4695-808c-9cdd2e1fa3b1",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 162000
+  },
+  {
+   "company": "OpenAI",
+   "title": "Forward Deployed Engineer (FDE) - SF",
+   "location": "San Francisco",
+   "applyUrl": "https://jobs.ashbyhq.com/openai/305a4b22-7ff9-4fa5-9229-c6a22c9aa64f",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 162000
+  },
+  {
+   "company": "OpenAI",
+   "title": "Forward Deployed Engineer (FDE) - Seattle",
+   "location": "Seattle",
+   "applyUrl": "https://jobs.ashbyhq.com/openai/dc17edac-2993-4318-812a-14864c6f4658",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 162000
+  },
+  {
+   "company": "OpenAI",
+   "title": "Forward Deployed Engineer (FDE), Healthcare - NYC",
+   "location": "New York City",
+   "applyUrl": "https://jobs.ashbyhq.com/openai/2a931dd1-5002-47d1-a367-ec1a19ef7e9e",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 198000
+  },
+  {
+   "company": "OpenAI",
+   "title": "Forward Deployed Engineer (FDE), Healthcare - SF",
+   "location": "San Francisco",
+   "applyUrl": "https://jobs.ashbyhq.com/openai/d8b894e3-c399-4303-a708-3cef8ff5c1a2",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 198000
+  },
+  {
+   "company": "OpenAI",
+   "title": "Forward Deployed Engineer - London",
+   "location": "London, UK",
+   "applyUrl": "https://jobs.ashbyhq.com/openai/cf83e70e-6949-480f-ad97-df0f22cd0283",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "OpenAI",
+   "title": "Forward Deployed Engineer, Gov",
+   "location": "Washington, DC",
+   "applyUrl": "https://jobs.ashbyhq.com/openai/db5a708d-1d7a-4aa3-8dd3-0d0423b6b69f",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 145800
+  },
+  {
+   "company": "OpenAI",
+   "title": "Forward Deployed Security Engineer",
+   "location": "Washington, DC",
+   "applyUrl": "https://jobs.ashbyhq.com/openai/89d61ae8-1ce1-4187-9edd-da8029979e41",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 230000
+  },
+  {
+   "company": "OpenAI",
+   "title": "Forward Deployed Software Engineer - London",
+   "location": "London, UK",
+   "applyUrl": "https://jobs.ashbyhq.com/openai/54b2072e-4c1c-40e4-b2dc-ec51d9d0ab60",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "OpenAI",
+   "title": "Forward Deployed Software Engineer - NYC",
+   "location": "New York City",
+   "applyUrl": "https://jobs.ashbyhq.com/openai/533c0fc9-b773-476d-9f96-a0528efbab0e",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 153000
+  },
+  {
+   "company": "OpenAI",
+   "title": "Forward Deployed Software Engineer - SF",
+   "location": "San Francisco",
+   "applyUrl": "https://jobs.ashbyhq.com/openai/00207abc-49b7-465c-a219-f7c1140f8047",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 185000
+  },
+  {
+   "company": "OpenAI",
+   "title": "Forward Deployed Software Engineer - Seattle",
+   "location": "Seattle",
+   "applyUrl": "https://jobs.ashbyhq.com/openai/7b90b83c-ec28-4e65-a235-6675e37b91c3",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 153000
+  },
+  {
+   "company": "OpenAI",
+   "title": "GTM Strategy & Operations, Digital Native",
+   "location": "San Francisco",
+   "applyUrl": "https://jobs.ashbyhq.com/openai/e884c269-ec1a-4d12-9fcd-8f63f8100c2f",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 189000
+  },
+  {
+   "company": "OpenAI",
+   "title": "GTM Strategy & Operations, Overlay",
+   "location": "San Francisco",
+   "applyUrl": "https://jobs.ashbyhq.com/openai/5c5cfcff-91c8-4181-b30d-2ab9b0091539",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 239000
+  },
+  {
+   "company": "OpenAI",
+   "title": "GTM Strategy & Operations, Professional Services",
+   "location": "San Francisco",
+   "applyUrl": "https://jobs.ashbyhq.com/openai/08e8d03a-df94-46af-8664-cd9aab1af445",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 293000
+  },
+  {
+   "company": "OpenAI",
+   "title": "GTM Strategy & Operations, Strategic Programs",
+   "location": "San Francisco",
+   "applyUrl": "https://jobs.ashbyhq.com/openai/fc999234-93e6-4dbc-bf89-64ca7fb08e22",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 239000
+  },
+  {
+   "company": "OpenAI",
+   "title": "IT Controls Data Engineer",
+   "location": "San Francisco",
+   "applyUrl": "https://jobs.ashbyhq.com/openai/5bc79fde-2f1d-4bb2-8186-4a700ecff37c",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 293000
+  },
+  {
+   "company": "OpenAI",
+   "title": "IT Solutions Engineer",
+   "location": "San Francisco",
+   "applyUrl": "https://jobs.ashbyhq.com/openai/6c6c1ace-12d6-48f0-88f0-488ff8521571",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 177000
+  },
+  {
+   "company": "OpenAI",
+   "title": "Manager, Forward Deployed Engineer (FDE), Life Sciences",
+   "location": "New York City",
+   "applyUrl": "https://jobs.ashbyhq.com/openai/679cc2c7-e153-480b-8b9f-ecb69a19975a",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 252000
+  },
+  {
+   "company": "OpenAI",
+   "title": "Manager, Forward Deployed Engineering",
+   "location": "New York City",
+   "applyUrl": "https://jobs.ashbyhq.com/openai/5bbc43df-558a-4e4b-a0cf-83f185c664d7",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 280000
+  },
+  {
+   "company": "OpenAI",
+   "title": "Partner AI Deployment Engineer",
+   "location": "San Francisco",
+   "applyUrl": "https://jobs.ashbyhq.com/openai/552396f4-dc83-43de-9230-6301e5f461bd",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 197000
+  },
+  {
+   "company": "OpenAI",
+   "title": "Product Manager, API Agents",
+   "location": "San Francisco",
+   "applyUrl": "https://jobs.ashbyhq.com/openai/fc38c6bf-5330-435c-99b6-1bcf1f5829a8",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 293000
+  },
+  {
+   "company": "OpenAI",
+   "title": "Product Manager, API Infrastructure",
+   "location": "San Francisco",
+   "applyUrl": "https://jobs.ashbyhq.com/openai/7ffa2a14-fa9c-46cb-a30a-1f7a35ae904a",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 325000
+  },
+  {
+   "company": "OpenAI",
+   "title": "Product Manager, Codex Security Controls & Partner Interfaces",
+   "location": "US - Remote",
+   "applyUrl": "https://jobs.ashbyhq.com/openai/97681dd5-65ad-4eb5-b692-e6d192871c38",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 293000
+  },
+  {
+   "company": "OpenAI",
+   "title": "Product Manager, Core Models",
+   "location": "San Francisco",
+   "applyUrl": "https://jobs.ashbyhq.com/openai/33b8effb-b048-4934-a279-87fff192a330",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 347000
+  },
+  {
+   "company": "OpenAI",
+   "title": "Product Manager, Cyber Defense and Blue Team",
+   "location": "San Francisco",
+   "applyUrl": "https://jobs.ashbyhq.com/openai/37d6637c-48aa-48c7-8665-ec5abfcf32d0",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 293000
+  },
+  {
+   "company": "OpenAI",
+   "title": "Product Manager, Financial Engineering",
+   "location": "San Francisco",
+   "applyUrl": "https://jobs.ashbyhq.com/openai/0f4da2b4-df8a-4560-809d-d0a6ac1ad9bc",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 293000
+  },
+  {
+   "company": "OpenAI",
+   "title": "Product Manager, IT",
+   "location": "San Francisco",
+   "applyUrl": "https://jobs.ashbyhq.com/openai/c3783e22-c6b6-41d6-b0d4-2b648912268f",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 293000
+  },
+  {
+   "company": "OpenAI",
+   "title": "Product Manager, Legal",
+   "location": "San Francisco",
+   "applyUrl": "https://jobs.ashbyhq.com/openai/83b3ef17-5211-403d-b763-850e1c60faa0",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 347000
+  },
+  {
+   "company": "OpenAI",
+   "title": "Product Manager, Safety Measurement",
+   "location": "San Francisco",
+   "applyUrl": "https://jobs.ashbyhq.com/openai/fbc7ebaf-3a26-406d-9ff6-f166f3e246a2",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 293000
+  },
+  {
+   "company": "OpenAI",
+   "title": "Product Manager, Sensitive Deployments",
+   "location": "San Francisco",
+   "applyUrl": "https://jobs.ashbyhq.com/openai/05a8cae8-81bd-4f7b-bc48-41ef1bd67e5d",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 347000
+  },
+  {
+   "company": "OpenAI",
+   "title": "Product Manager, Shopping",
+   "location": "San Francisco",
+   "applyUrl": "https://jobs.ashbyhq.com/openai/df8a1d73-58b9-4571-86f5-da9a12155fbb",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 347000
+  },
+  {
+   "company": "OpenAI",
+   "title": "Quantitative Intelligence Analyst",
+   "location": "San Francisco",
+   "applyUrl": "https://jobs.ashbyhq.com/openai/5834b531-bb89-4471-9253-8c30bc0b26a8",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 198000,
+   "notes": "entry-level signal in title"
+  },
+  {
+   "company": "OpenAI",
+   "title": "Revenue Operations Business Partner - Technical Success",
+   "location": "San Francisco",
+   "applyUrl": "https://jobs.ashbyhq.com/openai/d929aa17-a339-4b96-b0ee-b0fc0ed9218c",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 239000
+  },
+  {
+   "company": "OpenAI",
+   "title": "Sales Strategy & Operations - Central",
+   "location": "San Francisco",
+   "applyUrl": "https://jobs.ashbyhq.com/openai/2881fcec-3ab8-480c-813f-14769dcbf963",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 189000
+  },
+  {
+   "company": "OpenAI",
+   "title": "Software Engineer, Infrastructure - Analytics Platform",
+   "location": "San Francisco",
+   "applyUrl": "https://jobs.ashbyhq.com/openai/e44bfa94-0b82-4d0c-b224-02155b76eea9",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 230000
+  },
+  {
+   "company": "OpenAI",
+   "title": "Solutions Engineer, Ads",
+   "location": "London, UK",
+   "applyUrl": "https://jobs.ashbyhq.com/openai/f20c5c53-e5ed-4bbd-a825-4ec7f543e3e0",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "OpenAI",
+   "title": "Solutions Engineer, Core Digital Native",
+   "location": "San Francisco",
+   "applyUrl": "https://jobs.ashbyhq.com/openai/3a64da1c-bf29-4e52-baa3-a8f35f16ff74",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 221000
+  },
+  {
+   "company": "OpenAI",
+   "title": "Solutions Engineer, Core Enterprise",
+   "location": "San Francisco",
+   "applyUrl": "https://jobs.ashbyhq.com/openai/1953efa7-5c1f-4878-b4cb-926cd35aafdb",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 221000
+  },
+  {
+   "company": "OpenAI",
+   "title": "Solutions Engineer, Digital Natives (Strategics)",
+   "location": "San Francisco",
+   "applyUrl": "https://jobs.ashbyhq.com/openai/56fceb8e-589b-410e-8b21-24f9945ccb9d",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 311000
+  },
+  {
+   "company": "OpenAI",
+   "title": "Solutions Engineer, Pre-Sales",
+   "location": "San Francisco",
+   "applyUrl": "https://jobs.ashbyhq.com/openai/98a36c10-3497-4955-9cc0-a6f211e4dc1b",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 156600
+  },
+  {
+   "company": "OpenAI",
+   "title": "Strategy & Operations Launch Programs",
+   "location": "San Francisco",
+   "applyUrl": "https://jobs.ashbyhq.com/openai/d2e1f1e6-e1dd-4dc3-9a8d-73bce0114a28",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 234000
+  },
+  {
+   "company": "OpenAI",
+   "title": "Strategy & Operations Programs, Support",
+   "location": "San Francisco",
+   "applyUrl": "https://jobs.ashbyhq.com/openai/9747412d-a23d-48ba-bddd-ad1247c360f5",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 216000
+  },
+  {
+   "company": "OpenAI",
+   "title": "User Safety & Risk Operations Analyst - Global Response (Weekend Shift)",
+   "location": "San Francisco",
+   "applyUrl": "https://jobs.ashbyhq.com/openai/d990222d-ecf1-417f-a248-6e962b5a18e0",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 189000,
+   "notes": "entry-level signal in title"
+  },
+  {
+   "company": "Plaid",
+   "title": "Business Operations",
+   "location": "San Francisco HQ",
+   "applyUrl": "https://jobs.ashbyhq.com/plaid/6b08e0e9-2159-4002-bf54-b30dd5bda80c",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 162000
+  },
+  {
+   "company": "Plaid",
+   "title": "Fraud Solutions Consultant",
+   "location": "New York City Office",
+   "applyUrl": "https://jobs.ashbyhq.com/plaid/6dbf0f7f-ef35-4037-9418-6b2460f41345",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 181200
+  },
+  {
+   "company": "Plaid",
+   "title": "Fraud and Abuse Operations Analyst",
+   "location": "San Francisco HQ",
+   "applyUrl": "https://jobs.ashbyhq.com/plaid/02569523-bd54-4f1f-b88e-38beef2f824d",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 138000,
+   "notes": "entry-level signal in title"
+  },
+  {
+   "company": "Plaid",
+   "title": "GTM Strategy & Operations",
+   "location": "New York City Office",
+   "applyUrl": "https://jobs.ashbyhq.com/plaid/33379e81-e111-4bb8-8c6b-9e64d4fa51c5",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 162200
+  },
+  {
+   "company": "Plaid",
+   "title": "Product Manager, Account Verification",
+   "location": "San Francisco HQ",
+   "applyUrl": "https://jobs.ashbyhq.com/plaid/0fa4649a-dae2-4c13-ae70-8e93ce221152",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 190800
+  },
+  {
+   "company": "Plaid",
+   "title": "Technical Account Manager - FinTech",
+   "location": "San Francisco HQ",
+   "applyUrl": "https://jobs.ashbyhq.com/plaid/2c1182ab-6671-4491-bc62-c85261c3feff",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 157200
+  },
+  {
+   "company": "Plaid",
+   "title": "Technical Account Manager - Territory - Partnerships",
+   "location": "San Francisco HQ",
+   "applyUrl": "https://jobs.ashbyhq.com/plaid/e66e197d-b845-40d8-bc85-4239619a2ce6",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 157200
+  },
+  {
+   "company": "Ramp",
+   "title": "AML Operations Analyst",
+   "location": "New York, NY (HQ)",
+   "applyUrl": "https://jobs.ashbyhq.com/ramp/16fb536d-fe10-4ea7-8956-d6d0cbddd6f5",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 100000,
+   "notes": "entry-level signal in title"
+  },
+  {
+   "company": "Ramp",
+   "title": "Applied AI Engineer",
+   "location": "New York, NY (HQ)",
+   "applyUrl": "https://jobs.ashbyhq.com/ramp/d204e136-2749-42de-82b4-88a0dd352090",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 204400
+  },
+  {
+   "company": "Ramp",
+   "title": "Applied AI Engineer, Fullstack",
+   "location": "New York, NY (HQ)",
+   "applyUrl": "https://jobs.ashbyhq.com/ramp/6a7e382f-240a-4952-b9e5-7fe2b3856bc9",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 204400
+  },
+  {
+   "company": "Ramp",
+   "title": "Employee Lifecycle Analyst",
+   "location": "New York, NY (HQ)",
+   "applyUrl": "https://jobs.ashbyhq.com/ramp/1c8e2b03-fcb3-4949-9113-07812f138eb6",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 88000,
+   "notes": "entry-level signal in title"
+  },
+  {
+   "company": "Ramp",
+   "title": "Product Manager | Tax",
+   "location": "New York, NY (HQ)",
+   "applyUrl": "https://jobs.ashbyhq.com/ramp/881f9f7d-9ec5-4b69-b50d-a67000264ca8",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 230000
+  },
+  {
+   "company": "Ramp",
+   "title": "Product Manager | Vendor Intelligence & Marketplace",
+   "location": "New York, NY (HQ)",
+   "applyUrl": "https://jobs.ashbyhq.com/ramp/cf3516f6-4d6b-4872-831f-c8ef4a3078ee",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 230000
+  },
+  {
+   "company": "Ramp",
+   "title": "Product Manager, AI Revenue Systems",
+   "location": "New York",
+   "applyUrl": "https://jobs.ashbyhq.com/ramp/4e9886c1-134b-4cc7-9bcf-eb56bd0ca71f",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 235000
+  },
+  {
+   "company": "Ramp",
+   "title": "Software Engineer, Forward Deployed AI",
+   "location": "New York, NY (HQ)",
+   "applyUrl": "https://jobs.ashbyhq.com/ramp/b614563f-3ce6-4dca-b5ba-0e5a6c8bda27",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 189000
+  },
+  {
+   "company": "Ramp",
+   "title": "Solutions Consultant | Enterprise",
+   "location": "New York, NY (HQ)",
+   "applyUrl": "https://jobs.ashbyhq.com/ramp/29b679a8-9990-48c1-b91e-001c566ced27",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 182160
+  },
+  {
+   "company": "Ramp",
+   "title": "Solutions Consultant, Commercial",
+   "location": "Remote (US)",
+   "applyUrl": "https://jobs.ashbyhq.com/ramp/220e674a-fc70-439f-bacf-687553ca59c9",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 119000
+  },
+  {
+   "company": "Ramp",
+   "title": "Solutions Consultant, Mid-Market",
+   "location": "New York, NY (HQ)",
+   "applyUrl": "https://jobs.ashbyhq.com/ramp/f36f233b-bb27-4334-87df-8dc02b897724",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 151000
+  },
+  {
+   "company": "Ramp",
+   "title": "Solutions Consultant, Post Sales, Commercial",
+   "location": "Remote (US)",
+   "applyUrl": "https://jobs.ashbyhq.com/ramp/8ca5c32b-e6c7-47e3-af23-291f122fa0f8",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 119000
+  },
+  {
+   "company": "Ramp",
+   "title": "Solutions Consultant, Post Sales, Enterprise",
+   "location": "Remote (US)",
+   "applyUrl": "https://jobs.ashbyhq.com/ramp/971abc99-f20b-43f0-91d6-90bcbfa2c8d9",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 182000
+  },
+  {
+   "company": "Ramp",
+   "title": "Solutions Consultant, Post Sales, Mid-Market",
+   "location": "Remote (US)",
+   "applyUrl": "https://jobs.ashbyhq.com/ramp/492823d8-9651-46cf-9d33-a632ef706879",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 151000
+  },
+  {
+   "company": "Scale AI",
+   "title": "AI Product Manager (Coding/Multimodal)",
+   "location": "San Francisco, CA",
+   "applyUrl": "https://job-boards.greenhouse.io/scaleai/jobs/4609736005",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Scale AI",
+   "title": "Applied AI Engineer, Global Public Sector",
+   "location": "Doha, Qatar; London, UK",
+   "applyUrl": "https://job-boards.greenhouse.io/scaleai/jobs/4413992005",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Scale AI",
+   "title": "Deployment Strategist",
+   "location": "Los Angeles, CA",
+   "applyUrl": "https://job-boards.greenhouse.io/scaleai/jobs/4713532005",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Scale AI",
+   "title": "Forward Deployed Engineer, GenAI",
+   "location": "San Francisco, CA; New York, NY",
+   "applyUrl": "https://job-boards.greenhouse.io/scaleai/jobs/4593571005",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Scale AI",
+   "title": "Forward Deployed Product Manager, Enterprise",
+   "location": "New York, NY",
+   "applyUrl": "https://job-boards.greenhouse.io/scaleai/jobs/4673051005",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Scale AI",
+   "title": "Forward Deployed Product Manager, Public Sector",
+   "location": "New York, NY; Washington, DC",
+   "applyUrl": "https://job-boards.greenhouse.io/scaleai/jobs/4713648005",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Scale AI",
+   "title": "Forward Deployed Software Engineer, Public Sector",
+   "location": "Austin, TX; Honolulu, HI; St. Louis, MO; Washington, DC",
+   "applyUrl": "https://job-boards.greenhouse.io/scaleai/jobs/4481921005",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Scale AI",
+   "title": "Frontier Agents Engineer (Applied AI)",
+   "location": "San Francisco, CA; New York, NY",
+   "applyUrl": "https://job-boards.greenhouse.io/scaleai/jobs/4720573005",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Scale AI",
+   "title": "Frontier Agents Engineer (Forward Deployed Engineering)",
+   "location": "San Francisco, CA; New York, NY",
+   "applyUrl": "https://job-boards.greenhouse.io/scaleai/jobs/4694861005",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Scale AI",
+   "title": "Machine Learning Solutions Engineer – Robotics",
+   "location": "San Francisco, CA",
+   "applyUrl": "https://job-boards.greenhouse.io/scaleai/jobs/4640096005",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Scale AI",
+   "title": "Product Manager, Enterprise Core Platform",
+   "location": "New York, NY; San Francisco, CA",
+   "applyUrl": "https://job-boards.greenhouse.io/scaleai/jobs/4699779005",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Scale AI",
+   "title": "Product Manager, Gen AI",
+   "location": "New York, NY; San Francisco, CA",
+   "applyUrl": "https://job-boards.greenhouse.io/scaleai/jobs/4675842005",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Scale AI",
+   "title": "Solutions Engineer (Clearance Required)",
+   "location": "Washington, DC",
+   "applyUrl": "https://job-boards.greenhouse.io/scaleai/jobs/4663481005",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Scale AI",
+   "title": "Solutions Engineer – Robotics & Autonomous Driving",
+   "location": "San Francisco, CA; New York, NY",
+   "applyUrl": "https://job-boards.greenhouse.io/scaleai/jobs/4710382005",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Scale AI",
+   "title": "Solutions Engineer, Enterprise",
+   "location": "London, UK",
+   "applyUrl": "https://job-boards.greenhouse.io/scaleai/jobs/4642876005",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Sierra",
+   "title": "Accounts Payable Analyst",
+   "location": "San Francisco, CA",
+   "applyUrl": "https://jobs.ashbyhq.com/sierra/4385bb12-b355-4697-b839-ecfec1233f1e",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 140000,
+   "notes": "entry-level signal in title"
+  },
+  {
+   "company": "Sierra",
+   "title": "Forward Deployed Infrastructure Engineer",
+   "location": "San Francisco, CA",
+   "applyUrl": "https://jobs.ashbyhq.com/sierra/d9c0aa93-e35d-4752-9cef-4c39dcad5365",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 230000
+  },
+  {
+   "company": "Sierra",
+   "title": "GTM Operations Analyst, Agent Development",
+   "location": "San Francisco, CA",
+   "applyUrl": "https://jobs.ashbyhq.com/sierra/85e1d0f9-e0d5-4a82-9b30-fa4372e32872",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 180000,
+   "notes": "entry-level signal in title"
+  },
+  {
+   "company": "Sierra",
+   "title": "GTM Strategy and Operations",
+   "location": "San Francisco, CA",
+   "applyUrl": "https://jobs.ashbyhq.com/sierra/6b9b6904-a4b1-444b-8c35-f2bbb5ee2ff5",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 215000
+  },
+  {
+   "company": "Sierra",
+   "title": "Pricing Strategy and Operations",
+   "location": "San Francisco, CA",
+   "applyUrl": "https://jobs.ashbyhq.com/sierra/39e15cc4-a16e-4ddb-b609-a345e2dd67c8",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 220000
+  },
+  {
+   "company": "Sierra",
+   "title": "Product Manager, Agent Data Platform",
+   "location": "San Francisco, CA",
+   "applyUrl": "https://jobs.ashbyhq.com/sierra/422cb7bb-ab03-447b-808c-6d72f59bbd2f",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 175000
+  },
+  {
+   "company": "Sierra",
+   "title": "Product Manager, Agent Development",
+   "location": "San Francisco, CA",
+   "applyUrl": "https://jobs.ashbyhq.com/sierra/effd7cd2-8a28-4bae-a3b8-40720ba09717",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 180000
+  },
+  {
+   "company": "Sierra",
+   "title": "Product Manager, Agent Development (Brazilian Portuguese speaking)",
+   "location": "San Francisco, CA",
+   "applyUrl": "https://jobs.ashbyhq.com/sierra/4f0e65ba-b262-4d79-b926-3988f8eb0c00",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 180000
+  },
+  {
+   "company": "Sierra",
+   "title": "Product Manager, Agent Development (Spanish speaking)",
+   "location": "San Francisco, CA",
+   "applyUrl": "https://jobs.ashbyhq.com/sierra/9b94e279-5869-4a33-b50f-9aa01ff61a22",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 180000
+  },
+  {
+   "company": "Sierra",
+   "title": "Product Manager, Agent Development - Flagship Deployment",
+   "location": "San Francisco, CA",
+   "applyUrl": "https://jobs.ashbyhq.com/sierra/758beaca-db59-4e46-9867-7a93989735a7",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 180000
+  },
+  {
+   "company": "Sierra",
+   "title": "Product Manager, Agent Development - Healthcare",
+   "location": "San Francisco, CA",
+   "applyUrl": "https://jobs.ashbyhq.com/sierra/65eb2c63-c936-4e8e-87e7-ea080dcdca73",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 180000
+  },
+  {
+   "company": "Sierra",
+   "title": "Product Manager, Agent SDK",
+   "location": "San Francisco, CA",
+   "applyUrl": "https://jobs.ashbyhq.com/sierra/10d2e2f1-6657-40c9-b6fb-6999c76df6cf",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 175000
+  },
+  {
+   "company": "Sierra",
+   "title": "Product Manager, Agent Studio",
+   "location": "San Francisco, CA",
+   "applyUrl": "https://jobs.ashbyhq.com/sierra/5aaa2eeb-92bc-4b0a-901e-8e091eff819e",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 175000
+  },
+  {
+   "company": "Sierra",
+   "title": "Product Manager, Ghostwriter",
+   "location": "San Francisco, CA",
+   "applyUrl": "https://jobs.ashbyhq.com/sierra/22ba107d-de01-4aa3-98fc-838cccad760c",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 230000
+  },
+  {
+   "company": "Sierra",
+   "title": "Product Manager, Infrastructure",
+   "location": "San Francisco, CA",
+   "applyUrl": "https://jobs.ashbyhq.com/sierra/1e052261-0c89-4ccb-abfa-3820a1596a6e",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 175000
+  },
+  {
+   "company": "Sierra",
+   "title": "Product Manager, Voice",
+   "location": "San Francisco, CA",
+   "applyUrl": "https://jobs.ashbyhq.com/sierra/0c66e8ed-1c18-4b64-ad27-a522a866b6e1",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 230000
+  },
+  {
+   "company": "Sierra",
+   "title": "RFP Strategy & Operations Analyst",
+   "location": "San Francisco, CA",
+   "applyUrl": "https://jobs.ashbyhq.com/sierra/03424869-528d-4db1-b099-5d7f736d1a39",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 150000,
+   "notes": "entry-level signal in title"
+  },
+  {
+   "company": "Sierra",
+   "title": "Software Engineer, Insights",
+   "location": "San Francisco, CA",
+   "applyUrl": "https://jobs.ashbyhq.com/sierra/8cca0a0d-7359-410b-81ed-331a0bb4667f",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 230000
+  },
+  {
+   "company": "Sigma Computing",
+   "title": "Commercial Solution Engineer",
+   "location": "San Francisco, CA",
+   "applyUrl": "https://job-boards.greenhouse.io/sigmacomputing/jobs/7771363003",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Sigma Computing",
+   "title": "Customer Deployment Engineer",
+   "location": "New York, New York",
+   "applyUrl": "https://job-boards.greenhouse.io/sigmacomputing/jobs/7812258003",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Sigma Computing",
+   "title": "Data Engineer",
+   "location": "New York City, NY",
+   "applyUrl": "https://job-boards.greenhouse.io/sigmacomputing/jobs/7809974003",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Sigma Computing",
+   "title": "Forward Deployed Engineer",
+   "location": "New York City, NY",
+   "applyUrl": "https://job-boards.greenhouse.io/sigmacomputing/jobs/7776721003",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Sigma Computing",
+   "title": "Solution Engineer",
+   "location": "Remote - US",
+   "applyUrl": "https://job-boards.greenhouse.io/sigmacomputing/jobs/7767726003",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Smartsheet",
+   "title": "Commercial Solutions Engineer",
+   "location": "-REMOTE, USA-",
+   "applyUrl": "https://job-boards.greenhouse.io/smartsheet/jobs/7974885",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Smartsheet",
+   "title": "Enterprise Technical Solutions Engineer",
+   "location": "-REMOTE, USA-",
+   "applyUrl": "https://job-boards.greenhouse.io/smartsheet/jobs/8083523",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Smartsheet",
+   "title": "Solutions Consultant - East",
+   "location": "-REMOTE, USA-",
+   "applyUrl": "https://job-boards.greenhouse.io/smartsheet/jobs/8109667",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Snowflake",
+   "title": "AI/ML Flex Solution Engineer",
+   "location": "US-CA-Remote",
+   "applyUrl": "https://jobs.ashbyhq.com/snowflake/7c0fa868-20c5-4727-9f22-a5ab4bfbc08b",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 165000
+  },
+  {
+   "company": "Snowflake",
+   "title": "Cloud Partner Solutions Engineer (Microsoft Azure)",
+   "location": "US, Remote",
+   "applyUrl": "https://jobs.ashbyhq.com/snowflake/c6737b02-5f22-489c-8565-659fd1e5051a",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 165000
+  },
+  {
+   "company": "Snowflake",
+   "title": "Solution Engineer",
+   "location": "US-IL-Remote",
+   "applyUrl": "https://jobs.ashbyhq.com/snowflake/d790c839-62cf-4378-8f80-eb98b1577016",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 138000
+  },
+  {
+   "company": "Snowflake",
+   "title": "Solutions Architect",
+   "location": "US-NY-New York",
+   "applyUrl": "https://jobs.ashbyhq.com/snowflake/d2d5f9ee-f443-4757-b1b0-8a5c8f257f10",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 196000
+  },
+  {
+   "company": "Stripe",
+   "title": "AI Engineer",
+   "location": "Chicago",
+   "applyUrl": "https://stripe.com/jobs/search?gh_jid=8044460",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Stripe",
+   "title": "AI Product Manager, Professional Services",
+   "location": "New York/ San Francisco",
+   "applyUrl": "https://stripe.com/jobs/search?gh_jid=8064526",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Stripe",
+   "title": "Business Partner Analyst",
+   "location": "US-SF, US-Seattle, US-NYC, US-Chicago, US-Georgia or US-Remote",
+   "applyUrl": "https://stripe.com/jobs/search?gh_jid=8079783",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10",
+   "notes": "entry-level signal in title"
+  },
+  {
+   "company": "Stripe",
+   "title": "Business Value Scale Analyst",
+   "location": "US-Remote",
+   "applyUrl": "https://stripe.com/jobs/search?gh_jid=8097047",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10",
+   "notes": "entry-level signal in title"
+  },
+  {
+   "company": "Stripe",
+   "title": "Credit Risk Analyst Commercial Underwriter, West Coast",
+   "location": "Chicago, US-Remote, Canada-Remote",
+   "applyUrl": "https://stripe.com/jobs/search?gh_jid=7540441",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10",
+   "notes": "entry-level signal in title"
+  },
+  {
+   "company": "Stripe",
+   "title": "Credit Risk Strategy and Analytics",
+   "location": "United States",
+   "applyUrl": "https://stripe.com/jobs/search?gh_jid=8052468",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Stripe",
+   "title": "Data Analyst, Financial Data Engineering",
+   "location": "New York",
+   "applyUrl": "https://stripe.com/jobs/search?gh_jid=8070572",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10",
+   "notes": "entry-level signal in title"
+  },
+  {
+   "company": "Stripe",
+   "title": "Engineering Manager, Forward Deployed (Privy)",
+   "location": "NYC-Privy",
+   "applyUrl": "https://stripe.com/jobs/search?gh_jid=7947546",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Stripe",
+   "title": "Finance & Strategy Analyst",
+   "location": "CHI, SEA, NYC, SF",
+   "applyUrl": "https://stripe.com/jobs/search?gh_jid=7985368",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10",
+   "notes": "entry-level signal in title"
+  },
+  {
+   "company": "Stripe",
+   "title": "Forward Deployed AI Accelerator, Marketing",
+   "location": "Seattle, San Francisco",
+   "applyUrl": "https://stripe.com/jobs/search?gh_jid=7747640",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Stripe",
+   "title": "Forward Deployed Engineer, Privy",
+   "location": "New York Privy HQ",
+   "applyUrl": "https://stripe.com/jobs/search?gh_jid=7230452",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Stripe",
+   "title": "Forward Deployed Engineer, Professional Services",
+   "location": "Seattle, San Francisco, or New York",
+   "applyUrl": "https://stripe.com/jobs/search?gh_jid=8075570",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Stripe",
+   "title": "Fraud Patterns Analyst",
+   "location": "US-Remote",
+   "applyUrl": "https://stripe.com/jobs/search?gh_jid=7913410",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10",
+   "notes": "entry-level signal in title"
+  },
+  {
+   "company": "Stripe",
+   "title": "Monetization Operations Analyst",
+   "location": "Seattle, WA",
+   "applyUrl": "https://stripe.com/jobs/search?gh_jid=8109554",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10",
+   "notes": "entry-level signal in title"
+  },
+  {
+   "company": "Stripe",
+   "title": "Operations Insights, Tax",
+   "location": "US Remote",
+   "applyUrl": "https://stripe.com/jobs/search?gh_jid=7997542",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Stripe",
+   "title": "Partner Solutions Architect - AWS",
+   "location": "New York",
+   "applyUrl": "https://stripe.com/jobs/search?gh_jid=7607761",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Stripe",
+   "title": "Partner Solutions Architect - Billing",
+   "location": "USA",
+   "applyUrl": "https://stripe.com/jobs/search?gh_jid=7927330",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Stripe",
+   "title": "Partner Solutions Architect, Technology Partnerships",
+   "location": "United States",
+   "applyUrl": "https://stripe.com/jobs/search?gh_jid=7964568",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Stripe",
+   "title": "Product Manager - Compliance, Bridge",
+   "location": "New York, San Francisco or Remote",
+   "applyUrl": "https://stripe.com/jobs/search?gh_jid=7979422",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Stripe",
+   "title": "Product Manager, Cash Platform",
+   "location": "New York",
+   "applyUrl": "https://stripe.com/jobs/search?gh_jid=8064900",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Stripe",
+   "title": "Product Manager, Global Payouts",
+   "location": "New York",
+   "applyUrl": "https://stripe.com/jobs/search?gh_jid=7994443",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Stripe",
+   "title": "Product Manager, Link - Consumer",
+   "location": "SF, SEA, NY, Remote-US",
+   "applyUrl": "https://stripe.com/jobs/search?gh_jid=7392697",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Stripe",
+   "title": "Product Manager, Link - Local Payment Methods",
+   "location": "USA",
+   "applyUrl": "https://stripe.com/jobs/search?gh_jid=7981330",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Stripe",
+   "title": "Product Manager, Payments",
+   "location": "SF, NY, SEA, Remote-US",
+   "applyUrl": "https://stripe.com/jobs/search?gh_jid=7176530",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Stripe",
+   "title": "Product Manager, Startup Products",
+   "location": "NYC, Chicago, Seattle, San Francisco",
+   "applyUrl": "https://stripe.com/jobs/search?gh_jid=7901987",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Stripe",
+   "title": "Product Manager, Terminal Device Expansion",
+   "location": "San Francisco",
+   "applyUrl": "https://stripe.com/jobs/search?gh_jid=7927089",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Stripe",
+   "title": "Risk Operations Analyst",
+   "location": "Remote",
+   "applyUrl": "https://stripe.com/jobs/search?gh_jid=7230921",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10",
+   "notes": "entry-level signal in title"
+  },
+  {
+   "company": "Stripe",
+   "title": "Risk Operations Analyst, Financial Crimes",
+   "location": "United States",
+   "applyUrl": "https://stripe.com/jobs/search?gh_jid=7974209",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10",
+   "notes": "entry-level signal in title"
+  },
+  {
+   "company": "Stripe",
+   "title": "Sales Compensation Analytics & Systems Specialist",
+   "location": "CHI, SF, NYC, SEA, US Remote",
+   "applyUrl": "https://stripe.com/jobs/search?gh_jid=7739207",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Stripe",
+   "title": "Sales Strategy & Operations Business Partner",
+   "location": "(San Francisco, Chicago, NYC)",
+   "applyUrl": "https://stripe.com/jobs/search?gh_jid=8089882",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Stripe",
+   "title": "Security Analyst, Bug Bounty",
+   "location": "Remote, North America",
+   "applyUrl": "https://stripe.com/jobs/search?gh_jid=7979393",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10",
+   "notes": "entry-level signal in title"
+  },
+  {
+   "company": "Stripe",
+   "title": "Solutions Architect, Enterprise (Pre-sales)",
+   "location": "Chicago, IL or San Francisco, CA OR US Remote",
+   "applyUrl": "https://stripe.com/jobs/search?gh_jid=7827184",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Stripe",
+   "title": "Solutions Architect, Platforms",
+   "location": "Chicago, IL or New York, NY",
+   "applyUrl": "https://stripe.com/jobs/search?gh_jid=7396509",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Stripe",
+   "title": "Solutions Architect, SMB (Presales)",
+   "location": "Chicago, IL",
+   "applyUrl": "https://stripe.com/jobs/search?gh_jid=7863336",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Stripe",
+   "title": "Specialist Solutions Architect, Billing",
+   "location": "Remote",
+   "applyUrl": "https://stripe.com/jobs/search?gh_jid=7728618",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Stripe",
+   "title": "Specialist Solutions Architect, Payments",
+   "location": "NY, SF, Chicago",
+   "applyUrl": "https://stripe.com/jobs/search?gh_jid=7377591",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Stripe",
+   "title": "Specialist Solutions Architect, Tax",
+   "location": "Chicago, Atlanta, Remote",
+   "applyUrl": "https://stripe.com/jobs/search?gh_jid=8090244",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Stripe",
+   "title": "Technical Account Manager, AI User Segment",
+   "location": "San Francisco, CA",
+   "applyUrl": "https://stripe.com/jobs/search?gh_jid=7918088",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Stripe",
+   "title": "Technical Account Manager, Terminal",
+   "location": "Remote, US",
+   "applyUrl": "https://stripe.com/jobs/search?gh_jid=7366283",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Stripe",
+   "title": "Technical Solutions Engineer",
+   "location": "Seattle, WA, Remote-US",
+   "applyUrl": "https://stripe.com/jobs/search?gh_jid=7377101",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Stripe",
+   "title": "Treasury Finance AI and Quantitative Analytics, Americas",
+   "location": "NYC",
+   "applyUrl": "https://stripe.com/jobs/search?gh_jid=8079132",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Substack",
+   "title": "Product Manager - Creator",
+   "location": "San Francisco (HQ)",
+   "applyUrl": "https://jobs.ashbyhq.com/substack/cf626dcf-0c76-4ad5-a738-3fbc72e4da06",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Substack",
+   "title": "Product Manager - Growth",
+   "location": "San Francisco (HQ)",
+   "applyUrl": "https://jobs.ashbyhq.com/substack/e93b56aa-d7ff-4a0f-90b8-1404e2d30da7",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Toast",
+   "title": "Payments Pricing & Operations Analyst II",
+   "location": "Remote - USA",
+   "applyUrl": "https://careers.toasttab.com/jobs?gh_jid=8113999",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10",
+   "notes": "entry-level signal in title"
+  },
+  {
+   "company": "Tripadvisor",
+   "title": "Data Engineer II (Data Platform)",
+   "location": "Oxford, United Kingdom (Hybrid or Remote)",
+   "applyUrl": "https://job-boards.greenhouse.io/tripadvisor/jobs/8081328",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10",
+   "notes": "entry-level signal in title"
+  },
+  {
+   "company": "Vanta",
+   "title": "GRC Pre-Sales Consultant / Solutions Engineer – DACH market, EMEA",
+   "location": "London, UK",
+   "applyUrl": "https://jobs.ashbyhq.com/vanta/569d8f97-4d2b-43f7-8f0e-8829d7477fb4",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Vanta",
+   "title": "Solutions Engineer, Upmarket (Pre-Sales) - EMEA (German Speaking)",
+   "location": "London, UK",
+   "applyUrl": "https://jobs.ashbyhq.com/vanta/fb16faba-850b-4694-a279-cda81ee16105",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "WHOOP",
+   "title": "AI Risk & Compliance Analyst",
+   "location": "Boston, MA",
+   "applyUrl": "https://jobs.ashbyhq.com/whoop/efbc3b60-edd4-4868-a443-f66c0173bc3b",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "notes": "entry-level signal in title"
+  },
+  {
+   "company": "WHOOP",
+   "title": "Analytics Engineer II",
+   "location": "Boston, MA",
+   "applyUrl": "https://jobs.ashbyhq.com/whoop/4a08ae7c-a883-4664-b55c-a8e93909308c",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "notes": "entry-level signal in title"
+  },
+  {
+   "company": "WHOOP",
+   "title": "Business Analyst I (Growth Marketing)",
+   "location": "Boston, MA",
+   "applyUrl": "https://jobs.ashbyhq.com/whoop/e9c9fa1f-4711-4fa0-876a-eb9787ab77cf",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "notes": "entry-level signal in title"
+  },
+  {
+   "company": "WHOOP",
+   "title": "Business Analyst II (Lifecycle Marketing)",
+   "location": "Boston, MA",
+   "applyUrl": "https://jobs.ashbyhq.com/whoop/4744e033-5c79-462c-adde-847becca5391",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "notes": "entry-level signal in title"
+  },
+  {
+   "company": "WHOOP",
+   "title": "Business Analyst II, Operations",
+   "location": "Boston, MA",
+   "applyUrl": "https://jobs.ashbyhq.com/whoop/76965004-8d7e-4139-bd37-8191ed56880e",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "notes": "entry-level signal in title"
+  },
+  {
+   "company": "WHOOP",
+   "title": "Business Analytics Manager (Operations)",
+   "location": "Boston, MA",
+   "applyUrl": "https://jobs.ashbyhq.com/whoop/22f030b0-0354-4ed5-9e26-1b565d1d72e6",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "WHOOP",
+   "title": "GRC Analyst - Third Party Risk",
+   "location": "Boston, MA",
+   "applyUrl": "https://jobs.ashbyhq.com/whoop/a629ae45-cc5f-4214-82bf-da05ba9ac9b3",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "notes": "entry-level signal in title"
+  },
+  {
+   "company": "WHOOP",
+   "title": "Manager, Revenue Accounting & Analytics",
+   "location": "Boston, MA",
+   "applyUrl": "https://jobs.ashbyhq.com/whoop/77776050-6a3c-40b7-84c2-12f29634d833",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "WHOOP",
+   "title": "Product Analyst",
+   "location": "Boston, MA",
+   "applyUrl": "https://jobs.ashbyhq.com/whoop/412ef632-7883-4100-bb3c-501accf1fcf0",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "notes": "entry-level signal in title"
+  },
+  {
+   "company": "WHOOP",
+   "title": "Product Manager II, Growth - Monetization",
+   "location": "Boston, MA",
+   "applyUrl": "https://jobs.ashbyhq.com/whoop/ed1f426c-a2d4-4a34-a3f0-5e881f1a1442",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "notes": "entry-level signal in title"
+  },
+  {
+   "company": "WHOOP",
+   "title": "Product Manager II, Growth - Web",
+   "location": "Boston, MA",
+   "applyUrl": "https://jobs.ashbyhq.com/whoop/3410d9d6-37c1-4a34-9651-29fb645dd88a",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "notes": "entry-level signal in title"
+  },
+  {
+   "company": "WHOOP",
+   "title": "Security Analyst",
+   "location": "Boston, MA",
+   "applyUrl": "https://jobs.ashbyhq.com/whoop/cf708d9a-150e-4264-968f-e45c5675e2cc",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "notes": "entry-level signal in title"
+  },
+  {
+   "company": "WHOOP",
+   "title": "Wholesale Operations Analyst",
+   "location": "Boston, MA",
+   "applyUrl": "https://jobs.ashbyhq.com/whoop/957325d0-efac-4f74-91cd-7102a70b9cb1",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "notes": "entry-level signal in title"
+  },
+  {
+   "company": "Wayve",
+   "title": "Product Manager, Driving Features",
+   "location": "Sunnyvale, California USA",
+   "applyUrl": "https://jobs.ashbyhq.com/wayve/cf895575-1d8f-4bb3-a7e6-9352de9c7f97",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Writer",
+   "title": "AI deployment engineer (Central)",
+   "location": "Chicago, IL",
+   "applyUrl": "https://jobs.ashbyhq.com/writer/15611b2e-7825-47f2-8f10-8a4e04706b17",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 131800
+  },
+  {
+   "company": "Writer",
+   "title": "AI deployment engineer (East)",
+   "location": "New York City, NY",
+   "applyUrl": "https://jobs.ashbyhq.com/writer/b3c2a1d8-f21c-44cd-906e-114188575e42",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 146400
+  },
+  {
+   "company": "Writer",
+   "title": "AI deployment engineer (UK)",
+   "location": "London, UK",
+   "applyUrl": "https://jobs.ashbyhq.com/writer/a3461384-0df8-4036-be32-449b23a70c0a",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Writer",
+   "title": "AI deployment engineer (West)",
+   "location": "San Francisco, CA",
+   "applyUrl": "https://jobs.ashbyhq.com/writer/9b90ebc6-be50-4818-85de-91d0f2416465",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 131800
+  },
+  {
+   "company": "Writer",
+   "title": "AI engineer",
+   "location": "San Francisco, CA",
+   "applyUrl": "https://jobs.ashbyhq.com/writer/8889d06e-efa9-4096-b806-f1626fe060ae",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 167900
+  },
+  {
+   "company": "Writer",
+   "title": "AI engineer (UK)",
+   "location": "London, UK",
+   "applyUrl": "https://jobs.ashbyhq.com/writer/e89c9689-d5ed-4b95-8f3c-b13c6f4c94ba",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "Writer",
+   "title": "Solutions architect (Central)",
+   "location": "Chicago, IL",
+   "applyUrl": "https://jobs.ashbyhq.com/writer/21f23702-0daf-4266-bf65-b80b0826dc7a",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 164000
+  },
+  {
+   "company": "Writer",
+   "title": "Solutions architect (East)",
+   "location": "New York City, NY",
+   "applyUrl": "https://jobs.ashbyhq.com/writer/a1d96909-a580-4fd6-b099-bfc8a8dfa6e3",
+   "sourceEvidence": "Ashby_LiveATS_API_2026-08-10",
+   "salaryMin": 183000
+  },
+  {
+   "company": "ZoomInfo",
+   "title": "Customer Solutions Analyst II",
+   "location": "Bethesda, Maryland, United States; Vancouver, Washington, United States; Waltham, Massachusetts, United States",
+   "applyUrl": "https://www.zoominfo.com/careers?gh_jid=8569723002",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10",
+   "notes": "entry-level signal in title"
+  },
+  {
+   "company": "ZoomInfo",
+   "title": "GTM Solutions Architect",
+   "location": "Remote",
+   "applyUrl": "https://www.zoominfo.com/careers?gh_jid=8639061002",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  },
+  {
+   "company": "ZoomInfo",
+   "title": "Presales Solutions Architect",
+   "location": "Waltham, Massachusetts, United States",
+   "applyUrl": "https://www.zoominfo.com/careers?gh_jid=8577950002",
+   "sourceEvidence": "Greenhouse_LiveATS_API_2026-08-10"
+  }
+ ]
+}

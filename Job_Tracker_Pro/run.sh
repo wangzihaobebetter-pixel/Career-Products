@@ -46,6 +46,8 @@ if [ "$MODE" = "test" ]; then
   say "Interview prep…";       node verify-interview-prep.cjs
   say "Batch-2 question bank…"; node verify-batch2.cjs
   say "Outreach templates…";   node verify-templates.mjs
+  say "Live Openings data…";   node verify-openings.mjs
+  say "Mobile drawer…";        node verify-mobile.cjs
   say "All checks passed."
   exit 0
 fi

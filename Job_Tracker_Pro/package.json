@@ -8,11 +8,13 @@
     "build": "tsc --noEmit && vite build && npm run publish:pages",
     "build:fast": "vite build && npm run publish:pages",
     "publish:pages": "rm -rf app && cp -R dist app",
-    "verify": "node verify-render.cjs && node verify-interact.cjs && node verify-actions.cjs && node verify-questions.cjs && node verify-dashboard.cjs && node verify-offers.mjs && node verify-sequences.mjs && node verify-interview-prep.cjs && node verify-followups.cjs && node verify-backup.cjs",
+    "verify": "node verify-render.cjs && node verify-interact.cjs && node verify-actions.cjs && node verify-questions.cjs && node verify-dashboard.cjs && node verify-offers.mjs && node verify-sequences.mjs && node verify-interview-prep.cjs && node verify-followups.cjs && node verify-backup.cjs && node verify-openings.mjs && node verify-mobile.cjs",
     "preview": "vite preview",
     "start": "vite --port 5173 --host",
     "test": "esbuild src/lib/match.ts src/lib/followups.ts --format=esm --outdir=.testbuild --log-level=warning && node test/lib.test.mjs",
-    "research": "node tools/reports-to-research.mjs"
+    "research": "node tools/reports-to-research.mjs",
+    "clean:openings": "node tools/clean-openings.mjs",
+    "recheck:openings": "node tools/recheck-openings.mjs"
   },
   "dependencies": {
     "date-fns": "^3.6.0",

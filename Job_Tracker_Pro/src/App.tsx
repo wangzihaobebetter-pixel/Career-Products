@@ -58,6 +58,11 @@ export default function App(){
   const [qsSel, setQsSel] = useState(0);
   const [saving, setSaving] = useState(false);
   const [paletteOpen, setPaletteOpen] = useState(false);
+  /* On a phone the 17-item sidebar cannot sit next to the content, so it becomes
+     an off-canvas drawer. The state lives here rather than in CSS-only form
+     because picking a view has to close it — otherwise you tap "Pipeline" and
+     still stare at the menu. */
+  const [navOpen, setNavOpen] = useState(false);
 
   // Apply theme
   useEffect(()=>{
@@ -92,7 +97,7 @@ export default function App(){
         toast(label ? `Reverted: ${label}` : 'Nothing to undo');
         return;
       }
-      if(e.key==='Escape'){ setQsOpen(false); setPaletteOpen(false); }
+      if(e.key==='Escape'){ setQsOpen(false); setPaletteOpen(false); setNavOpen(false); }
     };
     window.addEventListener('keydown', h);
     return ()=>window.removeEventListener('keydown', h);
@@ -208,8 +213,8 @@ export default function App(){
   };
 
   return (
-    <div className="app">
-      <aside className="sidebar">
+    <div className={"app"+(navOpen?' nav-open':'')}>
+      <aside className={"sidebar"+(navOpen?' open':'')} id="app-nav">
         <div className="brand">
           <span className="logo">🗂</span>
           <div><div className="name">Job Tracker Pro</div><div className="sub">local-first · private</div></div>
@@ -219,7 +224,8 @@ export default function App(){
           return <React.Fragment key={n.view}>
             {n.sec && (!prev || prev.sec!==n.sec) && <div className="nav-sec">{n.sec}</div>}
             <button className={"nav-item"+(view===n.view&&!detailJob&&!detailCompany?' active':'')}
-              onClick={()=>{setView(n.view); setDetailJob(null); setDetailCompany(null);}}>
+              aria-current={view===n.view&&!detailJob&&!detailCompany ? 'page' : undefined}
+              onClick={()=>{setView(n.view); setDetailJob(null); setDetailCompany(null); setNavOpen(false);}}>
               <span className="ico">{n.ico}</span>{n.label}
               {counts[n.view as keyof typeof counts] ? <span className="cnt">{counts[n.view as keyof typeof counts]}</span>:null}
             </button>
@@ -230,16 +236,23 @@ export default function App(){
 
       <main className="main">
         <div className="topbar">
-          <button className="tb-btn" onClick={()=>setQsOpen(true)}>🔍 <span className="kbd">⌘K</span></button>
-          <button className="tb-btn" data-testid="open-palette" onClick={()=>setPaletteOpen(true)}>⌘ <span className="kbd">⇧P</span></button>
+          <button className="tb-btn nav-toggle" aria-label={navOpen?'Close menu':'Open menu'}
+            aria-expanded={navOpen} aria-controls="app-nav"
+            onClick={()=>setNavOpen(o=>!o)}>☰</button>
+          <button className="tb-btn" aria-label="Search records" onClick={()=>setQsOpen(true)}>🔍 <span className="kbd">⌘K</span></button>
+          <button className="tb-btn palette-btn" aria-label="Command palette" data-testid="open-palette" onClick={()=>setPaletteOpen(true)}>⌘ <span className="kbd">⇧P</span></button>
           <div className="title">
             {detailJob? 'Job Detail' : detailCompany? 'Company Detail' : NAV.find(n=>n.view===view)?.label}
           </div>
-          <button className="tb-btn" onClick={openQuickAdd}>＋ New</button>
+          <button className="tb-btn" onClick={openQuickAdd}>＋ <span className="lbl">New</span></button>
           <span className={"saving-ind"+(saving?' saved':'')}><span className="dot"/>{saving?'Saving…':'Saved'}</span>
         </div>
         <div className="content">{renderView()}</div>
       </main>
+
+      {/* Tapping outside the drawer closes it — the expected gesture on a phone,
+          and the only way out if the menu opens over a scrolled view. */}
+      {navOpen && <div className="scrim" onClick={()=>setNavOpen(false)} aria-hidden="true" />}
 
       {qsOpen && <QuickSwitcher query={qsQuery} setQuery={setQsQuery} results={qsResults} sel={qsSel} setSel={setQsSel}
         onPick={handleQsPick} onClose={()=>setQsOpen(false)} />}

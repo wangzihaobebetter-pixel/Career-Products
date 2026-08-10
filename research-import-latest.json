@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-08-10T08:28:57.077Z",
-  "sourceChunk": "M3 Research Burn · 203 reports",
+  "generatedAt": "2026-08-10T10:22:17.719Z",
+  "sourceChunk": "M3 Research Burn · 235 reports",
   "companies": [
     {
       "name": "Decagon",
@@ -116,7 +116,7 @@
     {
       "name": "Wynd Labs",
       "sourceEvidence": "ATS_Board_Sweep_Part2_2026-08-09",
-      "hqLocation": "Remote (US)",
+      "hqLocation": "Remote US",
       "sponsorshipSignal": "未证实",
       "whyRelevant": "\"Specialist\" title, no senior, AI/web-data infrastructure. JD requires Python + BeautifulSoup/Scrapy — engineering-tilt. Wang's call (SQL/Python coursework may be enough; needs portfolio)."
     },
@@ -248,7 +248,7 @@
       "name": "Tulip",
       "sourceEvidence": "ATS_Sweep1_2026-08-09",
       "hqLocation": "Boston, MA",
-      "whyRelevant": "9/10 composable MES + OpsMoto AI Chat + Functions GA = platform-pivot moment; 9/10 vertical-content engine need (life sciences + med device + aerospace); 7/10 slot; 7/10 comp vs. publics; 8/10 fit. = 40/50"
+      "whyRelevant": "token 已迁移"
     },
     {
       "name": "Mercury",
@@ -269,7 +269,7 @@
       "hqLocation": "Boston, MA",
       "remotePolicy": "hybrid",
       "sponsorshipSignal": "✅",
-      "whyRelevant": "重点投"
+      "whyRelevant": "⚠️ 本次抓的 Boston 4 个岗 JD 中未明文，但建议候选人直接邮件 HR 二次确认"
     },
     {
       "name": "SS&C",
@@ -311,7 +311,9 @@
     {
       "name": "Squarespace",
       "sourceEvidence": "BURNK01_LiveDeep_2026-08-10",
-      "sponsorshipSignal": "中"
+      "hqLocation": "NYC",
+      "sponsorshipSignal": "中",
+      "whyRelevant": "明确 entry-level Level"
     },
     {
       "name": "Justworks",
@@ -356,9 +358,9 @@
     {
       "name": "Liberty Mutual",
       "sourceEvidence": "BURNK01_LiveDeep_2026-08-10",
-      "hqLocation": "Boston",
+      "hqLocation": "Boston, MA",
       "sponsorshipSignal": "中",
-      "whyRelevant": "数据岗较少 senior"
+      "whyRelevant": "Liberty Mutual Boston 在招 analyst，Greenhouse libertymutual slug 已迁出（404），Workday libertymutual.wd5.myworkdayjobs.com 在 fetch 时返回 500/400，建议直接 https://jobs.libertymutual.com/"
     },
     {
       "name": "Scale AI",
@@ -430,7 +432,7 @@
     {
       "name": "Salesforce",
       "sourceEvidence": "BURN_A02_WebResearch_2026-08-10",
-      "hqLocation": "Boston, MA",
+      "hqLocation": "New York, NY (Remote-considered)",
       "sponsorshipSignal": "✅ 大量 sponsor，含 Analyst Business Intelligence、AI Engineer、AMTS Software Engineer",
       "whyRelevant": "Trailhead APM trailmix 是官方推荐备考资源"
     },
@@ -446,7 +448,7 @@
       "sourceEvidence": "BURN_A02_WebResearch_2026-08-10",
       "hqLocation": "Boston, MA",
       "sponsorshipSignal": "✅ 大规模 sponsor，含 Data Scientist、ML Engineer",
-      "whyRelevant": "42% 在 $100K–$150K — Data Analyst 1 份记录（median $140,109）；McLean VA / Richmond 为主；Boston / NYC 有 office"
+      "whyRelevant": "Capital One Boston 在招 data analyst，Greenhouse capitalone slug 已迁出（404），建议直接 https://www.capitalonecareers.com/ 查"
     },
     {
       "name": "Adobe",
@@ -505,7 +507,7 @@
     {
       "name": "Stripe",
       "sourceEvidence": "BURN_A02_WebResearch_2026-08-10",
-      "hqLocation": "Remote",
+      "hqLocation": "Remote US",
       "sponsorshipSignal": "✅ 活跃 sponsor",
       "whyRelevant": "53% 在 $150K–$200K — Data Analyst 常见 title"
     },
@@ -560,10 +562,10 @@
     {
       "name": "Wayfair",
       "sourceEvidence": "BURN_A02_WebResearch_2026-08-10",
-      "hqLocation": "Boston, MA (Copley)",
+      "hqLocation": "Boston, MA",
       "remotePolicy": "onsite",
       "sponsorshipSignal": "✅ 大量 sponsor，含 Senior Analyst Commercial Business Analytics",
-      "whyRelevant": "总部 Boston"
+      "whyRelevant": "Wayfair careers 域名 careers.wayfair.com DNS 不解析（ENOTFOUND），需通过 https://www.wayfair.com/careers 登录访问"
     },
     {
       "name": "Walmart (WAL-MART ASSOCIATES INC)",
@@ -573,6 +575,7 @@
     {
       "name": "McKinsey & Company",
       "sourceEvidence": "BURN_A02_WebResearch_2026-08-10",
+      "hqLocation": "Boston, MA",
       "sponsorshipSignal": "✅ 活跃 sponsor，含 Data Scientist、Knowledge Analyst"
     },
     {
@@ -712,7 +715,7 @@
       "sourceEvidence": "BURN_Q03_WebResearch_2026-08-10",
       "hqLocation": "Boston, MA",
       "sponsorshipSignal": "已知 H-1B",
-      "whyRelevant": "总部 Boston"
+      "whyRelevant": "Vertex 在招 analyst，Workday 端点 vrtx.wd1.myworkdayjobs.com 需 POST；建议直接 https://careers.vrtx.com/"
     },
     {
       "name": "Biogen",
@@ -1414,7 +1417,7 @@
       "hqLocation": "SF/NYC/Austin Hybrid + 部分 US-Remote",
       "remotePolicy": "hybrid",
       "sponsorshipSignal": "已知 H-1B",
-      "whyRelevant": "AI/Agent 栈全栈扩张；Strategic Finance Manager Product 对 the candidate \"分析+产品方向\"对口"
+      "whyRelevant": "AI/Agent 栈全栈扩张；Strategic Finance Manager Product 对 Zihao \"分析+产品方向\"对口"
     },
     {
       "name": "Hugging Face",
@@ -1454,7 +1457,8 @@
     {
       "name": "Retool",
       "sourceEvidence": "BURN_Q03_WebResearch_2026-08-10",
-      "sponsorshipSignal": "已知 H-1B"
+      "sponsorshipSignal": "已知 H-1B",
+      "whyRelevant": "所有 slug 变体 404"
     },
     {
       "name": "Airtable",
@@ -1743,7 +1747,8 @@
     },
     {
       "name": "Attentive",
-      "sourceEvidence": "BURN_Q03_WebResearch_2026-08-10"
+      "sourceEvidence": "BURN_Q03_WebResearch_2026-08-10",
+      "whyRelevant": "token 已迁移"
     },
     {
       "name": "Avelios",
@@ -2199,7 +2204,7 @@
       "name": "Affirm",
       "sourceEvidence": "BuiltInBoston_Sweep_2026-08-09",
       "hqLocation": "Boston, MA",
-      "whyRelevant": "2 周前"
+      "whyRelevant": "来源：https://job-boards.greenhouse.io/affirm/jobs/7812990003 ✅（Greenhouse JSON API boards-api.greenhouse.io/v1/boards/affirm/jobs 完整 JD 抓取）。Affirm policy 按岗 hybrid——入门 Analyst 岗（JR104116）目前 JD 无该字眼，可申请；Senior / Manager 岗普遍不 sponsor，避开。"
     },
     {
       "name": "Domino Data Lab",
@@ -2387,14 +2392,208 @@
       "whyRelevant": "公开渠道验证失败（jobs.jpmorgan.com DNS 失败），需通过学校 career center 申请"
     },
     {
+      "name": "State Street - Business Analysis, Middle Office ⚠️",
+      "sourceEvidence": "BurnB01_EntryLevel_LiveScan_2026-08-10",
+      "hqLocation": "Burlington, MA",
+      "sponsorshipSignal": "State Street 是 Boston sponsor-friendly 大行"
+    },
+    {
+      "name": "Edwards Vacuum - Business Analyst ⚠️",
+      "sourceEvidence": "BurnB01_EntryLevel_LiveScan_2026-08-10",
+      "hqLocation": "Massachusetts（远程？）"
+    },
+    {
+      "name": "Insurify - Digital Insurance Agent",
+      "sourceEvidence": "BurnB01_EntryLevel_LiveScan_2026-08-10",
+      "hqLocation": "Cambridge, MA",
+      "whyRelevant": "偏旧，需复核"
+    },
+    {
+      "name": "Walmart - (USA) Senior, Data Analyst ⚠️",
+      "sourceEvidence": "BurnB01_EntryLevel_LiveScan_2026-08-10",
+      "hqLocation": "Raymond, NH",
+      "whyRelevant": "Walmart sponsor-friendly；偏 senior"
+    },
+    {
+      "name": "Curate Partners - Technical Analyst (Investment Platform)",
+      "sourceEvidence": "BurnB01_EntryLevel_LiveScan_2026-08-10",
+      "hqLocation": "Boston, MA",
+      "whyRelevant": "EEO only；咨询合同"
+    },
+    {
+      "name": "Landing Point - Analyst, Investment Operations",
+      "sourceEvidence": "BurnB01_EntryLevel_LiveScan_2026-08-10",
+      "hqLocation": "Cambridge, MA",
+      "whyRelevant": "EEO only；boutique search firm"
+    },
+    {
+      "name": "Kroll - Analyst, Transaction Advisory Services",
+      "sourceEvidence": "BurnB01_EntryLevel_LiveScan_2026-08-10",
+      "hqLocation": "Boston, MA",
+      "whyRelevant": "EEO only；咨询"
+    },
+    {
+      "name": "Bonsai - Compliance Analyst (TA Realty)",
+      "sourceEvidence": "BurnB01_EntryLevel_LiveScan_2026-08-10",
+      "hqLocation": "Boston, MA",
+      "whyRelevant": "EEO only"
+    },
+    {
+      "name": "Crocs, Inc. - Financial Analyst, Digital",
+      "sourceEvidence": "BurnB01_EntryLevel_LiveScan_2026-08-10",
+      "hqLocation": "Westwood, MA",
+      "whyRelevant": "EEO only"
+    },
+    {
+      "name": "MSI - Rotational Undergraduate Analyst - MSI",
+      "sourceEvidence": "BurnB01_EntryLevel_LiveScan_2026-08-10",
+      "hqLocation": "Boston, MA",
+      "whyRelevant": "EEO only"
+    },
+    {
+      "name": "PTC - Pricing Analyst ✅",
+      "sourceEvidence": "BurnB01_EntryLevel_LiveScan_2026-08-10",
+      "hqLocation": "Boston, MA",
+      "whyRelevant": "见上文"
+    },
+    {
+      "name": "Bain & Company - 2026/2027 Business Analyst Internship ⚠️",
+      "sourceEvidence": "BurnB01_EntryLevel_LiveScan_2026-08-10",
+      "hqLocation": "Boston, MA",
+      "whyRelevant": "见下文 MBB 截止日历"
+    },
+    {
+      "name": "Cursor - Data Analyst, User Operations",
+      "sourceEvidence": "BurnB01_EntryLevel_LiveScan_2026-08-10",
+      "hqLocation": "United States"
+    },
+    {
+      "name": "NMI - Data Analyst, Revenue Operations",
+      "sourceEvidence": "BurnB01_EntryLevel_LiveScan_2026-08-10",
+      "hqLocation": "United States"
+    },
+    {
+      "name": "Improvado - Middle+ Marketing Data Analyst ⚠️",
+      "sourceEvidence": "BurnB01_EntryLevel_LiveScan_2026-08-10",
+      "hqLocation": "United States"
+    },
+    {
+      "name": "Improvado - Middle+ Data Analyst (Marketing Experience) ⚠️",
+      "sourceEvidence": "BurnB01_EntryLevel_LiveScan_2026-08-10",
+      "hqLocation": "United States"
+    },
+    {
+      "name": "Jobgether - Data Analyst ⚠️",
+      "sourceEvidence": "BurnB01_EntryLevel_LiveScan_2026-08-10",
+      "hqLocation": "United States"
+    },
+    {
+      "name": "Odyssey",
+      "sourceEvidence": "BurnB01_EntryLevel_LiveScan_2026-08-10",
+      "hqLocation": "Palo Alto, CA",
+      "whyRelevant": "直接剔除主表"
+    },
+    {
+      "name": "Recidiviz",
+      "sourceEvidence": "BurnB01_EntryLevel_LiveScan_2026-08-10",
+      "hqLocation": "Remote NYC+1",
+      "sponsorshipSignal": "未证实",
+      "whyRelevant": "保留作参考"
+    },
+    {
+      "name": "OM GROUP INC.",
+      "sourceEvidence": "BurnB01_EntryLevel_LiveScan_2026-08-10",
+      "whyRelevant": "直接剔除，US citizenship 或 permanent resident 才可"
+    },
+    {
+      "name": "Bain Capital Senior BSA",
+      "sourceEvidence": "BurnB01_EntryLevel_LiveScan_2026-08-10",
+      "whyRelevant": "偏 senior"
+    },
+    {
+      "name": "Amazon / Amazon Robotics",
+      "sourceEvidence": "BurnB01_EntryLevel_LiveScan_2026-08-10"
+    },
+    {
+      "name": "Bain Capital",
+      "sourceEvidence": "BurnB01_EntryLevel_LiveScan_2026-08-10",
+      "hqLocation": "Boston, MA",
+      "sponsorshipSignal": "❌",
+      "whyRelevant": "走 2027 FT Program"
+    },
+    {
+      "name": "Criteo",
+      "sourceEvidence": "BurnB01_EntryLevel_LiveScan_2026-08-10",
+      "hqLocation": "Boston"
+    },
+    {
+      "name": "U.S. Bank",
+      "sourceEvidence": "BurnB01_EntryLevel_LiveScan_2026-08-10",
+      "whyRelevant": "22 天后开"
+    },
+    {
+      "name": "Sun Life",
+      "sourceEvidence": "BurnB01_EntryLevel_LiveScan_2026-08-10",
+      "hqLocation": "Wellesley, MA"
+    },
+    {
+      "name": "Walmart",
+      "sourceEvidence": "BurnB01_EntryLevel_LiveScan_2026-08-10"
+    },
+    {
+      "name": "Hasbro",
+      "sourceEvidence": "BurnB01_EntryLevel_LiveScan_2026-08-10",
+      "hqLocation": "Pawtucket / Boston",
+      "whyRelevant": "玩具 + 数据"
+    },
+    {
+      "name": "Bain & Company / McKinsey / BCG",
+      "sourceEvidence": "BurnB01_EntryLevel_LiveScan_2026-08-10"
+    },
+    {
+      "name": "Databricks",
+      "sourceEvidence": "BurnB04_CareerPath_AIRoles_2026-08-10",
+      "hqLocation": "SF + 30+ offices",
+      "remotePolicy": "hybrid",
+      "sponsorshipSignal": "✅",
+      "whyRelevant": "大公司 University Program,Sponsor 概率高"
+    },
+    {
+      "name": "Cohere",
+      "sourceEvidence": "BurnB04_CareerPath_AIRoles_2026-08-10",
+      "hqLocation": "NYC / SF / Remote US",
+      "sponsorshipSignal": "未证实（默认友好）",
+      "whyRelevant": "JD 抓不到"
+    },
+    {
+      "name": "LangChain",
+      "sourceEvidence": "BurnB04_CareerPath_AIRoles_2026-08-10",
+      "hqLocation": "SF / NYC On-site",
+      "remotePolicy": "remote",
+      "sponsorshipSignal": "未明文",
+      "whyRelevant": "Developer relations 为主"
+    },
+    {
+      "name": "WRITER",
+      "sourceEvidence": "BurnB04_CareerPath_AIRoles_2026-08-10",
+      "hqLocation": "Chicago, NYC, SF, Seattle, London",
+      "remotePolicy": "hybrid",
+      "sponsorshipSignal": "未证实",
+      "whyRelevant": "Enterprise LLM"
+    },
+    {
+      "name": "Lambda",
+      "sourceEvidence": "BurnB04_CareerPath_AIRoles_2026-08-10"
+    },
+    {
       "name": "Grafana Labs",
-      "sourceEvidence": "BurnB05_LiveDeep_2026-08-10",
+      "sourceEvidence": "BurnB05_AIInfra_DevTools_EntryRoles_2026-08-09",
       "sponsorshipSignal": "部分岗标注\"sponsorship not available\"",
       "whyRelevant": "NY US-based Remote. Demand-gen PM at observability leader. SOFT-LOC: needs to be US (Wang is)."
     },
     {
       "name": "Together AI",
-      "sourceEvidence": "BurnB05_LiveDeep_2026-08-10",
+      "sourceEvidence": "BurnB05_AIInfra_DevTools_EntryRoles_2026-08-09",
       "hqLocation": "Bay Area",
       "remotePolicy": "hybrid",
       "sponsorshipSignal": "未明文",
@@ -2402,27 +2601,19 @@
     },
     {
       "name": "LaunchDarkly",
-      "sourceEvidence": "BurnB05_LiveDeep_2026-08-10",
+      "sourceEvidence": "BurnB05_AIInfra_DevTools_EntryRoles_2026-08-09",
       "hqLocation": "(unspecified)",
       "sponsorshipSignal": "未明文",
       "whyRelevant": "Feature-flag co."
     },
     {
       "name": "Sentry",
-      "sourceEvidence": "BurnB05_LiveDeep_2026-08-10",
+      "sourceEvidence": "BurnB05_AIInfra_DevTools_EntryRoles_2026-08-09",
       "sponsorshipSignal": "偏保守"
     },
     {
-      "name": "LangChain",
-      "sourceEvidence": "BurnB05_LiveDeep_2026-08-10",
-      "hqLocation": "SF / NYC On-site",
-      "remotePolicy": "remote",
-      "sponsorshipSignal": "未明文",
-      "whyRelevant": "Developer relations 为主"
-    },
-    {
       "name": "Baseten",
-      "sourceEvidence": "BurnB05_LiveDeep_2026-08-10",
+      "sourceEvidence": "BurnB05_AIInfra_DevTools_EntryRoles_2026-08-09",
       "hqLocation": "SF",
       "remotePolicy": "onsite",
       "sponsorshipSignal": "未明文",
@@ -2430,14 +2621,14 @@
     },
     {
       "name": "Braintrust",
-      "sourceEvidence": "BurnB05_LiveDeep_2026-08-10",
+      "sourceEvidence": "BurnB05_AIInfra_DevTools_EntryRoles_2026-08-09",
       "remotePolicy": "onsite",
       "sponsorshipSignal": "不明",
       "whyRelevant": "careers 抓取失败"
     },
     {
       "name": "Modal",
-      "sourceEvidence": "BurnB05_LiveDeep_2026-08-10",
+      "sourceEvidence": "BurnB05_AIInfra_DevTools_EntryRoles_2026-08-09",
       "hqLocation": "New York / SF / Stockholm",
       "remotePolicy": "onsite",
       "sponsorshipSignal": "不明",
@@ -2445,7 +2636,7 @@
     },
     {
       "name": "Fireworks AI",
-      "sourceEvidence": "BurnB05_LiveDeep_2026-08-10",
+      "sourceEvidence": "BurnB05_AIInfra_DevTools_EntryRoles_2026-08-09",
       "hqLocation": "Bay Area",
       "remotePolicy": "hybrid",
       "sponsorshipSignal": "不明",
@@ -2453,12 +2644,12 @@
     },
     {
       "name": "Arize AI",
-      "sourceEvidence": "BurnB05_LiveDeep_2026-08-10",
+      "sourceEvidence": "BurnB05_AIInfra_DevTools_EntryRoles_2026-08-09",
       "sponsorshipSignal": "不明"
     },
     {
       "name": "Langfuse / Replicate / W&B / Humanloop",
-      "sourceEvidence": "BurnB05_LiveDeep_2026-08-10"
+      "sourceEvidence": "BurnB05_AIInfra_DevTools_EntryRoles_2026-08-09"
     },
     {
       "name": "Pocket",
@@ -2775,6 +2966,84 @@
       "whyRelevant": "Risk + payments"
     },
     {
+      "name": "Plaid",
+      "sourceEvidence": "BurnC11_LiveATS_JobScan_2026-08-10",
+      "hqLocation": "San Francisco Bay Area",
+      "sponsorshipSignal": "[未找到]",
+      "whyRelevant": "SF"
+    },
+    {
+      "name": "Netlify",
+      "sourceEvidence": "BurnC11_LiveATS_JobScan_2026-08-10",
+      "whyRelevant": "token 已迁移"
+    },
+    {
+      "name": "Gopuff",
+      "sourceEvidence": "BurnC11_LiveATS_JobScan_2026-08-10",
+      "whyRelevant": "Data Engineer 远程"
+    },
+    {
+      "name": "Wistia",
+      "sourceEvidence": "BurnC11_LiveATS_JobScan_2026-08-10",
+      "whyRelevant": "token 已迁移"
+    },
+    {
+      "name": "Buildium",
+      "sourceEvidence": "BurnC11_LiveATS_JobScan_2026-08-10"
+    },
+    {
+      "name": "Circle",
+      "sourceEvidence": "BurnC11_LiveATS_JobScan_2026-08-10"
+    },
+    {
+      "name": "Ezcater",
+      "sourceEvidence": "BurnC11_LiveATS_JobScan_2026-08-10",
+      "hqLocation": "Boston, MA"
+    },
+    {
+      "name": "Alloy",
+      "sourceEvidence": "BurnC11_LiveATS_JobScan_2026-08-10",
+      "whyRelevant": "Senior Customer Success Manager (DC)"
+    },
+    {
+      "name": "Vestaboard",
+      "sourceEvidence": "BurnC11_LiveATS_JobScan_2026-08-10"
+    },
+    {
+      "name": "Zipline",
+      "sourceEvidence": "BurnC11_LiveATS_JobScan_2026-08-10"
+    },
+    {
+      "name": "Verkada",
+      "sourceEvidence": "BurnC11_LiveATS_JobScan_2026-08-10",
+      "hqLocation": "San Mateo, CA"
+    },
+    {
+      "name": "Skims, Williams Sonoma, etc.",
+      "sourceEvidence": "BurnC11_LiveATS_JobScan_2026-08-10"
+    },
+    {
+      "name": "Vanta",
+      "sourceEvidence": "BurnC11_LiveATS_JobScan_2026-08-10",
+      "hqLocation": "★★★★★",
+      "sponsorshipSignal": "★✩",
+      "whyRelevant": "Trust/security,PMM 路径"
+    },
+    {
+      "name": "ElevenLabs",
+      "sourceEvidence": "BurnC11_LiveATS_JobScan_2026-08-10",
+      "hqLocation": "30+ 国家 / NY / London / Warsaw",
+      "remotePolicy": "remote",
+      "sponsorshipSignal": "未证实",
+      "whyRelevant": "remote-first；hybrid 也可"
+    },
+    {
+      "name": "Mercor",
+      "sourceEvidence": "BurnC11_LiveATS_JobScan_2026-08-10",
+      "hqLocation": "New York, NY",
+      "remotePolicy": "onsite"
+    },
+    {
       "name": "Liva AI",
       "sourceEvidence": "BurnF04b_Chunk04_Deep_2026-08-09",
       "hqLocation": "SF / Remote",
@@ -2858,31 +3127,8 @@
       "sourceEvidence": "BurnF08b_Chunk08_Deep_2026-08-09"
     },
     {
-      "name": "Cohere",
-      "sourceEvidence": "BurnF08b_Chunk08_Deep_2026-08-09",
-      "hqLocation": "NYC",
-      "sponsorshipSignal": "未证实（默认友好）",
-      "whyRelevant": "JD 抓不到"
-    },
-    {
-      "name": "ElevenLabs",
-      "sourceEvidence": "BurnF08b_Chunk08_Deep_2026-08-09",
-      "hqLocation": "30+ 国家 / NY / London / Warsaw",
-      "remotePolicy": "remote",
-      "sponsorshipSignal": "未证实",
-      "whyRelevant": "remote-first；hybrid 也可"
-    },
-    {
       "name": "AWS Bedrock",
       "sourceEvidence": "BurnF08b_Chunk08_Deep_2026-08-09"
-    },
-    {
-      "name": "Writer",
-      "sourceEvidence": "BurnF08b_Chunk08_Deep_2026-08-09",
-      "hqLocation": "Chicago, NYC, SF, Seattle, London",
-      "remotePolicy": "hybrid",
-      "sponsorshipSignal": "未证实",
-      "whyRelevant": "Enterprise LLM"
     },
     {
       "name": "NVIDIA",
@@ -2894,14 +3140,6 @@
     {
       "name": "Y Combinator",
       "sourceEvidence": "BurnF08b_Chunk08_Deep_2026-08-09"
-    },
-    {
-      "name": "Databricks",
-      "sourceEvidence": "BurnH_h04r_面试实战手册_II_2026-08-10",
-      "hqLocation": "SF + 30+ offices",
-      "remotePolicy": "hybrid",
-      "sponsorshipSignal": "✅",
-      "whyRelevant": "大公司 University Program,Sponsor 概率高"
     },
     {
       "name": "Mistral AI",
@@ -2952,13 +3190,6 @@
       "hqLocation": "San Francisco, CA",
       "sponsorshipSignal": "✅",
       "whyRelevant": "但 remote-friendly"
-    },
-    {
-      "name": "Bain Capital",
-      "sourceEvidence": "BurnH_h05r_公司档案总集_2026-08-10",
-      "hqLocation": "Boston, MA",
-      "sponsorshipSignal": "❌",
-      "whyRelevant": "走 2027 FT Program"
     },
     {
       "name": "Bain & Co",
@@ -3054,13 +3285,6 @@
       "sponsorshipSignal": "未证实"
     },
     {
-      "name": "Recidiviz",
-      "sourceEvidence": "BurnH_h05r_公司档案总集_2026-08-10",
-      "hqLocation": "Remote NYC+1",
-      "sponsorshipSignal": "未证实",
-      "whyRelevant": "tech non-profit"
-    },
-    {
       "name": "Robinhood",
       "sourceEvidence": "BurnH_h05r_公司档案总集_2026-08-10",
       "hqLocation": "Menlo Park, CA / New York, NY",
@@ -3073,7 +3297,7 @@
       "hqLocation": "多为 Remote",
       "remotePolicy": "remote",
       "sponsorshipSignal": "未证实",
-      "whyRelevant": "Data Analytics Leader 是 the candidate 的甜区；Runway 几乎全 Remote"
+      "whyRelevant": "Data Analytics Leader 是 Zihao 的甜区；Runway 几乎全 Remote"
     },
     {
       "name": "Snap",
@@ -3156,13 +3380,6 @@
       "sourceEvidence": "BurnJ01_LiveDeep_2026-08-10",
       "remotePolicy": "remote",
       "whyRelevant": "Hex 是 AI 数据公司,有 PM 路径"
-    },
-    {
-      "name": "Vanta",
-      "sourceEvidence": "BurnJ01_LiveDeep_2026-08-10",
-      "hqLocation": "★★★★★",
-      "sponsorshipSignal": "★✩",
-      "whyRelevant": "Trust/security,PMM 路径"
     },
     {
       "name": "Rippling",
@@ -3340,7 +3557,8 @@
     },
     {
       "name": "Drift",
-      "sourceEvidence": "BurnQ05_MasterBattlePlan_v2_2026-08-09"
+      "sourceEvidence": "BurnQ05_MasterBattlePlan_v2_2026-08-09",
+      "whyRelevant": "token 已迁移"
     },
     {
       "name": "Mark Agar",
@@ -3469,11 +3687,6 @@
       "whyRelevant": "Boston HQ"
     },
     {
-      "name": "Sun Life",
-      "sourceEvidence": "BurnR11_NewGrad_LiveMarket_2026-08-10",
-      "hqLocation": "Wellesley, MA"
-    },
-    {
       "name": "FM Global",
       "sourceEvidence": "BurnR11_NewGrad_LiveMarket_2026-08-10",
       "hqLocation": "Boston"
@@ -3522,11 +3735,6 @@
     },
     {
       "name": "Profitero+",
-      "sourceEvidence": "BurnR11_NewGrad_LiveMarket_2026-08-10",
-      "hqLocation": "Boston"
-    },
-    {
-      "name": "Criteo",
       "sourceEvidence": "BurnR11_NewGrad_LiveMarket_2026-08-10",
       "hqLocation": "Boston"
     },
@@ -3684,12 +3892,6 @@
       "hqLocation": "Boston"
     },
     {
-      "name": "Hasbro",
-      "sourceEvidence": "BurnR11_NewGrad_LiveMarket_2026-08-10",
-      "hqLocation": "Pawtucket / Boston",
-      "whyRelevant": "玩具 + 数据"
-    },
-    {
       "name": "Raytheon (RTX)",
       "sourceEvidence": "BurnR11_NewGrad_LiveMarket_2026-08-10",
       "hqLocation": "多地点 MA"
@@ -3763,10 +3965,6 @@
       "name": "CVS Health",
       "sourceEvidence": "BurnR14_Comp_Visa_Negotiation_2026-08-09",
       "sponsorshipSignal": "H-1B history (inferred)"
-    },
-    {
-      "name": "Walmart",
-      "sourceEvidence": "BurnR14_Comp_Visa_Negotiation_2026-08-09"
     },
     {
       "name": "Disney",
@@ -4241,12 +4439,6 @@
       "hqLocation": "New York, NY"
     },
     {
-      "name": "Mercor",
-      "sourceEvidence": "BurnR3_01_DeepResearch_2026-08-09",
-      "hqLocation": "New York, NY",
-      "remotePolicy": "onsite"
-    },
-    {
       "name": "Loop Payments",
       "sourceEvidence": "BurnR3_01_DeepResearch_2026-08-09",
       "hqLocation": "Buffalo NY"
@@ -4300,11 +4492,6 @@
       "name": "Suki",
       "sourceEvidence": "BurnR3_01_DeepResearch_2026-08-09",
       "hqLocation": "Redwood City, CA"
-    },
-    {
-      "name": "Odyssey",
-      "sourceEvidence": "BurnR3_01_DeepResearch_2026-08-09",
-      "hqLocation": "Palo Alto, CA"
     },
     {
       "name": "XPENG",
@@ -4503,148 +4690,141 @@
     },
     {
       "name": "Visa",
-      "sourceEvidence": "BurnR5_03_DeepResearch_2026-08-09",
+      "sourceEvidence": "BurnR5_03_PM_Pathways_2026-08-09",
       "sponsorshipSignal": "❌ Visa JD 原文: \"Visa will not sponsor applicants for work visas... Permanent Authorization to work in the U.S. is a preco",
       "whyRelevant": "这是 Wang 必读 的红线 — Visa 是 PM sponsor 政策的反例"
     },
     {
       "name": "American Express",
-      "sourceEvidence": "BurnR5_03_DeepResearch_2026-08-09",
+      "sourceEvidence": "BurnR5_03_PM_Pathways_2026-08-09",
       "sponsorshipSignal": "[未找到] 当前实证",
       "whyRelevant": "Aexp.eightfold 站；NY base"
     },
     {
       "name": "American Airlines",
-      "sourceEvidence": "BurnR5_03_DeepResearch_2026-08-09",
+      "sourceEvidence": "BurnR5_03_PM_Pathways_2026-08-09",
       "sponsorshipSignal": "[未找到]",
       "whyRelevant": "Dallas TX"
     },
     {
       "name": "JetBlue",
-      "sourceEvidence": "BurnR5_03_DeepResearch_2026-08-09",
+      "sourceEvidence": "BurnR5_03_PM_Pathways_2026-08-09",
       "sponsorshipSignal": "[未找到]",
       "whyRelevant": "NYC"
     },
     {
       "name": "Walmart / Sam's Club",
-      "sourceEvidence": "BurnR5_03_DeepResearch_2026-08-09",
+      "sourceEvidence": "BurnR5_03_PM_Pathways_2026-08-09",
       "sponsorshipSignal": "[未找到]",
       "whyRelevant": "Bentonville AR / Sunnyvale CA"
     },
     {
       "name": "StubHub",
-      "sourceEvidence": "BurnR5_03_DeepResearch_2026-08-09",
+      "sourceEvidence": "BurnR5_03_PM_Pathways_2026-08-09",
       "sponsorshipSignal": "[未找到]",
       "whyRelevant": "NY"
     },
     {
-      "name": "Plaid",
-      "sourceEvidence": "BurnR5_03_DeepResearch_2026-08-09",
-      "hqLocation": "San Francisco Bay Area",
-      "sponsorshipSignal": "[未找到]",
-      "whyRelevant": "SF"
-    },
-    {
       "name": "Palo Alto Networks",
-      "sourceEvidence": "BurnR5_03_DeepResearch_2026-08-09",
+      "sourceEvidence": "BurnR5_03_PM_Pathways_2026-08-09",
       "sponsorshipSignal": "[未找到]",
       "whyRelevant": "Santa Clara CA，$120–190K"
     },
     {
       "name": "Zynga",
-      "sourceEvidence": "BurnR5_03_DeepResearch_2026-08-09",
+      "sourceEvidence": "BurnR5_03_PM_Pathways_2026-08-09",
       "sponsorshipSignal": "[未找到]",
       "whyRelevant": "SF，$96–120K"
     },
     {
       "name": "Tencent",
-      "sourceEvidence": "BurnR5_03_DeepResearch_2026-08-09",
+      "sourceEvidence": "BurnR5_03_PM_Pathways_2026-08-09",
       "sponsorshipSignal": "[未找到]",
       "whyRelevant": "Palo Alto CA"
     },
     {
       "name": "Expedia Group",
-      "sourceEvidence": "BurnR5_03_DeepResearch_2026-08-09",
+      "sourceEvidence": "BurnR5_03_PM_Pathways_2026-08-09",
       "sponsorshipSignal": "[未找到]",
       "whyRelevant": "Seattle WA，$100–120K"
     },
     {
       "name": "KPCB Fellows",
-      "sourceEvidence": "BurnR5_03_DeepResearch_2026-08-09",
+      "sourceEvidence": "BurnR5_03_PM_Pathways_2026-08-09",
       "sponsorshipSignal": "[未找到]",
       "whyRelevant": "Menlo Park CA，$100–120K；KPCB 投资孵化器的 fellow 计划"
     },
     {
       "name": "Warner Music Group",
-      "sourceEvidence": "BurnR5_03_DeepResearch_2026-08-09",
+      "sourceEvidence": "BurnR5_03_PM_Pathways_2026-08-09",
       "sponsorshipSignal": "[未找到]",
       "whyRelevant": "LA，$85–100K"
     },
     {
       "name": "S&P Global",
-      "sourceEvidence": "BurnR5_03_DeepResearch_2026-08-09",
+      "sourceEvidence": "BurnR5_03_PM_Pathways_2026-08-09",
       "sponsorshipSignal": "[未找到]",
       "whyRelevant": "Southfield MI，$60–68K（偏低）"
     },
     {
       "name": "Invesco",
-      "sourceEvidence": "BurnR5_03_DeepResearch_2026-08-09",
+      "sourceEvidence": "BurnR5_03_PM_Pathways_2026-08-09",
       "hqLocation": "Boston",
       "sponsorshipSignal": "[未找到]",
       "whyRelevant": "Atlanta GA，$90–110K"
     },
     {
       "name": "Experian",
-      "sourceEvidence": "BurnR5_03_DeepResearch_2026-08-09",
+      "sourceEvidence": "BurnR5_03_PM_Pathways_2026-08-09",
       "sponsorshipSignal": "[未找到]",
       "whyRelevant": "Costa Mesa CA，$70–121K"
     },
     {
       "name": "Red Hat",
-      "sourceEvidence": "BurnR5_03_DeepResearch_2026-08-09",
+      "sourceEvidence": "BurnR5_03_PM_Pathways_2026-08-09",
       "sponsorshipSignal": "[未找到]",
       "whyRelevant": "Raleigh NC，$72–115K"
     },
     {
       "name": "Tinder",
-      "sourceEvidence": "BurnR5_03_DeepResearch_2026-08-09",
+      "sourceEvidence": "BurnR5_03_PM_Pathways_2026-08-09",
       "sponsorshipSignal": "[未找到]",
       "whyRelevant": "LA，$141–197K"
     },
     {
       "name": "Poshmark",
-      "sourceEvidence": "BurnR5_03_DeepResearch_2026-08-09",
+      "sourceEvidence": "BurnR5_03_PM_Pathways_2026-08-09",
       "sponsorshipSignal": "[未找到]",
       "whyRelevant": "Redwood City CA，$110–171K"
     },
     {
       "name": "Zoom",
-      "sourceEvidence": "BurnR5_03_DeepResearch_2026-08-09",
+      "sourceEvidence": "BurnR5_03_PM_Pathways_2026-08-09",
       "sponsorshipSignal": "[未找到]",
       "whyRelevant": "San Jose CA，$124–271K"
     },
     {
       "name": "Yahoo",
-      "sourceEvidence": "BurnR5_03_DeepResearch_2026-08-09",
+      "sourceEvidence": "BurnR5_03_PM_Pathways_2026-08-09",
       "sponsorshipSignal": "[未找到]",
       "whyRelevant": "Sunnyvale CA，$156–222K"
     },
     {
       "name": "New Balance",
-      "sourceEvidence": "BurnR5_03_DeepResearch_2026-08-09",
+      "sourceEvidence": "BurnR5_03_PM_Pathways_2026-08-09",
       "hqLocation": "Boston, MA",
       "sponsorshipSignal": "[未找到]",
       "whyRelevant": "Boston MA — 地理上对 Wang 友好但已关"
     },
     {
       "name": "SeatGeek",
-      "sourceEvidence": "BurnR5_03_DeepResearch_2026-08-09",
+      "sourceEvidence": "BurnR5_03_PM_Pathways_2026-08-09",
       "sponsorshipSignal": "[未找到]",
       "whyRelevant": "NY"
     },
     {
       "name": "IXL Learning",
-      "sourceEvidence": "BurnR5_03_DeepResearch_2026-08-09",
+      "sourceEvidence": "BurnR5_03_PM_Pathways_2026-08-09",
       "hqLocation": "San Mateo, CA",
       "sponsorshipSignal": "[未找到]",
       "whyRelevant": "San Mateo CA"
@@ -4718,31 +4898,31 @@
     },
     {
       "name": "Anthropic non-technical 面",
-      "sourceEvidence": "BurnR8_02_LiveDeep_2026-08-09"
+      "sourceEvidence": "BurnR8_02_InterviewShapes_2026-08-10"
     },
     {
       "name": "Amazon BIE OA",
-      "sourceEvidence": "BurnR8_02_LiveDeep_2026-08-09"
+      "sourceEvidence": "BurnR8_02_InterviewShapes_2026-08-10"
     },
     {
       "name": "Amazon PM Writing Assessment",
-      "sourceEvidence": "BurnR8_02_LiveDeep_2026-08-09"
+      "sourceEvidence": "BurnR8_02_InterviewShapes_2026-08-10"
     },
     {
       "name": "Amazon Loop",
-      "sourceEvidence": "BurnR8_02_LiveDeep_2026-08-09"
+      "sourceEvidence": "BurnR8_02_InterviewShapes_2026-08-10"
     },
     {
       "name": "Meta/Google/Apple/Netflix",
-      "sourceEvidence": "BurnR8_02_LiveDeep_2026-08-09"
+      "sourceEvidence": "BurnR8_02_InterviewShapes_2026-08-10"
     },
     {
       "name": "Take-home",
-      "sourceEvidence": "BurnR8_02_LiveDeep_2026-08-09"
+      "sourceEvidence": "BurnR8_02_InterviewShapes_2026-08-10"
     },
     {
       "name": "PM case / Behavioral",
-      "sourceEvidence": "BurnR8_02_LiveDeep_2026-08-09"
+      "sourceEvidence": "BurnR8_02_InterviewShapes_2026-08-10"
     },
     {
       "name": "Modal Labs",
@@ -5212,7 +5392,8 @@
     },
     {
       "name": "Checkr",
-      "sourceEvidence": "BurnS07_CompensationPlaybook_2026-08-10"
+      "sourceEvidence": "BurnS07_CompensationPlaybook_2026-08-10",
+      "whyRelevant": "token 已迁移"
     },
     {
       "name": "Astranis",
@@ -5485,7 +5666,7 @@
       "name": "CarGurus · Account Executive",
       "sourceEvidence": "BurnV01_WebResearch_2026-08-10",
       "hqLocation": "Boston, MA",
-      "whyRelevant": "经验门槛对 the candidate 完全可达，Boston 本地办公，$100k–$125k OTE，JD 无 sponsor 禁止条款，CarGurus 在 AI-native 转型的路上"
+      "whyRelevant": "经验门槛对 Zihao 完全可达，Boston 本地办公，$100k–$125k OTE，JD 无 sponsor 禁止条款，CarGurus 在 AI-native 转型的路上"
     },
     {
       "name": "Notion · Business Development Representative",
@@ -5509,7 +5690,7 @@
       "name": "Mercury · AI Context Operations Lead",
       "sourceEvidence": "BurnV01_WebResearch_2026-08-10",
       "hqLocation": "Remote-US",
-      "whyRelevant": "Mercury 在用 LLM 建内部知识库，和 the candidate Agent 技能 100% match；薪资 $162–225k；但 5-8 年太高，作为远期目标"
+      "whyRelevant": "Mercury 在用 LLM 建内部知识库，和 Zihao Agent 技能 100% match；薪资 $162–225k；但 5-8 年太高，作为远期目标"
     },
     {
       "name": "Scale AI · AI Advisory Consultant",
@@ -5555,25 +5736,25 @@
     },
     {
       "name": "Notion Labs",
-      "sourceEvidence": "BurnV03_WebResearch_2026-08-10",
+      "sourceEvidence": "BurnV03_CompanyHealth_DueDiligence_2026-08-10",
       "sponsorshipSignal": "★★★★★",
       "whyRelevant": "顶级 sponsor，62% >$200K"
     },
     {
       "name": "Glean Technologies",
-      "sourceEvidence": "BurnV03_WebResearch_2026-08-10",
+      "sourceEvidence": "BurnV03_CompanyHealth_DueDiligence_2026-08-10",
       "sponsorshipSignal": "★★★★★",
       "whyRelevant": "顶级 sponsor"
     },
     {
       "name": "Anysphere/Cursor",
-      "sourceEvidence": "BurnV03_WebResearch_2026-08-10",
+      "sourceEvidence": "BurnV03_CompanyHealth_DueDiligence_2026-08-10",
       "sponsorshipSignal": "未查到",
       "whyRelevant": "团队小 + 海外招聘，可能通过 O-1 / 母公司其他 entity"
     },
     {
       "name": "Anthropic / OpenAI",
-      "sourceEvidence": "BurnV03_WebResearch_2026-08-10",
+      "sourceEvidence": "BurnV03_CompanyHealth_DueDiligence_2026-08-10",
       "sponsorshipSignal": "★★★★",
       "whyRelevant": "但 entry-level 不开放给 MS Analytics"
     },
@@ -5650,7 +5831,8 @@
     {
       "name": "Lattice",
       "sourceEvidence": "BurnV06_Chunk06_CLI_2026-08-10",
-      "hqLocation": "SF"
+      "hqLocation": "SF",
+      "whyRelevant": "token 已迁移"
     },
     {
       "name": "SimplyInsured",
@@ -5718,133 +5900,204 @@
       "whyRelevant": "应届 PM 极少，且本切片未给 JD / sponsorship 信号；Wang 应作为 2–5 年目标而非当下投递"
     },
     {
-      "name": "Bain (Associate Consultant)",
-      "sourceEvidence": "BurnW06_DecGrad_OffCycle_Playbook_2026-08-10",
-      "sponsorshipSignal": "接受"
+      "name": "sourcegraph",
+      "sourceEvidence": "BurnV10_LeverAshby_BoardHarvest_2026-08-10",
+      "whyRelevant": "token 已迁移"
     },
     {
-      "name": "BCG (Full-Time Associate)",
-      "sourceEvidence": "BurnW06_DecGrad_OffCycle_Playbook_2026-08-10",
-      "sponsorshipSignal": "接受"
+      "name": "matterport",
+      "sourceEvidence": "BurnV10_LeverAshby_BoardHarvest_2026-08-10",
+      "whyRelevant": "token 已迁移"
     },
     {
-      "name": "Charles River Associates (CRA)",
-      "sourceEvidence": "BurnW06_DecGrad_OffCycle_Playbook_2026-08-10",
-      "sponsorshipSignal": "接受"
+      "name": "betterment",
+      "sourceEvidence": "BurnV10_LeverAshby_BoardHarvest_2026-08-10",
+      "whyRelevant": "token 已迁移"
     },
     {
-      "name": "Bain Capital (Private Equity)",
-      "sourceEvidence": "BurnW06_DecGrad_OffCycle_Playbook_2026-08-10",
-      "sponsorshipSignal": "接受"
+      "name": "cedar",
+      "sourceEvidence": "BurnV10_LeverAshby_BoardHarvest_2026-08-10",
+      "whyRelevant": "token 已迁移"
     },
     {
-      "name": "Accenture (Strategy Consulting)",
-      "sourceEvidence": "BurnW06_DecGrad_OffCycle_Playbook_2026-08-10",
-      "sponsorshipSignal": "接受（residentship/work authorization per role）"
+      "name": "spring-health",
+      "sourceEvidence": "BurnV10_LeverAshby_BoardHarvest_2026-08-10",
+      "whyRelevant": "token 已迁移"
     },
     {
-      "name": "Microsoft Aspire (Full-Time)",
-      "sourceEvidence": "BurnW06_DecGrad_OffCycle_Playbook_2026-08-10",
-      "sponsorshipSignal": "接受"
+      "name": "alto",
+      "sourceEvidence": "BurnV10_LeverAshby_BoardHarvest_2026-08-10",
+      "whyRelevant": "token 已迁移"
     },
     {
-      "name": "Microsoft LEAP",
-      "sourceEvidence": "BurnW06_DecGrad_OffCycle_Playbook_2026-08-10"
+      "name": "veho",
+      "sourceEvidence": "BurnV10_LeverAshby_BoardHarvest_2026-08-10",
+      "whyRelevant": "token 已迁移"
     },
     {
-      "name": "Amazon SDE",
-      "sourceEvidence": "BurnW06_DecGrad_OffCycle_Playbook_2026-08-10",
-      "sponsorshipSignal": "接受"
+      "name": "hometap",
+      "sourceEvidence": "BurnV10_LeverAshby_BoardHarvest_2026-08-10",
+      "whyRelevant": "token 已迁移"
     },
     {
-      "name": "Google L3",
-      "sourceEvidence": "BurnW06_DecGrad_OffCycle_Playbook_2026-08-10",
-      "sponsorshipSignal": "接受"
+      "name": "dataiku",
+      "sourceEvidence": "BurnV10_LeverAshby_BoardHarvest_2026-08-10",
+      "whyRelevant": "token 已迁移"
     },
     {
-      "name": "Atlassian Gradlassian",
-      "sourceEvidence": "BurnW06_DecGrad_OffCycle_Playbook_2026-08-10",
-      "sponsorshipSignal": "接受"
+      "name": "klarna",
+      "sourceEvidence": "BurnV10_LeverAshby_BoardHarvest_2026-08-10",
+      "whyRelevant": "token 已迁移"
     },
     {
-      "name": "Salesforce Futureforce",
-      "sourceEvidence": "BurnW06_DecGrad_OffCycle_Playbook_2026-08-10",
-      "sponsorshipSignal": "接受"
+      "name": "benepass",
+      "sourceEvidence": "BurnV10_LeverAshby_BoardHarvest_2026-08-10",
+      "whyRelevant": "token 已迁移"
     },
     {
-      "name": "Wayfair Early Career",
-      "sourceEvidence": "BurnW06_DecGrad_OffCycle_Playbook_2026-08-10",
-      "sponsorshipSignal": "接受"
+      "name": "hiring-thing",
+      "sourceEvidence": "BurnV10_LeverAshby_BoardHarvest_2026-08-10",
+      "whyRelevant": "token 已迁移"
     },
     {
-      "name": "Veeva Systems Generation Veeva",
-      "sourceEvidence": "BurnW06_DecGrad_OffCycle_Playbook_2026-08-10",
-      "sponsorshipSignal": "接受"
+      "name": "scale",
+      "sourceEvidence": "BurnV10_LeverAshby_BoardHarvest_2026-08-10",
+      "whyRelevant": "所有 slug 变体 404"
     },
     {
-      "name": "Intuit Internships & Co-ops",
-      "sourceEvidence": "BurnW06_DecGrad_OffCycle_Playbook_2026-08-10",
-      "sponsorshipSignal": "接受"
+      "name": "together",
+      "sourceEvidence": "BurnV10_LeverAshby_BoardHarvest_2026-08-10",
+      "whyRelevant": "所有 slug 变体 404"
     },
     {
-      "name": "Capital One Students & Grads",
-      "sourceEvidence": "BurnW06_DecGrad_OffCycle_Playbook_2026-08-10",
-      "sponsorshipSignal": "接受"
+      "name": "browserbase",
+      "sourceEvidence": "BurnV10_LeverAshby_BoardHarvest_2026-08-10",
+      "whyRelevant": "Software Engineer (Core Infrastructure/Agent Platform) SF $132K–$358K"
     },
     {
-      "name": "Klaviyo Early Careers",
-      "sourceEvidence": "BurnW06_DecGrad_OffCycle_Playbook_2026-08-10",
-      "sponsorshipSignal": "接受"
+      "name": "Palantir FDSE",
+      "sourceEvidence": "BurnV11_InterviewRubric_ReverseEngineering_2026-08-10"
     },
     {
-      "name": "Cvent",
-      "sourceEvidence": "BurnW06_DecGrad_OffCycle_Playbook_2026-08-10",
-      "sponsorshipSignal": "unknown"
+      "name": "OpenAI Applied AI",
+      "sourceEvidence": "BurnV11_InterviewRubric_ReverseEngineering_2026-08-10"
     },
     {
-      "name": "Akamai (Cambridge HQ)",
-      "sourceEvidence": "BurnW06_DecGrad_OffCycle_Playbook_2026-08-10",
-      "sponsorshipSignal": "接受（H-1B sponsor 公开）"
+      "name": "Anthropic Applied AI",
+      "sourceEvidence": "BurnV11_InterviewRubric_ReverseEngineering_2026-08-10"
     },
     {
-      "name": "iRobot (Bedford)",
-      "sourceEvidence": "BurnW06_DecGrad_OffCycle_Playbook_2026-08-10",
-      "sponsorshipSignal": "unknown"
+      "name": "Ramp / Rippling",
+      "sourceEvidence": "BurnV11_InterviewRubric_ReverseEngineering_2026-08-10"
     },
     {
-      "name": "Citi Apprenticeship",
-      "sourceEvidence": "BurnW06_DecGrad_OffCycle_Playbook_2026-08-10",
-      "sponsorshipSignal": "接受"
+      "name": "Uber / Shopify / TikTok",
+      "sourceEvidence": "BurnV11_InterviewRubric_ReverseEngineering_2026-08-10"
     },
     {
-      "name": "Boston Scientific (Marlborough MA HQ)",
-      "sourceEvidence": "BurnW06_DecGrad_OffCycle_Playbook_2026-08-10",
-      "sponsorshipSignal": "接受"
+      "name": "OpenAI DS",
+      "sourceEvidence": "BurnV11_InterviewRubric_ReverseEngineering_2026-08-10"
     },
     {
-      "name": "IQVIA",
-      "sourceEvidence": "BurnW06_DecGrad_OffCycle_Playbook_2026-08-10",
-      "sponsorshipSignal": "接受"
+      "name": "Databricks PM",
+      "sourceEvidence": "BurnV11_InterviewRubric_ReverseEngineering_2026-08-10"
     },
     {
-      "name": "Biogen (Cambridge)",
-      "sourceEvidence": "BurnW06_DecGrad_OffCycle_Playbook_2026-08-10",
-      "sponsorshipSignal": "接受"
+      "name": "Capital One DS",
+      "sourceEvidence": "BurnV11_InterviewRubric_ReverseEngineering_2026-08-10"
     },
     {
-      "name": "Dana-Farber / MGH / Broad Institute",
-      "sourceEvidence": "BurnW06_DecGrad_OffCycle_Playbook_2026-08-10",
-      "sponsorshipSignal": "接受"
+      "name": "Anthropic ML/PM",
+      "sourceEvidence": "BurnV11_InterviewRubric_ReverseEngineering_2026-08-10"
     },
     {
-      "name": "State Farm",
-      "sourceEvidence": "BurnW06_DecGrad_OffCycle_Playbook_2026-08-10",
-      "sponsorshipSignal": "接受"
+      "name": "Lovable (Sweden AI)",
+      "sourceEvidence": "BurnV_Analytics_BA_AE_FDE_MarketDeepDive_2026-08-10",
+      "hqLocation": "Boston, MA"
     },
     {
-      "name": "TIAA Early Talent",
-      "sourceEvidence": "BurnW06_DecGrad_OffCycle_Playbook_2026-08-10",
-      "sponsorshipSignal": "接受"
+      "name": "Hewlett Packard Enterprise",
+      "sourceEvidence": "BurnV_Analytics_BA_AE_FDE_MarketDeepDive_2026-08-10",
+      "hqLocation": "Massachusetts"
+    },
+    {
+      "name": "Evlo AI",
+      "sourceEvidence": "BurnV_Analytics_BA_AE_FDE_MarketDeepDive_2026-08-10",
+      "hqLocation": "Boston, MA"
+    },
+    {
+      "name": "BAE Systems",
+      "sourceEvidence": "BurnV_Analytics_BA_AE_FDE_MarketDeepDive_2026-08-10",
+      "hqLocation": "Merrimack, NH"
+    },
+    {
+      "name": "Built In Boston listing",
+      "sourceEvidence": "BurnV_Analytics_BA_AE_FDE_MarketDeepDive_2026-08-10",
+      "hqLocation": "Boston, Hybrid"
+    },
+    {
+      "name": "Wellfound / Permitting startup",
+      "sourceEvidence": "BurnV_Analytics_BA_AE_FDE_MarketDeepDive_2026-08-10",
+      "hqLocation": "New York City"
+    },
+    {
+      "name": "Avoca AI",
+      "sourceEvidence": "BurnV_Analytics_BA_AE_FDE_MarketDeepDive_2026-08-10",
+      "hqLocation": "New York"
+    },
+    {
+      "name": "Juniper Square",
+      "sourceEvidence": "BurnV_Analytics_BA_AE_FDE_MarketDeepDive_2026-08-10",
+      "hqLocation": "Remote US"
+    },
+    {
+      "name": "Agave API",
+      "sourceEvidence": "BurnV_Analytics_BA_AE_FDE_MarketDeepDive_2026-08-10",
+      "hqLocation": "San Francisco"
+    },
+    {
+      "name": "SpaceX",
+      "sourceEvidence": "BurnV_Analytics_BA_AE_FDE_MarketDeepDive_2026-08-10",
+      "hqLocation": "Hawthorne, CA"
+    },
+    {
+      "name": "HighRadius",
+      "sourceEvidence": "BurnV_Analytics_BA_AE_FDE_MarketDeepDive_2026-08-10",
+      "hqLocation": "Houston, TX"
+    },
+    {
+      "name": "BetMGM",
+      "sourceEvidence": "BurnV_Analytics_BA_AE_FDE_MarketDeepDive_2026-08-10",
+      "hqLocation": "New Jersey"
+    },
+    {
+      "name": "Cognizant / NTT Data",
+      "sourceEvidence": "BurnV_Analytics_BA_AE_FDE_MarketDeepDive_2026-08-10",
+      "hqLocation": "Delhi/India + US (Remote-considered)"
+    },
+    {
+      "name": "Loop",
+      "sourceEvidence": "BurnV_Analytics_BA_AE_FDE_MarketDeepDive_2026-08-10",
+      "hqLocation": "Chicago, IL (Remote-considered)"
+    },
+    {
+      "name": "FieldAI",
+      "sourceEvidence": "BurnV_Analytics_BA_AE_FDE_MarketDeepDive_2026-08-10",
+      "hqLocation": "Irvine, CA"
+    },
+    {
+      "name": "Peraton Labs",
+      "sourceEvidence": "BurnV_Analytics_BA_AE_FDE_MarketDeepDive_2026-08-10",
+      "hqLocation": "Herndon, VA (Remote-considered)"
+    },
+    {
+      "name": "Epic Systems",
+      "sourceEvidence": "BurnV_Analytics_BA_AE_FDE_MarketDeepDive_2026-08-10"
+    },
+    {
+      "name": "Parametric",
+      "sourceEvidence": "BurnV_Analytics_BA_AE_FDE_MarketDeepDive_2026-08-10",
+      "whyRelevant": "\"US citizen/visa only\""
     },
     {
       "name": "Amazon Robotics",
@@ -5865,11 +6118,6 @@
       "name": "Dell Technologies (Hopkinton)",
       "sourceEvidence": "BurnW10_WebResearch_2026-08-10",
       "hqLocation": "Hopkinton, MA (Boston metro)"
-    },
-    {
-      "name": "ezCater",
-      "sourceEvidence": "BurnW10_WebResearch_2026-08-10",
-      "hqLocation": "Boston, MA"
     },
     {
       "name": "Tripadvisor",
@@ -6067,23 +6315,6 @@
       "sourceEvidence": "BurnW15_WebResearch_2026-08-10"
     },
     {
-      "name": "Kearney / Oliver Wyman / EY-Parthenon",
-      "sourceEvidence": "BurnW16_WebResearch_2026-08-10"
-    },
-    {
-      "name": "Jump Trading",
-      "sourceEvidence": "BurnW16_WebResearch_2026-08-10"
-    },
-    {
-      "name": "Anduril",
-      "sourceEvidence": "BurnW16_WebResearch_2026-08-10",
-      "hqLocation": "Boston, MA 等 6 个城市"
-    },
-    {
-      "name": "Sierra (AI Agent)",
-      "sourceEvidence": "BurnW16_WebResearch_2026-08-10"
-    },
-    {
       "name": "CoderPad",
       "sourceEvidence": "BurnW18_EntryAnalytics_SkillBar_90DayPlan_2026-08-10"
     },
@@ -6153,7 +6384,7 @@
     {
       "name": "Vertex Pharmaceuticals Associate Director 级岗位",
       "sourceEvidence": "BurnW_Boston_Remote_LiveJobScan_2026-08-10",
-      "whyRelevant": "级别过高（要求 5-8 年经验），与 the candidate 12 月毕业 + new grad 不匹配。"
+      "whyRelevant": "级别过高（要求 5-8 年经验），与 Zihao 12 月毕业 + new grad 不匹配。"
     },
     {
       "name": "Moderna Senior / Manager 级岗位",
@@ -6201,16 +6432,162 @@
       "whyRelevant": "本次抓取无 direct 岗位，不推荐。"
     },
     {
+      "name": "Bain (Associate Consultant)",
+      "sourceEvidence": "BurnW_DecGrad_OffSeason_Playbook_2026-08-10",
+      "sponsorshipSignal": "接受"
+    },
+    {
+      "name": "BCG (Full-Time Associate)",
+      "sourceEvidence": "BurnW_DecGrad_OffSeason_Playbook_2026-08-10",
+      "sponsorshipSignal": "接受"
+    },
+    {
+      "name": "Charles River Associates (CRA)",
+      "sourceEvidence": "BurnW_DecGrad_OffSeason_Playbook_2026-08-10",
+      "sponsorshipSignal": "接受"
+    },
+    {
+      "name": "Bain Capital (Private Equity)",
+      "sourceEvidence": "BurnW_DecGrad_OffSeason_Playbook_2026-08-10",
+      "sponsorshipSignal": "接受"
+    },
+    {
+      "name": "Accenture (Strategy Consulting)",
+      "sourceEvidence": "BurnW_DecGrad_OffSeason_Playbook_2026-08-10",
+      "sponsorshipSignal": "接受（residentship/work authorization per role）"
+    },
+    {
+      "name": "Microsoft Aspire (Full-Time)",
+      "sourceEvidence": "BurnW_DecGrad_OffSeason_Playbook_2026-08-10",
+      "sponsorshipSignal": "接受"
+    },
+    {
+      "name": "Microsoft LEAP",
+      "sourceEvidence": "BurnW_DecGrad_OffSeason_Playbook_2026-08-10"
+    },
+    {
+      "name": "Amazon SDE",
+      "sourceEvidence": "BurnW_DecGrad_OffSeason_Playbook_2026-08-10",
+      "sponsorshipSignal": "接受"
+    },
+    {
+      "name": "Google L3",
+      "sourceEvidence": "BurnW_DecGrad_OffSeason_Playbook_2026-08-10",
+      "sponsorshipSignal": "接受"
+    },
+    {
+      "name": "Atlassian Gradlassian",
+      "sourceEvidence": "BurnW_DecGrad_OffSeason_Playbook_2026-08-10",
+      "sponsorshipSignal": "接受"
+    },
+    {
+      "name": "Salesforce Futureforce",
+      "sourceEvidence": "BurnW_DecGrad_OffSeason_Playbook_2026-08-10",
+      "sponsorshipSignal": "接受"
+    },
+    {
+      "name": "Wayfair Early Career",
+      "sourceEvidence": "BurnW_DecGrad_OffSeason_Playbook_2026-08-10",
+      "sponsorshipSignal": "接受"
+    },
+    {
+      "name": "Veeva Systems Generation Veeva",
+      "sourceEvidence": "BurnW_DecGrad_OffSeason_Playbook_2026-08-10",
+      "sponsorshipSignal": "接受"
+    },
+    {
+      "name": "Intuit Internships & Co-ops",
+      "sourceEvidence": "BurnW_DecGrad_OffSeason_Playbook_2026-08-10",
+      "sponsorshipSignal": "接受"
+    },
+    {
+      "name": "Capital One Students & Grads",
+      "sourceEvidence": "BurnW_DecGrad_OffSeason_Playbook_2026-08-10",
+      "sponsorshipSignal": "接受"
+    },
+    {
+      "name": "Klaviyo Early Careers",
+      "sourceEvidence": "BurnW_DecGrad_OffSeason_Playbook_2026-08-10",
+      "sponsorshipSignal": "接受"
+    },
+    {
+      "name": "Cvent",
+      "sourceEvidence": "BurnW_DecGrad_OffSeason_Playbook_2026-08-10",
+      "sponsorshipSignal": "unknown"
+    },
+    {
+      "name": "Akamai (Cambridge HQ)",
+      "sourceEvidence": "BurnW_DecGrad_OffSeason_Playbook_2026-08-10",
+      "sponsorshipSignal": "接受（H-1B sponsor 公开）"
+    },
+    {
+      "name": "iRobot (Bedford)",
+      "sourceEvidence": "BurnW_DecGrad_OffSeason_Playbook_2026-08-10",
+      "sponsorshipSignal": "unknown"
+    },
+    {
+      "name": "Citi Apprenticeship",
+      "sourceEvidence": "BurnW_DecGrad_OffSeason_Playbook_2026-08-10",
+      "sponsorshipSignal": "接受"
+    },
+    {
+      "name": "Boston Scientific (Marlborough MA HQ)",
+      "sourceEvidence": "BurnW_DecGrad_OffSeason_Playbook_2026-08-10",
+      "sponsorshipSignal": "接受"
+    },
+    {
+      "name": "IQVIA",
+      "sourceEvidence": "BurnW_DecGrad_OffSeason_Playbook_2026-08-10",
+      "sponsorshipSignal": "接受"
+    },
+    {
+      "name": "Biogen (Cambridge)",
+      "sourceEvidence": "BurnW_DecGrad_OffSeason_Playbook_2026-08-10",
+      "sponsorshipSignal": "接受"
+    },
+    {
+      "name": "Dana-Farber / MGH / Broad Institute",
+      "sourceEvidence": "BurnW_DecGrad_OffSeason_Playbook_2026-08-10",
+      "sponsorshipSignal": "接受"
+    },
+    {
+      "name": "State Farm",
+      "sourceEvidence": "BurnW_DecGrad_OffSeason_Playbook_2026-08-10",
+      "sponsorshipSignal": "接受"
+    },
+    {
+      "name": "TIAA Early Talent",
+      "sourceEvidence": "BurnW_DecGrad_OffSeason_Playbook_2026-08-10",
+      "sponsorshipSignal": "接受"
+    },
+    {
+      "name": "Kearney / Oliver Wyman / EY-Parthenon",
+      "sourceEvidence": "BurnW_Fall2026_Recruiting_Timeline_NEU_Channels_2026-08-10"
+    },
+    {
+      "name": "Jump Trading",
+      "sourceEvidence": "BurnW_Fall2026_Recruiting_Timeline_NEU_Channels_2026-08-10"
+    },
+    {
+      "name": "Anduril",
+      "sourceEvidence": "BurnW_Fall2026_Recruiting_Timeline_NEU_Channels_2026-08-10",
+      "hqLocation": "Boston, MA 等 6 个城市"
+    },
+    {
+      "name": "Sierra (AI Agent)",
+      "sourceEvidence": "BurnW_Fall2026_Recruiting_Timeline_NEU_Channels_2026-08-10"
+    },
+    {
       "name": "Goldman Sachs New Analyst Program (Americas)",
-      "sourceEvidence": "BurnW_Dec2026_Grad_FallCampaign_BattleMap_2026-08-10"
+      "sourceEvidence": "BurnW_FallRecruiting_BattleMap_2026-08-10"
     },
     {
       "name": "McKinsey Associate (APD)",
-      "sourceEvidence": "BurnW_Dec2026_Grad_FallCampaign_BattleMap_2026-08-10"
+      "sourceEvidence": "BurnW_FallRecruiting_BattleMap_2026-08-10"
     },
     {
       "name": "JPMorgan Chase Associate Program (US)",
-      "sourceEvidence": "BurnW_Dec2026_Grad_FallCampaign_BattleMap_2026-08-10"
+      "sourceEvidence": "BurnW_FallRecruiting_BattleMap_2026-08-10"
     },
     {
       "name": "Salesforce APM Intern (Summer 2027)",
@@ -6347,6 +6724,26 @@
       "sourceEvidence": "BurnW_NewGrad_Program_Window_Calendar_2026-08-10"
     },
     {
+      "name": "FanDuel",
+      "sourceEvidence": "BurnW_NewGrad_Timeline_Channels_2026-08-10",
+      "hqLocation": "NYC"
+    },
+    {
+      "name": "IEM",
+      "sourceEvidence": "BurnW_NewGrad_Timeline_Channels_2026-08-10",
+      "hqLocation": "Remote"
+    },
+    {
+      "name": "Sunwater Capital",
+      "sourceEvidence": "BurnW_NewGrad_Timeline_Channels_2026-08-10",
+      "hqLocation": "North Bethesda, MD"
+    },
+    {
+      "name": "Verisk",
+      "sourceEvidence": "BurnW_NewGrad_Timeline_Channels_2026-08-10",
+      "hqLocation": "Woburn, MA"
+    },
+    {
       "name": "Netflix / Tesla / OpenAI",
       "sourceEvidence": "BurnW_Salary_Benchmark_Negotiation_Playbook_2026-08-10"
     },
@@ -6374,27 +6771,27 @@
     },
     {
       "name": "Twilio",
-      "sourceEvidence": "BurnY03_LiveDeep_2026-08-09",
+      "sourceEvidence": "BurnY03_AIAdjacent_NewGrad_Market_2026-08-10",
       "sponsorshipSignal": "✅ sponsor"
     },
     {
       "name": "Marvell",
-      "sourceEvidence": "BurnY03_LiveDeep_2026-08-09",
+      "sourceEvidence": "BurnY03_AIAdjacent_NewGrad_Market_2026-08-10",
       "sponsorshipSignal": "✅ sponsor"
     },
     {
       "name": "HashiCorp",
-      "sourceEvidence": "BurnY03_LiveDeep_2026-08-09",
+      "sourceEvidence": "BurnY03_AIAdjacent_NewGrad_Market_2026-08-10",
       "sponsorshipSignal": "✅ sponsor（样本小）"
     },
     {
       "name": "Sierra AI",
-      "sourceEvidence": "BurnY03_LiveDeep_2026-08-09",
+      "sourceEvidence": "BurnY03_AIAdjacent_NewGrad_Market_2026-08-10",
       "sponsorshipSignal": "H-1B history (inferred)"
     },
     {
       "name": "Databricks / Figma / Salesforce / Stripe / Notion 等",
-      "sourceEvidence": "BurnY03_LiveDeep_2026-08-09",
+      "sourceEvidence": "BurnY03_AIAdjacent_NewGrad_Market_2026-08-10",
       "sponsorshipSignal": "H-1B history (inferred)"
     },
     {
@@ -6550,11 +6947,6 @@
       "hqLocation": "Austin"
     },
     {
-      "name": "HighRadius",
-      "sourceEvidence": "BurnY07_FDE_SolutionsEngineer_TrackGuide_2026-08-10",
-      "hqLocation": "Houston"
-    },
-    {
       "name": "Heron Data",
       "sourceEvidence": "BurnY07_FDE_SolutionsEngineer_TrackGuide_2026-08-10",
       "hqLocation": "NY"
@@ -6596,11 +6988,6 @@
     },
     {
       "name": "accent",
-      "sourceEvidence": "BurnY07_FDE_SolutionsEngineer_TrackGuide_2026-08-10",
-      "hqLocation": "Boston"
-    },
-    {
-      "name": "Evlo AI",
       "sourceEvidence": "BurnY07_FDE_SolutionsEngineer_TrackGuide_2026-08-10",
       "hqLocation": "Boston"
     },
@@ -6973,36 +7360,6 @@
       "name": "Accenture, McKinsey, Deloitte, BCG, EY",
       "sourceEvidence": "BurnY07_FDE_SolutionsEngineer_TrackGuide_2026-08-10",
       "whyRelevant": "大力 sponsor，但 path 是 consulting → applied AI，不是直接 FDE"
-    },
-    {
-      "name": "FanDuel",
-      "sourceEvidence": "BurnY07_Fall2026_NewGrad_Timeline_Channels_2026-08-10",
-      "hqLocation": "NYC"
-    },
-    {
-      "name": "IEM",
-      "sourceEvidence": "BurnY07_Fall2026_NewGrad_Timeline_Channels_2026-08-10",
-      "hqLocation": "Remote"
-    },
-    {
-      "name": "Sunwater Capital",
-      "sourceEvidence": "BurnY07_Fall2026_NewGrad_Timeline_Channels_2026-08-10",
-      "hqLocation": "North Bethesda, MD"
-    },
-    {
-      "name": "Verkada",
-      "sourceEvidence": "BurnY07_Fall2026_NewGrad_Timeline_Channels_2026-08-10",
-      "hqLocation": "San Mateo, CA"
-    },
-    {
-      "name": "Verisk",
-      "sourceEvidence": "BurnY07_Fall2026_NewGrad_Timeline_Channels_2026-08-10",
-      "hqLocation": "Woburn, MA"
-    },
-    {
-      "name": "U.S. Bank",
-      "sourceEvidence": "BurnY08_ATS_ScreeningMechanics_2026-08-10",
-      "whyRelevant": "22 天后开"
     },
     {
       "name": "SparkPost",
@@ -7976,11 +8333,6 @@
       "whyRelevant": "\"US citizen/visa only\""
     },
     {
-      "name": "Parametric",
-      "sourceEvidence": "YC_Batch_Screen_2026-08-09",
-      "whyRelevant": "\"US citizen/visa only\""
-    },
-    {
       "name": "Kastle",
       "sourceEvidence": "YC_Batch_Screen_2026-08-09",
       "whyRelevant": "\"US citizen/visa only\""
@@ -8066,6 +8418,7 @@
       "title": "B2B Marketing Specialist",
       "location": "Boston, MA",
       "applyUrl": "https://www.builtinboston.com/job/b2b-marketing-specialist/10461862",
+      "fitReasoning": "Boston + entry-level Marketing",
       "sourceEvidence": "BuiltInBoston_Sweep_2026-08-09",
       "salaryMin": 71000
     },
@@ -8081,6 +8434,7 @@
       "title": "Brand Marketing Specialist",
       "location": "Boston, MA",
       "applyUrl": "https://www.builtinboston.com/job/brand-marketing-specialist/10386501",
+      "fitReasoning": "Boston + entry-level Marketing",
       "sourceEvidence": "BuiltInBoston_Sweep_2026-08-09",
       "salaryMin": 70000
     },
@@ -9978,6 +10332,290 @@
       "sourceEvidence": "BuiltIn_Attack_Plan_2026-08-09"
     },
     {
+      "company": "Edwards Vacuum - Business Analyst ⚠️",
+      "title": "Edwards Vacuum - Business Analyst ⚠️",
+      "location": "Massachusetts（远程？）",
+      "sourceEvidence": "BurnB01_EntryLevel_LiveScan_2026-08-10 · sponsorship: UK 公司在 US 子公司"
+    },
+    {
+      "company": "Walmart - (USA) Senior, Data Analyst ⚠️",
+      "title": "Data Analyst ⚠️",
+      "location": "Raymond, NH",
+      "fitReasoning": "Walmart sponsor-friendly；偏 senior",
+      "sourceEvidence": "BurnB01_EntryLevel_LiveScan_2026-08-10"
+    },
+    {
+      "company": "Curate Partners - Technical Analyst (Investment Platform)",
+      "title": "Curate Partners - Technical Analyst",
+      "location": "Boston, MA",
+      "fitReasoning": "EEO only；咨询合同",
+      "sourceEvidence": "BurnB01_EntryLevel_LiveScan_2026-08-10"
+    },
+    {
+      "company": "Landing Point - Analyst, Investment Operations",
+      "title": "Landing Point - Analyst",
+      "location": "Cambridge, MA",
+      "fitReasoning": "EEO only；boutique search firm",
+      "sourceEvidence": "BurnB01_EntryLevel_LiveScan_2026-08-10"
+    },
+    {
+      "company": "Landing Point - Analyst, Investment Operations",
+      "title": "Investment Operations",
+      "location": "Cambridge, MA",
+      "fitReasoning": "EEO only；boutique search firm",
+      "sourceEvidence": "BurnB01_EntryLevel_LiveScan_2026-08-10"
+    },
+    {
+      "company": "Kroll - Analyst, Transaction Advisory Services",
+      "title": "Kroll - Analyst",
+      "location": "Boston, MA",
+      "fitReasoning": "EEO only；咨询",
+      "sourceEvidence": "BurnB01_EntryLevel_LiveScan_2026-08-10"
+    },
+    {
+      "company": "Bonsai - Compliance Analyst (TA Realty)",
+      "title": "Bonsai - Compliance Analyst",
+      "location": "Boston, MA",
+      "fitReasoning": "EEO only",
+      "sourceEvidence": "BurnB01_EntryLevel_LiveScan_2026-08-10"
+    },
+    {
+      "company": "Crocs, Inc. - Financial Analyst, Digital",
+      "title": "Inc. - Financial Analyst",
+      "location": "Westwood, MA",
+      "fitReasoning": "EEO only",
+      "sourceEvidence": "BurnB01_EntryLevel_LiveScan_2026-08-10"
+    },
+    {
+      "company": "MSI - Rotational Undergraduate Analyst - MSI",
+      "title": "MSI - Rotational Undergraduate Analyst - MSI",
+      "location": "Boston, MA",
+      "fitReasoning": "EEO only",
+      "sourceEvidence": "BurnB01_EntryLevel_LiveScan_2026-08-10"
+    },
+    {
+      "company": "PTC - Pricing Analyst ✅",
+      "title": "PTC - Pricing Analyst ✅",
+      "location": "Boston, MA",
+      "fitReasoning": "见上文",
+      "sourceEvidence": "BurnB01_EntryLevel_LiveScan_2026-08-10"
+    },
+    {
+      "company": "Cursor - Data Analyst, User Operations",
+      "title": "Cursor - Data Analyst",
+      "location": "United States",
+      "sourceEvidence": "BurnB01_EntryLevel_LiveScan_2026-08-10 · sponsorship: EEO only"
+    },
+    {
+      "company": "Cursor - Data Analyst, User Operations",
+      "title": "User Operations",
+      "location": "United States",
+      "sourceEvidence": "BurnB01_EntryLevel_LiveScan_2026-08-10 · sponsorship: EEO only"
+    },
+    {
+      "company": "NMI - Data Analyst, Revenue Operations",
+      "title": "NMI - Data Analyst",
+      "location": "United States",
+      "sourceEvidence": "BurnB01_EntryLevel_LiveScan_2026-08-10 · sponsorship: EEO only"
+    },
+    {
+      "company": "NMI - Data Analyst, Revenue Operations",
+      "title": "Revenue Operations",
+      "location": "United States",
+      "sourceEvidence": "BurnB01_EntryLevel_LiveScan_2026-08-10 · sponsorship: EEO only"
+    },
+    {
+      "company": "Improvado - Middle+ Marketing Data Analyst ⚠️",
+      "title": "Improvado - Middle+ Marketing Data Analyst ⚠️",
+      "location": "United States",
+      "sourceEvidence": "BurnB01_EntryLevel_LiveScan_2026-08-10 · sponsorship: 偏 mid"
+    },
+    {
+      "company": "Improvado - Middle+ Data Analyst (Marketing Experience) ⚠️",
+      "title": "Improvado - Middle+ Data Analyst (Marketing Experience) ⚠️",
+      "location": "United States",
+      "sourceEvidence": "BurnB01_EntryLevel_LiveScan_2026-08-10 · sponsorship: 偏 mid"
+    },
+    {
+      "company": "Jobgether - Data Analyst ⚠️",
+      "title": "Jobgether - Data Analyst ⚠️",
+      "location": "United States",
+      "sourceEvidence": "BurnB01_EntryLevel_LiveScan_2026-08-10 · sponsorship: EEO only"
+    },
+    {
+      "company": "OpenAI",
+      "title": "Forward Deployed Engineer",
+      "applyUrl": "https://openai.com/careers/forward-deployed-engineer-(fde",
+      "fitReasoning": "5+ 年经验要求，2-3 年后再申",
+      "sourceEvidence": "BurnB04_CareerPath_AIRoles_2026-08-10"
+    },
+    {
+      "company": "Scale AI",
+      "title": "Forward Deployed Engineer",
+      "applyUrl": "https://scale.com/careers",
+      "sourceEvidence": "BurnB04_CareerPath_AIRoles_2026-08-10"
+    },
+    {
+      "company": "Scale AI",
+      "title": "Forward Deployed Product Manager",
+      "location": "New York / London",
+      "applyUrl": "https://job-boards.greenhouse.io/scaleai/jobs/4644742005",
+      "sourceEvidence": "BurnB04_CareerPath_AIRoles_2026-08-10"
+    },
+    {
+      "company": "Anthropic",
+      "title": "Applied AI Architect",
+      "location": "SF / NY",
+      "applyUrl": "https://job-boards.greenhouse.io/anthropic/jobs/5192805008",
+      "sourceEvidence": "BurnB04_CareerPath_AIRoles_2026-08-10",
+      "salaryMin": 240000,
+      "salaryMax": 315000
+    },
+    {
+      "company": "Sierra",
+      "title": "Solutions Engineer",
+      "sourceEvidence": "BurnB04_CareerPath_AIRoles_2026-08-10"
+    },
+    {
+      "company": "Databricks",
+      "title": "Solutions Engineer",
+      "location": "SF + 30+ offices",
+      "remoteType": "hybrid",
+      "fitReasoning": "公开 University Program for new grads",
+      "sourceEvidence": "BurnB04_CareerPath_AIRoles_2026-08-10"
+    },
+    {
+      "company": "Databricks",
+      "title": "Delivery Solutions Architect",
+      "applyUrl": "https://databricks.com/company/careers/open-positions/job?gh_jid=8428882002",
+      "sourceEvidence": "BurnB04_CareerPath_AIRoles_2026-08-10"
+    },
+    {
+      "company": "Cohere",
+      "title": "Member of Technical Staff",
+      "applyUrl": "https://jobs.ashbyhq.com/cohere/31c47498-0ccf-4d23-a418-0d2c616ba909",
+      "sourceEvidence": "BurnB04_CareerPath_AIRoles_2026-08-10"
+    },
+    {
+      "company": "LangChain",
+      "title": "Python OSS Engineer",
+      "location": "SF / Boston",
+      "applyUrl": "https://jobs.ashbyhq.com/langchain/74e5f9f4-e44a-4594-ba26-abdf71bf287d",
+      "sourceEvidence": "BurnB04_CareerPath_AIRoles_2026-08-10",
+      "salaryMin": 160000,
+      "salaryMax": 240000
+    },
+    {
+      "company": "WRITER",
+      "title": "Software Engineer",
+      "location": "SF (+ Seattle / NY)",
+      "applyUrl": "https://jobs.ashbyhq.com/writer/4d5f11bd-0375-4bc2-af4d-9434e103957c",
+      "sourceEvidence": "BurnB04_CareerPath_AIRoles_2026-08-10",
+      "salaryMin": 111700,
+      "salaryMax": 304100
+    },
+    {
+      "company": "Scale AI",
+      "title": "AI Advisory Consultant",
+      "location": "SF / NY",
+      "applyUrl": "https://job-boards.greenhouse.io/scaleai/jobs/4715970005",
+      "fitReasoning": "需咨询背景但 AI tools 加分",
+      "sourceEvidence": "BurnB04_CareerPath_AIRoles_2026-08-10"
+    },
+    {
+      "company": "Cohere",
+      "title": "Revenue Operations Analyst",
+      "location": "NYC / SF / Remote US",
+      "applyUrl": "https://jobs.ashbyhq.com/cohere/cd3eacfe-1169-4df0-8164-93a857d5ddf0",
+      "fitReasoning": "AI-native + Remote US + 75K-120K USD 薪资",
+      "sourceEvidence": "BurnB04_CareerPath_AIRoles_2026-08-10"
+    },
+    {
+      "company": "Harvey",
+      "title": "Customer Success Manager",
+      "location": "Madrid / London",
+      "applyUrl": "https://jobs.ashbyhq.com/harvey/e8ed59d5-798c-49d3-a6ab-9e628d5dc221",
+      "sourceEvidence": "BurnB04_CareerPath_AIRoles_2026-08-10",
+      "salaryMin": 160000,
+      "salaryMax": 185000
+    },
+    {
+      "company": "Cohere",
+      "title": "RevOps Analyst",
+      "applyUrl": "https://jobs.ashbyhq.com/cohere/cd3eacfe-1169-4df0-8164-93a857d5ddf0",
+      "sourceEvidence": "BurnB04_CareerPath_AIRoles_2026-08-10"
+    },
+    {
+      "company": "Anthropic",
+      "title": "Anthropic Fellows Program",
+      "location": "SF/NYC/Seattle/London/Remote-Friendly",
+      "remoteType": "remote",
+      "applyUrl": "https://job-boards.greenhouse.io/anthropic/jobs/5023394008",
+      "fitReasoning": "7-12 月 Fellowship，\"PhD 替代路径\"",
+      "sourceEvidence": "BurnB04_CareerPath_AIRoles_2026-08-10"
+    },
+    {
+      "company": "Scale AI",
+      "title": "Frontier Agents Engineer",
+      "location": "SF, NYC",
+      "applyUrl": "https://job-boards.greenhouse.io/scaleai/jobs/4694861005",
+      "sourceEvidence": "BurnB04_CareerPath_AIRoles_2026-08-10",
+      "salaryMin": 180000,
+      "salaryMax": 300000
+    },
+    {
+      "company": "Pinecone",
+      "title": "Senior/Staff Software Engineer",
+      "applyUrl": "https://jobs.ashbyhq.com/pinecone/4ef4269b-94c4-4c7c-93ee-15a882caa767",
+      "sourceEvidence": "BurnB04_CareerPath_AIRoles_2026-08-10"
+    },
+    {
+      "company": "Pinecone",
+      "title": "Database",
+      "applyUrl": "https://jobs.ashbyhq.com/pinecone/4ef4269b-94c4-4c7c-93ee-15a882caa767",
+      "sourceEvidence": "BurnB04_CareerPath_AIRoles_2026-08-10"
+    },
+    {
+      "company": "Sierra",
+      "title": "Enterprise Sales Engineer",
+      "location": "SF (+ NY, Atlanta, Remote-US)",
+      "applyUrl": "https://jobs.ashbyhq.com/sierra/8152eaf6-012b-4154-95e2-7d6c52faba93",
+      "fitReasoning": "Bret Taylor 公司品牌强；5-7+ 年 SE 经验是 hard wall；建议做 narrative 准备，未来 12 个月申请。",
+      "sourceEvidence": "BurnB04_CareerPath_AIRoles_2026-08-10",
+      "salaryMin": 160000,
+      "salaryMax": 270000
+    },
+    {
+      "company": "Databricks",
+      "title": "Solutions Architect",
+      "applyUrl": "https://databricks.com/company/careers/open-positions/job?gh_jid=8559344002",
+      "sourceEvidence": "BurnB04_CareerPath_AIRoles_2026-08-10"
+    },
+    {
+      "company": "Snowflake",
+      "title": "Lead",
+      "applyUrl": "https://jobs.ashbyhq.com/snowflake/479e06f1-273d-4a1b-af56-6543761ebd75",
+      "sourceEvidence": "BurnB04_CareerPath_AIRoles_2026-08-10"
+    },
+    {
+      "company": "Ramp",
+      "title": "Security Engineer",
+      "applyUrl": "https://jobs.ashbyhq.com/ramp/34413f8d-26bf-4bbc-8ade-eb309a0e2245",
+      "sourceEvidence": "BurnB04_CareerPath_AIRoles_2026-08-10"
+    },
+    {
+      "company": "Lambda",
+      "title": "Senior Platform Engineer - Core Infrastructure",
+      "applyUrl": "https://jobs.ashbyhq.com/lambda/22067697-90e0-4a9a-bc08-954ce6796537",
+      "sourceEvidence": "BurnB04_CareerPath_AIRoles_2026-08-10"
+    },
+    {
+      "company": "Scale AI",
+      "title": "Forward Deployed Engineering",
+      "applyUrl": "https://job-boards.greenhouse.io/scaleai/jobs/4690504005",
+      "sourceEvidence": "BurnB04_CareerPath_AIRoles_2026-08-10"
+    },
+    {
       "company": "Clipboard",
       "title": "Strategy & Ops Associate",
       "location": "Remote-US",
@@ -10013,6 +10651,7 @@
       "location": "Boston",
       "remoteType": "hybrid",
       "applyUrl": "https://www.klaviyo.com/careers/jobs/7737707003?gh_jid=7737707003",
+      "fitReasoning": "Boston 本地 + 明确 entry-level Analytics Engineer",
       "sourceEvidence": "BurnC03_Chunk03_ChineseReport_2026-08-09",
       "salaryMin": 140000
     },
@@ -10378,15 +11017,6 @@
       "sourceEvidence": "BurnF02b_Chunk02_Deep_2026-08-09"
     },
     {
-      "company": "Anthropic",
-      "title": "Anthropic Fellows Program",
-      "location": "SF/NYC/Seattle/London/Remote-Friendly",
-      "remoteType": "remote",
-      "applyUrl": "https://job-boards.greenhouse.io/anthropic/jobs/5183053008",
-      "fitReasoning": "7-12 月 Fellowship，\"PhD 替代路径\"",
-      "sourceEvidence": "BurnF02b_Chunk02_Deep_2026-08-09"
-    },
-    {
       "company": "Notion",
       "title": "People Analytics & Operations",
       "location": "SF",
@@ -10574,14 +11204,14 @@
       "company": "Anthropic",
       "title": "Strategy & Operations",
       "location": "SF/NYC",
-      "fitReasoning": "JD 明确说\"用 Claude 工具\",Sponsor 明确,the candidate 应直接尝试",
+      "fitReasoning": "JD 明确说\"用 Claude 工具\",Sponsor 明确,Zihao 应直接尝试",
       "sourceEvidence": "BurnJ01_LiveDeep_2026-08-10"
     },
     {
       "company": "Anthropic",
       "title": "Product Partnerships",
       "location": "SF/NYC",
-      "fitReasoning": "JD 明确说\"用 Claude 工具\",Sponsor 明确,the candidate 应直接尝试",
+      "fitReasoning": "JD 明确说\"用 Claude 工具\",Sponsor 明确,Zihao 应直接尝试",
       "sourceEvidence": "BurnJ01_LiveDeep_2026-08-10"
     },
     {
@@ -10613,14 +11243,6 @@
       "company": "OpenAI",
       "title": "Strategic Finance Lead B2B",
       "fitReasoning": "Strategic Finance",
-      "sourceEvidence": "BurnJ01_LiveDeep_2026-08-10"
-    },
-    {
-      "company": "Scale AI",
-      "title": "AI Advisory Consultant",
-      "location": "SF / NY",
-      "applyUrl": "https://job-boards.greenhouse.io/scaleai/jobs/4715970005",
-      "fitReasoning": "需咨询背景但 AI tools 加分",
       "sourceEvidence": "BurnJ01_LiveDeep_2026-08-10"
     },
     {
@@ -11001,20 +11623,11 @@
       "sourceEvidence": "BurnR02_AI_Hiring_Intel_2026-08-10"
     },
     {
-      "company": "Scale AI",
-      "title": "Frontier Agents Engineer",
-      "location": "SF, NYC",
-      "applyUrl": "https://job-boards.greenhouse.io/scaleai/jobs/4720573005",
-      "salaryMin": 180000,
-      "salaryMax": 300000,
-      "sourceEvidence": "BurnR02_AI_Hiring_Intel_2026-08-10"
-    },
-    {
       "company": "Cohere",
       "title": "Forward Deployed Engineer",
       "location": "US/CAN Remote",
       "applyUrl": "https://cohere.com/careers",
-      "fitReasoning": "US Remote、明确招 Applied AI engineer、无年限硬性要求、the candidate 的 schema-bound agent 经验直接命中",
+      "fitReasoning": "US Remote、明确招 Applied AI engineer、无年限硬性要求、Zihao 的 schema-bound agent 经验直接命中",
       "sourceEvidence": "BurnR12_AI_Hiring_2026-08-09"
     },
     {
@@ -11039,13 +11652,6 @@
       "sourceEvidence": "BurnR12_AI_Hiring_2026-08-09",
       "salaryMin": 180000,
       "salaryMax": 250000
-    },
-    {
-      "company": "OpenAI",
-      "title": "Forward Deployed Engineer",
-      "applyUrl": "https://openai.com/careers",
-      "fitReasoning": "5+ 年经验要求，2-3 年后再申",
-      "sourceEvidence": "BurnR12_AI_Hiring_2026-08-09"
     },
     {
       "company": "Anthropic",
@@ -11382,7 +11988,7 @@
       "title": "People Analytics & Ops Rotational Program",
       "location": "SF",
       "remoteType": "hybrid",
-      "fitReasoning": "唯一公开设\"Early Career\"招聘分组的 AI-native 大公司；People Analytics 完美对口 the candidate 的 MS Analytics + 分析+产品方向",
+      "fitReasoning": "唯一公开设\"Early Career\"招聘分组的 AI-native 大公司；People Analytics 完美对口 Zihao 的 MS Analytics + 分析+产品方向",
       "sourceEvidence": "BurnR2_01_LiveResearch_2026-08-09 · sponsorship: 未明确但 SF in-person"
     },
     {
@@ -11390,7 +11996,7 @@
       "title": "SW Engineer Early Career",
       "location": "SF",
       "remoteType": "hybrid",
-      "fitReasoning": "唯一公开设\"Early Career\"招聘分组的 AI-native 大公司；People Analytics 完美对口 the candidate 的 MS Analytics + 分析+产品方向",
+      "fitReasoning": "唯一公开设\"Early Career\"招聘分组的 AI-native 大公司；People Analytics 完美对口 Zihao 的 MS Analytics + 分析+产品方向",
       "sourceEvidence": "BurnR2_01_LiveResearch_2026-08-09 · sponsorship: 未明确但 SF in-person"
     },
     {
@@ -11427,7 +12033,7 @@
       "title": "Data Analytics Leader",
       "location": "多为 Remote",
       "remoteType": "remote",
-      "fitReasoning": "Data Analytics Leader 是 the candidate 的甜区；Runway 几乎全 Remote",
+      "fitReasoning": "Data Analytics Leader 是 Zihao 的甜区；Runway 几乎全 Remote",
       "sourceEvidence": "BurnR2_01_LiveResearch_2026-08-09 · sponsorship: US-based 全员"
     },
     {
@@ -11435,7 +12041,7 @@
       "title": "Founding Developer Relations Lead",
       "location": "多为 Remote",
       "remoteType": "remote",
-      "fitReasoning": "Data Analytics Leader 是 the candidate 的甜区；Runway 几乎全 Remote",
+      "fitReasoning": "Data Analytics Leader 是 Zihao 的甜区；Runway 几乎全 Remote",
       "sourceEvidence": "BurnR2_01_LiveResearch_2026-08-09 · sponsorship: US-based 全员"
     },
     {
@@ -11443,8 +12049,10 @@
       "title": "Analytics Engineer",
       "location": "SF / Seattle / NYC / US-Remote",
       "remoteType": "remote",
+      "applyUrl": "https://openai.com/careers/analytics-engineer-gtm-san-francisco/",
       "fitReasoning": "750 个岗位；Anthropic-style sponsor；Anthropic-like culture",
-      "sourceEvidence": "BurnR2_01_LiveResearch_2026-08-09 · sponsorship: sponsor（未明确文字）"
+      "sourceEvidence": "BurnR2_01_LiveResearch_2026-08-09 · sponsorship: sponsor（未明确文字）",
+      "salaryMin": 310000
     },
     {
       "company": "OpenAI",
@@ -11475,7 +12083,7 @@
       "title": "Early Careers Internship/Co-op",
       "location": "Boston + 全球",
       "remoteType": "hybrid",
-      "fitReasoning": "在 Boston 有 office（the candidate 可步行/通勤），AI/ML 是核心",
+      "fitReasoning": "在 Boston 有 office（Zihao 可步行/通勤），AI/ML 是核心",
       "sourceEvidence": "BurnR2_01_LiveResearch_2026-08-09"
     },
     {
@@ -11483,7 +12091,7 @@
       "title": "Product Analytics",
       "location": "Boston + 全球",
       "remoteType": "hybrid",
-      "fitReasoning": "在 Boston 有 office（the candidate 可步行/通勤），AI/ML 是核心",
+      "fitReasoning": "在 Boston 有 office（Zihao 可步行/通勤），AI/ML 是核心",
       "sourceEvidence": "BurnR2_01_LiveResearch_2026-08-09"
     },
     {
@@ -11491,7 +12099,7 @@
       "title": "Software Engineer",
       "location": "Boston + 全球",
       "remoteType": "hybrid",
-      "fitReasoning": "在 Boston 有 office（the candidate 可步行/通勤），AI/ML 是核心",
+      "fitReasoning": "在 Boston 有 office（Zihao 可步行/通勤），AI/ML 是核心",
       "sourceEvidence": "BurnR2_01_LiveResearch_2026-08-09"
     },
     {
@@ -11523,7 +12131,7 @@
       "title": "Software Engineer AI Gateway",
       "location": "SF/NYC/Austin Hybrid + 部分 US-Remote",
       "remoteType": "hybrid",
-      "fitReasoning": "AI/Agent 栈全栈扩张；Strategic Finance Manager Product 对 the candidate \"分析+产品方向\"对口",
+      "fitReasoning": "AI/Agent 栈全栈扩张；Strategic Finance Manager Product 对 Zihao \"分析+产品方向\"对口",
       "sourceEvidence": "BurnR2_01_LiveResearch_2026-08-09"
     },
     {
@@ -11531,7 +12139,7 @@
       "title": "Member of Technical Staff Internal Agent",
       "location": "SF/NYC/Austin Hybrid + 部分 US-Remote",
       "remoteType": "hybrid",
-      "fitReasoning": "AI/Agent 栈全栈扩张；Strategic Finance Manager Product 对 the candidate \"分析+产品方向\"对口",
+      "fitReasoning": "AI/Agent 栈全栈扩张；Strategic Finance Manager Product 对 Zihao \"分析+产品方向\"对口",
       "sourceEvidence": "BurnR2_01_LiveResearch_2026-08-09"
     },
     {
@@ -11539,7 +12147,7 @@
       "title": "GTM Acceleration Technical Solutions",
       "location": "SF/NYC/Austin Hybrid + 部分 US-Remote",
       "remoteType": "hybrid",
-      "fitReasoning": "AI/Agent 栈全栈扩张；Strategic Finance Manager Product 对 the candidate \"分析+产品方向\"对口",
+      "fitReasoning": "AI/Agent 栈全栈扩张；Strategic Finance Manager Product 对 Zihao \"分析+产品方向\"对口",
       "sourceEvidence": "BurnR2_01_LiveResearch_2026-08-09"
     },
     {
@@ -11547,7 +12155,7 @@
       "title": "Strategic Finance Manager Product",
       "location": "SF/NYC/Austin Hybrid + 部分 US-Remote",
       "remoteType": "hybrid",
-      "fitReasoning": "AI/Agent 栈全栈扩张；Strategic Finance Manager Product 对 the candidate \"分析+产品方向\"对口",
+      "fitReasoning": "AI/Agent 栈全栈扩张；Strategic Finance Manager Product 对 Zihao \"分析+产品方向\"对口",
       "sourceEvidence": "BurnR2_01_LiveResearch_2026-08-09"
     },
     {
@@ -11555,7 +12163,7 @@
       "title": "Agent Data Scientist",
       "location": "SF/NYC/London/Sydney/Toronto/Atlanta/Remote/France/Germany",
       "remoteType": "hybrid",
-      "fitReasoning": "公开招 Agent Data Scientist，对 the candidate 数据+agent 复合经验对口",
+      "fitReasoning": "公开招 Agent Data Scientist，对 Zihao 数据+agent 复合经验对口",
       "sourceEvidence": "BurnR2_01_LiveResearch_2026-08-09"
     },
     {
@@ -11563,7 +12171,7 @@
       "title": "Member of Technical Staff",
       "location": "SF/NYC/London/Sydney/Toronto/Atlanta/Remote/France/Germany",
       "remoteType": "hybrid",
-      "fitReasoning": "公开招 Agent Data Scientist，对 the candidate 数据+agent 复合经验对口",
+      "fitReasoning": "公开招 Agent Data Scientist，对 Zihao 数据+agent 复合经验对口",
       "sourceEvidence": "BurnR2_01_LiveResearch_2026-08-09"
     },
     {
@@ -11581,14 +12189,6 @@
       "remoteType": "hybrid",
       "fitReasoning": "总部 London，H-1B 不必要；global team",
       "sourceEvidence": "BurnR2_01_LiveResearch_2026-08-09 · sponsorship: CEO 公开：80% London 员工是移民"
-    },
-    {
-      "company": "Databricks",
-      "title": "Solutions Engineer",
-      "location": "SF + 30+ offices",
-      "remoteType": "hybrid",
-      "fitReasoning": "公开 University Program for new grads",
-      "sourceEvidence": "BurnR2_01_LiveResearch_2026-08-09 · sponsorship: 大公司通常 sponsor"
     },
     {
       "company": "Databricks",
@@ -11666,6 +12266,7 @@
       "company": "Akeneo",
       "title": "Business Consultant",
       "location": "Greater Boston",
+      "applyUrl": "https://fr.linkedin.com/company/akeneo",
       "sourceEvidence": "BurnR2_03_LiveResearch_2026-08-09"
     },
     {
@@ -12346,6 +12947,7 @@
       "title": "Analytical Engineer",
       "location": "Warsaw, Poland",
       "applyUrl": "https://www.asana.com/jobs/apply/8092044?gh_jid=8092044",
+      "fitReasoning": "Data Analytics cost center",
       "sourceEvidence": "BurnR5-01_LiveJobs_Sponsorship_2026-08-10"
     },
     {
@@ -12435,7 +13037,7 @@
     {
       "company": "Anthropic",
       "title": "Applied AI Architect (Commercial",
-      "fitReasoning": "唯一明文 sponsorship \"We do sponsor visas\"；Applied AI Architect 是 customer-facing AI solution 角色，与 the candidate analytics + AI 背景高度对口。",
+      "fitReasoning": "唯一明文 sponsorship \"We do sponsor visas\"；Applied AI Architect 是 customer-facing AI solution 角色，与 Zihao analytics + AI 背景高度对口。",
       "sourceEvidence": "BurnR7_02_LiveDeep_2026-08-09"
     },
     {
@@ -12469,13 +13071,13 @@
     {
       "company": "Anthropic",
       "title": "Research Operations",
-      "fitReasoning": "Remote-US；\"Operations\" 系列在 Anthropic 是 PM-adjacent；Anthropic sponsorship 明文优势；适合 the candidate 用 Northeastern MS Analytics 讲 research enablement narrative。",
+      "fitReasoning": "Remote-US；\"Operations\" 系列在 Anthropic 是 PM-adjacent；Anthropic sponsorship 明文优势；适合 Zihao 用 Northeastern MS Analytics 讲 research enablement narrative。",
       "sourceEvidence": "BurnR7_02_LiveDeep_2026-08-09"
     },
     {
       "company": "Harvey",
       "title": "Customer Success Manager (Mid-Market",
-      "fitReasoning": "3-4+ 年门槛；customer-owning + NRR target 经验是 PM 黄金；NYC/SF hub；legal domain 不是 the candidate 强项但通用 SaaS CS 经验可迁移。",
+      "fitReasoning": "3-4+ 年门槛；customer-owning + NRR target 经验是 PM 黄金；NYC/SF hub；legal domain 不是 Zihao 强项但通用 SaaS CS 经验可迁移。",
       "sourceEvidence": "BurnR7_02_LiveDeep_2026-08-09"
     },
     {
@@ -12484,16 +13086,6 @@
       "applyUrl": "https://www.decagon.ai/careers",
       "fitReasoning": "conversational AI 是高增长细分；4+ 年 sales SE 经验门槛；建议先 inbound 联系看是否有 early-career 渠道。",
       "sourceEvidence": "BurnR7_02_LiveDeep_2026-08-09"
-    },
-    {
-      "company": "Sierra",
-      "title": "Enterprise Sales Engineer",
-      "location": "SF (+ NY, Atlanta, Remote-US)",
-      "applyUrl": "https://jobs.ashbyhq.com/sierra/8152eaf6-012b-4154-95e2-7d6c52faba93",
-      "fitReasoning": "Bret Taylor 公司品牌强；5-7+ 年 SE 经验是 hard wall；建议做 narrative 准备，未来 12 个月申请。",
-      "sourceEvidence": "BurnR7_02_LiveDeep_2026-08-09",
-      "salaryMin": 160000,
-      "salaryMax": 270000
     },
     {
       "company": "Ramp",
@@ -12919,7 +13511,7 @@
       "company": "Mercury · AI Context Operations Lead",
       "title": "Mercury · AI Context Operations Lead",
       "location": "Remote-US",
-      "fitReasoning": "Mercury 在用 LLM 建内部知识库，和 the candidate Agent 技能 100% match；薪资 $162–225k；但 5-8 年太高，作为远期目标",
+      "fitReasoning": "Mercury 在用 LLM 建内部知识库，和 Zihao Agent 技能 100% match；薪资 $162–225k；但 5-8 年太高，作为远期目标",
       "sourceEvidence": "BurnV01_WebResearch_2026-08-10"
     },
     {
@@ -12935,6 +13527,416 @@
       "location": "NY/Paris",
       "fitReasoning": "大公司，对 H-1B 友好传统；本轮只扫到 Paris 岗，需查 NY 入门 SE",
       "sourceEvidence": "BurnV01_WebResearch_2026-08-10"
+    },
+    {
+      "company": "CarGurus",
+      "title": "Associate People Operations Specialist",
+      "location": "Boston, MA",
+      "fitReasoning": "Boston + 明确 Associate 头衔",
+      "sourceEvidence": "BurnV14_ATS_API_DirectHarvest_2026-08-10"
+    },
+    {
+      "company": "Asana",
+      "title": "AI Implementation Manager",
+      "location": "NYC",
+      "fitReasoning": "AI GTM 部门 + NYC + customer-facing AI",
+      "sourceEvidence": "BurnV14_ATS_API_DirectHarvest_2026-08-10"
+    },
+    {
+      "company": "Squarespace",
+      "title": "Marketing Programs Manager",
+      "location": "NYC",
+      "fitReasoning": "明确 entry-level Level",
+      "sourceEvidence": "BurnV14_ATS_API_DirectHarvest_2026-08-10"
+    },
+    {
+      "company": "Datadog",
+      "title": "Sales Revenue Analyst",
+      "location": "Boston, MA",
+      "applyUrl": "https://www.linkedin.com/jobs/datadog-jobs-worldwide?f_C=1066442",
+      "salaryMin": 205000,
+      "sourceEvidence": "BurnV_Analytics_BA_AE_FDE_MarketDeepDive_2026-08-10"
+    },
+    {
+      "company": "Morgan Stanley (Parametric)",
+      "title": "Analyst",
+      "location": "Boston, MA",
+      "applyUrl": "https://www.parametricportfolio.com/careers",
+      "salaryMin": 110000,
+      "sourceEvidence": "BurnV_Analytics_BA_AE_FDE_MarketDeepDive_2026-08-10"
+    },
+    {
+      "company": "Lovable (Sweden AI)",
+      "title": "Analytics Engineer",
+      "location": "Boston, MA",
+      "applyUrl": "https://jobs.ashbyhq.com/lovable",
+      "sourceEvidence": "BurnV_Analytics_BA_AE_FDE_MarketDeepDive_2026-08-10"
+    },
+    {
+      "company": "Hewlett Packard Enterprise",
+      "title": "Foundational Data Resources Analyst",
+      "location": "Massachusetts",
+      "applyUrl": "https://careers.hpe.com/us/en/search-results?keywords=data%20analyst",
+      "salaryMin": 137000,
+      "sourceEvidence": "BurnV_Analytics_BA_AE_FDE_MarketDeepDive_2026-08-10"
+    },
+    {
+      "company": "Vestmark",
+      "title": "Portfolio Operations Analyst",
+      "location": "Greater Boston",
+      "applyUrl": "https://wellfound.com/company/vestmark",
+      "salaryMin": 127000,
+      "sourceEvidence": "BurnV_Analytics_BA_AE_FDE_MarketDeepDive_2026-08-10"
+    },
+    {
+      "company": "PwC",
+      "title": "Front Office Strategy Consulting",
+      "location": "Boston, MA",
+      "applyUrl": "https://www.linkedin.com/company/pwc/jobs",
+      "sourceEvidence": "BurnV_Analytics_BA_AE_FDE_MarketDeepDive_2026-08-10"
+    },
+    {
+      "company": "Staples",
+      "title": "Manager",
+      "location": "Framingham, MA",
+      "applyUrl": "https://www.linkedin.com/company/staples/jobs",
+      "salaryMin": 135000,
+      "sourceEvidence": "BurnV_Analytics_BA_AE_FDE_MarketDeepDive_2026-08-10"
+    },
+    {
+      "company": "Staples",
+      "title": "Customer Analytics & Reporting",
+      "location": "Framingham, MA",
+      "applyUrl": "https://www.linkedin.com/company/staples/jobs",
+      "salaryMin": 135000,
+      "sourceEvidence": "BurnV_Analytics_BA_AE_FDE_MarketDeepDive_2026-08-10"
+    },
+    {
+      "company": "McKinsey & Company",
+      "title": "Capabilities & Insights Analytics Senior Analyst - Healthcare",
+      "location": "Boston, MA",
+      "applyUrl": "https://www.linkedin.com/company/mckinsey/jobs",
+      "salaryMin": 140000,
+      "salaryMax": 174100,
+      "sourceEvidence": "BurnV_Analytics_BA_AE_FDE_MarketDeepDive_2026-08-10"
+    },
+    {
+      "company": "Epic",
+      "title": "Entry-Level Technical Solutions Engineer",
+      "location": "Cranston, RI / Pawtucket, RI / East Providence, RI / Worcester, MA / Nashua, NH / Manchester, NH",
+      "applyUrl": "https://careers.epic.com/",
+      "salaryMin": 130800,
+      "sourceEvidence": "BurnV_Analytics_BA_AE_FDE_MarketDeepDive_2026-08-10"
+    },
+    {
+      "company": "BNY",
+      "title": "Specialist",
+      "location": "Boston, MA",
+      "applyUrl": "https://www.linkedin.com/company/bnyglobal/jobs",
+      "sourceEvidence": "BurnV_Analytics_BA_AE_FDE_MarketDeepDive_2026-08-10"
+    },
+    {
+      "company": "Evlo AI",
+      "title": "Financial Analyst",
+      "location": "Boston, MA",
+      "applyUrl": "https://www.linkedin.com/company/evlo-ai/jobs",
+      "sourceEvidence": "BurnV_Analytics_BA_AE_FDE_MarketDeepDive_2026-08-10"
+    },
+    {
+      "company": "XCentium",
+      "title": "Principal Consultant",
+      "location": "Boston, MA",
+      "applyUrl": "https://www.linkedin.com/company/xcentium/jobs",
+      "sourceEvidence": "BurnV_Analytics_BA_AE_FDE_MarketDeepDive_2026-08-10"
+    },
+    {
+      "company": "XCentium",
+      "title": "Senior Data Analyst",
+      "location": "Boston, MA",
+      "applyUrl": "https://www.linkedin.com/company/xcentium/jobs",
+      "sourceEvidence": "BurnV_Analytics_BA_AE_FDE_MarketDeepDive_2026-08-10"
+    },
+    {
+      "company": "Cengage",
+      "title": "Sr Sales Revenue Ops Analyst",
+      "location": "Massachusetts (Remote)",
+      "applyUrl": "https://www.linkedin.com/company/cengage-learning/jobs",
+      "salaryMin": 139800,
+      "sourceEvidence": "BurnV_Analytics_BA_AE_FDE_MarketDeepDive_2026-08-10"
+    },
+    {
+      "company": "LGC",
+      "title": "Quality Control Analyst I",
+      "location": "Milford, MA",
+      "applyUrl": "https://www.linkedin.com/company/lgcgroup/jobs",
+      "sourceEvidence": "BurnV_Analytics_BA_AE_FDE_MarketDeepDive_2026-08-10"
+    },
+    {
+      "company": "InterSystems",
+      "title": "Technical Cybersecurity Associate",
+      "location": "Boston, MA",
+      "applyUrl": "https://www.intersystems.com/data-technology-company/careers/",
+      "salaryMin": 119000,
+      "sourceEvidence": "BurnV_Analytics_BA_AE_FDE_MarketDeepDive_2026-08-10"
+    },
+    {
+      "company": "Vertex Pharmaceuticals",
+      "title": "Field Analytics & Reporting Associate Director",
+      "location": "Boston, MA",
+      "applyUrl": "https://www.linkedin.com/company/vertex-pharmaceuticals/jobs",
+      "salaryMin": 135000,
+      "sourceEvidence": "BurnV_Analytics_BA_AE_FDE_MarketDeepDive_2026-08-10"
+    },
+    {
+      "company": "BAE Systems",
+      "title": "FAST Labs - Software Engineer - Early Career Levels - Top Secret",
+      "location": "Merrimack, NH",
+      "applyUrl": "https://www.linkedin.com/company/baesystemsinc/jobs",
+      "salaryMin": 129000,
+      "sourceEvidence": "BurnV_Analytics_BA_AE_FDE_MarketDeepDive_2026-08-10"
+    },
+    {
+      "company": "WilmerHale",
+      "title": "Artificial Intelligence (AI) Engineer",
+      "location": "Boston, MA",
+      "applyUrl": "https://www.linkedin.com/company/wilmerhale/jobs",
+      "sourceEvidence": "BurnV_Analytics_BA_AE_FDE_MarketDeepDive_2026-08-10"
+    },
+    {
+      "company": "EY-Parthenon",
+      "title": "Strategy and Execution-Software Strategy Group - Experienced Associate",
+      "location": "Boston, MA",
+      "applyUrl": "https://uk.linkedin.com/company/ey-parthenon",
+      "sourceEvidence": "BurnV_Analytics_BA_AE_FDE_MarketDeepDive_2026-08-10"
+    },
+    {
+      "company": "EY-Parthenon",
+      "title": "Strategy and Execution-Commercial Due Diligence - Experienced Associate",
+      "location": "Boston, MA",
+      "applyUrl": "https://uk.linkedin.com/company/ey-parthenon",
+      "sourceEvidence": "BurnV_Analytics_BA_AE_FDE_MarketDeepDive_2026-08-10"
+    },
+    {
+      "company": "Built In Boston listing",
+      "title": "Senior Data Product Analyst",
+      "location": "Boston, Hybrid",
+      "applyUrl": "https://www.builtinboston.com/jobs?search=data%20analyst&location=boston",
+      "salaryMin": 148000,
+      "salaryMax": 185000,
+      "sourceEvidence": "BurnV_Analytics_BA_AE_FDE_MarketDeepDive_2026-08-10"
+    },
+    {
+      "company": "Built In Boston listing",
+      "title": "GTM Senior Analyst",
+      "location": "Boston, Hybrid",
+      "applyUrl": "https://www.builtinboston.com/jobs?search=data%20analyst&location=boston",
+      "salaryMin": 87000,
+      "salaryMax": 109000,
+      "sourceEvidence": "BurnV_Analytics_BA_AE_FDE_MarketDeepDive_2026-08-10"
+    },
+    {
+      "company": "Built In Boston listing",
+      "title": "Supply Chain Data Analyst",
+      "location": "Boston, Hybrid",
+      "applyUrl": "https://www.builtinboston.com/jobs?search=data%20analyst&location=boston",
+      "salaryMin": 77000,
+      "salaryMax": 95000,
+      "sourceEvidence": "BurnV_Analytics_BA_AE_FDE_MarketDeepDive_2026-08-10"
+    },
+    {
+      "company": "Built In Boston listing",
+      "title": "Senior Product Data Analyst",
+      "location": "Burlington, MA, In-Office",
+      "applyUrl": "https://www.builtinboston.com/jobs?search=data%20analyst&location=boston",
+      "salaryMin": 107000,
+      "salaryMax": 134000,
+      "sourceEvidence": "BurnV_Analytics_BA_AE_FDE_MarketDeepDive_2026-08-10"
+    },
+    {
+      "company": "Built In Boston listing",
+      "title": "Lead Data Analyst",
+      "location": "Remote or Hybrid, 14 Locations",
+      "applyUrl": "https://www.builtinboston.com/jobs?search=data%20analyst&location=boston",
+      "salaryMin": 110000,
+      "salaryMax": 135000,
+      "sourceEvidence": "BurnV_Analytics_BA_AE_FDE_MarketDeepDive_2026-08-10"
+    },
+    {
+      "company": "Built In Boston listing",
+      "title": "Senior Data Analyst",
+      "location": "Boston, In-Office",
+      "applyUrl": "https://www.builtinboston.com/jobs?search=data%20analyst&location=boston",
+      "sourceEvidence": "BurnV_Analytics_BA_AE_FDE_MarketDeepDive_2026-08-10"
+    },
+    {
+      "company": "Built In Boston listing",
+      "title": "Entry Level Analyst",
+      "location": "Boston, In-Office",
+      "applyUrl": "https://www.builtinboston.com/jobs?search=data%20analyst&location=boston",
+      "sourceEvidence": "BurnV_Analytics_BA_AE_FDE_MarketDeepDive_2026-08-10"
+    },
+    {
+      "company": "Built In Boston listing",
+      "title": "Lead Data Science Analyst",
+      "location": "Boston, Hybrid",
+      "applyUrl": "https://www.builtinboston.com/jobs?search=data%20analyst&location=boston",
+      "salaryMin": 120000,
+      "salaryMax": 180000,
+      "sourceEvidence": "BurnV_Analytics_BA_AE_FDE_MarketDeepDive_2026-08-10"
+    },
+    {
+      "company": "Built In Boston listing",
+      "title": "Strategic Analytics Lead",
+      "location": "Remote, US",
+      "applyUrl": "https://www.builtinboston.com/jobs?search=data%20analyst&location=boston",
+      "salaryMin": 170000,
+      "salaryMax": 200000,
+      "sourceEvidence": "BurnV_Analytics_BA_AE_FDE_MarketDeepDive_2026-08-10"
+    },
+    {
+      "company": "Built In Boston listing",
+      "title": "Data Analyst Intern",
+      "location": "Remote",
+      "applyUrl": "https://www.builtinboston.com/jobs?search=data%20analyst&location=boston",
+      "sourceEvidence": "BurnV_Analytics_BA_AE_FDE_MarketDeepDive_2026-08-10"
+    },
+    {
+      "company": "Salesforce",
+      "title": "Agentforce Forward Deployed Engineer",
+      "location": "New York, NY (Remote-considered)",
+      "applyUrl": "https://www.salesforce.com/company/careers/",
+      "salaryMin": 188700,
+      "salaryMax": 221489,
+      "sourceEvidence": "BurnV_Analytics_BA_AE_FDE_MarketDeepDive_2026-08-10"
+    },
+    {
+      "company": "Stripe",
+      "title": "Multiple Data & Analytics Roles",
+      "location": "Remote US",
+      "applyUrl": "https://stripe.com/careers/search?roles=Data+%26+Analytics",
+      "salaryMin": 155605,
+      "sourceEvidence": "BurnV_Analytics_BA_AE_FDE_MarketDeepDive_2026-08-10"
+    },
+    {
+      "company": "Mercor",
+      "title": "Agentic Finance Engineer",
+      "location": "San Francisco, CA",
+      "applyUrl": "https://wellfound.com/company/mercor",
+      "salaryMin": 130000,
+      "salaryMax": 500000,
+      "sourceEvidence": "BurnV_Analytics_BA_AE_FDE_MarketDeepDive_2026-08-10"
+    },
+    {
+      "company": "Wellfound / Permitting startup",
+      "title": "PermitFlow Permit Operations",
+      "location": "New York City",
+      "applyUrl": "https://wellfound.com/jobs?keywords=analyst",
+      "salaryMin": 240000,
+      "salaryMax": 325000,
+      "sourceEvidence": "BurnV_Analytics_BA_AE_FDE_MarketDeepDive_2026-08-10"
+    },
+    {
+      "company": "Avoca AI",
+      "title": "AI Engineer",
+      "location": "New York",
+      "applyUrl": "https://wellfound.com/jobs?keywords=analyst",
+      "salaryMin": 140000,
+      "salaryMax": 180000,
+      "sourceEvidence": "BurnV_Analytics_BA_AE_FDE_MarketDeepDive_2026-08-10"
+    },
+    {
+      "company": "Avoca AI",
+      "title": "Analytics",
+      "location": "New York",
+      "applyUrl": "https://wellfound.com/jobs?keywords=analyst",
+      "salaryMin": 140000,
+      "salaryMax": 180000,
+      "sourceEvidence": "BurnV_Analytics_BA_AE_FDE_MarketDeepDive_2026-08-10"
+    },
+    {
+      "company": "EliseAI",
+      "title": "Multiple Engineering Roles",
+      "location": "San Francisco / New York",
+      "applyUrl": "https://wellfound.com/jobs?keywords=analyst",
+      "salaryMin": 100000,
+      "salaryMax": 135000,
+      "sourceEvidence": "BurnV_Analytics_BA_AE_FDE_MarketDeepDive_2026-08-10"
+    },
+    {
+      "company": "Juniper Square",
+      "title": "Data Engineering",
+      "location": "Remote US",
+      "applyUrl": "https://wellfound.com/jobs?keywords=analyst",
+      "salaryMin": 200000,
+      "salaryMax": 250000,
+      "sourceEvidence": "BurnV_Analytics_BA_AE_FDE_MarketDeepDive_2026-08-10"
+    },
+    {
+      "company": "Agave API",
+      "title": "Product Analyst",
+      "location": "San Francisco",
+      "applyUrl": "https://www.linkedin.com/jobs/view/agave-product-analyst",
+      "salaryMin": 130000,
+      "salaryMax": 200000,
+      "sourceEvidence": "BurnV_Analytics_BA_AE_FDE_MarketDeepDive_2026-08-10"
+    },
+    {
+      "company": "SpaceX",
+      "title": "Business Operations Analyst",
+      "location": "Hawthorne, CA",
+      "applyUrl": "https://www.linkedin.com/company/spacex/jobs",
+      "sourceEvidence": "BurnV_Analytics_BA_AE_FDE_MarketDeepDive_2026-08-10"
+    },
+    {
+      "company": "HighRadius",
+      "title": "Forward Deployed Engineer",
+      "location": "Houston, TX",
+      "applyUrl": "https://www.linkedin.com/company/highradius/jobs",
+      "sourceEvidence": "BurnV_Analytics_BA_AE_FDE_MarketDeepDive_2026-08-10"
+    },
+    {
+      "company": "BetMGM",
+      "title": "Marketing Retention Analyst",
+      "location": "New Jersey",
+      "applyUrl": "https://www.linkedin.com/company/betmgm/jobs",
+      "sourceEvidence": "BurnV_Analytics_BA_AE_FDE_MarketDeepDive_2026-08-10"
+    },
+    {
+      "company": "Cognizant / NTT Data",
+      "title": "ServiceNow Associate Business Analyst Junior",
+      "location": "Delhi/India + US (Remote-considered)",
+      "applyUrl": "https://www.linkedin.com/company/ntt-data-americas/jobs",
+      "sourceEvidence": "BurnV_Analytics_BA_AE_FDE_MarketDeepDive_2026-08-10"
+    },
+    {
+      "company": "Loop",
+      "title": "Analytics Engineer",
+      "location": "Chicago, IL (Remote-considered)",
+      "applyUrl": "https://www.linkedin.com/company/loop-payments/jobs",
+      "sourceEvidence": "BurnV_Analytics_BA_AE_FDE_MarketDeepDive_2026-08-10"
+    },
+    {
+      "company": "FieldAI",
+      "title": "Field Data Analyst",
+      "location": "Irvine, CA",
+      "applyUrl": "https://www.linkedin.com/company/fieldai/jobs",
+      "sourceEvidence": "BurnV_Analytics_BA_AE_FDE_MarketDeepDive_2026-08-10"
+    },
+    {
+      "company": "Peraton Labs",
+      "title": "Data Engineer - Analytics Platforms",
+      "location": "Herndon, VA (Remote-considered)",
+      "applyUrl": "https://www.linkedin.com/company/perspectalabs/jobs",
+      "sourceEvidence": "BurnV_Analytics_BA_AE_FDE_MarketDeepDive_2026-08-10"
+    },
+    {
+      "company": "Wynd Labs",
+      "title": "Engineering/Analytics",
+      "location": "Remote US",
+      "applyUrl": "https://wellfound.com/jobs?keywords=analyst",
+      "salaryMin": 70000,
+      "salaryMax": 140000,
+      "sourceEvidence": "BurnV_Analytics_BA_AE_FDE_MarketDeepDive_2026-08-10"
     },
     {
       "company": "HubSpot",
@@ -13302,12 +14304,6 @@
       "title": "Forward Deployed Engineer",
       "applyUrl": "https://www.decagon.ai/careers",
       "fitReasoning": "Remote 选项",
-      "sourceEvidence": "BurnW10_WebResearch_2026-08-10"
-    },
-    {
-      "company": "Scale AI",
-      "title": "Forward Deployed Engineer",
-      "applyUrl": "https://scale.com/careers",
       "sourceEvidence": "BurnW10_WebResearch_2026-08-10"
     },
     {
@@ -13753,13 +14749,6 @@
     },
     {
       "company": "Scale AI",
-      "title": "Forward Deployed Product Manager",
-      "location": "New York / London",
-      "applyUrl": "https://job-boards.greenhouse.io/scaleai/jobs/4673051005",
-      "sourceEvidence": "BurnW20_FDE_SE_AppliedAI_TrackBreakdown_2026-08-10"
-    },
-    {
-      "company": "Scale AI",
       "title": "Director of Product Management",
       "location": "New York / London",
       "applyUrl": "https://job-boards.greenhouse.io/scaleai/jobs/4669229005",
@@ -13784,15 +14773,6 @@
       "title": "Principal Solutions Engineer",
       "location": "SF / NY",
       "applyUrl": "https://job-boards.greenhouse.io/scaleai/jobs/4689909005",
-      "sourceEvidence": "BurnW20_FDE_SE_AppliedAI_TrackBreakdown_2026-08-10"
-    },
-    {
-      "company": "Anthropic",
-      "title": "Applied AI Architect",
-      "location": "SF / NY",
-      "applyUrl": "https://job-boards.greenhouse.io/anthropic/jobs/5192805008",
-      "salaryMin": 240000,
-      "salaryMax": 315000,
       "sourceEvidence": "BurnW20_FDE_SE_AppliedAI_TrackBreakdown_2026-08-10"
     },
     {
@@ -13838,33 +14818,6 @@
       "salaryMin": 150000,
       "salaryMax": 250000,
       "sourceEvidence": "BurnW20_FDE_SE_AppliedAI_TrackBreakdown_2026-08-10"
-    },
-    {
-      "company": "LangChain",
-      "title": "Python OSS Engineer",
-      "location": "SF / Boston",
-      "applyUrl": "https://jobs.ashbyhq.com/langchain/74e5f9f4-e44a-4594-ba26-abdf71bf287d",
-      "salaryMin": 160000,
-      "salaryMax": 240000,
-      "sourceEvidence": "BurnW20_FDE_SE_AppliedAI_TrackBreakdown_2026-08-10"
-    },
-    {
-      "company": "Writer",
-      "title": "Software Engineer",
-      "location": "SF (+ Seattle / NY)",
-      "applyUrl": "https://jobs.ashbyhq.com/writer/4d5f11bd-0375-4bc2-af4d-9434e103957c",
-      "salaryMin": 111700,
-      "salaryMax": 304100,
-      "sourceEvidence": "BurnW20_FDE_SE_AppliedAI_TrackBreakdown_2026-08-10"
-    },
-    {
-      "company": "Harvey",
-      "title": "Customer Success Manager",
-      "location": "Madrid / London",
-      "applyUrl": "https://jobs.ashbyhq.com/harvey/e8ed59d5-798c-49d3-a6ab-9e628d5dc221",
-      "sourceEvidence": "BurnW20_FDE_SE_AppliedAI_TrackBreakdown_2026-08-10",
-      "salaryMin": 160000,
-      "salaryMax": 185000
     },
     {
       "company": "Glean",
@@ -13989,6 +14942,218 @@
       "title": "Mercury Lead",
       "fitReasoning": "级别过高，但Remote 友好所以保留观察。",
       "sourceEvidence": "BurnW_Boston_Remote_LiveJobScan_2026-08-10"
+    },
+    {
+      "company": "Microsoft",
+      "title": "Azure Data Analytics",
+      "location": "Redmond",
+      "applyUrl": "https://apply.careers.microsoft.com/careers/job/1970393556944787",
+      "sourceEvidence": "BurnW_NewGrad_Timeline_Channels_2026-08-10"
+    },
+    {
+      "company": "Stripe",
+      "title": "Software Engineer",
+      "location": "Remote",
+      "applyUrl": "https://stripe.com/jobs/search?gh_jid=8089353",
+      "sourceEvidence": "BurnW_NewGrad_Timeline_Channels_2026-08-10"
+    },
+    {
+      "company": "xAI",
+      "title": "Threat Intelligence Analyst",
+      "location": "Bastrop, TX",
+      "applyUrl": "https://job-boards.greenhouse.io/xai/jobs/5205499007",
+      "sourceEvidence": "BurnW_NewGrad_Timeline_Channels_2026-08-10"
+    },
+    {
+      "company": "FanDuel",
+      "title": "Advanced Analytics Manager",
+      "location": "NYC",
+      "applyUrl": "https://www.fanduel.careers/open-positions?gh_jid=8108986",
+      "sourceEvidence": "BurnW_NewGrad_Timeline_Channels_2026-08-10"
+    },
+    {
+      "company": "IEM",
+      "title": "Commercial Data Analyst",
+      "location": "Remote",
+      "applyUrl": "https://job-boards.greenhouse.io/industrialelectricmanufacturing/jobs/4355497009",
+      "sourceEvidence": "BurnW_NewGrad_Timeline_Channels_2026-08-10"
+    },
+    {
+      "company": "Sunwater Capital",
+      "title": "Junior Data Analyst",
+      "location": "North Bethesda, MD",
+      "applyUrl": "https://jobs.lever.co/sunwatercapital/8f57e7a2-250e-4b84-8a01-d3c186361003",
+      "sourceEvidence": "BurnW_NewGrad_Timeline_Channels_2026-08-10"
+    },
+    {
+      "company": "Mercor",
+      "title": "GTM Engineer",
+      "location": "SF",
+      "applyUrl": "https://jobs.ashbyhq.com/mercor/746c6df1-cc93-46ed-8f68-b8b8515398f4",
+      "sourceEvidence": "BurnW_NewGrad_Timeline_Channels_2026-08-10"
+    },
+    {
+      "company": "Cloudflare",
+      "title": "Professional Services Intern",
+      "location": "SF",
+      "applyUrl": "https://boards.greenhouse.io/cloudflare/jobs/7796077",
+      "sourceEvidence": "BurnW_NewGrad_Timeline_Channels_2026-08-10"
+    },
+    {
+      "company": "Cloudflare",
+      "title": "Network Strategy Intern",
+      "location": "SF",
+      "applyUrl": "https://boards.greenhouse.io/cloudflare/jobs/8013562",
+      "sourceEvidence": "BurnW_NewGrad_Timeline_Channels_2026-08-10"
+    },
+    {
+      "company": "Cloudflare",
+      "title": "Data Engineer Intern",
+      "location": "SF",
+      "sourceEvidence": "BurnW_NewGrad_Timeline_Channels_2026-08-10"
+    },
+    {
+      "company": "SS&C Technologies",
+      "title": "Enterprise Marketing Data Analyst",
+      "location": "Boston, MA",
+      "applyUrl": "https://ssctech.wd1.myworkdayjobs.com/ssctechnologies/job/Boston-MA---One-Post-Office-Square/Enterprise-Marketing-Data-Analyst---Cross-Functional-Insights---Visualization_R42875",
+      "sourceEvidence": "BurnW_NewGrad_Timeline_Channels_2026-08-10"
+    },
+    {
+      "company": "Wolters Kluwer",
+      "title": "Business Analyst",
+      "location": "Waltham, MA",
+      "applyUrl": "https://wk.wd3.myworkdayjobs.com/External/job/USA---Waltham-MA/Business-Analyst_R0057830",
+      "sourceEvidence": "BurnW_NewGrad_Timeline_Channels_2026-08-10"
+    },
+    {
+      "company": "WHOOP",
+      "title": "AI Product Specialist",
+      "location": "Boston, MA",
+      "sourceEvidence": "BurnW_NewGrad_Timeline_Channels_2026-08-10"
+    },
+    {
+      "company": "Wayfair",
+      "title": "Commercial Analyst",
+      "location": "Boston, MA",
+      "sourceEvidence": "BurnW_NewGrad_Timeline_Channels_2026-08-10"
+    },
+    {
+      "company": "Wayfair",
+      "title": "Finance Analyst",
+      "location": "Boston, MA",
+      "sourceEvidence": "BurnW_NewGrad_Timeline_Channels_2026-08-10"
+    },
+    {
+      "company": "Wayfair",
+      "title": "Commercial Strategy Associate",
+      "location": "Boston, MA",
+      "sourceEvidence": "BurnW_NewGrad_Timeline_Channels_2026-08-10"
+    },
+    {
+      "company": "Criteo",
+      "title": "Client Focused Data Analyst",
+      "location": "Boston, MA",
+      "sourceEvidence": "BurnW_NewGrad_Timeline_Channels_2026-08-10"
+    },
+    {
+      "company": "Verisk",
+      "title": "Business Systems Analyst",
+      "location": "Woburn, MA",
+      "sourceEvidence": "BurnW_NewGrad_Timeline_Channels_2026-08-10"
+    },
+    {
+      "company": "Affirm",
+      "title": "Software Engineer",
+      "location": "SF",
+      "sourceEvidence": "BurnW_NewGrad_Timeline_Channels_2026-08-10"
+    },
+    {
+      "company": "Affirm",
+      "title": "Early Career",
+      "location": "SF",
+      "sourceEvidence": "BurnW_NewGrad_Timeline_Channels_2026-08-10"
+    },
+    {
+      "company": "Datadog",
+      "title": "Data Engineer",
+      "location": "SF / Mountain View",
+      "sourceEvidence": "BurnW_NewGrad_Timeline_Channels_2026-08-10"
+    },
+    {
+      "company": "Datadog",
+      "title": "GCS Data Science",
+      "location": "SF / Mountain View",
+      "sourceEvidence": "BurnW_NewGrad_Timeline_Channels_2026-08-10"
+    },
+    {
+      "company": "DoorDash",
+      "title": "Analytics Engineer",
+      "location": "SF / San Jose",
+      "sourceEvidence": "BurnW_NewGrad_Timeline_Channels_2026-08-10"
+    },
+    {
+      "company": "DoorDash",
+      "title": "Data Science",
+      "location": "SF / San Jose",
+      "sourceEvidence": "BurnW_NewGrad_Timeline_Channels_2026-08-10"
+    },
+    {
+      "company": "Roblox",
+      "title": "Software Engineer",
+      "location": "San Mateo, CA",
+      "sourceEvidence": "BurnW_NewGrad_Timeline_Channels_2026-08-10"
+    },
+    {
+      "company": "Roblox",
+      "title": "Data Engineering",
+      "location": "San Mateo, CA",
+      "sourceEvidence": "BurnW_NewGrad_Timeline_Channels_2026-08-10"
+    },
+    {
+      "company": "Meta",
+      "title": "Data Engineer",
+      "location": "SF / Menlo Park",
+      "applyUrl": "https://www.linkedin.com/jobs/search/?keywords=Meta+university+grad+2026",
+      "sourceEvidence": "BurnW_NewGrad_Timeline_Channels_2026-08-10"
+    },
+    {
+      "company": "Meta",
+      "title": "Product Analytics",
+      "location": "SF / Menlo Park",
+      "applyUrl": "https://www.linkedin.com/jobs/search/?keywords=Meta+university+grad+2026",
+      "sourceEvidence": "BurnW_NewGrad_Timeline_Channels_2026-08-10"
+    },
+    {
+      "company": "Lovable",
+      "title": "Analytics Engineer",
+      "location": "Boston, MA",
+      "sourceEvidence": "BurnW_NewGrad_Timeline_Channels_2026-08-10"
+    },
+    {
+      "company": "Hasbro",
+      "title": "Data Engineer",
+      "location": "Boston, MA",
+      "sourceEvidence": "BurnW_NewGrad_Timeline_Channels_2026-08-10"
+    },
+    {
+      "company": "Salesforce",
+      "title": "Solution Engineer (Pre-Sales) - All Levels",
+      "location": "Boston, MA",
+      "applyUrl": "https://www.linkedin.com/jobs/search?keywords=solutions%20engineer",
+      "sourceEvidence": "BurnW_NewGrad_Timeline_Channels_2026-08-10"
+    },
+    {
+      "company": "Dynatrace",
+      "title": "Solutions Engineer - New England Region",
+      "location": "Boston, MA",
+      "sourceEvidence": "BurnW_NewGrad_Timeline_Channels_2026-08-10"
+    },
+    {
+      "company": "Commure",
+      "title": "Forward Deployed Engineer",
+      "location": "Boston, MA",
+      "sourceEvidence": "BurnW_NewGrad_Timeline_Channels_2026-08-10"
     },
     {
       "company": "Google",
@@ -14511,12 +15676,6 @@
       "sourceEvidence": "BurnY07_FDE_SolutionsEngineer_TrackGuide_2026-08-10"
     },
     {
-      "company": "HighRadius",
-      "title": "Forward Deployed Engineer",
-      "location": "Houston",
-      "sourceEvidence": "BurnY07_FDE_SolutionsEngineer_TrackGuide_2026-08-10"
-    },
-    {
       "company": "Heron Data",
       "title": "Deployment Specialists",
       "location": "NY",
@@ -14812,13 +15971,6 @@
       "applyUrl": "https://www.builtinsf.com/jobs?search=Decagon",
       "salaryMin": 200000,
       "salaryMax": 280000,
-      "sourceEvidence": "BurnY07_FDE_SolutionsEngineer_TrackGuide_2026-08-10"
-    },
-    {
-      "company": "Salesforce",
-      "title": "Solution Engineer (Pre-Sales) - All Levels",
-      "location": "SF, Boston",
-      "applyUrl": "https://www.linkedin.com/jobs/search?keywords=solutions%20engineer",
       "sourceEvidence": "BurnY07_FDE_SolutionsEngineer_TrackGuide_2026-08-10"
     },
     {
@@ -15156,223 +16308,6 @@
       "title": "Forward Deployed Engineer Lead",
       "location": "SF",
       "sourceEvidence": "BurnY07_FDE_SolutionsEngineer_TrackGuide_2026-08-10"
-    },
-    {
-      "company": "Microsoft",
-      "title": "Azure Data Analytics",
-      "location": "Redmond",
-      "applyUrl": "https://apply.careers.microsoft.com/careers/job/1970393556944787",
-      "sourceEvidence": "BurnY07_Fall2026_NewGrad_Timeline_Channels_2026-08-10"
-    },
-    {
-      "company": "Stripe",
-      "title": "Software Engineer",
-      "location": "Remote",
-      "applyUrl": "https://stripe.com/jobs/search?gh_jid=8089353",
-      "sourceEvidence": "BurnY07_Fall2026_NewGrad_Timeline_Channels_2026-08-10"
-    },
-    {
-      "company": "xAI",
-      "title": "Threat Intelligence Analyst",
-      "location": "Bastrop, TX",
-      "applyUrl": "https://job-boards.greenhouse.io/xai/jobs/5205499007",
-      "sourceEvidence": "BurnY07_Fall2026_NewGrad_Timeline_Channels_2026-08-10"
-    },
-    {
-      "company": "FanDuel",
-      "title": "Advanced Analytics Manager",
-      "location": "NYC",
-      "applyUrl": "https://www.fanduel.careers/open-positions?gh_jid=8108986",
-      "sourceEvidence": "BurnY07_Fall2026_NewGrad_Timeline_Channels_2026-08-10"
-    },
-    {
-      "company": "IEM",
-      "title": "Commercial Data Analyst",
-      "location": "Remote",
-      "applyUrl": "https://job-boards.greenhouse.io/industrialelectricmanufacturing/jobs/4355497009",
-      "sourceEvidence": "BurnY07_Fall2026_NewGrad_Timeline_Channels_2026-08-10"
-    },
-    {
-      "company": "Sunwater Capital",
-      "title": "Junior Data Analyst",
-      "location": "North Bethesda, MD",
-      "applyUrl": "https://jobs.lever.co/sunwatercapital/8f57e7a2-250e-4b84-8a01-d3c186361003",
-      "sourceEvidence": "BurnY07_Fall2026_NewGrad_Timeline_Channels_2026-08-10"
-    },
-    {
-      "company": "Mercor",
-      "title": "GTM Engineer",
-      "location": "SF",
-      "applyUrl": "https://jobs.ashbyhq.com/mercor/746c6df1-cc93-46ed-8f68-b8b8515398f4",
-      "sourceEvidence": "BurnY07_Fall2026_NewGrad_Timeline_Channels_2026-08-10"
-    },
-    {
-      "company": "Cloudflare",
-      "title": "Professional Services Intern",
-      "location": "SF",
-      "applyUrl": "https://boards.greenhouse.io/cloudflare/jobs/7796077",
-      "sourceEvidence": "BurnY07_Fall2026_NewGrad_Timeline_Channels_2026-08-10"
-    },
-    {
-      "company": "Cloudflare",
-      "title": "Network Strategy Intern",
-      "location": "SF",
-      "applyUrl": "https://boards.greenhouse.io/cloudflare/jobs/8013562",
-      "sourceEvidence": "BurnY07_Fall2026_NewGrad_Timeline_Channels_2026-08-10"
-    },
-    {
-      "company": "Cloudflare",
-      "title": "Data Engineer Intern",
-      "location": "SF",
-      "sourceEvidence": "BurnY07_Fall2026_NewGrad_Timeline_Channels_2026-08-10"
-    },
-    {
-      "company": "Datadog",
-      "title": "Sales Revenue Analyst",
-      "location": "Boston, MA",
-      "sourceEvidence": "BurnY07_Fall2026_NewGrad_Timeline_Channels_2026-08-10"
-    },
-    {
-      "company": "SS&C Technologies",
-      "title": "Enterprise Marketing Data Analyst",
-      "location": "Boston, MA",
-      "applyUrl": "https://ssctech.wd1.myworkdayjobs.com/ssctechnologies/job/Boston-MA---One-Post-Office-Square/Enterprise-Marketing-Data-Analyst---Cross-Functional-Insights---Visualization_R42875",
-      "sourceEvidence": "BurnY07_Fall2026_NewGrad_Timeline_Channels_2026-08-10"
-    },
-    {
-      "company": "Wolters Kluwer",
-      "title": "Business Analyst",
-      "location": "Waltham, MA",
-      "applyUrl": "https://wk.wd3.myworkdayjobs.com/External/job/USA---Waltham-MA/Business-Analyst_R0057830",
-      "sourceEvidence": "BurnY07_Fall2026_NewGrad_Timeline_Channels_2026-08-10"
-    },
-    {
-      "company": "WHOOP",
-      "title": "AI Product Specialist",
-      "location": "Boston, MA",
-      "sourceEvidence": "BurnY07_Fall2026_NewGrad_Timeline_Channels_2026-08-10"
-    },
-    {
-      "company": "Wayfair",
-      "title": "Commercial Analyst",
-      "location": "Boston, MA",
-      "sourceEvidence": "BurnY07_Fall2026_NewGrad_Timeline_Channels_2026-08-10"
-    },
-    {
-      "company": "Wayfair",
-      "title": "Finance Analyst",
-      "location": "Boston, MA",
-      "sourceEvidence": "BurnY07_Fall2026_NewGrad_Timeline_Channels_2026-08-10"
-    },
-    {
-      "company": "Wayfair",
-      "title": "Commercial Strategy Associate",
-      "location": "Boston, MA",
-      "sourceEvidence": "BurnY07_Fall2026_NewGrad_Timeline_Channels_2026-08-10"
-    },
-    {
-      "company": "Criteo",
-      "title": "Client Focused Data Analyst",
-      "location": "Boston, MA",
-      "sourceEvidence": "BurnY07_Fall2026_NewGrad_Timeline_Channels_2026-08-10"
-    },
-    {
-      "company": "Verisk",
-      "title": "Business Systems Analyst",
-      "location": "Woburn, MA",
-      "sourceEvidence": "BurnY07_Fall2026_NewGrad_Timeline_Channels_2026-08-10"
-    },
-    {
-      "company": "Affirm",
-      "title": "Software Engineer",
-      "location": "SF",
-      "sourceEvidence": "BurnY07_Fall2026_NewGrad_Timeline_Channels_2026-08-10"
-    },
-    {
-      "company": "Affirm",
-      "title": "Early Career",
-      "location": "SF",
-      "sourceEvidence": "BurnY07_Fall2026_NewGrad_Timeline_Channels_2026-08-10"
-    },
-    {
-      "company": "Datadog",
-      "title": "Data Engineer",
-      "location": "SF / Mountain View",
-      "sourceEvidence": "BurnY07_Fall2026_NewGrad_Timeline_Channels_2026-08-10"
-    },
-    {
-      "company": "Datadog",
-      "title": "GCS Data Science",
-      "location": "SF / Mountain View",
-      "sourceEvidence": "BurnY07_Fall2026_NewGrad_Timeline_Channels_2026-08-10"
-    },
-    {
-      "company": "DoorDash",
-      "title": "Analytics Engineer",
-      "location": "SF / San Jose",
-      "sourceEvidence": "BurnY07_Fall2026_NewGrad_Timeline_Channels_2026-08-10"
-    },
-    {
-      "company": "DoorDash",
-      "title": "Data Science",
-      "location": "SF / San Jose",
-      "sourceEvidence": "BurnY07_Fall2026_NewGrad_Timeline_Channels_2026-08-10"
-    },
-    {
-      "company": "Roblox",
-      "title": "Software Engineer",
-      "location": "San Mateo, CA",
-      "sourceEvidence": "BurnY07_Fall2026_NewGrad_Timeline_Channels_2026-08-10"
-    },
-    {
-      "company": "Roblox",
-      "title": "Data Engineering",
-      "location": "San Mateo, CA",
-      "sourceEvidence": "BurnY07_Fall2026_NewGrad_Timeline_Channels_2026-08-10"
-    },
-    {
-      "company": "Meta",
-      "title": "Data Engineer",
-      "location": "SF / Menlo Park",
-      "applyUrl": "https://www.linkedin.com/jobs/search/?keywords=Meta+university+grad+2026",
-      "sourceEvidence": "BurnY07_Fall2026_NewGrad_Timeline_Channels_2026-08-10"
-    },
-    {
-      "company": "Meta",
-      "title": "Product Analytics",
-      "location": "SF / Menlo Park",
-      "applyUrl": "https://www.linkedin.com/jobs/search/?keywords=Meta+university+grad+2026",
-      "sourceEvidence": "BurnY07_Fall2026_NewGrad_Timeline_Channels_2026-08-10"
-    },
-    {
-      "company": "Lovable",
-      "title": "Analytics Engineer",
-      "location": "Boston, MA",
-      "sourceEvidence": "BurnY07_Fall2026_NewGrad_Timeline_Channels_2026-08-10"
-    },
-    {
-      "company": "Hasbro",
-      "title": "Data Engineer",
-      "location": "Boston, MA",
-      "sourceEvidence": "BurnY07_Fall2026_NewGrad_Timeline_Channels_2026-08-10"
-    },
-    {
-      "company": "Dynatrace",
-      "title": "Solutions Engineer - New England Region",
-      "location": "Boston, MA",
-      "sourceEvidence": "BurnY07_Fall2026_NewGrad_Timeline_Channels_2026-08-10"
-    },
-    {
-      "company": "Commure",
-      "title": "Forward Deployed Engineer",
-      "location": "Boston, MA",
-      "sourceEvidence": "BurnY07_Fall2026_NewGrad_Timeline_Channels_2026-08-10"
-    },
-    {
-      "company": "WilmerHale",
-      "title": "Artificial Intelligence (AI) Engineer",
-      "location": "Boston, MA",
-      "sourceEvidence": "BurnY07_Fall2026_NewGrad_Timeline_Channels_2026-08-10"
     },
     {
       "company": "Anthropic",
