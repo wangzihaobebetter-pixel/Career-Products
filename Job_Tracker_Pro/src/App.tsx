@@ -12,6 +12,7 @@ import Templates from './views/Templates';
 import Questions from './views/Questions';
 import Intel from './views/Intel';
 import Actions from './views/Actions';
+import Playbook from './views/Playbook';
 import Stats from './views/Stats';
 import Settings from './views/Settings';
 import JobDetail from './views/JobDetail';
@@ -23,7 +24,7 @@ import { toast, ToastHost } from './components/Toast';
 import { buildICS, downloadICS, countEvents } from './lib/ics';
 import { needsAttention } from './lib/followups';
 
-type View = 'dashboard'|'pipeline'|'companies'|'contacts'|'interviews'|'offers'|'resume'|'tailor'|'templates'|'questions'|'intel'|'actions'|'stats'|'settings';
+type View = 'dashboard'|'pipeline'|'companies'|'contacts'|'interviews'|'offers'|'resume'|'tailor'|'templates'|'questions'|'intel'|'actions'|'playbook'|'stats'|'settings';
 
 const NAV: { view: View; label: string; ico: string; sec?: string }[] = [
   { view:'dashboard', label:'Dashboard', ico:'📊' },
@@ -38,6 +39,7 @@ const NAV: { view: View; label: string; ico: string; sec?: string }[] = [
   { view:'questions', label:'Interview Prep', ico:'❓' },
   { view:'intel', label:'Company Intel', ico:'🔎' },
   { view:'actions', label:'Action Board', ico:'✅', sec:'Insights' },
+  { view:'playbook', label:'90-Day Playbook', ico:'🗺' },
   { view:'stats', label:'Stats', ico:'📈' },
   { view:'settings', label:'Settings', ico:'⚙️' },
 ];
@@ -189,6 +191,7 @@ export default function App(){
       case 'questions': return <Questions />;
       case 'intel': return <Intel />;
       case 'actions': return <Actions />;
+      case 'playbook': return <Playbook />;
       case 'stats': return <Stats />;
       case 'settings': return <Settings />;
     }

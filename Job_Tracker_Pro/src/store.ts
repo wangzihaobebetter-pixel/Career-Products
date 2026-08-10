@@ -114,6 +114,8 @@ export interface JTPState extends AppState {
   logInterviewOutcome: (id: string, outcome: InterviewEvent['outcome'], notes?: string) => void;
   addOutreach: (o: Partial<Outreach>) => string;
   addActivity: (type: string, summary: string, entityId?: string) => void;
+  togglePlanCheck: (id: string) => void;
+  resetPlanChecks: () => void;
   setSettings: (patch: Partial<AppState['settings']>) => void;
   resetAll: () => void;
   loadBackup: (state: AppState) => boolean;
@@ -403,6 +405,7 @@ function buildInitialState(): AppState {
     // from the 2026-08-09 live research pass (see seed3.ts for sourcing).
     questions: [...playbook.questions, ...researchQuestions],
     starStories: playbook.starStories, stages: DEFAULT_STAGES,
+    planChecks: {},
     settings: {
       // Left blank on purpose: this repo is public. Fill it in Settings —
       // it is stored only in this browser's localStorage, never in the repo.
@@ -753,6 +756,22 @@ export const useStore = create<JTPState>()(
         set(s => ({ settings: { ...s.settings, ...patch } }));
       },
 
+      /* Playbook ticks are stored as a flat id → bool map so that adding or
+         renaming plan items never needs a data migration: an unknown id is
+         simply absent, and a stale one is ignored by the view. */
+      togglePlanCheck: (id) => {
+        set(s => {
+          const next = { ...(s.planChecks || {}) };
+          if (next[id]) delete next[id]; else next[id] = true;
+          return { planChecks: next };
+        });
+      },
+
+      resetPlanChecks: () => {
+        set({ planChecks: {} });
+        get().addActivity('system', 'Playbook progress cleared');
+      },
+
       resetAll: () => {
         const fresh = buildInitialState();
         set({ ...fresh });
@@ -776,6 +795,9 @@ export const useStore = create<JTPState>()(
         ] as const;
         const patch: Record<string, unknown> = {};
         for (const k of KEYS) if (Array.isArray(b[k])) patch[k] = b[k];
+        if (b.planChecks && typeof b.planChecks === 'object' && !Array.isArray(b.planChecks)) {
+          patch.planChecks = b.planChecks;
+        }
         if (b.settings && typeof b.settings === 'object') {
           patch.settings = { ...get().settings, ...(b.settings as object) };
         }

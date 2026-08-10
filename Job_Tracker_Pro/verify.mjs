@@ -44,7 +44,7 @@ const root = doc.getElementById('root');
 check('React mounted', !!root && root.children.length > 0);
 
 const navBtns = [...doc.querySelectorAll('.nav-item')];
-check('nav rendered (14 items)', navBtns.length === 14, `found ${navBtns.length}`);
+check('nav rendered (15 items)', navBtns.length === 15, `found ${navBtns.length}`);
 
 // Walk every view.
 for (const btn of navBtns) {
@@ -647,6 +647,47 @@ if (goalRows.length) {
   check('intel: visa milestones carry gov sources', /uscis\.gov|federalregister\.gov/.test(visaText));
   check('intel: the STEM OPT backstop is stated', /24-month STEM/.test(visaText));
   check('intel: it says plainly it is not legal advice', /not legal advice/i.test(visaText));
+}
+
+/* ---- 90-Day Playbook ---- */
+{
+  nav('90-Day Playbook');
+  await sleep(150);
+  const pbText = () => doc.querySelector('.content').textContent;
+  const t0 = pbText();
+  check('playbook: all three phases render', /Phase 1/.test(t0) && /Phase 2/.test(t0) && /Phase 3/.test(t0));
+  check('playbook: day counter is live', /Day \d+/.test(t0), (t0.match(/Day \d+ of 90/) || ['no day counter'])[0]);
+
+  const boxes = [...doc.querySelectorAll('.content input[type=checkbox]')];
+  check('playbook: action items are checkable', boxes.length >= 20, `${boxes.length} checkboxes`);
+
+  // Ticking must survive into persisted state, not just flip the DOM.
+  const before = Object.keys(readState2().planChecks || {}).length;
+  boxes[0].click();
+  await sleep(150);
+  const after = Object.keys(readState2().planChecks || {}).length;
+  check('playbook: a tick persists to the store', after === before + 1, `${before} → ${after}`);
+  check('playbook: progress counter moved', /1\/\d+ ticked/.test(pbText()),
+        (pbText().match(/\d+\/\d+ ticked/) || ['not found'])[0]);
+
+  check('playbook: weekly targets tab', clickByText('.toolbar button', 'Weekly Targets'));
+  await sleep(120);
+  check('playbook: target table has the per-phase columns', /Applications \(verified\)/.test(pbText()) && /7–8 \/wk/.test(pbText()));
+
+  check('playbook: failure modes tab', clickByText('.toolbar button', 'Failure Modes'));
+  await sleep(120);
+  const fmText = pbText();
+  check('playbook: all 8 failure modes render', (fmText.match(/FM[1-8]/g) || []).length === 8);
+  check('playbook: LinkedIn red line is stated', /restricted a third time/i.test(fmText));
+
+  check('playbook: self-check tab', clickByText('.toolbar button', 'Weekly Self-Check'));
+  await sleep(120);
+  check('playbook: self-check sections render', /Numbers/.test(pbText()) && /Next week/.test(pbText()));
+
+  // Reset must clear what was ticked.
+  clickByText('.toolbar button', 'Reset');
+  await sleep(150);
+  check('playbook: reset clears progress', Object.keys(readState2().planChecks || {}).length === 0);
 }
 
 check('zero runtime JS errors', errors.length === 0, errors.slice(0, 3).join(' | '));

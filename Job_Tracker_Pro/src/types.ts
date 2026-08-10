@@ -186,6 +186,8 @@ export interface AppState {
   questions: Question[];
   starStories: StarStory[];
   stages: StageDef[];
+  /** Ticked items in the 90-day playbook, keyed by the plan item id. */
+  planChecks: Record<string, boolean>;
   settings: AppSettings;
   activity: { id: string; at: string; type: string; summary: string; entityId?: string }[];
   savedAt: string;
