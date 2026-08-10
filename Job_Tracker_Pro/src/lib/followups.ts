@@ -55,6 +55,32 @@ const STAGE_RULES: Partial<Record<StageId, { nudgeAfter: number; deadAfter: numb
 const urgencyFor = (idle: number, threshold: number): Suggestion['urgency'] =>
   idle >= threshold * 2 ? 'overdue' : idle >= threshold ? 'today' : 'soon';
 
+/* When was this job last touched?
+
+   `lastTouchedAt` is the intended field, but it is not guaranteed to be
+   there: `loadBackup` restores arbitrary JSON without normalising it, so a
+   hand-edited or older backup can produce jobs with the field missing or
+   unparseable. Reading it blindly yields NaN, and every `NaN >= threshold`
+   comparison is false — which means the job would be silently treated as
+   permanently healthy and never nudged again. A tracker that quietly stops
+   tracking is worse than one that is loudly wrong, so fall back through the
+   other timestamps the record carries. */
+function lastTouched(job: JobApplication): number | null {
+  const candidates: (string | undefined)[] = [
+    job.lastTouchedAt,
+    job.stageHistory?.[job.stageHistory.length - 1]?.at,
+    job.updatedAt,
+    job.appliedDate,
+    job.createdAt,
+  ];
+  for (const c of candidates) {
+    if (!c) continue;
+    const t = new Date(c).getTime();
+    if (Number.isFinite(t)) return t;
+  }
+  return null;
+}
+
 /* ------------------------------------------------------------------
    Per-job health, derived from the same patience table as the
    suggestions above. The pipeline board uses this to colour cards, so
@@ -70,10 +96,20 @@ export interface JobHealth {
 }
 
 export function jobHealth(job: JobApplication, now: number = Date.now()): JobHealth {
-  const idle = daysBetween(now, new Date(job.lastTouchedAt).getTime());
+  const touched = lastTouched(job);
+  const idle = touched === null ? 0 : daysBetween(now, touched);
 
   if (['accepted', 'rejected', 'withdrawn', 'ghosted'].includes(job.status)) {
     return { level: 'closed', daysIdle: idle, reason: 'Application is closed.' };
+  }
+
+  /* No usable timestamp at all: say so rather than report a healthy job. */
+  if (touched === null) {
+    return {
+      level: 'stale',
+      daysIdle: 0,
+      reason: 'No usable date on this record — re-check it manually.',
+    };
   }
 
   const rule = STAGE_RULES[job.status];
@@ -127,7 +163,9 @@ export function computeFollowUps(input: FollowUpInput): Suggestion[] {
     const rule = STAGE_RULES[job.status];
     if (!rule) continue;
 
-    const idle = daysBetween(now, new Date(job.lastTouchedAt).getTime());
+    const touched = lastTouched(job);
+    if (touched === null) continue; /* jobHealth surfaces these; don't guess a cadence from nothing */
+    const idle = daysBetween(now, touched);
     const co = input.companyName(job.companyId);
 
     /* Past the dead line: the honest move is to mark it ghosted, not to

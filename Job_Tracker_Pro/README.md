@@ -73,18 +73,32 @@ Keyboard: `⌘K` quick switcher, `⌘N` new job.
 ## Verifying a build
 
 ```bash
-npx tsc --noEmit          # type check
-npx vite build            # production build
-node verify-render.cjs    # walks all 11 views, asserts seeded data renders
-node verify-interact.cjs  # opens modals, submits forms, moves stages, checks persistence
-node verify-actions.cjs   # Action Board task toggle + CSV export contents
+npx tsc --noEmit               # type check
+npx vite build                 # production build
+
+node verify-render.cjs         # walks every view, asserts seeded data renders
+node verify-interact.cjs       # opens modals, submits forms, moves stages, checks persistence
+node verify-data.cjs           # per-view row counts; fails on an empty collection
+node verify-dashboard.cjs      # dashboard panels, quick-add, task toggle, nav buttons
+node verify-actions.cjs        # Action Board task toggle + CSV export contents
+node verify-offers.mjs         # offers + interview scheduling and calendar export
+node verify-sequences.mjs      # outreach drafts and filters
+node verify-interview-prep.cjs # question bank, STAR stories, round outcomes
+node verify-backup.cjs         # JSON export/import round trip, rejects garbage
+node verify-followups.cjs      # unit tests for the cadence engine + goal progress
 ```
 
-These load the built bundle in jsdom and drive the real UI — they open modals,
-submit forms, tick task checkboxes, and read back what landed in
+Most of these load the built bundle in jsdom and drive the real UI — they open
+modals, submit forms, tick task checkboxes, and read back what landed in
 `localStorage`. `verify-actions.cjs` intercepts the CSV download and inspects
-the actual blob, so a broken export cannot pass. All three exit non-zero on
-failure.
+the actual blob, so a broken export cannot pass.
+
+`verify-followups.cjs` is the odd one out: it bundles `src/lib` with esbuild and
+tests the pure functions directly. The follow-up panel is legitimately empty on
+fresh seed data — nothing has aged past its cadence yet — so the UI test cannot
+tell a working engine from a dead one. This one ages the fixtures instead.
+
+All exit non-zero on failure.
 
 ---
 

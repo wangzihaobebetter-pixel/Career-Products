@@ -11,6 +11,7 @@ import Tailor from './views/Tailor';
 import Templates from './views/Templates';
 import Questions from './views/Questions';
 import Intel from './views/Intel';
+import Sequences from './views/Sequences';
 import Actions from './views/Actions';
 import Playbook from './views/Playbook';
 import Stats from './views/Stats';
@@ -24,7 +25,7 @@ import { toast, ToastHost } from './components/Toast';
 import { buildICS, downloadICS, countEvents } from './lib/ics';
 import { needsAttention } from './lib/followups';
 
-type View = 'dashboard'|'pipeline'|'companies'|'contacts'|'interviews'|'offers'|'resume'|'tailor'|'templates'|'questions'|'intel'|'actions'|'playbook'|'stats'|'settings';
+type View = 'dashboard'|'pipeline'|'companies'|'contacts'|'interviews'|'offers'|'resume'|'tailor'|'templates'|'questions'|'sequences'|'intel'|'actions'|'playbook'|'stats'|'settings';
 
 const NAV: { view: View; label: string; ico: string; sec?: string }[] = [
   { view:'dashboard', label:'Dashboard', ico:'📊' },
@@ -37,6 +38,7 @@ const NAV: { view: View; label: string; ico: string; sec?: string }[] = [
   { view:'tailor', label:'Tailor to JD', ico:'🎯' },
   { view:'templates', label:'Email Templates', ico:'✉️' },
   { view:'questions', label:'Interview Prep', ico:'❓' },
+  { view:'sequences', label:'Outreach Sequences', ico:'📨' },
   { view:'intel', label:'Company Intel', ico:'🔎' },
   { view:'actions', label:'Action Board', ico:'✅', sec:'Insights' },
   { view:'playbook', label:'90-Day Playbook', ico:'🗺' },
@@ -179,7 +181,11 @@ export default function App(){
     if(detailJob) return <JobDetail id={detailJob} onBack={()=>setDetailJob(null)} />;
     if(detailCompany) return <CompanyDetail id={detailCompany} onBack={()=>setDetailCompany(null)} />;
     switch(view){
-      case 'dashboard': return <Dashboard onOpenJob={setDetailJob} onOpenCompany={setDetailCompany} />;
+      case 'dashboard': return <Dashboard
+        onOpenJob={setDetailJob}
+        onOpenCompany={setDetailCompany}
+        onNavigate={(v)=>{ setView(v as View); setDetailJob(null); setDetailCompany(null); }}
+      />;
       case 'pipeline': return <Pipeline onOpenJob={(id)=>setDetailJob(id)} />;
       case 'companies': return <Companies onOpen={(id)=>setDetailCompany(id)} />;
       case 'contacts': return <Contacts />;
@@ -189,6 +195,7 @@ export default function App(){
       case 'tailor': return <Tailor />;
       case 'templates': return <Templates />;
       case 'questions': return <Questions />;
+      case 'sequences': return <Sequences />;
       case 'intel': return <Intel />;
       case 'actions': return <Actions />;
       case 'playbook': return <Playbook />;

@@ -71,6 +71,7 @@ export const _undoDepth = () => undoStack.length;
 import seedData from './seed';
 import playbook from './seed2';
 import { researchQuestions } from './seed3';
+import { minedQuestions } from './seed5';
 
 export interface JTPState extends AppState {
   hydrate: () => void;
@@ -402,8 +403,10 @@ function buildInitialState(): AppState {
     templates: playbook.templates, outreach: [], savedSearches: playbook.savedSearches,
     goals: playbook.goals,
     // Generic prep bank first, then the company-specific questions recovered
-    // from the 2026-08-09 live research pass (see seed3.ts for sourcing).
-    questions: [...playbook.questions, ...researchQuestions],
+    // from the 2026-08-09 live research pass (see seed3.ts for sourcing), then
+    // the mined bank (seed5.ts). Mined notes carry their own provenance grade:
+    // "Sourced:" traces to candidate write-ups, "Type-level" does not.
+    questions: [...playbook.questions, ...researchQuestions, ...minedQuestions],
     starStories: playbook.starStories, stages: DEFAULT_STAGES,
     planChecks: {},
     settings: {
@@ -441,6 +444,16 @@ export const useStore = create<JTPState>()(
           stageHistory: [{ from: 'wishlist', to: j.status || 'wishlist', at: t, source: 'manual' }],
           lastTouchedAt: t, createdAt: t, updatedAt: t, ...j,
         };
+        /* `...j` sits after the defaults so a caller can override them, but a
+           partially-parsed row can carry these keys set to undefined and blow
+           the defaults away. The cadence engine keys off lastTouchedAt, so a
+           missing one silently removes the job from every follow-up. */
+        if (!job.lastTouchedAt) job.lastTouchedAt = t;
+        if (!job.createdAt) job.createdAt = t;
+        if (!job.updatedAt) job.updatedAt = t;
+        if (!Array.isArray(job.stageHistory) || job.stageHistory.length === 0) {
+          job.stageHistory = [{ from: 'wishlist', to: job.status, at: t, source: 'manual' }];
+        }
         set(s => ({ jobs: [job, ...s.jobs] }));
         get().addActivity('job', `Added job: ${job.title}`, id);
         return id;
@@ -973,12 +986,19 @@ export const useStore = create<JTPState>()(
     }),
     {
       name: 'job-tracker-pro-v2',
-      version: 6,
-      // Bumping this version discards an older cached store so the playbook
-      // seed (templates / questions / STAR / resumes), the real submitted
-      // -application state, the v5 company-attribution fix, and the v6
-      // company-specific research question bank (seed3.ts) all land.
-      migrate: (persisted, from) => (from < 6 ? buildInitialState() : (persisted as AppState)),
+      version: 7,
+      // < 6 predates the playbook seed (templates / questions / STAR / resumes),
+      // the real submitted-application state, the v5 company-attribution fix and
+      // the seed3 research bank — those stores are rebuilt from scratch.
+      //
+      // 6 → 7 only adds the mined question bank (seed5.ts), so it merges instead
+      // of rebuilding: anything the user typed into an older store survives.
+      migrate: (persisted, from) => {
+        if (from < 6) return buildInitialState();
+        const prev = persisted as AppState;
+        const have = new Set(prev.questions?.map(q => q.id) ?? []);
+        return { ...prev, questions: [...(prev.questions ?? []), ...minedQuestions.filter(q => !have.has(q.id))] };
+      },
     }
   )
 );

@@ -44,7 +44,7 @@ const root = doc.getElementById('root');
 check('React mounted', !!root && root.children.length > 0);
 
 const navBtns = [...doc.querySelectorAll('.nav-item')];
-check('nav rendered (15 items)', navBtns.length === 15, `found ${navBtns.length}`);
+check('nav rendered (16 items)', navBtns.length === 16, `found ${navBtns.length}`);
 
 // Walk every view.
 for (const btn of navBtns) {
@@ -688,6 +688,74 @@ if (goalRows.length) {
   clickByText('.toolbar button', 'Reset');
   await sleep(150);
   check('playbook: reset clears progress', Object.keys(readState2().planChecks || {}).length === 0);
+}
+
+// --- Question bank: the mined research has to reach the screen, graded. ---
+{
+  const qBtn = navBtns.find(b => b.textContent.includes('Interview Prep'));
+  qBtn?.dispatchEvent(new window.MouseEvent('click', { bubbles: true }));
+  await sleep(180);
+
+  const st = readState2();
+  const qs = st.questions || [];
+  check('qbank: store carries the mined bank', qs.length >= 300, `${qs.length} questions`);
+  const mined = qs.filter(q => /^qm_/.test(q.id));
+  check('qbank: mined ids present', mined.length >= 280, `${mined.length} mined`);
+
+  const sourced = mined.filter(q => /^Sourced:/.test(q.notes || ''));
+  const typeLevel = mined.filter(q => /Type-level/.test(q.notes || ''));
+  check('qbank: sourced questions carry a traceable note', sourced.length >= 150, `${sourced.length} sourced`);
+  check('qbank: unverified ones are labelled type-level', typeLevel.length >= 100, `${typeLevel.length} type-level`);
+  check('qbank: every mined question is graded', sourced.length + typeLevel.length === mined.length);
+  // A "sourced" note must actually name where it came from, or the grade lies.
+  check('qbank: sourced notes name a source',
+        sourced.every(q => /BurnR|r\/[A-Za-z]/.test(q.notes)),
+        `${sourced.filter(q => !/BurnR|r\/[A-Za-z]/.test(q.notes)).length} unnamed`);
+
+  const companiesCovered = new Set(mined.filter(q => q.company).map(q => q.company));
+  check('qbank: multi-company coverage', companiesCovered.size >= 15, `${companiesCovered.size} companies`);
+  for (const co of ['Klaviyo', 'Notion', 'Glean', 'Datadog']) {
+    check(`qbank: ${co} has questions`, mined.some(q => q.company === co));
+  }
+
+  const qText = () => doc.querySelector('.content')?.textContent || '';
+  const cardCount = () => doc.querySelectorAll('.content .panel').length;
+  check('qbank: cards render', cardCount() > 20, `${cardCount()} cards`);
+  check('qbank: provenance badge is on screen', /sourced|type-level|curated/.test(qText()));
+  check('qbank: coach notes are collapsible', doc.querySelectorAll('.content details').length > 10,
+        `${doc.querySelectorAll('.content details').length} details`);
+
+  // Filters must actually narrow the list, not just re-render it.
+  const selects = [...doc.querySelectorAll('.toolbar select')];
+  check('qbank: three filters present', selects.length === 3, `${selects.length} selects`);
+  const before = cardCount();
+  const coSel = selects[0];
+  const klav = [...coSel.options].find(o => /^Klaviyo/.test(o.value));
+  check('qbank: company filter lists Klaviyo', !!klav);
+  if (klav) {
+    coSel.value = klav.value;
+    coSel.dispatchEvent(new window.Event('change', { bubbles: true }));
+    await sleep(150);
+    const after = cardCount();
+    check('qbank: company filter narrows the list', after > 0 && after < before, `${before} → ${after}`);
+    check('qbank: filtered cards are all Klaviyo',
+          [...doc.querySelectorAll('.content .panel')].every(p => p.textContent.includes('Klaviyo')));
+    coSel.value = '';
+    coSel.dispatchEvent(new window.Event('change', { bubbles: true }));
+    await sleep(150);
+  }
+  const gradeSel = selects[2];
+  gradeSel.value = 'sourced';
+  gradeSel.dispatchEvent(new window.Event('change', { bubbles: true }));
+  await sleep(150);
+  const sourcedCards = [...doc.querySelectorAll('.content .panel')];
+  check('qbank: provenance filter works', sourcedCards.length > 0 && sourcedCards.length < before,
+        `${before} → ${sourcedCards.length}`);
+  check('qbank: provenance filter returns only sourced',
+        sourcedCards.every(p => /✓ sourced/.test(p.textContent)));
+  gradeSel.value = '';
+  gradeSel.dispatchEvent(new window.Event('change', { bubbles: true }));
+  await sleep(120);
 }
 
 check('zero runtime JS errors', errors.length === 0, errors.slice(0, 3).join(' | '));

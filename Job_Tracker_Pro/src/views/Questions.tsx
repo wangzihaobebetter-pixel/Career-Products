@@ -4,17 +4,46 @@ import { useModal } from '../components/Modal';
 import { toast } from '../components/Toast';
 import type { Question, StarStory } from '../types';
 
+/* Provenance is encoded in the note text by the miner (scripts/mine-questions.mjs).
+   "Sourced:" means a candidate write-up with a traceable thread id backs it.
+   "Type-level" means the source report disclosed its live fetches failed, so the
+   question is a representative type, not a verified question that company asked. */
+type Grade = 'sourced'|'type-level'|'curated';
+const gradeOf = (x: Question): Grade =>
+  !x.notes ? 'curated'
+    : /^Sourced:/.test(x.notes) ? 'sourced'
+    : /Type-level/.test(x.notes) ? 'type-level'
+    : 'curated';
+
+const GRADE_LABEL: Record<Grade,string> = {
+  sourced: '✓ sourced',
+  'type-level': '~ type-level',
+  curated: '✎ curated',
+};
+
 export default function Questions(){
   const state = useStore();
   const [tab, setTab] = useState<'questions'|'stories'>('questions');
   const [q, setQ] = useState('');
+  const [company, setCompany] = useState('');
+  const [type, setType] = useState('');
+  const [grade, setGrade] = useState('');
+
+  const companies = useMemo(()=>{
+    const m = new Map<string,number>();
+    for(const x of state.questions) if(x.company) m.set(x.company,(m.get(x.company)||0)+1);
+    return [...m.entries()].sort((a,b)=>b[1]-a[1]);
+  },[state.questions]);
 
   const questions = useMemo(()=>{
     let l = state.questions.slice();
     const t = q.toLowerCase().trim();
-    if(t) l = l.filter(x=>(x.text+' '+(x.company||'')+' '+(x.type||'')).toLowerCase().includes(t));
+    if(t) l = l.filter(x=>(x.text+' '+(x.company||'')+' '+(x.type||'')+' '+(x.notes||'')).toLowerCase().includes(t));
+    if(company) l = l.filter(x=>x.company===company);
+    if(type) l = l.filter(x=>x.type===type);
+    if(grade) l = l.filter(x=>gradeOf(x)===grade);
     return l;
-  },[state.questions, q]);
+  },[state.questions, q, company, type, grade]);
 
   const stories = useMemo(()=>{
     let l = state.starStories.slice();
@@ -32,6 +61,23 @@ export default function Questions(){
           ))}
         </div>
         <input className="search" placeholder="Search…" value={q} onChange={e=>setQ(e.target.value)} />
+        {tab==='questions' && <>
+          <select className="btn sm" value={company} onChange={e=>setCompany(e.target.value)}>
+            <option value="">All companies ({state.questions.length})</option>
+            {companies.map(([c,n])=><option key={c} value={c}>{c} ({n})</option>)}
+          </select>
+          <select className="btn sm" value={type} onChange={e=>setType(e.target.value)}>
+            <option value="">All types</option>
+            {['behavioral','technical','system_design','coding','case','culture'].map(t=><option key={t} value={t}>{t}</option>)}
+          </select>
+          <select className="btn sm" value={grade} onChange={e=>setGrade(e.target.value)}>
+            <option value="">All provenance</option>
+            <option value="sourced">✓ sourced only</option>
+            <option value="type-level">~ type-level only</option>
+            <option value="curated">✎ curated only</option>
+          </select>
+          <span className="muted text-sm">{questions.length} shown</span>
+        </>}
         <button className="btn" onClick={()=>{
           const modal=useModal();
           modal.open(tab==='questions'?<QuestionForm onDone={()=>{modal.close();toast('Question added');}}/>
@@ -47,8 +93,20 @@ export default function Questions(){
                 <span className="chip">{x.type}</span>
                 {x.company&&<span className="chip">{x.company}</span>}
                 {x.competency&&<span className="chip">{x.competency}</span>}
+                <span className="chip" title={gradeOf(x)==='sourced'
+                  ? 'Traceable to a candidate write-up'
+                  : gradeOf(x)==='type-level'
+                    ? 'Representative question type — the source report could not verify it live'
+                    : 'Hand-written for this tracker'}
+                  style={{marginLeft:'auto', color: gradeOf(x)==='sourced' ? 'var(--good)' : undefined}}>
+                  {GRADE_LABEL[gradeOf(x)]}
+                </span>
               </div>
               <div className="text-sm" style={{lineHeight:1.55}}>{x.text}</div>
+              {x.notes&&<details className="muted text-sm mt8" style={{borderTop:'1px solid var(--border)',paddingTop:8}}>
+                <summary style={{cursor:'pointer'}}>Coach note & source</summary>
+                <div className="mt8" style={{lineHeight:1.5}}>{x.notes}</div>
+              </details>}
               {x.myAnswer&&<div className="muted text-sm mt8" style={{borderTop:'1px solid var(--border)',paddingTop:8}}><b>My answer:</b> {x.myAnswer.slice(0,150)}…</div>}
             </div>
           ))}

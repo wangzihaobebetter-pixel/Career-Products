@@ -1,3 +1,12 @@
 node_modules/
 .DS_Store
 *.log
+
+# Outreach sequence library — LOCAL ONLY, never push to this public repo.
+# seed6.ts holds named real people plus four email addresses that were guessed
+# from a common pattern (not verified, not published by their owners).
+# Publishing guessed personal addresses is not ours to do. See
+# Job_Tracker_Pro/PRIVACY-HOLD.md before changing this.
+Job_Tracker_Pro/src/seed6.ts
+Job_Tracker_Pro/src/views/Sequences.tsx
+Job_Tracker_Pro/verify-sequences.mjs

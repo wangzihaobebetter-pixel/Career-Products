@@ -8,7 +8,16 @@ import type { InterviewEvent } from '../types';
 
 export default function Interviews(){
   const state = useStore();
-  const [month, setMonth] = useState(()=>{ const d=new Date(); return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0'); });
+  // Open on the month that actually has the next interview in it. Defaulting
+  // to "today" means a round booked for next month lands on a page you are not
+  // looking at, which reads as "it didn't save".
+  const [month, setMonth] = useState(()=>{
+    const next = state.interviews
+      .filter(i=>new Date(i.scheduledAt) >= new Date())
+      .sort((a,b)=>a.scheduledAt.localeCompare(b.scheduledAt))[0];
+    const d = next ? new Date(next.scheduledAt) : new Date();
+    return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0');
+  });
   const [show, setShow] = useState<'calendar'|'list'>('calendar');
 
   const list = useMemo(()=>state.interviews.slice().sort((a,b)=>a.scheduledAt.localeCompare(b.scheduledAt)),[state.interviews]);
@@ -16,7 +25,12 @@ export default function Interviews(){
 
   const add = ()=>{
     const modal = useModal();
-    modal.open(<InterviewForm onDone={()=>{modal.close(); toast('Interview scheduled');}} />);
+    modal.open(<InterviewForm onDone={(scheduledAt)=>{
+      modal.close();
+      // Follow the booking. Same reason as the initial month above.
+      if(scheduledAt) setMonth(scheduledAt.slice(0,7));
+      toast('Interview scheduled');
+    }} />);
   };
 
   // Prep and debrief live on the entry itself, which is what the empty
@@ -133,7 +147,7 @@ export default function Interviews(){
   );
 }
 
-function InterviewForm({ onDone }:{ onDone:()=>void }){
+function InterviewForm({ onDone }:{ onDone:(scheduledAt?:string)=>void }){
   const state = useStore();
   const [jobId,setJobId]=useState(state.jobs[0]?.id||'');
   const [type,setType]=useState('recruiter_call');
@@ -143,11 +157,12 @@ function InterviewForm({ onDone }:{ onDone:()=>void }){
 
   const submit=()=>{
     if(!jobId){ toast('Select a job'); return; }
+    const scheduledAt = date+'T'+time+':00';
     state.addInterview({
-      jobId, type: type as InterviewEvent['type'], scheduledAt: date+'T'+time+':00',
+      jobId, type: type as InterviewEvent['type'], scheduledAt,
       interviewerName:interviewer||undefined, outcome:'pending',
     });
-    onDone();
+    onDone(scheduledAt);
   };
 
   return <div>

@@ -34,7 +34,16 @@ const read=()=>JSON.parse(window.localStorage.getItem('job-tracker-pro-v2')).sta
 await new Promise(r=>setTimeout(r,150));
 const before=read();
 
-const file = process.argv[2];
+const DEFAULT_FIXTURE = path.join(
+  process.env.HOME, 'Desktop', 'Open claw', 'M3 Research Burn',
+  'BurnC01_Chunk01_StructuredJSON_2026-08-09.json',
+);
+const file = process.argv[2] || DEFAULT_FIXTURE;
+if (!fs.existsSync(file)) {
+  console.error('no research JSON to import from:', file);
+  console.error('pass one explicitly: node verify-real-import.mjs <path-to.json>');
+  process.exit(1);
+}
 const content = fs.readFileSync(file,'utf8');
 captured=null;
 [...doc.querySelectorAll('button')].find(b=>b.textContent.includes('Import research JSON'))

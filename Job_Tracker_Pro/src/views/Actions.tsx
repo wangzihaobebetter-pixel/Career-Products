@@ -4,6 +4,7 @@ import { useModal } from '../components/Modal';
 import { toast } from '../components/Toast';
 import type { Task, TaskPriority, TaskType, GoalMetric } from '../types';
 import { computeFollowUps } from '../lib/followups';
+import { goalProgress as sharedGoalProgress, METRIC_LABEL } from '../lib/goals';
 
 /* ============================================================
    Action Board — tasks, goals, saved searches (spec §5 Outreach
@@ -13,14 +14,6 @@ import { computeFollowUps } from '../lib/followups';
 const PRIO_ORDER: Record<TaskPriority, number> = { urgent: 0, high: 1, medium: 2, low: 3 };
 const PRIO_COLOR: Record<TaskPriority, string> = {
   urgent: '#ef4444', high: '#f97316', medium: '#4f8bff', low: '#64748b',
-};
-
-const METRIC_LABEL: Record<GoalMetric, string> = {
-  applications_sent: 'Applications sent',
-  interviews_completed: 'Interviews completed',
-  offers_received: 'Offers received',
-  networking_conversations: 'Networking conversations',
-  follow_ups_sent: 'Follow-ups sent',
 };
 
 const startOfDay = (d: Date) => { const x = new Date(d); x.setHours(0, 0, 0, 0); return x; };
@@ -65,26 +58,13 @@ export default function Actions() {
   const overdueCount = state.tasks.filter(t => t.status !== 'done' && bucketOf(t) === 'overdue').length;
   const doneCount = state.tasks.filter(t => t.status === 'done').length;
 
-  /* --- goal progress computed from real records, never invented --- */
-  const goalProgress = (metric: GoalMetric, startDate: string, endDate: string) => {
-    const s = new Date(startDate).getTime();
-    const e = new Date(endDate).getTime();
-    const within = (d?: string) => { if (!d) return false; const t = new Date(d).getTime(); return t >= s && t <= e; };
-    switch (metric) {
-      case 'applications_sent':
-        return state.jobs.filter(j => within(j.appliedDate)).length;
-      case 'interviews_completed':
-        return state.interviews.filter(i => i.outcome !== 'pending' && within(i.scheduledAt)).length;
-      case 'offers_received':
-        return state.offers.filter(o => within(o.createdAt)).length;
-      case 'networking_conversations':
-        return state.contacts.filter(c => c.status === 'engaged' || c.status === 'intro_done' || c.status === 'advocate').length;
-      case 'follow_ups_sent':
-        return state.tasks.filter(t => t.type === 'follow_up' && t.status === 'done' && within(t.completedAt)).length;
-      default:
-        return 0;
-    }
-  };
+  /* --- goal progress computed from real records, never invented ---
+     Shared with the Dashboard via lib/goals so the two cannot disagree. --- */
+  const goalProgress = (metric: GoalMetric, startDate: string, endDate: string) =>
+    sharedGoalProgress(metric, startDate, endDate, {
+      jobs: state.jobs, interviews: state.interviews, offers: state.offers,
+      contacts: state.contacts, tasks: state.tasks,
+    });
 
   const addTask = () => {
     const modal = useModal();

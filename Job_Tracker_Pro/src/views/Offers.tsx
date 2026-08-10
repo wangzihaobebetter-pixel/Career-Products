@@ -29,8 +29,12 @@ export default function Offers() {
   const modal = useModal();
   const [sel, setSel] = useState<string | null>(null);
 
+  // Ranked by cash, deliberately. Ranking by cash+equity would let a
+  // company-estimated private-equity number decide which offer looks best —
+  // the same blending the cash column refuses to do. Equity still gets its
+  // own column; it just doesn't get a vote on the ordering.
   const rows = useMemo(() => state.offers.slice().sort(
-    (a, b) => grandTotal(b) - grandTotal(a)
+    (a, b) => cashTotal(b) - cashTotal(a)
   ), [state.offers]);
 
   const jobLabel = (jobId: string) => {
@@ -76,7 +80,7 @@ export default function Offers() {
                 <tr>
                   <th>Company</th><th>Role</th><th>Status</th>
                   <th>Base</th><th>Bonus</th><th>Cash total</th>
-                  <th>Equity (stated)</th><th>Total</th><th>Expires</th>
+                  <th>Equity (stated)</th><th>Cash + stated equity</th><th>Expires</th>
                 </tr>
               </thead>
               <tbody>
@@ -85,7 +89,7 @@ export default function Offers() {
                   const isBest = best && o.id === best.id;
                   return (
                     <tr key={o.id} onClick={() => setSel(o.id)} style={{ cursor: 'pointer' }}>
-                      <td><b>{company}</b>{isBest && <span className="chip ok" style={{ marginLeft: 6 }}>highest</span>}</td>
+                      <td><b>{company}</b>{isBest && <span className="chip ok" style={{ marginLeft: 6 }}>highest cash</span>}</td>
                       <td className="muted">{title}</td>
                       <td><span className="chip">{o.status}</span></td>
                       <td>{money(o.baseSalary)}</td>
@@ -102,7 +106,8 @@ export default function Offers() {
           </div>
           <div className="muted2 text-sm mt12">
             Equity is listed at the value <i>you</i> entered and is never blended into the cash
-            column. For a private company that number is a company-provided estimate, not money.
+            column. For a private company that number is a company-provided estimate, not money —
+            which is also why the ranking above is by cash, not by the combined figure.
           </div>
         </div>
       )}
