@@ -445,7 +445,7 @@ export const useStore = create<JTPState>()(
 
         const KEYS = [
           'companies', 'jobs', 'contacts', 'interviews', 'offers', 'resumes',
-          'bullets', 'templates', 'questions', 'stories', 'tasks', 'goals',
+          'bullets', 'templates', 'questions', 'starStories', 'tasks', 'goals',
           'savedSearches', 'notes', 'outreach', 'activity', 'stages',
         ] as const;
         const patch: Record<string, unknown> = {};

@@ -32,6 +32,15 @@ if [ "$MODE" = "test" ]; then
   say "Building…";             npx vite build
   say "Unit tests…";           npm test --silent
   say "Headless render test…"; node test/render.test.mjs
+  # These drive the real built bundle in jsdom. Each exits non-zero on
+  # failure, and `set -e` stops the run, so a broken view or a broken
+  # backup cannot pass silently.
+  say "View render…";          node verify-render.cjs
+  say "Seed data…";            node verify-data.cjs
+  say "Interactions…";         node verify-interact.cjs
+  say "Action board + CSV…";   node verify-actions.cjs
+  say "Backup round trip…";    node verify-backup.cjs
+  say "Backup key coverage…";  node check-backup-keys.mjs
   say "All checks passed."
   exit 0
 fi
