@@ -5,8 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc --noEmit && vite build",
-    "build:fast": "vite build",
+    "build": "tsc --noEmit && vite build && npm run publish:pages",
+    "build:fast": "vite build && npm run publish:pages",
+    "publish:pages": "rm -rf app && cp -R dist app",
+    "verify": "node verify-render.cjs && node verify-interact.cjs && node verify-actions.cjs && node verify-questions.cjs && node verify-dashboard.cjs && node verify-offers.mjs && node verify-sequences.mjs && node verify-interview-prep.cjs && node verify-followups.cjs && node verify-backup.cjs",
     "preview": "vite preview",
     "start": "vite --port 5173 --host",
     "test": "esbuild src/lib/match.ts src/lib/followups.ts --format=esm --outdir=.testbuild --log-level=warning && node test/lib.test.mjs",
