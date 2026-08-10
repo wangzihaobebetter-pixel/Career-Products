@@ -3,6 +3,7 @@ import { useStore } from '../store';
 import { useModal } from '../components/Modal';
 import { toast } from '../components/Toast';
 import { buildICS, downloadICS, countEvents } from '../lib/ics';
+import InterviewDetail from './InterviewDetail';
 import type { InterviewEvent } from '../types';
 
 export default function Interviews(){
@@ -17,6 +18,10 @@ export default function Interviews(){
     const modal = useModal();
     modal.open(<InterviewForm onDone={()=>{modal.close(); toast('Interview scheduled');}} />);
   };
+
+  // Prep and debrief live on the entry itself, which is what the empty
+  // state below promises. Reached from the list and from the calendar.
+  const openDetail = (id:string)=>{ useModal().open(<InterviewDetail id={id} />); };
 
   const [y, m] = month.split('-').map(Number);
   const first = new Date(y, m-1, 1);
@@ -71,7 +76,8 @@ export default function Interviews(){
                   {evs.map(iv=>{
                     const job = state.jobs.find(j=>j.id===iv.jobId);
                     const co = state.companies.find(c=>c.id===job?.companyId);
-                    return <div key={iv.id} className="cal-ev" title={iv.type+' @ '+co?.name}>{co?.name||iv.type}</div>;
+                    return <div key={iv.id} className="cal-ev" title={iv.type+' @ '+co?.name}
+                      onClick={()=>openDetail(iv.id)} style={{cursor:'pointer'}}>{co?.name||iv.type}</div>;
                   })}
                 </div>
               );
@@ -113,6 +119,11 @@ export default function Interviews(){
                   {(['pending','passed','failed','no_show','rescheduled','canceled'] as const).map(o=>
                     <option key={o} value={o}>{o.replace(/_/g,' ')}</option>)}
                 </select>
+                {/* Prep progress doubles as the affordance: an unstarted
+                    checklist is the thing most worth clicking on. */}
+                <button className="btn sm" data-testid={'open-iv-'+iv.id} onClick={()=>openDetail(iv.id)}>
+                  Prep{iv.prepChecklist?.length ? ` ${iv.prepChecklist.filter(p=>p.done).length}/${iv.prepChecklist.length}` : ''}
+                </button>
               </div>
             );
           })}

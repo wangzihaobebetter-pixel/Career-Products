@@ -41,6 +41,8 @@ if [ "$MODE" = "test" ]; then
   say "Action board + CSV…";   node verify-actions.cjs
   say "Backup round trip…";    node verify-backup.cjs
   say "Backup key coverage…";  node check-backup-keys.mjs
+  say "Research import…";      node verify-research-import.cjs
+  say "Interview prep…";       node verify-interview-prep.cjs
   say "All checks passed."
   exit 0
 fi

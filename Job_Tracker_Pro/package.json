@@ -9,7 +9,8 @@
     "build:fast": "vite build",
     "preview": "vite preview",
     "start": "vite --port 5173 --host",
-    "test": "esbuild src/lib/match.ts src/lib/followups.ts --format=esm --outdir=.testbuild --log-level=warning && node test/lib.test.mjs"
+    "test": "esbuild src/lib/match.ts src/lib/followups.ts --format=esm --outdir=.testbuild --log-level=warning && node test/lib.test.mjs",
+    "research": "node tools/reports-to-research.mjs"
   },
   "dependencies": {
     "date-fns": "^3.6.0",

@@ -14,7 +14,7 @@ w.eval(js);
 await new Promise(r=>setTimeout(r,600));
 const d = w.document;
 const links = [...d.querySelectorAll('nav a, nav button, .nav a, .nav button, aside a, aside button')];
-const labels = ['Dashboard','Pipeline','Companies','Contacts','Interviews','Offers','Resume & Bullets','Tailor to JD','Email Templates','Interview Prep','Action Board','Stats','Settings'];
+const labels = ['Dashboard','Pipeline','Companies','Contacts','Interviews','Offers','Resume & Bullets','Tailor to JD','Email Templates','Interview Prep','Company Intel','Action Board','90-Day Playbook','Stats','Settings'];
 let pass=0, fail=0;
 for (const label of labels) {
   const el = links.find(a => (a.textContent||'').includes(label));
