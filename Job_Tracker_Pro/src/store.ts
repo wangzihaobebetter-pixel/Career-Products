@@ -85,7 +85,7 @@ export interface JTPState extends AppState {
   addActivity: (type: string, summary: string, entityId?: string) => void;
   setSettings: (patch: Partial<AppState['settings']>) => void;
   resetAll: () => void;
-  loadBackup: (state: AppState) => void;
+  loadBackup: (state: AppState) => boolean;
 }
 
 function buildInitialState(): AppState {
@@ -433,9 +433,29 @@ export const useStore = create<JTPState>()(
         get().addActivity('system', 'Data reset to fresh state');
       },
 
-      loadBackup: (state) => {
-        set({ ...state, savedAt: now() });
-        get().addActivity('system', 'Backup restored');
+      /* Returns false instead of throwing so the caller can show a message.
+         A file that merely parses as JSON is not a backup — restoring one
+         would silently wipe the pipeline, so check the shape first and only
+         copy over keys we actually own. */
+      loadBackup: (incoming) => {
+        const b = incoming as unknown as Record<string, unknown>;
+        if (!b || typeof b !== 'object') return false;
+        const REQUIRED = ['companies', 'jobs', 'stages'] as const;
+        if (REQUIRED.some(k => !Array.isArray(b[k]))) return false;
+
+        const KEYS = [
+          'companies', 'jobs', 'contacts', 'interviews', 'offers', 'resumes',
+          'bullets', 'templates', 'questions', 'stories', 'tasks', 'goals',
+          'savedSearches', 'notes', 'outreach', 'activity', 'stages',
+        ] as const;
+        const patch: Record<string, unknown> = {};
+        for (const k of KEYS) if (Array.isArray(b[k])) patch[k] = b[k];
+        if (b.settings && typeof b.settings === 'object') {
+          patch.settings = { ...get().settings, ...(b.settings as object) };
+        }
+        set({ ...patch, savedAt: now() } as never);
+        get().addActivity('system', `Backup restored — ${(patch.jobs as unknown[] | undefined)?.length ?? 0} jobs`);
+        return true;
       },
     }),
     {

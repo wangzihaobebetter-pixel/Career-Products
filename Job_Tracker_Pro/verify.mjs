@@ -20,7 +20,11 @@ const { window } = dom;
 window.matchMedia = () => ({ matches: false, addListener() {}, removeListener() {}, addEventListener() {}, removeEventListener() {} });
 window.scrollTo = () => {};
 window.confirm = () => true;
-window.URL.createObjectURL = () => 'blob:x';
+// Capture whatever the export buttons hand to createObjectURL so the tests
+// below can read the actual downloaded bytes rather than trusting the click.
+const downloads = [];
+window.URL.createObjectURL = (blob) => { downloads.push(blob); return 'blob:x'; };
+window.URL.revokeObjectURL = () => {};
 window.onerror = (m) => errors.push(String(m));
 window.addEventListener('error', e => errors.push(String(e.message)));
 
@@ -184,6 +188,91 @@ if (raw) {
   check('linkage: stage change logged in history',
         !!job?.stageHistory?.some(h => h.to === 'phone_screen' && /Auto-advanced/.test(h.note || '')));
 }
+
+/* ---- Backup / export round-trip -------------------------------------
+   These run last because the import test deliberately mutates the store. */
+const settingsBtn = navBtns.find(b => b.textContent.includes('Settings'));
+settingsBtn?.dispatchEvent(new window.MouseEvent('click', { bubbles: true }));
+await new Promise(r => setTimeout(r, 150));
+
+downloads.length = 0;
+clickByText('button', 'Export JSON');
+await new Promise(r => setTimeout(r, 120));
+check('export JSON produced a file', downloads.length === 1);
+
+let backupText = null;
+if (downloads[0]) {
+  backupText = await downloads[0].text();
+  let parsed = null;
+  try { parsed = JSON.parse(backupText); } catch { /* reported below */ }
+  check('exported JSON parses', !!parsed);
+  check('export contains the pipeline', Array.isArray(parsed?.jobs) && parsed.jobs.length >= 40,
+        `${parsed?.jobs?.length} jobs`);
+  check('export contains companies', Array.isArray(parsed?.companies) && parsed.companies.length >= 20,
+        `${parsed?.companies?.length} companies`);
+  check('export carries the scheduled interview', parsed?.interviews?.length === 1);
+}
+
+downloads.length = 0;
+clickByText('button', 'Export pipeline CSV');
+await new Promise(r => setTimeout(r, 120));
+if (downloads[0]) {
+  const csv = await downloads[0].text();
+  const lines = csv.replace(/^﻿/, '').split('\n');
+  check('CSV header correct', lines[0].startsWith('Company,Title,Status,'));
+  check('CSV has one row per job', lines.length >= 41, `${lines.length - 1} data rows`);
+  // Every field with a comma must be quoted, or Excel silently shifts columns.
+  const badQuoting = lines.slice(1).some(l => {
+    const cells = l.match(/("([^"]|"")*"|[^,]*)(,|$)/g) || [];
+    return cells.length < 12;
+  });
+  check('CSV quoting keeps 12 columns on every row', !badQuoting);
+} else {
+  fail.push('export CSV produced no file');
+}
+
+/* Import: a JSON file that parses but is not a backup must be rejected
+   without touching the store. Drive it through the real file input. */
+const realCreate = doc.createElement.bind(doc);
+let captured = null;
+doc.createElement = (tag) => {
+  const el = realCreate(tag);
+  if (tag === 'input') { captured = el; el.click = () => {}; }
+  return el;
+};
+const feed = async (name, content) => {
+  captured = null;
+  clickByText('button', 'Import JSON');
+  await new Promise(r => setTimeout(r, 60));
+  if (!captured) return false;
+  const file = new window.File([content], name, { type: 'application/json' });
+  Object.defineProperty(captured, 'files', { value: [file], configurable: true });
+  await captured.onchange?.();
+  await new Promise(r => setTimeout(r, 150));
+  return true;
+};
+
+const jobsBefore = JSON.parse(window.localStorage.getItem('job-tracker-pro-v2')).state.jobs.length;
+const fed = await feed('junk.json', JSON.stringify({ hello: 'world' }));
+check('import wired to a file input', fed);
+const jobsAfterJunk = JSON.parse(window.localStorage.getItem('job-tracker-pro-v2')).state.jobs.length;
+check('import rejects a non-backup JSON without wiping data',
+      jobsAfterJunk === jobsBefore, `${jobsBefore} → ${jobsAfterJunk} jobs`);
+check('import shows the rejection message',
+      /Not a Job Tracker backup/.test(doc.body.textContent));
+
+if (backupText) {
+  // Restoring a real export must round-trip the pipeline intact.
+  const shrunk = JSON.parse(backupText);
+  shrunk.jobs = shrunk.jobs.slice(0, 7);
+  await feed('backup.json', JSON.stringify(shrunk));
+  const st = JSON.parse(window.localStorage.getItem('job-tracker-pro-v2')).state;
+  check('import restores a real backup', st.jobs.length === 7, `${st.jobs.length} jobs`);
+  check('restore keeps companies intact', st.companies.length >= 20, `${st.companies.length} companies`);
+  check('restore is logged in activity',
+        st.activity?.some(a => /Backup restored/.test(a.summary || '')));
+}
+doc.createElement = realCreate;
 
 check('zero runtime JS errors', errors.length === 0, errors.slice(0, 3).join(' | '));
 

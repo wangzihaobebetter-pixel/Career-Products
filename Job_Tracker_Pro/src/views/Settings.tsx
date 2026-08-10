@@ -53,9 +53,11 @@ export default function Settings(){
       try{
         const text = await f.text();
         const data = JSON.parse(text);
-        state.loadBackup(data as never);
-        toast('Backup restored');
-      }catch{ toast('Invalid backup file'); }
+        const ok = state.loadBackup(data as never);
+        toast(ok
+          ? 'Backup restored'
+          : 'Not a Job Tracker backup — nothing was changed');
+      }catch{ toast('Invalid backup file — nothing was changed'); }
     };
     input.click();
   };
