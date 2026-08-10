@@ -44,7 +44,7 @@ const root = doc.getElementById('root');
 check('React mounted', !!root && root.children.length > 0);
 
 const navBtns = [...doc.querySelectorAll('.nav-item')];
-check('nav rendered (13 items)', navBtns.length === 13, `found ${navBtns.length}`);
+check('nav rendered (14 items)', navBtns.length === 14, `found ${navBtns.length}`);
 
 // Walk every view.
 for (const btn of navBtns) {
@@ -586,6 +586,68 @@ if (goalRows.length) {
   check('goals: every row explains what it counted', goalRows.every(r => (r.querySelector('.goal-why')?.textContent || '').length > 20));
 }
 
+
+// --- Company Intel: the research has to reach the screen, graded. -------
+{
+  const intelBtn = navBtns.find(b => b.textContent.includes('Company Intel'));
+  intelBtn?.dispatchEvent(new window.MouseEvent('click', { bubbles: true }));
+  await new Promise(r => setTimeout(r, 200));
+  const content = doc.querySelector('.content');
+  const text = content?.textContent || '';
+
+  const cards = [...doc.querySelectorAll('.panel')].filter(p => /Show loop, traps/.test(p.textContent));
+  check('intel: one card per company', cards.length >= 18, `${cards.length} cards`);
+  check('intel: first-hand loops are surfaced', /First-hand write-up/.test(text));
+  check('intel: reconstructions are labelled as such', /Reconstructed — not documented/.test(text));
+  check('intel: Notion 5-round loop present', /Notion/.test(text) && /5 rounds/.test(text));
+  check('intel: comp anchors carry an as-of date', /levels\.fyi 2026-08-09/.test(text));
+
+  // Expanding a card must reveal the real loop text and its sources.
+  const notionCard = cards.find(c => /^Notion/.test(c.textContent.trim()));
+  const toggle = [...(notionCard?.querySelectorAll('button') || [])]
+    .find(b => /Show loop/.test(b.textContent));
+  const before = notionCard?.textContent.length || 0;
+  toggle?.dispatchEvent(new window.MouseEvent('click', { bubbles: true }));
+  await new Promise(r => setTimeout(r, 150));
+  const after = notionCard?.textContent.length || 0;
+  check('intel: expanding a card reveals the loop', after > before + 400, `${before} → ${after} chars`);
+  check('intel: the verbatim take-home brief is there',
+        /simplified block based editor/.test(notionCard?.textContent || ''));
+  check('intel: sources are real links',
+        [...(notionCard?.querySelectorAll('a[href^="http"]') || [])].length >= 3,
+        `${[...(notionCard?.querySelectorAll('a[href^="http"]') || [])].length} links`);
+
+  // Evidence filter must actually filter.
+  const sel = [...doc.querySelectorAll('select')].find(s => /All evidence/.test(s.textContent));
+  if (sel) {
+    const setSel = (el, v) => {
+      Object.getOwnPropertyDescriptor(window.HTMLSelectElement.prototype, 'value').set.call(el, v);
+      el.dispatchEvent(new window.Event('change', { bubbles: true }));
+    };
+    setSel(sel, 'firsthand');
+    await new Promise(r => setTimeout(r, 150));
+    const firsthandCards = [...doc.querySelectorAll('.panel')].filter(p => /Show loop, traps/.test(p.textContent));
+    check('intel: evidence filter narrows the list',
+          firsthandCards.length > 0 && firsthandCards.length < cards.length,
+          `${cards.length} → ${firsthandCards.length}`);
+    check('intel: filtered list is only first-hand',
+          firsthandCards.every(c => /First-hand write-up/.test(c.textContent)));
+    setSel(sel, 'all');
+    await new Promise(r => setTimeout(r, 120));
+  } else {
+    fail.push('intel: evidence filter missing');
+  }
+
+  // Visa tab.
+  const visaBtn = [...doc.querySelectorAll('button')].find(b => b.textContent.trim() === 'Work Authorisation');
+  visaBtn?.dispatchEvent(new window.MouseEvent('click', { bubbles: true }));
+  await new Promise(r => setTimeout(r, 180));
+  const visaText = doc.querySelector('.content')?.textContent || '';
+  check('intel: visa timeline renders', visaText.length > 2000, `${visaText.length} chars`);
+  check('intel: visa milestones carry gov sources', /uscis\.gov|federalregister\.gov/.test(visaText));
+  check('intel: the STEM OPT backstop is stated', /24-month STEM/.test(visaText));
+  check('intel: it says plainly it is not legal advice', /not legal advice/i.test(visaText));
+}
 
 check('zero runtime JS errors', errors.length === 0, errors.slice(0, 3).join(' | '));
 
