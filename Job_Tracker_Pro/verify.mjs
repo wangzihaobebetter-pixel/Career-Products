@@ -726,9 +726,20 @@ if (goalRows.length) {
         `${doc.querySelectorAll('.content details').length} details`);
 
   // Filters must actually narrow the list, not just re-render it.
+  // The bank is paged at 60/page, so a rendered-card count saturates at 60 and
+  // cannot tell "filtered" from "unfiltered". Read the result total instead.
+  const resultTotal = () => {
+    const t = doc.querySelector('[data-testid="q-count"]')?.textContent || '';
+    if (/^0 shown/.test(t)) return 0;
+    const m = t.match(/of\s+(\d+)/);
+    return m ? Number(m[1]) : Number(t.match(/(\d+)/)?.[1] ?? NaN);
+  };
   const selects = [...doc.querySelectorAll('.toolbar select')];
   check('qbank: three filters present', selects.length === 3, `${selects.length} selects`);
   const before = cardCount();
+  const totalBefore = resultTotal();
+  check('qbank: result count readout is present and sane',
+        Number.isFinite(totalBefore) && totalBefore >= 300, `${totalBefore} total`);
   const coSel = selects[0];
   const klav = [...coSel.options].find(o => /^Klaviyo/.test(o.value));
   check('qbank: company filter lists Klaviyo', !!klav);
@@ -749,8 +760,11 @@ if (goalRows.length) {
   gradeSel.dispatchEvent(new window.Event('change', { bubbles: true }));
   await sleep(150);
   const sourcedCards = [...doc.querySelectorAll('.content .panel')];
-  check('qbank: provenance filter works', sourcedCards.length > 0 && sourcedCards.length < before,
-        `${before} → ${sourcedCards.length}`);
+  const totalSourced = resultTotal();
+  check('qbank: provenance filter works', totalSourced > 0 && totalSourced < totalBefore,
+        `${totalBefore} → ${totalSourced}`);
+  check('qbank: provenance filter renders a full first page', sourcedCards.length > 0,
+        `${sourcedCards.length} cards`);
   check('qbank: provenance filter returns only sourced',
         sourcedCards.every(p => /✓ sourced/.test(p.textContent)));
   gradeSel.value = '';
