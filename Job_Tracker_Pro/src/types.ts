@@ -123,6 +123,8 @@ export type TemplateCategory = 'cold_outreach'|'referral_request'|'follow_up'|'t
 export interface EmailTemplate {
   id: string; name: string; category: TemplateCategory; subject: string; body: string;
   mergeFields?: string[]; tags?: string[]; useCount: number; lastUsedAt?: string;
+  /** When to reach for this one, plus any caveats. Research-seeded templates carry it. */
+  scenario?: string;
   createdAt: string; updatedAt: string;
 }
 

@@ -58,8 +58,10 @@ const settle = (ms = 260) => sleep(ms);
   check('store imports the batch-2 bank', /from '\.\/seed7'/.test(store));
   check('batch-2 bank is merged into the seeded questions',
     /questions: \[[\s\S]{0,200}batch2Questions/.test(store));
+  // Name-agnostic: the migration must filter the batch-2 bank by ids the stored
+  // state already has, so an upgrade adds questions instead of rebuilding them.
   check('the persist migration also back-fills existing stores',
-    /batch2Questions\][\s\S]{0,80}filter\(q => !have\.has\(q\.id\)\)/.test(store));
+    /batch2Questions\][\s\S]{0,80}filter\(q => !\w+\.has\(q\.id\)\)/.test(store));
 
   // --- rendered guards -------------------------------------------------------
   const html = fs.readFileSync(path.join(DIST, 'index.html'), 'utf8');

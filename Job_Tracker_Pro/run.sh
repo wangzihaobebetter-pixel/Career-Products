@@ -35,6 +35,7 @@ if [ "$MODE" = "test" ]; then
   # These drive the real built bundle in jsdom. Each exits non-zero on
   # failure, and `set -e` stops the run, so a broken view or a broken
   # backup cannot pass silently.
+  say "Main suite…";           node verify.mjs
   say "View render…";          node verify-render.cjs
   say "Seed data…";            node verify-data.cjs
   say "Interactions…";         node verify-interact.cjs
@@ -44,6 +45,7 @@ if [ "$MODE" = "test" ]; then
   say "Research import…";      node verify-research-import.cjs
   say "Interview prep…";       node verify-interview-prep.cjs
   say "Batch-2 question bank…"; node verify-batch2.cjs
+  say "Outreach templates…";   node verify-templates.mjs
   say "All checks passed."
   exit 0
 fi

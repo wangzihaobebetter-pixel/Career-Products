@@ -3,6 +3,7 @@ import { useStore } from '../store';
 import { useModal } from '../components/Modal';
 import { toast } from '../components/Toast';
 import type { EmailTemplate, TemplateCategory } from '../types';
+import { templateAltSubjects } from '../seed8';
 
 const CATEGORIES: TemplateCategory[] = ['cold_outreach','referral_request','follow_up','thank_you','post_rejection','salary_negotiation','cover_letter','networking'];
 
@@ -61,10 +62,22 @@ export default function Templates(){
 }
 
 function PreviewTemplate({ t, onClose }:{ t:EmailTemplate; onClose:()=>void }){
+  const alts = templateAltSubjects[t.id] ?? [];
   return <div>
     <h3>{t.name}</h3>
     <div className="muted text-sm mb12"><b>Subject:</b> {t.subject}</div>
+    {alts.length>0 && <div className="muted2 text-sm mb12">
+      <b>Alternate subject lines:</b>
+      <ul style={{margin:'4px 0 0 18px',padding:0}}>{alts.map((a,i)=><li key={i}>{a}</li>)}</ul>
+    </div>}
+    {t.scenario && <div className="muted2 text-sm mb12" style={{whiteSpace:'pre-wrap'}}><b>When to use:</b> {t.scenario}</div>}
     <div style={{background:'var(--panel2)',borderRadius:8,padding:14,fontSize:13,lineHeight:1.7,whiteSpace:'pre-wrap'}}>{t.body}</div>
+    {(t.mergeFields?.length ?? 0)>0 && <div className="muted2 text-sm mt8">
+      <b>Merge fields ({t.mergeFields!.length}):</b> {t.mergeFields!.map(f=>'{{'+f+'}}').join(' ')}
+    </div>}
+    {(t.tags?.length ?? 0)>0 && <div className="flex mt8" style={{gap:6,flexWrap:'wrap'}}>
+      {t.tags!.map(tag=><span key={tag} className="chip">{tag}</span>)}
+    </div>}
     <div className="modal-actions"><button className="btn" onClick={onClose}>Close</button></div>
   </div>;
 }

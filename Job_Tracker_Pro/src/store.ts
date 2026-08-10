@@ -73,6 +73,7 @@ import playbook from './seed2';
 import { researchQuestions } from './seed3';
 import { minedQuestions } from './seed5';
 import { batch2Questions } from './seed7';
+import { outreachTemplates } from './seed8';
 
 export interface JTPState extends AppState {
   hydrate: () => void;
@@ -401,7 +402,11 @@ function buildInitialState(): AppState {
     version: 2, companies, jobs, interviews: [],
     contacts: playbook.contacts, tasks: playbook.tasks, notes: [],
     resumes: playbook.resumes, bullets, offers: [],
-    templates: playbook.templates, outreach: [], savedSearches: playbook.savedSearches,
+    // Hand-written playbook templates first, then the 47 parsed out of the
+    // burn-z04 outreach research (seed8.ts). Reply-rate figures on the latter are
+    // the cited vendors' published numbers, carried as tags — not our own results.
+    templates: [...playbook.templates, ...outreachTemplates],
+    outreach: [], savedSearches: playbook.savedSearches,
     goals: playbook.goals,
     // Generic prep bank first, then the company-specific questions recovered
     // from the 2026-08-09 live research pass (see seed3.ts for sourcing), then
@@ -991,20 +996,26 @@ export const useStore = create<JTPState>()(
     }),
     {
       name: 'job-tracker-pro-v2',
-      version: 8,
+      version: 9,
       // < 6 predates the playbook seed (templates / questions / STAR / resumes),
       // the real submitted-application state, the v5 company-attribution fix and
       // the seed3 research bank — those stores are rebuilt from scratch.
       //
-      // 6 → 7 adds the mined question bank (seed5.ts) and 7 → 8 adds the batch-2
-      // bank (seed7.ts). Both merge by id instead of rebuilding, so anything the
-      // user typed into an older store survives the upgrade.
+      // 6 → 7 adds the mined question bank (seed5.ts), 7 → 8 the batch-2 bank
+      // (seed7.ts), 8 → 9 the 47 outreach templates (seed8.ts). All merge by id
+      // instead of rebuilding, so anything the user typed in survives the upgrade.
       migrate: (persisted, from) => {
         if (from < 6) return buildInitialState();
         const prev = persisted as AppState;
-        const have = new Set(prev.questions?.map(q => q.id) ?? []);
-        const incoming = [...minedQuestions, ...batch2Questions].filter(q => !have.has(q.id));
-        return { ...prev, questions: [...(prev.questions ?? []), ...incoming] };
+        const haveQ = new Set(prev.questions?.map(q => q.id) ?? []);
+        const newQ = [...minedQuestions, ...batch2Questions].filter(q => !haveQ.has(q.id));
+        const haveT = new Set(prev.templates?.map(t => t.id) ?? []);
+        const newT = outreachTemplates.filter(t => !haveT.has(t.id));
+        return {
+          ...prev,
+          questions: [...(prev.questions ?? []), ...newQ],
+          templates: [...(prev.templates ?? []), ...newT],
+        };
       },
     }
   )
