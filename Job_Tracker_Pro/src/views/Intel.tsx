@@ -43,7 +43,7 @@ export default function Intel(){
         </div>
         {tab==='companies' && <>
           <input className="search" placeholder="Search company, sector, trap…" value={q} onChange={e=>setQ(e.target.value)} />
-          <select value={grade} onChange={e=>setGrade(e.target.value as any)}>
+          <select className="filter" value={grade} onChange={e=>setGrade(e.target.value as any)}>
             <option value="all">All evidence</option>
             <option value="firsthand">First-hand only</option>
             <option value="partial">Fragments</option>
