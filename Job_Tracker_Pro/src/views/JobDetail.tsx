@@ -1,12 +1,15 @@
 import React, { useMemo, useState } from 'react';
 import { useStore } from '../store';
 import { toast } from '../components/Toast';
-import { useModal } from '../components/Modal';
+import { matchBullets } from '../lib/match';
 
 export default function JobDetail({ id, onBack }:{ id:string; onBack:()=>void }){
   const state = useStore();
   const job = state.jobs.find(j=>j.id===id);
   const [tab, setTab] = useState('overview');
+  const [jdDraft, setJdDraft] = useState<string|null>(null);
+  const [taskDraft, setTaskDraft] = useState('');
+  const [noteDraft, setNoteDraft] = useState('');
 
   const co = state.companies.find(c=>c.id===job?.companyId);
   const stage = state.stages.find(s=>s.id===job?.status);
@@ -21,6 +24,13 @@ export default function JobDetail({ id, onBack }:{ id:string; onBack:()=>void })
     return last? Math.max(0, Math.round((Date.now()-new Date(last.at).getTime())/86400000)):0;
   },[job]);
 
+  /* JD ↔ bullet-library match. Recomputed only when the JD or the bullet
+     library actually changes — the extraction pass is not free. */
+  const report = useMemo(
+    ()=> matchBullets(job?.description||'', state.bullets.map(b=>({id:b.id, text:b.text}))),
+    [job?.description, state.bullets]
+  );
+
   if(!job) return <div className="empty"><div className="e-ico">🔍</div><strong>Job not found</strong></div>;
 
   const move = (to:string)=>{
@@ -28,7 +38,7 @@ export default function JobDetail({ id, onBack }:{ id:string; onBack:()=>void })
     toast(`Moved to ${state.stages.find(s=>s.id===to)?.label||to}`);
   };
 
-  const TABS = ['overview','pipeline','interviews','tasks','contacts','notes','salary','activity'];
+  const TABS = ['overview','match','pipeline','interviews','tasks','contacts','notes','salary','activity'];
 
   return (
     <div>
@@ -100,6 +110,119 @@ export default function JobDetail({ id, onBack }:{ id:string; onBack:()=>void })
         </div>
       )}
 
+      {/* ===== JD match ===== */}
+      {tab==='match' && (
+        <div>
+          {(!job.description || jdDraft!==null) ? (
+            <div className="panel">
+              <div className="panel-head"><h3>Paste the job description</h3></div>
+              <p className="muted text-sm" style={{marginTop:0}}>
+                Everything below is computed in your browser from this text and your own bullet library.
+                Nothing is sent anywhere.
+              </p>
+              <textarea
+                rows={12}
+                style={{width:'100%'}}
+                placeholder="Paste the full JD here — requirements section included, that's the part that carries the most weight."
+                value={jdDraft ?? job.description ?? ''}
+                onChange={e=>setJdDraft(e.target.value)}
+              />
+              <div className="flex" style={{gap:8,marginTop:8}}>
+                <button className="btn primary" onClick={()=>{
+                  state.updateJob(id,{description: jdDraft ?? ''});
+                  setJdDraft(null);
+                  toast('JD saved — match recomputed');
+                }}>Save & analyze</button>
+                {job.description && <button className="btn" onClick={()=>setJdDraft(null)}>Cancel</button>}
+              </div>
+            </div>
+          ) : (
+            <>
+              <div className="kpi-row" style={{gridTemplateColumns:'repeat(auto-fit,minmax(130px,1fr))'}}>
+                <div className="kpi">
+                  <div className="k-num" style={{color: report.coverage>=60?'var(--good)':report.coverage>=35?'var(--warn)':'var(--bad)'}}>
+                    {report.coverage}%
+                  </div>
+                  <div className="k-lbl">Skill coverage</div>
+                </div>
+                <div className="kpi"><div className="k-num">{report.keywords.length}</div><div className="k-lbl">Keywords found</div></div>
+                <div className="kpi"><div className="k-num">{report.bullets.length}</div><div className="k-lbl">Bullets that hit</div></div>
+                <div className="kpi"><div className="k-num" style={{color: report.missing.length?'var(--bad)':'var(--good)'}}>{report.missing.length}</div><div className="k-lbl">Uncovered skills</div></div>
+              </div>
+
+              <div className="flex" style={{gap:8,margin:'10px 0 14px'}}>
+                <button className="btn sm" onClick={()=>setJdDraft(job.description||'')}>Edit JD</button>
+                <button className="btn sm" onClick={()=>{
+                  const top = report.bullets.slice(0,8).map(b=>'• '+b.text).join('\n');
+                  navigator.clipboard?.writeText(top);
+                  toast(`Copied top ${Math.min(8,report.bullets.length)} bullets`);
+                }}>Copy top bullets</button>
+                <button className="btn sm" onClick={()=>{
+                  state.updateJob(id,{ jdKeywords: report.keywords.filter(k=>k.isSkill).map(k=>k.term) });
+                  toast('Keywords saved to this job');
+                }}>Save keywords</button>
+              </div>
+
+              <div className="grid grid-2" style={{alignItems:'start'}}>
+                <div className="panel">
+                  <div className="panel-head">
+                    <h3>Your bullets, ranked for this JD</h3>
+                    <span className="muted2 text-sm">{report.bullets.length}</span>
+                  </div>
+                  {report.bullets.length===0 && (
+                    <div className="empty" style={{padding:18}}>
+                      <div className="e-ico">📄</div><strong>No bullet overlaps</strong>
+                      <p>Nothing in your library shares vocabulary with this JD. That is a real signal, not a bug.</p>
+                    </div>
+                  )}
+                  {report.bullets.slice(0,15).map((b,i)=>(
+                    <div key={b.bulletId} style={{background:'var(--panel2)',borderRadius:8,padding:10,marginBottom:8}}>
+                      <div className="flex" style={{justifyContent:'space-between',gap:8}}>
+                        <span className="muted2 text-sm">#{i+1}</span>
+                        <span className="chip">score {b.score}</span>
+                      </div>
+                      <div style={{fontSize:13,margin:'4px 0 6px'}}>{b.text}</div>
+                      <div className="flex" style={{gap:4,flexWrap:'wrap'}}>
+                        {b.hits.slice(0,10).map(h=><span key={h} className="chip" style={{fontSize:11}}>{h}</span>)}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <div>
+                  <div className="panel">
+                    <div className="panel-head"><h3>Gaps — skills the JD wants that you don't show</h3></div>
+                    {report.missing.length===0
+                      ? <div className="muted text-sm">No uncovered skill keywords. Rare — double-check the JD pasted in full.</div>
+                      : <div className="flex" style={{gap:5,flexWrap:'wrap'}}>
+                          {report.missing.map(k=>(
+                            <span key={k.term} className="chip" style={{borderColor:'var(--bad)',color:'var(--bad)'}}>
+                              {k.term}{k.weight===3?' ★':''}
+                            </span>
+                          ))}
+                        </div>}
+                    <p className="muted text-sm" style={{marginBottom:0}}>
+                      ★ = the term appears in the requirements block, which is where a screener filters.
+                      A gap is only worth closing if you can back it with something you actually did.
+                    </p>
+                  </div>
+
+                  <div className="panel mt12">
+                    <div className="panel-head"><h3>Covered</h3><span className="muted2 text-sm">{report.matched.length}</span></div>
+                    <div className="flex" style={{gap:5,flexWrap:'wrap'}}>
+                      {report.matched.slice(0,40).map(k=>(
+                        <span key={k.term} className="chip" style={{borderColor:'var(--good)',color:'var(--good)'}}>{k.term}</span>
+                      ))}
+                      {report.matched.length===0 && <span className="muted text-sm">Nothing covered yet.</span>}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </>
+          )}
+        </div>
+      )}
+
       {/* ===== Pipeline timeline ===== */}
       {tab==='pipeline' && (
         <div className="panel">
@@ -125,15 +248,17 @@ export default function JobDetail({ id, onBack }:{ id:string; onBack:()=>void })
       {/* ===== Interviews ===== */}
       {tab==='interviews' && (
         <div className="panel">
-          <div className="panel-head"><h3>Interviews ({interviews.length})</h3>
-            <button className="btn sm" onClick={()=>toast('Schedule from Interviews tab')}>+ Add</button></div>
+          <div className="panel-head"><h3>Interviews ({interviews.length})</h3></div>
+          <QuickSchedule jobId={id} />
           {interviews.length===0&&<div className="empty" style={{padding:18}}><div className="e-ico">🎤</div><strong>No interviews</strong></div>}
           {interviews.map(iv=>(
             <div className="row" key={iv.id}>
               <span className="r-name">{iv.type.replace(/_/g,' ')}</span>
               <span className="r-sub">{iv.scheduledAt.slice(0,16).replace('T',' ')}</span>
               {iv.interviewerName&&<span className="r-sub">with {iv.interviewerName}</span>}
-              <span className="chip">{iv.outcome}</span>
+              <select value={iv.outcome} onChange={e=>state.logInterviewOutcome(iv.id, e.target.value as never)}>
+                {['pending','passed','failed','no_show','rescheduled','canceled'].map(o=><option key={o} value={o}>{o}</option>)}
+              </select>
             </div>
           ))}
         </div>
@@ -142,13 +267,32 @@ export default function JobDetail({ id, onBack }:{ id:string; onBack:()=>void })
       {/* ===== Tasks ===== */}
       {tab==='tasks' && (
         <div className="panel">
-          <div className="panel-head"><h3>Tasks ({tasks.length})</h3><button className="btn sm">+ Add</button></div>
+          <div className="panel-head"><h3>Tasks ({tasks.length})</h3></div>
+          <div className="flex" style={{gap:6,marginBottom:10}}>
+            <input
+              style={{flex:1}}
+              placeholder="New task for this role — e.g. follow up with the recruiter"
+              value={taskDraft}
+              onChange={e=>setTaskDraft(e.target.value)}
+              onKeyDown={e=>{
+                if(e.key==='Enter' && taskDraft.trim()){
+                  state.addTask({ title: taskDraft.trim(), jobId: id, type: 'follow_up' });
+                  setTaskDraft(''); toast('Task added');
+                }
+              }}
+            />
+            <button className="btn" disabled={!taskDraft.trim()} onClick={()=>{
+              state.addTask({ title: taskDraft.trim(), jobId: id, type: 'follow_up' });
+              setTaskDraft(''); toast('Task added');
+            }}>+ Add</button>
+          </div>
           {tasks.length===0&&<div className="empty" style={{padding:18}}><div className="e-ico">✅</div><strong>No tasks</strong><p>Add follow-ups, thank-you notes, assessments.</p></div>}
           {tasks.map(t=>(
             <div className="row" key={t.id}>
-              <input type="checkbox" checked={t.status==='done'} onChange={()=>{}} style={{width:15,height:15}}/>
+              <input type="checkbox" checked={t.status==='done'} onChange={()=>state.toggleTask(t.id)} style={{width:15,height:15}}/>
               <span className="r-name" style={{textDecoration:t.status==='done'?'line-through':'none'}}>{t.title}</span>
               {t.dueDate&&<span className="r-date">{t.dueDate.slice(5,10)}</span>}
+              <button className="btn sm ghost" onClick={()=>state.removeTask(t.id)}>×</button>
             </div>
           ))}
         </div>
@@ -168,7 +312,20 @@ export default function JobDetail({ id, onBack }:{ id:string; onBack:()=>void })
       {/* ===== Notes ===== */}
       {tab==='notes' && (
         <div className="panel">
-          <div className="panel-head"><h3>Notes ({notes.length})</h3><button className="btn sm" onClick={()=>toast('Note composer in full build')}>+ Add</button></div>
+          <div className="panel-head"><h3>Notes ({notes.length})</h3></div>
+          <div style={{marginBottom:10}}>
+            <textarea
+              rows={3}
+              style={{width:'100%'}}
+              placeholder="Call takeaway, what they emphasised, what to do next…"
+              value={noteDraft}
+              onChange={e=>setNoteDraft(e.target.value)}
+            />
+            <button className="btn" style={{marginTop:6}} disabled={!noteDraft.trim()} onClick={()=>{
+              state.addNote({ parentType:'job', parentId:id, body:noteDraft.trim() });
+              setNoteDraft(''); toast('Note saved');
+            }}>Save note</button>
+          </div>
           {notes.length===0&&<div className="empty" style={{padding:18}}><div className="e-ico">📝</div><strong>No notes</strong><p>Log call takeaways, follow-up plans.</p></div>}
           {notes.map(n=>(
             <div key={n.id} style={{background:'var(--panel2)',borderRadius:8,padding:10,marginBottom:8,fontSize:13}}>
@@ -211,6 +368,30 @@ export default function JobDetail({ id, onBack }:{ id:string; onBack:()=>void })
           </div>
         </div>
       )}
+    </div>
+  );
+}
+
+/* Inline round scheduler. Booking a round here goes through the same
+   store action as the Interviews view, so the pipeline auto-advance in
+   store.addInterview applies identically. */
+function QuickSchedule({ jobId }:{ jobId:string }){
+  const state = useStore();
+  const [type,setType] = useState('recruiter_call');
+  const [at,setAt] = useState('');
+  const [who,setWho] = useState('');
+  return (
+    <div className="flex" style={{gap:6,flexWrap:'wrap',marginBottom:10}}>
+      <select value={type} onChange={e=>setType(e.target.value)}>
+        {['recruiter_call','hiring_manager','technical_phone','take_home_review','system_design','coding','behavioral','onsite','panel','final','informal_chat'].map(t=>
+          <option key={t} value={t}>{t.replace(/_/g,' ')}</option>)}
+      </select>
+      <input type="datetime-local" value={at} onChange={e=>setAt(e.target.value)} />
+      <input placeholder="Interviewer (optional)" value={who} onChange={e=>setWho(e.target.value)} style={{minWidth:170}} />
+      <button className="btn primary" disabled={!at} onClick={()=>{
+        state.addInterview({ jobId, type: type as never, scheduledAt: new Date(at).toISOString(), interviewerName: who||undefined });
+        setAt(''); setWho(''); toast('Round scheduled — pipeline updated');
+      }}>Schedule</button>
     </div>
   );
 }

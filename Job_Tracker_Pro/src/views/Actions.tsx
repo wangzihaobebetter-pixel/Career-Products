@@ -3,6 +3,7 @@ import { useStore } from '../store';
 import { useModal } from '../components/Modal';
 import { toast } from '../components/Toast';
 import type { Task, TaskPriority, TaskType, GoalMetric } from '../types';
+import { computeFollowUps } from '../lib/followups';
 
 /* ============================================================
    Action Board — tasks, goals, saved searches (spec §5 Outreach
@@ -89,6 +90,19 @@ export default function Actions() {
     const modal = useModal();
     modal.open(<TaskForm onDone={() => { modal.close(); toast('Task added'); }} />);
   };
+
+  /* Derived nudges. These are not stored — they are recomputed from
+     pipeline state every render, so they can never go stale. */
+  const [dismissed, setDismissed] = useState<string[]>([]);
+  const suggestions = useMemo(() => computeFollowUps({
+    jobs: state.jobs,
+    contacts: state.contacts,
+    interviews: state.interviews,
+    tasks: state.tasks,
+    companyName: (cid) => state.companies.find(c => c.id === cid)?.name || '—',
+  }).filter(s => !dismissed.includes(s.id)), [state.jobs, state.contacts, state.interviews, state.tasks, state.companies, dismissed]);
+
+  const SUG_TONE: Record<string, string> = { overdue: '#ef4444', today: '#f97316', soon: '#64748b' };
 
   const jobTitle = (jobId?: string) => {
     if (!jobId) return null;
@@ -177,6 +191,49 @@ export default function Actions() {
         </div>
 
         <div>
+          <div className="panel mb12">
+            <div className="panel-head">
+              <h3>Suggested follow-ups</h3>
+              <span className="muted2 text-sm">{suggestions.length}</span>
+            </div>
+            {suggestions.length === 0 ? (
+              <div className="muted text-sm">
+                Nothing is overdue by the cadence rules. These are derived from stage age,
+                expected-reply dates, interview recency and contact silence — not from a list
+                you have to maintain.
+              </div>
+            ) : (
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+                {suggestions.slice(0, 12).map(s => (
+                  <div key={s.id} style={{ background: 'var(--panel2)', borderRadius: 8, padding: 10 }}>
+                    <div className="flex" style={{ gap: 6, alignItems: 'center' }}>
+                      <span className="kan-dot" style={{ background: SUG_TONE[s.urgency] }} />
+                      <b style={{ fontSize: 12.5 }}>{s.title}</b>
+                    </div>
+                    <div className="muted2 text-sm" style={{ margin: '4px 0 6px' }}>{s.why}</div>
+                    <div className="flex" style={{ gap: 6 }}>
+                      <button className="btn sm" onClick={() => {
+                        state.addTask({
+                          title: s.title, jobId: s.jobId, contactId: s.contactId,
+                          type: s.suggestedTaskType,
+                          priority: s.urgency === 'overdue' ? 'urgent' : 'high',
+                          dueDate: new Date().toISOString().slice(0, 10),
+                        });
+                        setDismissed(d => [...d, s.id]);
+                        toast('Added to the board');
+                      }}>＋ Make it a task</button>
+                      <button className="btn sm ghost" onClick={() => setDismissed(d => [...d, s.id])}>Dismiss</button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+            <div className="muted2 text-sm mt12">
+              Dismissing hides an item for this session only. If the underlying state doesn't
+              change, it comes back — which is the point.
+            </div>
+          </div>
+
           <div className="panel">
             <div className="panel-head"><h3>Goals</h3><span className="muted2 text-sm">{state.goals.length}</span></div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>

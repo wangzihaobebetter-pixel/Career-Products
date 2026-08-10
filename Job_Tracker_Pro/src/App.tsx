@@ -5,7 +5,9 @@ import Pipeline from './views/Pipeline';
 import Companies from './views/Companies';
 import Contacts from './views/Contacts';
 import Interviews from './views/Interviews';
+import Offers from './views/Offers';
 import Resume from './views/Resume';
+import Tailor from './views/Tailor';
 import Templates from './views/Templates';
 import Questions from './views/Questions';
 import Actions from './views/Actions';
@@ -17,7 +19,7 @@ import { QuickSwitcher, type QSResult } from './components/QuickSwitcher';
 import { ModalHost, useModal } from './components/Modal';
 import { toast, ToastHost } from './components/Toast';
 
-type View = 'dashboard'|'pipeline'|'companies'|'contacts'|'interviews'|'resume'|'templates'|'questions'|'actions'|'stats'|'settings';
+type View = 'dashboard'|'pipeline'|'companies'|'contacts'|'interviews'|'offers'|'resume'|'tailor'|'templates'|'questions'|'actions'|'stats'|'settings';
 
 const NAV: { view: View; label: string; ico: string; sec?: string }[] = [
   { view:'dashboard', label:'Dashboard', ico:'📊' },
@@ -25,7 +27,9 @@ const NAV: { view: View; label: string; ico: string; sec?: string }[] = [
   { view:'companies', label:'Companies', ico:'🏢' },
   { view:'contacts', label:'Contacts', ico:'👥', sec:'Network' },
   { view:'interviews', label:'Interviews', ico:'🎤' },
+  { view:'offers', label:'Offers', ico:'💰' },
   { view:'resume', label:'Resume & Bullets', ico:'📄', sec:'Materials' },
+  { view:'tailor', label:'Tailor to JD', ico:'🎯' },
   { view:'templates', label:'Email Templates', ico:'✉️' },
   { view:'questions', label:'Interview Prep', ico:'❓' },
   { view:'actions', label:'Action Board', ico:'✅', sec:'Insights' },
@@ -83,6 +87,7 @@ export default function App(){
     companies: state.companies.length,
     contacts: state.contacts.length,
     actions: state.tasks.filter(t=>t.status!=='done').length,
+    offers: state.offers.length,
   };
 
   // Quick switcher results
@@ -122,7 +127,9 @@ export default function App(){
       case 'companies': return <Companies onOpen={(id)=>setDetailCompany(id)} />;
       case 'contacts': return <Contacts />;
       case 'interviews': return <Interviews />;
+      case 'offers': return <Offers />;
       case 'resume': return <Resume />;
+      case 'tailor': return <Tailor />;
       case 'templates': return <Templates />;
       case 'questions': return <Questions />;
       case 'actions': return <Actions />;

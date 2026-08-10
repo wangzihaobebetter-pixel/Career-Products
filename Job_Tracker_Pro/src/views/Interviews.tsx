@@ -91,7 +91,18 @@ export default function Interviews(){
                 <span className="r-name">{iv.type.replace(/_/g,' ')} <span className="r-sub">· {co?.name||''} {job?`· ${job.title}`:''}</span></span>
                 <span className="r-sub">{iv.interviewerName?`with ${iv.interviewerName}`:''}</span>
                 <span className="r-date">{iv.scheduledAt.slice(0,16).replace('T',' ')}</span>
-                <span className="chip">{iv.outcome}</span>
+                {/* Recording an outcome feeds the pipeline: "rejected" closes
+                    the application, everything else leaves the stage alone. */}
+                <select className="chip" value={iv.outcome}
+                  onChange={e=>{
+                    state.logInterviewOutcome(iv.id, e.target.value as InterviewEvent['outcome']);
+                    toast(e.target.value==='failed'
+                      ? 'Outcome saved — application moved to Rejected'
+                      : 'Outcome saved');
+                  }}>
+                  {(['pending','passed','failed','no_show','rescheduled','canceled'] as const).map(o=>
+                    <option key={o} value={o}>{o.replace(/_/g,' ')}</option>)}
+                </select>
               </div>
             );
           })}

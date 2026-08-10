@@ -3,6 +3,7 @@
 #
 # Usage:  double-click this file in Finder, or run  ./run.sh
 #         ./run.sh dev     -> dev server with hot reload (for editing the code)
+#         ./run.sh test    -> type-check, build, unit tests, headless render check
 #
 # All data stays in your browser's localStorage on this machine. Nothing is uploaded.
 
@@ -24,6 +25,15 @@ echo "Node $(node -v)"
 if [ ! -d node_modules ]; then
   say "First run — installing dependencies (this takes a minute)…"
   npm install --no-audit --no-fund
+fi
+
+if [ "$MODE" = "test" ]; then
+  say "Type-checking…";        npx tsc --noEmit
+  say "Building…";             npx vite build
+  say "Unit tests…";           npm test --silent
+  say "Headless render test…"; node test/render.test.mjs
+  say "All checks passed."
+  exit 0
 fi
 
 if [ "$MODE" = "dev" ]; then

@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-import type { AppState, JobApplication, Company, StageDef, Contact, InterviewEvent, Task, Note, EmailTemplate, Question, StarStory, SalaryOffer, Outreach, Goal, SavedSearch } from './types';
+import type { StageId, AppState, JobApplication, Company, StageDef, Contact, InterviewEvent, Task, Note, EmailTemplate, Question, StarStory, SalaryOffer, Outreach, Goal, SavedSearch, ResumeVersion } from './types';
 
 /* ============================================================
    Default stages (spec §1.2) — customizable in Settings
@@ -20,6 +20,23 @@ export const DEFAULT_STAGES: StageDef[] = [
   { id: 'ghosted',     label: 'Ghosted',     color: '#6b7280' },
   { id: 'withdrawn',   label: 'Withdrawn',   color: '#9ca3af' },
 ];
+
+/* Which pipeline stage each interview round implies (spec §3.4).
+   Rounds not listed here (informal_chat, reference_check, offer_call)
+   deliberately do not move the pipeline on their own. */
+export const INTERVIEW_STAGE: Record<string, StageId | undefined> = {
+  recruiter_call: 'phone_screen',
+  technical_phone: 'phone_screen',
+  hiring_manager: 'phone_screen',
+  take_home_review: 'technical',
+  coding: 'technical',
+  system_design: 'technical',
+  behavioral: 'technical',
+  onsite: 'onsite',
+  panel: 'onsite',
+  final: 'final',
+};
+export const CLOSED_STAGES = ['accepted', 'rejected', 'ghosted', 'withdrawn'];
 
 const now = () => new Date().toISOString();
 let counter = 0;
@@ -55,7 +72,15 @@ export interface JTPState extends AppState {
   addTemplate: (t: Partial<EmailTemplate>) => string;
   addQuestion: (x: Partial<Question>) => string;
   addStory: (s: Partial<StarStory>) => string;
+  addResume: (r: Partial<ResumeVersion>) => string;
+  updateResume: (id: string, patch: Partial<ResumeVersion>) => void;
+  removeResume: (id: string) => void;
   addOffer: (o: Partial<SalaryOffer>) => string;
+  updateOffer: (id: string, patch: Partial<SalaryOffer>) => void;
+  removeOffer: (id: string) => void;
+  updateInterview: (id: string, patch: Partial<InterviewEvent>) => void;
+  removeInterview: (id: string) => void;
+  logInterviewOutcome: (id: string, outcome: InterviewEvent['outcome'], notes?: string) => void;
   addOutreach: (o: Partial<Outreach>) => string;
   addActivity: (type: string, summary: string, entityId?: string) => void;
   setSettings: (patch: Partial<AppState['settings']>) => void;
@@ -235,7 +260,40 @@ export const useStore = create<JTPState>()(
         const iv: InterviewEvent = { id, jobId: i.jobId || '', type: 'recruiter_call', scheduledAt: i.scheduledAt || t, outcome: 'pending', createdAt: t, updatedAt: t, ...i };
         set(s => ({ interviews: [...s.interviews, iv] }));
         get().addActivity('interview', `Scheduled ${iv.type.replace(/_/g,' ')}`, id);
+
+        /* Pipeline linkage: booking a round means the job has reached that
+           round. Only ever move a job *forward* — never rewind someone who
+           already got further, and never touch a closed application. */
+        const job = get().jobs.find(j => j.id === iv.jobId);
+        const target = INTERVIEW_STAGE[iv.type];
+        if (job && target && !CLOSED_STAGES.includes(job.status)) {
+          const order = DEFAULT_STAGES.map(s => s.id);
+          if (order.indexOf(target) > order.indexOf(job.status)) {
+            get().moveJob(job.id, target, `Auto-advanced: ${iv.type.replace(/_/g, ' ')} scheduled`);
+          }
+        }
         return id;
+      },
+
+      updateInterview: (id, patch) => {
+        set(s => ({ interviews: s.interviews.map(i => i.id === id ? { ...i, ...patch, updatedAt: now() } : i) }));
+      },
+
+      removeInterview: (id) => {
+        set(s => ({ interviews: s.interviews.filter(i => i.id !== id) }));
+      },
+
+      logInterviewOutcome: (id, outcome, notes) => {
+        const iv = get().interviews.find(x => x.id === id); if (!iv) return;
+        get().updateInterview(id, { outcome, outcomeNotes: notes });
+        const job = get().jobs.find(j => j.id === iv.jobId);
+        if (!job || CLOSED_STAGES.includes(job.status)) return;
+        /* A failed round closes the application; a pass is left for the user
+           to advance, because "passed" does not tell us which round is next. */
+        if (outcome === 'failed') {
+          get().moveJob(job.id, 'rejected', `Auto: ${iv.type.replace(/_/g, ' ')} outcome recorded as failed`);
+        }
+        get().addActivity('interview', `Outcome "${outcome}" on ${iv.type.replace(/_/g, ' ')}`, id);
       },
 
       addTask: (t) => {
@@ -323,12 +381,39 @@ export const useStore = create<JTPState>()(
         return id;
       },
 
+      addResume: (r) => {
+        const t = now(); const id = r.id || uid('rv');
+        const rv: ResumeVersion = {
+          id, label: r.label || 'Untitled version', type: r.type || 'tailored',
+          useCount: 0, createdAt: t, updatedAt: t, ...r,
+        };
+        set(s => ({ resumes: [rv, ...s.resumes] }));
+        get().addActivity('resume', `Saved resume version "${rv.label}"`, id);
+        return id;
+      },
+
+      updateResume: (id, patch) => {
+        set(s => ({ resumes: s.resumes.map(r => r.id === id ? { ...r, ...patch, updatedAt: now() } : r) }));
+      },
+
+      removeResume: (id) => {
+        set(s => ({ resumes: s.resumes.filter(r => r.id !== id) }));
+      },
+
       addOffer: (o) => {
         const t = now(); const id = o.id || uid('offer');
         const of: SalaryOffer = { id, jobId: o.jobId || '', status: 'received', createdAt: t, updatedAt: t, ...o };
         set(s => ({ offers: [...s.offers, of] }));
         get().addActivity('offer', `Recorded offer for job ${o.jobId?.slice(0,8)}`, id);
         return id;
+      },
+
+      updateOffer: (id, patch) => {
+        set(s => ({ offers: s.offers.map(o => o.id === id ? { ...o, ...patch, updatedAt: now() } : o) }));
+      },
+
+      removeOffer: (id) => {
+        set(s => ({ offers: s.offers.filter(o => o.id !== id) }));
       },
 
       addOutreach: (o) => {
