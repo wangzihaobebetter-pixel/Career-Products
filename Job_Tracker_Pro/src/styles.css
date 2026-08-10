@@ -353,3 +353,30 @@ tr.row-selected td{background:var(--panel2)}
   /* Long URLs and merge fields must wrap rather than widen the card. */
   .card,.panel,.note,.seq-body,td,th{overflow-wrap:anywhere}
 }
+
+/* ---------- Form controls ----------
+   The base rule only set font-family and colour, so any input or select without
+   its own class kept the browser default white background — light text on white
+   in dark mode, i.e. invisible. Theming them here fixes every view at once;
+   checkboxes and radios are excluded because padding and a background destroy
+   the native control. */
+input:not([type=checkbox]):not([type=radio]):not([type=range]),
+select,
+textarea{
+  background:var(--panel);border:1px solid var(--border);border-radius:8px;
+  padding:7px 11px;font-size:13px;color:var(--fg);
+}
+input:not([type=checkbox]):not([type=radio]):focus,select:focus,textarea:focus{
+  outline:none;border-color:var(--accent);
+}
+input::placeholder,textarea::placeholder{color:var(--muted2)}
+input[type=checkbox],input[type=radio]{accent-color:var(--accent);width:16px;height:16px}
+
+/* `.primary` was only ever defined as `.btn.primary`, so buttons that carry the
+   class alone (Live Openings' bulk import) rendered as bare text. */
+button.primary{
+  background:var(--accent);border:1px solid var(--accent);color:#fff;font-weight:600;
+  border-radius:8px;padding:7px 13px;font-size:12.5px;
+}
+button.primary:hover{filter:brightness(1.08)}
+button.primary:disabled{opacity:.45;cursor:not-allowed;filter:none}
