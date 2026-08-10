@@ -180,6 +180,27 @@ if (raw) {
   check('seed: jobs loaded', st.jobs?.length >= 40, `${st.jobs?.length} jobs`);
   check('seed: templates loaded', st.templates?.length >= 10, `${st.templates?.length} templates`);
   check('seed: questions loaded', st.questions?.length >= 30, `${st.questions?.length} questions`);
+
+  /* The seed3 research bank: company-specific questions recovered from the
+     2026-08-09 live research pass. These are the ones that make the prep
+     view worth opening, so assert they survived the merge and the migrate. */
+  const research = (st.questions || []).filter(x => String(x.id).startsWith('qr_'));
+  check('research bank: merged into the question set', research.length >= 40,
+        `${research.length} research questions`);
+  const companiesCovered = new Set(research.map(x => x.company).filter(Boolean));
+  check('research bank: covers 12 companies', companiesCovered.size >= 12,
+        `${companiesCovered.size} companies: ${[...companiesCovered].slice(0, 4).join(', ')}…`);
+  check('research bank: every question names its company',
+        research.every(x => !!x.company),
+        `${research.filter(x => !x.company).length} missing`);
+  check('research bank: every question carries its sourcing note',
+        research.every(x => /Live research 2026-08-09/.test(x.notes || '')),
+        `${research.filter(x => !/Live research/.test(x.notes || '')).length} unsourced`);
+  check('research bank: no truncated or non-question text',
+        research.every(x => x.text.length > 20 && /[.?]$/.test(x.text)),
+        `${research.filter(x => !(x.text.length > 20 && /[.?]$/.test(x.text))).length} malformed`);
+  check('research bank: difficulty is graded 1-5',
+        research.every(x => x.difficulty >= 1 && x.difficulty <= 5));
   check('offers array exists', Array.isArray(st.offers));
   check('interview recorded', st.interviews?.length === 1, `${st.interviews?.length} interviews`);
   const job = st.jobs?.find(j => j.id === scheduledJobId);

@@ -70,6 +70,7 @@ export const _undoDepth = () => undoStack.length;
    ============================================================ */
 import seedData from './seed';
 import playbook from './seed2';
+import { researchQuestions } from './seed3';
 
 export interface JTPState extends AppState {
   hydrate: () => void;
@@ -397,7 +398,10 @@ function buildInitialState(): AppState {
     contacts: playbook.contacts, tasks: playbook.tasks, notes: [],
     resumes: playbook.resumes, bullets, offers: [],
     templates: playbook.templates, outreach: [], savedSearches: playbook.savedSearches,
-    goals: playbook.goals, questions: playbook.questions,
+    goals: playbook.goals,
+    // Generic prep bank first, then the company-specific questions recovered
+    // from the 2026-08-09 live research pass (see seed3.ts for sourcing).
+    questions: [...playbook.questions, ...researchQuestions],
     starStories: playbook.starStories, stages: DEFAULT_STAGES,
     settings: {
       // Left blank on purpose: this repo is public. Fill it in Settings —
@@ -947,11 +951,12 @@ export const useStore = create<JTPState>()(
     }),
     {
       name: 'job-tracker-pro-v2',
-      version: 5,
+      version: 6,
       // Bumping this version discards an older cached store so the playbook
       // seed (templates / questions / STAR / resumes), the real submitted
-      // -application state, and the v5 company-attribution fix all land.
-      migrate: (persisted, from) => (from < 5 ? buildInitialState() : (persisted as AppState)),
+      // -application state, the v5 company-attribution fix, and the v6
+      // company-specific research question bank (seed3.ts) all land.
+      migrate: (persisted, from) => (from < 6 ? buildInitialState() : (persisted as AppState)),
     }
   )
 );
