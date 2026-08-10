@@ -43,6 +43,7 @@ if [ "$MODE" = "test" ]; then
   say "Backup key coverage…";  node check-backup-keys.mjs
   say "Research import…";      node verify-research-import.cjs
   say "Interview prep…";       node verify-interview-prep.cjs
+  say "Batch-2 question bank…"; node verify-batch2.cjs
   say "All checks passed."
   exit 0
 fi

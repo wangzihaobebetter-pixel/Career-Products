@@ -72,6 +72,7 @@ import seedData from './seed';
 import playbook from './seed2';
 import { researchQuestions } from './seed3';
 import { minedQuestions } from './seed5';
+import { batch2Questions } from './seed7';
 
 export interface JTPState extends AppState {
   hydrate: () => void;
@@ -406,7 +407,11 @@ function buildInitialState(): AppState {
     // from the 2026-08-09 live research pass (see seed3.ts for sourcing), then
     // the mined bank (seed5.ts). Mined notes carry their own provenance grade:
     // "Sourced:" traces to candidate write-ups, "Type-level" does not.
-    questions: [...playbook.questions, ...researchQuestions, ...minedQuestions],
+    // seed7.ts adds the 12-employer batch-2 bank; its notes are graded [A]/[B]/[C]
+    // and its coach advice is explicitly flagged as unverified model commentary.
+    questions: [
+      ...playbook.questions, ...researchQuestions, ...minedQuestions, ...batch2Questions,
+    ],
     starStories: playbook.starStories, stages: DEFAULT_STAGES,
     planChecks: {},
     settings: {
@@ -986,18 +991,20 @@ export const useStore = create<JTPState>()(
     }),
     {
       name: 'job-tracker-pro-v2',
-      version: 7,
+      version: 8,
       // < 6 predates the playbook seed (templates / questions / STAR / resumes),
       // the real submitted-application state, the v5 company-attribution fix and
       // the seed3 research bank — those stores are rebuilt from scratch.
       //
-      // 6 → 7 only adds the mined question bank (seed5.ts), so it merges instead
-      // of rebuilding: anything the user typed into an older store survives.
+      // 6 → 7 adds the mined question bank (seed5.ts) and 7 → 8 adds the batch-2
+      // bank (seed7.ts). Both merge by id instead of rebuilding, so anything the
+      // user typed into an older store survives the upgrade.
       migrate: (persisted, from) => {
         if (from < 6) return buildInitialState();
         const prev = persisted as AppState;
         const have = new Set(prev.questions?.map(q => q.id) ?? []);
-        return { ...prev, questions: [...(prev.questions ?? []), ...minedQuestions.filter(q => !have.has(q.id))] };
+        const incoming = [...minedQuestions, ...batch2Questions].filter(q => !have.has(q.id));
+        return { ...prev, questions: [...(prev.questions ?? []), ...incoming] };
       },
     }
   )
