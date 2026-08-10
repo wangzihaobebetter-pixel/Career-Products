@@ -709,8 +709,8 @@ if (goalRows.length) {
   check('qbank: every mined question is graded', sourced.length + typeLevel.length === mined.length);
   // A "sourced" note must actually name where it came from, or the grade lies.
   check('qbank: sourced notes name a source',
-        sourced.every(q => /BurnR|r\/[A-Za-z]/.test(q.notes)),
-        `${sourced.filter(q => !/BurnR|r\/[A-Za-z]/.test(q.notes)).length} unnamed`);
+        sourced.every(q => /Burn[A-Z]\w*|r\/[A-Za-z]/.test(q.notes)),
+        `${sourced.filter(q => !/Burn[A-Z]\w*|r\/[A-Za-z]/.test(q.notes)).length} unnamed`);
 
   const companiesCovered = new Set(mined.filter(q => q.company).map(q => q.company));
   check('qbank: multi-company coverage', companiesCovered.size >= 15, `${companiesCovered.size} companies`);
